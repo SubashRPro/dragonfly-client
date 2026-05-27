@@ -9,7 +9,7 @@ export const environment = {
     userUrl: 'http://18.171.98.145:5843',
     clientUrl: 'http://18.171.98.145:5843',
     calculatorUrl: 'http://18.171.98.145:5843',
-    fileUrl: 'http://18.171.98.145:5843',
+    fileUrl: 'https://dragonfly-prod-bkt.s3.eu-west-2.amazonaws.com',
     ecUrl: 'test.com',
     crmUrl: 'test.com',
     webUrl: 'test.com',
