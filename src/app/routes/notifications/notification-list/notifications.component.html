@@ -1,0 +1,46 @@
+<nz-card nzTitle="{{'Notifications' | i18n}}" class="margin-calc notify-card">
+    <div class="content">
+        <div class="data-loader" *ngIf="loader">
+            <ng-template #indicatorTemplate><span nz-icon nzType="loading"></span></ng-template>
+            <nz-spin nzSimple [nzIndicator]="indicatorTemplate"></nz-spin>
+        </div>
+        <ng-container *ngIf="noData">
+            <div class="notice-bar data-loader" >
+                {{'Not Found' | i18n}}
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let item of notificationList; let index = index">
+
+                <div class="notice-bar" >
+                    <ng-container *ngIf="!notificationList[index-1] || item.created_Date !== notificationList[index-1].created_Date">
+                        <div class="date">
+                            {{item.created_Date | date}}
+                        </div>
+                    </ng-container>
+                        <div class="list">
+                            <div class="notice">
+                                <div class="title">
+                                    {{item.title}}
+                                </div>
+                                <div class="content">
+                                    {{item.description}}
+                                </div>
+                            </div>
+                            <div class="action" *ngIf="item.notification_Type == 1 || item.notification_Type == 2 || item.notification_Type == 3">
+                                <button
+                                    nz-button
+                                    [nzType]="'default'"
+                                    class="login-form-button login-form-margin cpt-primary-btn cmn-btn cmn-default"
+                                    type="button"
+                                    (click)="redirectNotice(item.notification_Type)"
+                                >
+                                    {{item.notification_Type_Desc}}
+                                </button>
+                            </div>
+
+
+                        </div>
+                </div>
+        </ng-container>
+    </div>
+</nz-card>

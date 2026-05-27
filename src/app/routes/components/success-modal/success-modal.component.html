@@ -1,0 +1,33 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="tplTitle"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzWidth]="419"
+  nzOkText="Done"
+  [nzCancelText]="null"
+  nzClassName="cpt-modal"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitle>
+    <div class="nz-title-template">
+      <div class="icon">
+        <img src="assets/images/SettingsMain.svg" alt="SettingsMain" />
+      </div>
+      <span>Success</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="text-center">
+      <img src="assets/images/success.svg" alt="success" />
+      <p> </p>
+      <p> Thank you!</p>
+      <p> We have received your request</p>
+    </div>
+  </ng-container>
+</nz-modal>

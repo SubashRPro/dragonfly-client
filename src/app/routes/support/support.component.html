@@ -1,0 +1,186 @@
+<nz-card class="ticket-cards">
+  <div class="support-head">
+    <h1>  {{ 'Client' | i18n }}<span class="green"> {{ 'Assistance Center' | i18n }} </span></h1>
+    <p> {{ 'Welcome to the Client Assistance Center!' | i18n }}</p>
+    <p>
+      {{ 'Your dedicated hub for support, solutions, and expert guidance. Whether you have a question, need assistance, or want to resolve an issue, we are here to help every step of the way.' | i18n }}
+      
+    </p>
+  </div>
+  <div nz-row [nzGutter]="24" class="support-top">
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <a (click)="raisedTicket()">
+        <div class="trading-account" [ngClass]="{ active: isValue == 1 }">
+          <div class="trading-content">
+            <span class="img-box">
+              <img src="assets/images/support/ticket.svg" />
+            </span>
+            <span class="trading-title">{{ 'Raise a Ticket' | i18n }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <a href="mailto:support_int@trive.com" (click)="email()">
+        <div class="trading-account" [ngClass]="{ active: isValue == 2 }">
+          <div class="trading-content">
+            <span class="img-box">
+              <img src="assets/images/support/e-mail_icon.svg" />
+            </span>
+            <span class="trading-title">{{ 'Send Us Email' | i18n }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <a (click)="openChat()">
+        <div class="trading-account" [ngClass]="{ active: isValue == 3 }">
+          <div class="trading-content">
+            <span class="img-box">
+              <img src="assets/images/support/chat.svg" style="height: 17px" />
+            </span>
+            <span class="trading-title">{{ 'Chat with Us' | i18n }}</span>
+          </div>
+        </div>
+      </a>
+    </div> -->
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <a (click)="faq()">
+        <div class="trading-account" [ngClass]="{ active: isValue == 4 }">
+          <div class="trading-content">
+            <span class="img-box">
+              <img src="assets/images/support/faq.svg" />
+            </span>
+            <span class="trading-title">FAQ's</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <ng-container *ngIf="helpdesk">
+    <app-add-ticket> </app-add-ticket>
+    <!-- <iframe
+      sandbox="allow-scripts allow-popups allow-forms allow-same-origin"
+      width="100%"
+      height="660px"
+      style="border: 0; overflow: hidden; overflow-x: auto"
+      src="https://forms.helpdesk.com?licenseID=1157400272&contactFormID=c73f133b-9833-40c8-ad24-e285f14318d7"
+    >
+      Your browser does not allow embedded content.
+    </iframe> -->
+  </ng-container>
+  <ng-container *ngIf="faqData">
+    <app-faq></app-faq>
+    <!-- <div class="text-center faq-coming">
+      <img src="assets/images/coming-soon.png" style="width: 260px" />
+    </div> -->
+  </ng-container>
+</nz-card>
+<!-- <nz-card class="ticket-cards">
+  <nz-tabset>
+    <nz-tab
+      nzTitle="{{ 'All Tickets' | i18n }}"
+      (nzClick)="onSearch('')"
+    ></nz-tab>
+    <nz-tab
+      nzTitle="{{ 'In Progress' | i18n }}"
+      (nzClick)="onSearch('In Progress')"
+    ></nz-tab>
+    <nz-tab
+      nzTitle="{{ 'Resolved' | i18n }}"
+      (nzClick)="onSearch('Resolved')"
+    ></nz-tab>
+  </nz-tabset>
+
+  <div class="common-data">
+    <div nz-row [nzGutter]="24">
+      <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24" class="mb-c">
+        <button
+          nz-button
+          class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+          [nzType]="'primary'"
+          type="button"
+          [routerLink]="langs + '/support/add-ticket'"
+        >
+          <img src="assets/images/support/ntick.svg" />
+          {{ 'Raise a request' | i18n }}
+        </button>
+      </div>
+    </div>
+    <hr />
+    <div class="no-data-bar">
+      <div class="data-loader" *ngIf="dataLoader">
+        <ng-template #indicatorTemplate
+          ><span nz-icon nzType="loading"></span
+        ></ng-template>
+        <nz-spin nzSimple [nzIndicator]="indicatorTemplate"></nz-spin>
+      </div>
+      <ng-container *ngIf="noData">
+        <div class="notice-bar data-loader">
+          {{ 'No Tickets' | i18n }}
+        </div>
+      </ng-container>
+    </div>
+    <div nz-row [nzGutter]="24" *ngIf="!dataLoader">
+      <div
+        nz-col
+        nzMd="24"
+        nzLg="24"
+        nzXl="24"
+        nzXs="24"
+        *ngFor="let data of users"
+      >
+        <div class="list-bar">
+          <div class="flex-div date-bar">
+            <div class="icon-bar">
+              <div class="top-img-box">
+                <img src="assets/images/support/ticket_icon.svg" alt="" />
+              </div>
+              <span>{{ data.ticket_Code }}</span>
+            </div>
+            <div class="time-bar">
+              {{ data.created_Date | date: 'MMM d, y - h:mm a' }}
+            </div>
+          </div>
+          <div class="flex-div title-bar">
+            <h3>{{ data.ticket_Category }}</h3>
+            <div class="view-ticket" (click)="gotoHistory(data.ticket_ID)">
+              {{ 'View Ticket' | i18n }}
+            </div>
+          </div>
+          <div class="flex-div content-bar">
+            <p [innerHTML]="data.ticket_Description"></p>
+          </div>
+          <div class="flex-div info-bar">
+            <div class="user-bar">
+              <div class="sm-box">
+                <img src="assets/images/user-icon.svg" alt="" />
+              </div>
+              <span>{{ data.created_By }}</span>
+            </div>
+            <div class="notes-bar">
+              <div class="notes-sm tag-bar">
+                <div class="sm-box">
+                  <img src="assets/images/support/3_icon.svg" alt="" />
+                </div>
+                {{ data.ticket_Type }}
+              </div>
+              <div class="notes-sm messages">
+                <div class="sm-box">
+                  <img src="assets/images/support/5_icon.svg" alt="" />
+                </div>
+                <span>{{ data.noOfMessages }}</span>
+              </div>
+              <div class="notes-sm attachments">
+                <div class="sm-box">
+                  <img src="assets/images/support/4_icon.svg" alt="" />
+                </div>
+                <span>{{ data.noOfAttachment }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-card> -->

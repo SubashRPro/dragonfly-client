@@ -1,0 +1,42 @@
+<svg id="组件_553_13" data-name="组件 553 – 13" xmlns="http://www.w3.org/2000/svg" width="35.044" height="24.62" viewBox="0 0 35.044 24.62">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #0b1642;
+      }
+
+      .cls-2 {
+        fill: #f85252;
+        stroke: #fff;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        font-size: 12px;
+        font-family: Lato-Medium, Lato;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+
+      .cls-5 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="组_20694" data-name="组 20694" transform="translate(0 -0.932)">
+    <g id="bell" transform="translate(0 2.96)">
+      <path id="Shape" class="cls-1" d="M7.06,19.769H2.952A2.951,2.951,0,0,1,1,14.6c.75-.74,1.524-1.506,1.524-5.122A7.375,7.375,0,0,1,8.72,2.21a1.412,1.412,0,1,1,2.329,0,7.375,7.375,0,0,1,6.2,7.271c0,3.616.775,4.382,1.524,5.122a2.952,2.952,0,0,1-1.955,5.166H12.708a2.824,2.824,0,1,1-5.648,0Z"/>
+    </g>
+    <g id="组_29562" data-name="组 29562" transform="translate(-646.956 -895.068)">
+      <g id="矩形_23069" data-name="矩形 23069" class="cls-2" transform="translate(658 896)">
+        <rect class="cls-4" width="24" height="16" rx="8"/>
+        <rect class="cls-5" x="0.5" y="0.5" width="23" height="15" rx="7.5"/>
+      </g>
+      <text id="_34" data-name="34" class="cls-3" transform="translate(663 908)"><tspan x="0" y="0">34</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Image requirement"
+  [nzContent]="tplContent"
+  [nzWidth]="826"
+  nzOkText="Done"
+  [nzCancelText]="null"
+  (nzOnOk)="handleCancel()"
+  (nzOnCancel)="handleCancel()"
+  nzClassName="cpt-modal"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzStyle]="{ top: '25px' }"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template" (click)="handleCancel()">
+      <img src="assets/images/icons/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplContent>
+    <nz-card nzTitle="Please upload a clear copy of passport image">
+      <p class="title requirement-images">
+        To verify your identity document as quickly and accurately as possible please refer to the below instructions and upload the
+        document without any water marks or obscuring any part of the document.
+      </p>
+      <div nz-row [nzGutter]="4">
+        <div nz-col class="gutter-row" [nzSpan]="20">
+          <img style="width: 100%; height: 100%" src="assets/images/Passportimages.png" alt="photo" />
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="4">
+          <div class="blurred">
+            <div><i nz-icon nzType="stop" nzTheme="outline"></i> <p>Do not upload image with blurred Text</p></div>
+            <div><i nz-icon nzType="stop" nzTheme="outline"></i> <p>Do not upload Image with flashy light</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="perfect-icons">
+        <i nz-icon nzType="check-circle" nzTheme="outline"></i>
+        Perfect Image
+      </div>
+    </nz-card>
+  </ng-template>
+</nz-modal>

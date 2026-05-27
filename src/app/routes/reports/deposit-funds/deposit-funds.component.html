@@ -1,0 +1,279 @@
+<nz-card class="margin-calc">
+  <nz-collapse
+    [nzBordered]="false"
+    style="margin-bottom: 18px"
+    class="filter-form"
+  >
+    <nz-collapse-panel
+      [nzHeader]="headerTemplate"
+      [nzShowArrow]="false"
+      [nzActive]="isCollapse"
+      (nzActiveChange)="collapseChange($event)"
+    >
+      <ng-template #headerTemplate>
+        <div class="header-title">
+          <span> {{ 'My Deposits' | i18n }}</span>
+          <span class="filter">
+            <img
+              src="assets/images/icons/Filter_icon.svg"
+              [class]="isCollapse ? '' : 'rotate-90'"
+              alt="arrow"
+            />
+            {{ 'Filter' | i18n }}
+          </span>
+        </div>
+      </ng-template>
+      <form
+        nz-form
+        [formGroup]="formFilter"
+        (ngSubmit)="onfilter()"
+        nzLayout="vertical"
+      >
+        <div nz-row [nzGutter]="24" [nzAlign]="'middle'" nzJustify="start">
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'">
+                {{ 'Deposit ID' | i18n }}
+              </nz-form-label>
+              <nz-form-control>
+                <nz-input-number
+                  formControlName="billNo"
+                  nzPlaceHolder="{{ 'Deposit ID' | i18n }}"
+                  [nzMin]="1"
+                  [nzStep]="1"
+                >
+                </nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label> {{ 'Account Number' | i18n }}</nz-form-label>
+              <nz-form-control>
+                <nz-input-number
+                  formControlName="accountNumber"
+                  nzPlaceHolder="{{ 'Account Number' | i18n }}"
+                  [nzMin]="1"
+                  [nzStep]="1"
+                >
+                </nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>{{ 'Currency' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  formControlName="currency"
+                  nzPlaceHolder="{{ 'All' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option nzValue="" nzLabel="All"></nz-option>
+                  <nz-option
+                    *ngFor="let item of currencies"
+                    [nzValue]="item.code"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <!-- <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label> {{ 'Amount Number' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-input-number formControlName="transactionAmount" nzPlaceHolder="{{ 'Amount Number' | i18n }}" [nzMin]="1" [nzStep]="1">
+                </nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div> -->
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label> {{ 'Date' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-range-picker
+                  [nzFormat]="dateFormat"
+                  formControlName="timeline"
+                  #timeline
+                >
+                </nz-range-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label> {{ 'Status' | i18n }}</nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  formControlName="status"
+                  nzSuffixIcon="caret-down"
+                  nzPlaceHolder="{{ 'All' | i18n }}"
+                >
+                  <nz-option
+                    *ngFor="let item of allType"
+                    [nzValue]="item.id"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col class="btn-wrapper">
+            <button
+              class="filter-reset-btn"
+              nz-button
+              nzType="default"
+              (click)="reset()"
+            >
+              {{ 'Reset' | i18n }}
+            </button>
+            <button class="filter-search-btn" nz-button nzType="primary">
+              {{ 'Search' | i18n }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </nz-collapse-panel>
+  </nz-collapse>
+  <!--listing data start-->
+  <div class="filter-content">
+    <div class="data">
+      <nz-table
+        [nzData]="users"
+        [nzLoading]="loading"
+        [nzPageIndex]="page"
+        [nzTotal]="totalnumber"
+        nzShowSizeChanger
+        nzShowQuickJumper
+        [nzPageSize]="pageSize"
+        [nzFrontPagination]="false"
+        (nzPageIndexChange)="onPageIndexChange($event)"
+        (nzPageSizeChange)="onCurrentPageDataChange($event)"
+        (nzPageSizeChange)="onCurrentPageDataChange($event)"
+        (nzQueryParams)="onQueryParamsChange($event)"
+      >
+        <thead>
+          <tr>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="deposiT_TIME"
+              [nzSortFn]="true"
+            >
+              {{ 'Date' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="transaction_ID"
+              [nzSortFn]="true"
+            >
+              {{ 'Deposit ID' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="deposiT_AMOUNT"
+              [nzSortFn]="true"
+            >
+              {{ 'Amount' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="deposiT_TYPE"
+              [nzSortFn]="true"
+            >
+              {{ 'Method' | i18n }}
+            </th>
+            <!-- <th appDynamicColumnWidth nzColumnKey="paymenT_SOURCE" [nzSortFn]="true">{{ 'From Account' | i18n }}</th> -->
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="paymenT_DESTINATION"
+              [nzSortFn]="true"
+            >
+              {{ 'To Account' | i18n }}
+            </th>
+            <!-- <th appDynamicColumnWidth nzColumnKey="currency" [nzSortFn]="true">
+              {{ 'Currency' | i18n }}
+            </th> -->
+            <th appDynamicColumnWidth nzColumnKey="status">
+              {{ 'Status' | i18n }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of users">
+            <!-- <td>{{ data.deposiT_TIME | date: 'short' }}</td> -->
+            <td>{{ data.deposiT_TIME | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+            <td>{{ data.transaction_ID }}</td>
+            <td>{{ data.deposiT_AMOUNT }} {{ data.deposit_Currency }}</td>
+            <td>{{ data.deposiT_TYPE }}</td>
+            <!-- <td>{{ data.paymenT_SOURCE }} </td> -->
+            <td>{{ data.paymenT_DESTINATION }}</td>
+            <!-- <td>{{ data.fund_Currrency }}</td> -->
+            <td class="status_svg">
+              <ng-container *ngIf="data.status === 'Success'">
+                <img
+                  src="assets/images/icons/completed.png"
+                  alt="deposit"
+                  style="width: 20px"
+                />
+              </ng-container>
+              <ng-container *ngIf="data.status === 'Pending'">
+                <img
+                  src="assets/images/icons/pending.png"
+                  alt="deposit"
+                  style="width: 20px"
+                />
+              </ng-container>
+              <ng-container *ngIf="data.status === 'Rejected'">
+                <img
+                  src="assets/images/icons/rejected.png"
+                  alt="deposit"
+                  style="width: 20px"
+                />
+              </ng-container>
+              <span
+                [ngClass]="{
+                  success: data.status == 'Success',
+                  pending: data.status == 'Pending',
+                  rejected: data.status == 'Rejected'
+                }"
+              >
+                {{ data.status | i18n }}
+              </span>
+            </td>
+          </tr>
+          <tr class="total-data" *ngIf="totalAmount">
+            <td></td>
+            <td></td>
+            <td style="text-align: center">
+              Total Amount: {{ totalAmount }} {{ currencyData }}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <!--pagination here-->
+      <div class="total-count">
+        <ng-container *ngIf="totaData">
+          <div class="count">
+            {{ 'Total Count' | i18n }}:
+            <span class="bold"> {{ totaData }} </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nz-card>
+
+<!-- <ng-template #extraTemplate>
+  <button nz-button nzType="primary" (click)="exportAsXLSX()" [disabled]="disableInput">
+    <img src="assets/images/export.svg" alt="account" style="width: 12px; vertical-align: inherit; margin-right: 5px" />{{
+      'Export' | i18n
+    }}
+  </button>
+</ng-template> -->

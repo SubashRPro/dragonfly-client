@@ -1,0 +1,33 @@
+<div nz-row nzJustify="center" nzAlign="middle" style="height: 100%">
+  <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" class="text-center">
+    <!-- <nz-card style="width: 400px" [nzTitle]="'Verification ' + data?.customer_Status | i18n">
+    <div class="text-center">
+      <img src="assets/images/SuccessThumbsup.svg" alt="" />
+      <div style="margin: 12px 0">
+        <strong style="color: #0d2c50">{{ 'Thank you' | i18n }}!</strong>
+      </div>
+      <p>{{ 'We have received your information.' | i18n }} </p>
+      <p>{{ 'Your Profile verification is ' + data?.customer_Status | i18n }}</p>
+      <p>{{ data?.review_Comments }}</p>
+    </div>
+  </nz-card> -->
+    <img src="assets/images/sent.svg" alt="" style="width: 100px;" />
+    <div class="sent">
+      <h1>{{ 'Your Request is Under Review' | i18n }}</h1>
+      <p>
+        {{
+          'Your Trive application has been successfully submitted for verification. You can expect our response shortly.'
+            | i18n
+        }}
+      </p>
+    </div>
+    <!-- <button
+      nz-button
+      class="cpt-primary-btn cmn-btn large-bth mb-2"
+      [nzType]="'primary'"
+      (click)="goDashboard()"
+    >
+      {{ 'Dashboard' | i18n }}
+    </button> -->
+  </div>
+</div>

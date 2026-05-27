@@ -1,0 +1,812 @@
+<!-- [ngClass]="loaderWithdraw ? 'withdrawLoader' : ''" -->
+<!-- <nz-card class="withdraw-info">
+  <p>
+    <img
+      src="assets/images/status/info.png"
+      alt="info"
+      style="width: 30px; vertical-align: middle; margin-right: 5px"
+    />
+    {{
+      'Please opt for the same payment method for withdrawal as the one you used for your deposit, thank you.'
+        | i18n
+    }}
+  </p>
+</nz-card> -->
+<div
+  class="withdraw-modal deposit-modal"
+  [ngClass]="loaderWithdraw ? 'withdrawLoader' : ''"
+>
+  <nz-card
+    [ngClass]="loaderSubmit ? 'withdraw-card' : ''"
+    [nzLoading]="dataLoad"
+    class="withdraw-bg"
+  >
+    <ng-container *ngIf="pspAllowed; else otherDeposit">
+      <div class="method-content psp-method">
+        <nz-radio-group
+          [(ngModel)]="pspdata"
+          nzButtonStyle="solid"
+          (ngModelChange)="onItemChange($event)"
+          class="withdraw-psp"
+        >
+          <label nz-radio-button nzValue="crypto">Crypto Payments</label>
+          <label nz-radio-button nzValue="fiat">Fiat Payments</label>
+        </nz-radio-group>
+
+        <!-- <nz-radio-group
+          class="w100"
+          [(ngModel)]="pspdata"
+          (ngModelChange)="onItemChange($event)"
+          nzButtonStyle="solid"
+        >
+          <div class="withdraw_scroller">
+            <div class="method" (click)="onItemChange('crypto')">
+              <label nz-radio-button nzValue="crypto"></label>
+              <div class="head">{{ 'Crypto' | i18n }}</div>
+            </div>
+          <div class="method" (click)="onItemChange('fiat')">
+              <label nz-radio-button nzValue="fiat"></label>
+              <div class="head">{{ 'Fiat' | i18n }}</div>
+            </div>
+          </div>
+        </nz-radio-group> -->
+      </div>
+      <div nz-row nzJustify="space-between">
+        <div nz-col nzMd="14" nzLg="14" nzXl="14" nzXs="24">
+          <ng-container *ngIf="depositScreen">
+            <div class="withdraw deposit" id="scroll-payment">
+              <div nz-row nzJustify="space-between">
+                <div
+                  nz-col
+                  nzMd="24"
+                  nzLg="24"
+                  nzXl="24"
+                  nzXs="24"
+                  class="account-bg"
+                >
+                  <form nz-form [formGroup]="validateForm" nzLayout="vertical">
+                    <!-- <nz-form-item *ngIf="validateForm.value.wallet === 2">
+                      <nz-form-label>{{
+                        'Trading Account' | i18n
+                      }}</nz-form-label>
+                      <nz-form-control
+                        nzErrorTip="{{ 'Please select any Account' | i18n }}"
+                      >
+                        <nz-select
+                          nzSize="large"
+                          formControlName="accounts"
+                          nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                          nzSize="large"
+                          [(ngModel)]="selectAccount"
+                          (ngModelChange)="tradingChange($event)"
+                          nzShowSearch
+                        >
+                          <nz-option
+                            *ngFor="let item of accounts"
+                            [nzValue]="item.code + '|' + item.mT_Currency"
+                            [nzLabel]="item.description"
+                          ></nz-option>
+                        </nz-select>
+                        <div class="balance alignend">
+                          {{ 'Trading Account Balance' | i18n }}:
+                          <strong
+                            >{{ tradingBalance?.currency }}
+                            {{ tradingBalance?.balance ?? 0 }}</strong
+                          >
+                        </div>
+                      </nz-form-control>
+                    </nz-form-item> -->
+                    <nz-form-item>
+                      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="captcha">
+                        {{ 'Amount' | i18n }}
+                      </nz-form-label>
+                      <nz-form-control
+                        [nsnzSpan]="24"
+                        nzErrorTip="{{ 'Please enter valid amount!' | i18n }}"
+                      >
+                        <div nz-row [nzGutter]="8">
+                          <div nz-col [nzSpan]="14">
+                            <nz-input-number
+                              formControlName="amount"
+                              nzSize="large"
+                              nzPlaceHolder="{{ 'Amount' | i18n }}"
+                              [nzMin]="1"
+                              [nzStep]="1"
+                              class="w100"
+                            ></nz-input-number>
+                            <!-- <input type="number" nz-input nzSize="large" formControlName="amount" placeholder="Amount" class="cpt-input" /> -->
+                          </div>
+                          <div nz-col [nzSpan]="10">
+                            <input
+                              nzSize="large"
+                              nz-input
+                              value="USD"
+                              [disabled]="true"
+                              *ngIf="pspdata === 'crypto'"
+                            />
+                            <nz-select
+                              *ngIf="pspdata === 'fiat'"
+                              nzSize="large"
+                              formControlName="currencie"
+                              nzPlaceHolder="{{ 'SELECT' | i18n }}"
+                              class="ant-select-custom"
+                              nzSize="large"
+                              (ngModelChange)="currencieChange($event)"
+                            >
+                              <nz-option
+                                *ngFor="let item of currencies"
+                                [nzValue]="item.code + '|' + item.description"
+                                [nzLabel]="item.description"
+                              ></nz-option>
+                            </nz-select>
+                          </div>
+                        </div>
+                      </nz-form-control>
+                    </nz-form-item>
+
+                    <!--crypto payment start-->
+                    <div nz-row [nzGutter]="24" *ngIf="expay">
+                      <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                        <ng-container>
+                          <nz-form-item>
+                            <nz-form-label>
+                              {{ 'Coin Name' | i18n }}
+                              <span class="obgliation"> * </span>
+                            </nz-form-label>
+                            <nz-form-control
+                              [nzSpan]="24"
+                              nzErrorTip="{{ 'Please select any Coin' | i18n }}"
+                            >
+                              <nz-select
+                                nzSize="large"
+                                nzShowSearch
+                                formControlName="coinName"
+                                [(ngModel)]="coinName"
+                                nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                                nzSize="large"
+                              >
+                                <nz-option
+                                  nzLabel="USDT"
+                                  nzValue="USDT"
+                                ></nz-option>
+                              </nz-select>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </ng-container>
+                      </div>
+                      <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                        <ng-container>
+                          <nz-form-item>
+                            <nz-form-label>
+                              {{ 'Chain Name' | i18n }}
+                              <span class="obgliation"> * </span>
+                            </nz-form-label>
+                            <nz-form-control
+                              [nzSpan]="24"
+                              nzErrorTip="{{
+                                'Please select Chain Name' | i18n
+                              }}"
+                            >
+                              <nz-select
+                                nzSize="large"
+                                nzShowSearch
+                                formControlName="chainName"
+                                nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                                nzSize="large"
+                              >
+                                <nz-option
+                                  nzLabel="TRC20"
+                                  nzValue="TRC20"
+                                ></nz-option>
+                                <nz-option
+                                  nzLabel="ERC20"
+                                  nzValue="ERC20"
+                                ></nz-option>
+                              </nz-select>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </ng-container>
+                      </div>
+                      <div nz-col [nzSm]="24" [nzXs]="24">
+                        <nz-form-item>
+                          <nz-form-label>
+                            {{ 'To Address' | i18n }}
+                            <span class="obgliation"> * </span>
+                          </nz-form-label>
+                          <nz-form-control nzErrorTip="Address is required">
+                            <input
+                              nzSize="large"
+                              nz-input
+                              placeholder="To Address"
+                              formControlName="toAddress"
+                            />
+                          </nz-form-control>
+                        </nz-form-item>
+                      </div>
+                    </div>
+                    <!--fiat start-->
+                    <ng-container *ngIf="copPay">
+                      <!-- <p style="margin-top: -14px; font-size: 13px">
+                        <span
+                          nz-icon
+                          nzType="info-circle"
+                          nzTheme="fill"
+                          style="
+                            vertical-align: revert-layer;
+                            margin-right: 2px;
+                          "
+                        ></span>
+                        Dear Customer, should you opt for card mode withdrawals,
+                        please note that bank-related fields are optional. You
+                        are welcome to submit your request without providing
+                        bank details.
+                      </p> -->
+
+                      <div nz-row>
+                        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                          <div class="text-center mb-4 enlarge-radio">
+                            <nz-radio-group formControlName="fiatSelection">
+                              <label
+                                nz-radio
+                                nzValue="Bank"
+                                (click)="changeBank('Bank')"
+                                >Bank</label
+                              >
+                              <label
+                                nz-radio
+                                nzValue="Card"
+                                (click)="changeBank('Card')"
+                                >Card</label
+                              >
+                            </nz-radio-group>
+                          </div>
+                        </div>
+                      </div>
+
+                      <ng-template
+                        [ngIf]="validateForm.value.fiatSelection === 'Bank'"
+                      >
+                        <div class="select-bank">
+                          <a nz-button nzType="link" (click)="showBank()">
+                            Select Bank
+                          </a>
+                        </div>
+                        <div nz-row [nzGutter]="24">
+                          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ 'Bank Account Name' | i18n }}
+                              </nz-form-label>
+                              <nz-form-control
+                                nzErrorTip="{{
+                                  'Bank Account Name is required' | i18n
+                                }}"
+                              >
+                                <input
+                                  nzSize="large"
+                                  class="input-disabled"
+                                  nz-input
+                                  placeholder="Bank Account Name"
+                                  formControlName="bank_Account_Name"
+                                  [(ngModel)]="accountName"
+                                  readonly
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ 'Bank Account Number' | i18n }}
+                                <span
+                                  style="
+                                    font-size: 11px;
+                                    margin-left: 5px;
+                                    color: #6a6a6a;
+                                  "
+                                >
+                                  (Numbers only)</span
+                                >
+                              </nz-form-label>
+                              <nz-form-control [nzErrorTip]="ibanErrorTpl">
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="Bank Account Number"
+                                  formControlName="bank_Account_Number"
+                                />
+                              </nz-form-control>
+                              <ng-template #ibanErrorTpl let-control>
+                                <ng-container
+                                  *ngIf="control.hasError('required')"
+                                  >{{
+                                    'Bank Account Number is required' | i18n
+                                  }}
+                                </ng-container>
+                                <ng-container
+                                  *ngIf="control.hasError('pattern')"
+                                >
+                                  {{
+                                    'Special character is not allowed' | i18n
+                                  }}
+                                </ng-container>
+                              </ng-template>
+                            </nz-form-item>
+                          </div>
+                          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ 'Bank Name' | i18n }}
+                              </nz-form-label>
+                              <nz-form-control
+                                nzErrorTip="{{
+                                  'Bank Name is required' | i18n
+                                }}"
+                              >
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="Bank Name"
+                                  formControlName="bank_Name"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ 'Bank Branch' | i18n }}
+                              </nz-form-label>
+                              <nz-form-control
+                                nzErrorTip="{{
+                                  'Bank Branch is required' | i18n
+                                }}"
+                              >
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="Bank Branch"
+                                  formControlName="bank_branch"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ 'Bank Address' | i18n }}
+                              </nz-form-label>
+                              <nz-form-control
+                                nzErrorTip="{{ 'Bank Address' | i18n }}"
+                              >
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="Bank Address"
+                                  formControlName="bank_Address"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ 'Branch Code/Swift Code' | i18n }}
+                              </nz-form-label>
+                              <nz-form-control
+                                nzErrorTip="{{
+                                  'Branch Code or Swift Code is required' | i18n
+                                }}"
+                              >
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="Branch Code/Swift Code"
+                                  formControlName="bank_Code"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ 'IBAN' | i18n }}
+                              </nz-form-label>
+                              <nz-form-control
+                                nzErrorTip="{{ 'IBAN is required' | i18n }}"
+                              >
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="IBAN"
+                                  formControlName="bank_IBAN"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ 'Reciever Email' | i18n }}
+                              </nz-form-label>
+                              <nz-form-control
+                                nzErrorTip="{{
+                                  'Reciever Email required' | i18n
+                                }}"
+                              >
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="Reciever Email"
+                                  formControlName="reciever_Email"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </ng-container>
+                  </form>
+                </div>
+                <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                  <div class="deposit-summary" *ngIf="summaryLoader">
+                    <div class="summary-col">
+                      <div class="summary-list" *ngIf="exchangeText">
+                        <p>{{ 'Conversion Rate' | i18n }}:</p>
+                        <p>
+                          1
+                          {{ tradingBalance?.currency }}
+                          = {{ exchangeRate ? exchangeRate?.toFixed(2) : '-' }}
+                          {{ validateForm.value?.currencie?.split('|')[1] }}
+                        </p>
+                      </div>
+                      <div class="summary-list">
+                        <p>{{ 'Withdrawal Amount' | i18n }}:</p>
+                        <p>
+                          {{ tradingBalance?.currency }}
+                          {{
+                            validateForm.value.amount / exchangeRate
+                              ? (
+                                  validateForm.value.amount / exchangeRate
+                                ).toFixed(2)
+                              : '-'
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      class="cmn-btn large-bth w-100"
+                      nz-button
+                      [nzType]="'primary'"
+                      (click)="handleOk()"
+                    >
+                      {{ 'Submit' | i18n }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div nz-col nzMd="10" nzLg="10" nzXl="10" nzXs="24">
+          <div id="scroll-payment" class="info-text">
+            <ul>
+              <li>
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span> The
+                minimum withdraw amount: <span class="bold"> 50 USD </span>
+              </li>
+              <li>
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span> All
+                the withdrawal requests will be processed within 24 hours.
+              </li>
+              <li>
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                Double-check payment details before withdrawing funds; errors
+                can lead to untraceable funds or unreceived funds.
+              </li>
+              <li>
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                Please make sure your computer and browser are secure to prevent
+                information from being tampered with or leaked.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #otherDeposit>
+      <div nz-row nzJustify="center">
+        <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+          <div class="transfer tr-code psp-block">
+            <img
+              src="assets/images/block.png"
+              alt="info"
+              style="width: 150px"
+            />
+            <h3>
+              Sorry, you cannot be able to initiate the withdrawal now. Kindly
+              reach out to
+              <a href="mailto:support_int@trive.com">
+                support_int@trive.com
+              </a>
+              for more details.
+            </h3>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </nz-card>
+</div>
+
+<app-bank-details #bankDetailsComponent></app-bank-details>
+<app-success-modal #successModalComponent></app-success-modal>
+
+<!-------maximum exceed number ------------->
+<nz-modal
+  [(nzVisible)]="exceed"
+  [nzWidth]="600"
+  [nzTitle]="tplTitleReached"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Back' | i18n }}"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+  [nzCloseIcon]="nzCloseIconExceed"
+  (nzOnCancel)="handleCanceExceed()"
+>
+  <ng-template #nzCloseIconExceed>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitleReached>
+    <div class="nz-title-template">
+      <span> &nbsp; </span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="reached-modal">
+      <h1>
+        {{ 'You have reached the monthly withdrawal limit!' | i18n }}
+      </h1>
+      <h2>
+        You will be charged <span class="usd-fee"> USD 20 Fee</span>, if you
+        wish to continue click proceed
+      </h2>
+      <button
+        nz-button
+        class="cpt-primary-btn cmn-btn mb-2"
+        [nzType]="'primary'"
+        (click)="goProceed()"
+      >
+        {{ 'Proceed' | i18n }}
+      </button>
+    </div>
+  </ng-container>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="isVisibleBVNK"
+  [nzWidth]="800"
+  [nzTitle]="tplTitleBVNK"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+  [nzCloseIcon]="nzCloseIconBVNK"
+  (nzOnCancel)="handleCancelBVNK()"
+  [nzStyle]="{ top: '25px' }"
+>
+  <ng-template #nzCloseIconBVNK>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitleBVNK>
+    <div class="nz-title-template">
+      <span> {{ 'Bridger Pay' | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <nz-card>
+      <div nz-row [nzGutter]="24" nzJustify="center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <iframe
+            id="tcsframe"
+            #iframe
+            style="width: 100%; height: 720px"
+            frameborder="0"
+            [src]="bridgeUrl"
+          ></iframe>
+        </div>
+      </div>
+    </nz-card>
+  </ng-container>
+</nz-modal>
+<!---bank listing modal here -->
+<nz-modal
+  [(nzVisible)]="isVisibleBank"
+  [nzTitle]="tplTitleBank"
+  (nzOnCancel)="handleCancelBank()"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzWidth]="1100"
+  (nzOnOk)="submitBankForm()"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Cancel' | i18n }}"
+  nzClassName="cpt-modal"
+  [nzOkLoading]="loading"
+  [nzStyle]="{ top: '20px' }"
+  [nzFooter]="modalFooter"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitleBank>
+    <div class="nz-title-template">
+      <div class="icon">
+        <img
+          src="assets/images/Wiretransfer_modal.svg"
+          alt="Wiretransfer_modal"
+        />
+      </div>
+      <span> Bank Details</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="transfer">
+      <nz-card nzTitle="{{ 'Account Details' | i18n }}">
+        <nz-radio-group
+          class="d-flex"
+          [(ngModel)]="radioValueBank"
+          (ngModelChange)="onItemBankChange($event)"
+        >
+          <div class="bank-account">
+            <label nz-radio nzValue="existing">
+              {{ 'Use Existing Bank Account' | i18n }}</label
+            >
+          </div>
+          <div>
+            <label nz-radio nzValue="addNew">
+              {{ 'Add New Bank Account' | i18n }}</label
+            >
+          </div>
+        </nz-radio-group>
+        <ng-container *ngIf="allbankDetails">
+          <ng-container *ngIf="accountBank.length > 0; else uploadState">
+            <nz-table
+              #fixedTable
+              [nzData]="accountBank"
+              [nzLoading]="loading"
+              [nzFrontPagination]="false"
+            >
+              <thead>
+                <tr>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="account_Login"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Account Number' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="account_Type"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Account Name' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="credit"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Bank Address' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="balance"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Bank Country' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="equity"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Bank Name' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="account_Leverage"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'IBAN' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="account_OpenDate"
+                    [nzSortFn]="true"
+                  >
+                    {{ user_Nationality === 'IN' ? 'IFSC Code' : 'Swift Code' }}
+                  </th>
+                  <!-- <th appDynamicColumnWidth nzColumnKey="account_OpenDate">Default</th> -->
+                  <th appDynamicColumnWidth nzColumnKey="action" nzRight>
+                    {{ 'Select' | i18n }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of accountBank">
+                  <td>{{ data.accountNumber }}</td>
+                  <td>{{ data.accountHolderName }}</td>
+                  <td>
+                    <a nz-tooltip [nzTooltipTitle]="data.bankAddress">
+                      {{ data.bankAddress | slice: 0:12 }}...</a
+                    >
+                  </td>
+                  <td>{{ data.bankCountry }}</td>
+                  <td>{{ data.bankName }}</td>
+                  <td>
+                    <a nz-tooltip [nzTooltipTitle]="data.iban">
+                      {{ data.iban | slice: 0:12 }}...</a
+                    >
+                  </td>
+                  <td>
+                    {{ data.swiftCode }}
+                  </td>
+                  <!-- <td>
+                    <ng-container *ngIf="data.is_Default"> <span class="yes-default"> Yes </span> </ng-container>
+                    <ng-container *ngIf="!data.is_Default"> <span class="no-default"> No </span> </ng-container>
+                  </td> -->
+                  <td>
+                    <div class="action-wrapper">
+                      <ul class="action-list">
+                        <li>
+                          <a
+                            nzTooltipTitle="Select Bank"
+                            nzTooltipPlacement="bottom"
+                            nz-tooltip
+                          >
+                            <nz-radio-group>
+                              <label
+                                nz-radio
+                                [ngModel]="data.is_Default"
+                                name="custom"
+                                (ngModelChange)="selectBankAccount(data)"
+                              ></label>
+                            </nz-radio-group>
+                            <!-- <input type="checkbox" [(ngModel)]="data.isSelected" (ngModelChange)="selectBankAccount(data.isSelected, data)" /> -->
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </nz-table>
+          </ng-container>
+          <ng-template #uploadState>
+            {{
+              'You do not have any bank added please click on add New Bank Account'
+                | i18n
+            }}
+          </ng-template>
+        </ng-container>
+      </nz-card>
+    </div>
+  </ng-container>
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancelBank()">
+      {{ 'Close' | i18n }}
+    </button>
+    <button
+      nz-button
+      nzType="primary"
+      class="radius-btn"
+      (click)="submitBankForm()"
+      [nzLoading]="loadingdata"
+    >
+      {{ 'Add' | i18n }}
+    </button>
+  </ng-template>
+</nz-modal>

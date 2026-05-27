@@ -1,0 +1,59 @@
+<div [ngClass]="verifyEmail ? 'preloader' : 'phone-load'">
+  <div class="cs-loader">
+    <div class="cs-loader-inner">
+      <label> ●</label><label> ●</label><label> ●</label><label> ●</label
+      ><label> ●</label><label> ●</label>
+    </div>
+  </div>
+</div>
+<div class="form-area area-center" *ngIf="successMsg">
+  <div nz-row [nzGutter]="24" class="justify-content-center h-header">
+    <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24" class="email-verify">
+      <img src="assets/images/thanks.svg" alt="thanks" />
+      <h2>{{ 'Thank you' | i18n }}</h2>
+      <p>
+        {{
+          'Congratulations, Your email has been verified successfully.' | i18n
+        }}
+      </p>
+      <div class="btg">
+        <button
+          nz-button
+          class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+          [nzType]="'primary'"
+          type="button"
+          [nzLoading]="loader"
+          (click)="gotoLogin()"
+        >
+          {{ 'Login' | i18n }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-area area-center" *ngIf="reSendEmail">
+  <div nz-row [nzGutter]="24" class="justify-content-center h-header">
+    <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24" class="email-verify">
+      <img src="assets/images/link-expired.svg" alt="link-expired" />
+      <h2>{{ 'Email verification link expired' | i18n }}</h2>
+      <p>
+        {{
+          'look like the verfication link has expired. not worry we can send the link again'
+            | i18n
+        }}
+      </p>
+      <div class="btg">
+        <button
+          nz-button
+          class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+          [nzType]="'primary'"
+          type="button"
+          [nzLoading]="loader"
+          (click)="generateLink()"
+        >
+          {{ 'Resend verification link' | i18n }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

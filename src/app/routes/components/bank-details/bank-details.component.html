@@ -1,0 +1,408 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="tplTitle"
+  (nzOnCancel)="handleCancel()"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzWidth]="1100"
+  [nzOkLoading]="loading"
+  nzOkText="{{ 'Agree' | i18n }}"
+  nzCancelText="{{ 'Cancel' | i18n }}"
+  nzClassName="cpt-modal cpt-bank-modal"
+  [nzFooter]="tplFooter"
+  [nzStyle]="{ top: '20px' }"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitle>
+    <div class="nz-title-template" id="print-title">
+      <div class="icon">
+        <img
+          src="assets/images/funds/wiretransfer-modal.svg"
+          alt="wiretransfer"
+        />
+      </div>
+      <span>{{ 'Bank Details' | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-template #tplFooter>
+    <div class="nz-title-template" id="print-btns">
+      <button nz-button nzType="default" (click)="handleCancel()">
+        {{ 'Cancel' | i18n }}
+      </button>
+      <button
+        nz-button
+        nzType="primary"
+        [nzLoading]="loading"
+        (click)="submit()"
+      >
+        {{ 'Submit' | i18n }}
+      </button>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <nz-card>
+      <div nz-row nzGutter="24">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24" class="bank-list">
+          <!---bank details here-->
+          <ng-container>
+            <h4 class="title-head">
+              {{ 'Account Details' | i18n }}  <span style="    color: #a19898;
+    font-weight: 500;
+    font-size: 14px;"> (1st) </span>
+            </h4> 
+            <nz-descriptions
+              nzLayout="vertical"
+              [nzColumn]="{ xxl: 4, xl: 4, lg: 4, md: 4, sm: 2, xs: 2 }"
+            >
+              <nz-descriptions-item nzTitle="{{ 'Bank' | i18n }}">
+                Utkarsh Small Finance Bank
+              </nz-descriptions-item>
+              <nz-descriptions-item nzTitle="{{ 'Account Name' | i18n }}">
+                Swami Enterprises
+              </nz-descriptions-item>
+              <nz-descriptions-item nzTitle="{{ 'Ac No' | i18n }}"
+                >1385020000000841</nz-descriptions-item
+              >
+              <nz-descriptions-item nzTitle="{{ 'IFSC Code' | i18n }}"
+                >UTKS0001385</nz-descriptions-item
+              >
+                <nz-descriptions-item nzTitle="{{ 'Branch' | i18n }}"
+                >Chembur</nz-descriptions-item
+              >
+            </nz-descriptions>
+          </ng-container>
+           <ng-container>
+            <h4 class="title-head">
+              {{ 'Account Details' | i18n }}  <span style="    color: #a19898;
+    font-weight: 500;
+    font-size: 14px;"> (2nd) </span>
+            </h4> 
+            <nz-descriptions
+              nzLayout="vertical"
+              [nzColumn]="{ xxl: 4, xl: 4, lg: 4, md: 4, sm: 2, xs: 2 }"
+            >
+              <nz-descriptions-item nzTitle="{{ 'Bank' | i18n }}">
+               IDBI BANK
+              </nz-descriptions-item>
+              <nz-descriptions-item nzTitle="{{ 'Account Name' | i18n }}">
+                HASTYPE SOLUTIONS PRIVATE LIMITED
+              </nz-descriptions-item>
+              <nz-descriptions-item nzTitle="{{ 'Ac No' | i18n }}"
+                >1592102000013068</nz-descriptions-item
+              >
+              <nz-descriptions-item nzTitle="{{ 'IFSC Code' | i18n }}"
+                >IBKL0001592</nz-descriptions-item
+              >
+          
+            </nz-descriptions>
+          </ng-container>
+        </div>
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <h4 class="title-head">{{ 'Terms of Use' | i18n }}</h4>
+          <div
+            style="
+              background-color: #F0F0F0;
+              margin-top: 10px;
+              -webkit-print-color-adjust: exact;
+              border-radius: 16px;
+            "
+            class="p-md dark_modebank"
+          >
+            <p>
+              1.
+              {{
+                'Payments from third parties are not accepted.The name of the sender must match the name on your registered account.'
+                  | i18n
+              }}
+            </p>
+            <p>
+              2.
+              {{
+                'Funds sent via bank transfer might be subject to conversion rates.'
+                  | i18n
+              }}
+            </p>
+            <p>
+              3.
+              {{
+                'The sending bank or correspondent bank may deduct a fee for processing a wire transfer. Trive does not apply any fees and will deposit to your account the net amount received.'
+                  | i18n
+              }}
+            </p>
+            <p>
+              4.
+              {{
+                'With every successful transaction, the funds will be added to your MT5 account upon receipt. The processing time is generally 3-5 business days.'
+                  | i18n
+              }}
+            </p>
+            <p>
+              5.
+              {{
+                'For faster trace of your transactions please send us a copy of your bank wire confirmation via Attachment so we can check all details necessary.'
+                  | i18n
+              }}
+            </p>
+            <p>
+              6.
+              {{
+                'The method of your withdrawal must match the method of your deposit.In this respect the withdrawal of your deposit can only be made to the same account from which you originally deposited.'
+                  | i18n
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div nz-row nzGutter="24">
+        <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+          <div class="bank-upload mt-2">
+            <h4>
+              {{ 'Upload Transaction Receipt' | i18n }}
+              <span style="color: #ff0808; font-size: 10px"> (required)</span>
+            </h4>
+            <nz-upload
+              [(nzFileList)]="fileList"
+              [nzBeforeUpload]="beforeUpload"
+            >
+              <div class="upload-bank">
+                <button
+                  nz-button
+                  class="cpt-btn-border"
+                  [disabled]="fileList.length == 1"
+                >
+                  <i nz-icon nzType="upload"></i>
+                  {{ 'Upload documents here' | i18n }}
+                </button>
+                <p class="upload-title" style="margin-left: 8px">
+                  pdf, jpeg, png, tiff
+                </p>
+              </div>
+            </nz-upload>
+          </div>
+        </div>
+        <!-- <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+          <div class="bank-upload mt-2">
+            <h4>Do you have Existing Bank Account? </h4>
+            <nz-radio-group class="d-flex" [(ngModel)]="radioValue" (ngModelChange)="onItemChange($event)">
+              <div class="method">
+                <label nz-radio nzValue="yes">Yes</label>
+              </div>
+              <div class="method">
+                <label nz-radio nzValue="no">No</label>
+              </div>
+            </nz-radio-group>
+          </div>
+        </div>  -->
+        <ng-container *ngIf="account.length > 0; else uploadState">
+          <div class="table-list">
+            <h4>
+              {{ 'Please Select the Deposit Bank Accounts Details' | i18n }}
+            </h4>
+            <nz-table
+              #fixedTable
+              [nzData]="account"
+              [nzLoading]="loading"
+              [nzFrontPagination]="false"
+            >
+              <thead>
+                <tr>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="account_Login"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Account Number' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="account_Type"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Account Name' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="credit"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Bank Address' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="balance"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Bank Country' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="equity"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Bank Name' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="account_Leverage"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'IBAN' | i18n }}
+                  </th>
+                  <th
+                    appDynamicColumnWidth
+                    nzColumnKey="account_OpenDate"
+                    [nzSortFn]="true"
+                  >
+                    {{ 'Swift Code' | i18n }}
+                  </th>
+                  <!-- <th appDynamicColumnWidth nzColumnKey="account_OpenDate">Default</th> -->
+                  <th appDynamicColumnWidth nzColumnKey="action" nzRight>
+                    {{ 'Select' | i18n }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of account">
+                  <td>{{ data.accountNumber }}</td>
+                  <td>{{ data.accountHolderName }}</td>
+                  <td>
+                    <a nz-tooltip [nzTooltipTitle]="data.bankAddress">
+                      {{ data.bankAddress | slice: 0:15 }}...</a
+                    >
+                  </td>
+                  <td>{{ data.bankCountry }}</td>
+                  <td>{{ data.bankName }}</td>
+                  <td>
+                    <a nz-tooltip [nzTooltipTitle]="data.iban">
+                      {{ data.iban | slice: 0:12 }}...</a
+                    >
+                  </td>
+                  <td>
+                    {{ data.swiftCode }}
+                  </td>
+                  <!-- <td>
+                  <ng-container *ngIf="data.is_Default"> <span class="yes-default"> Yes </span> </ng-container>
+                  <ng-container *ngIf="!data.is_Default"> <span class="no-default"> No </span> </ng-container>
+                </td> -->
+                  <td>
+                    <div class="action-wrapper">
+                      <ul class="action-list">
+                        <li>
+                          <a
+                            nzTooltipTitle="Select Bank"
+                            nzTooltipPlacement="bottom"
+                            nz-tooltip
+                          >
+                            <nz-radio-group>
+                              <label
+                                nz-radio
+                                [ngModel]="data.is_Default"
+                                name="custom"
+                                (ngModelChange)="selectBankAccount(data)"
+                              ></label>
+                            </nz-radio-group>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </nz-table>
+          </div>
+        </ng-container>
+        <ng-template #uploadState>
+          <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+            <div class="bank-upload mt-2">
+              <h4>{{ 'Upload Bank Statement' | i18n }}</h4>
+              <nz-upload
+                [(nzFileList)]="uploadList"
+                [nzBeforeUpload]="beforeUpload1"
+              >
+                <div class="upload-bank">
+                  <button
+                    nz-button
+                    class="cpt-btn-border"
+                    [disabled]="uploadList.length == 1"
+                  >
+                    <i nz-icon nzType="upload"></i>
+                    {{ 'Upload documents here' | i18n }}
+                  </button>
+                  <p class="upload-title" style="margin-left: 8px">
+                    pdf, jpeg, png, tiff
+                  </p>
+                </div>
+              </nz-upload>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </nz-card>
+  </ng-container>
+  <!-- <ng-template #mtplTitle>
+    <span> {{ 'Are you sure?' | i18n }}</span>
+  </ng-template> -->
+  <!-- <ng-template #mtplContent let-params>
+    <div class="d-flex align-items-center" style="flex-direction: column">
+      <img src="assets/images/oh.svg" alt="question" style="width: 70px" />
+      <b style="margin-top: 12px; text-align: center; font-size: 18px">
+        {{ 'Is this operation confirmed ?' | i18n }}</b
+      >
+    </div>
+  </ng-template> -->
+  <!-- <ng-template #mtplFooter let-ref="modalRef">
+    <button nz-button (click)="ref.destroy()">{{ 'Cancel' | i18n }}</button>
+    <button
+      nz-button
+      nzType="primary"
+      class="radius-btn"
+      [nzLoading]="loading"
+      (click)="submit(ref)"
+    >
+      {{ 'Agree' | i18n }}
+    </button>
+  </ng-template> -->
+</nz-modal>
+
+<!-------maximum exceed number ------------->
+<nz-modal
+  [(nzVisible)]="exceed"
+  [nzWidth]="600"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Back' | i18n }}"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+>
+  <ng-container *nzModalContent>
+    <div class="exceed-modal">
+      <ng-container *ngIf="kycMessage; else otherKycMsg">
+        <h1>
+          {{
+            'You have exceeded the maximum allowed deposit limit, before KYC.
+          Please complete your profile to unlock the unlimited deposit and many
+          other exciting features.'
+              | i18n
+          }}
+        </h1>
+      </ng-container>
+
+      <ng-template #otherKycMsg>
+        <h1>
+          {{ 'Account verification is required for deposit above 300$' | i18n }}
+        </h1>
+      </ng-template>
+      <button
+        nz-button
+        class="cpt-primary-btn cmn-btn mb-2"
+        [nzType]="'primary'"
+        (click)="goVerify()"
+      >
+        {{ 'Complete Profile' | i18n }}
+      </button>
+    </div>
+  </ng-container>
+</nz-modal>

@@ -1,0 +1,22 @@
+<nz-card
+  nzTitle="Trading Platform"
+  [nzExtra]="extraTemplate"
+  [nzLoading]="loading"
+>
+  <iframe
+    *ngIf="ifromUrl"
+    style="width: 100%; height: 800px"
+    frameborder="0"
+    [src]="ifromUrl"
+  ></iframe>
+</nz-card>
+<ng-template #extraTemplate>
+  <button
+    nz-button
+    nzType="primary"
+    class="radius-btn cpt-tab-btn"
+    (click)="goBack()"
+  >
+    <i nz-icon nzType="left"></i>{{ 'Back' | i18n }}
+  </button>
+</ng-template>

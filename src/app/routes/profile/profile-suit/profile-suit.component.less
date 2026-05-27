@@ -1,0 +1,136 @@
+@import "~@delon/theme/index";
+:host {
+  .profile-personal-title {
+    margin-bottom: 10px;
+    color: #51657d;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Lato", sans-serif;
+  }
+
+  ::ng-deep {
+    .profile-files {
+      max-width: 800px;
+      .ant-upload-list-picture-card-container,
+      .ant-upload.ant-upload-select-picture-card {
+        height: 140px !important;
+        width: 100%;
+      }
+    }
+    .profile-upload-icon {
+      i {
+        color: #3cf;
+        font-size: 48px;
+      }
+    }
+    .phone-select {
+      border: none;
+      .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+        .ant-select-selector {
+        border: none;
+      }
+    }
+    .question-title {
+      color: #3b3d42;
+      margin-left: 12px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .ant-advanced-search-form {
+      margin-left: 24px;
+      .ant-radio-group,
+      .ant-checkbox-group {
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-bottom: 12px;
+        }
+      }
+      .question-control,
+      .ant-form-item-explain {
+        padding-left: 16px;
+      }
+    }
+  }
+}
+.gray {
+  color: #acacac;
+}
+
+.verify {
+  h1 {
+    margin-top: 2rem;
+  }
+  p {
+    color: #6d7988;
+    font-size: 18px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.question {
+  .ant-form label {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+  }
+
+  .ant-radio {
+    top: 8px;
+  }
+  .ant-form-item input[type="radio"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ant-radio-inner {
+    width: 26px;
+    height: 26px;
+  }
+
+  .ant-radio-inner:after {
+    width: 12px;
+    height: 12px;
+    top: 6px;
+    left: 6px;
+  }
+}
+
+.question-icon {
+  background: #e5fdfc;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #07943c;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #07943c;
+  font-weight: 500;
+  float: left;
+  margin-right: 12px;
+}
+
+.ant-advanced-search-form .ant-radio-group {
+  margin-left: 18px;
+}
+
+.question-control.suit {
+  margin: 14px 0px 14px 0px;
+}
+
+.failed-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  p {
+    text-align: center;
+    font-size: 17px;
+    margin-bottom: 1rem;
+  }
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}

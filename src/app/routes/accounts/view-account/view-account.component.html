@@ -1,0 +1,303 @@
+<nz-card>
+  <div nz-row [nzGutter]="24" class="user-info pb-0">
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <label> {{ 'Currency' | i18n }} </label>
+      <p>
+        {{ accountDetails.currency }}
+      </p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <label> {{ 'Balance' | i18n }}</label>
+      <p>
+        {{ accountDetails.balance }}
+      </p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <label> {{ 'Account Type' | i18n }} </label>
+      <p>
+        {{ accountDetails.account_Type | i18n }}
+      </p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <label> {{ 'Account Name' | i18n }} </label>
+      <p>
+        {{ accountDetails.account_Name }}
+      </p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <label> {{ 'Leverage' | i18n }}</label>
+      <p>
+        {{ accountDetails.account_Leverage }}
+      </p>
+    </div>
+  </div>
+  <!-- <div nz-row [nzGutter]="24" class="account">
+    <div nz-col [nzSpan]="5">
+      <div class="data-bg text-center bg-color">
+        <p class="data">{{ accountDetails.currency }}</p>
+        <p>Currency</p>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="19">
+      <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+          <div class="data-bg">
+            <p class="data">{{ accountDetails.balance }}</p>
+            <p>Balance</p>
+          </div>
+        </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="24" class="account">
+    <div nz-col [nzSpan]="5">
+      <div class="data-bg text-center bg-color">
+        <p class="data">{{ accountDetails.account_Type }}</p>
+        <p>Account Type</p>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="19">
+      <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+          <div class="data-bg">
+            <p class="data">{{ accountDetails.account_Name }}</p>
+            <p>A/C Name</p>
+          </div>
+        </div>
+
+        <div nz-col [nzSpan]="8">
+          <div class="data-bg">
+            <p class="data">{{ accountDetails.account_Leverage }}</p>
+            <p>Leverage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</nz-card>
+
+<nz-card>
+  <nz-collapse
+    [nzBordered]="false"
+    style="margin-bottom: 18px"
+    class="filter-form"
+  >
+    <nz-collapse-panel
+      [nzHeader]="headerTemplate"
+      [nzShowArrow]="false"
+      [nzActive]="isCollapse"
+      (nzActiveChange)="collapseChange($event)"
+    >
+      <ng-template #headerTemplate>
+        <div class="header-title">
+          <span>{{ 'Account Details' | i18n }}</span>
+          <span class="filter">
+            <img
+              src="assets/images/icons/Filter_icon.svg"
+              [class]="isCollapse ? '' : 'rotate-90'"
+              alt="arrow"
+            />
+            {{ 'Filter' | i18n }}
+          </span>
+        </div>
+      </ng-template>
+      <form
+        nz-form
+        [formGroup]="formFilter"
+        (ngSubmit)="onfilter()"
+        nzLayout="vertical"
+      >
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'">
+                {{ 'Order Id' | i18n }}</nz-form-label
+              >
+              <nz-form-control>
+                <nz-input-number
+                  formControlName="orderId"
+                  nzPlaceHolder="{{ 'Order Id' | i18n }}"
+                  [nzMin]="1"
+                  [nzStep]="1"
+                >
+                </nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'"
+                >{{ 'Date' | i18n }}
+              </nz-form-label>
+              <nz-form-control>
+                <nz-range-picker
+                  [nzFormat]="dateFormat"
+                  formControlName="timeline"
+                ></nz-range-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>{{ 'Currency' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  formControlName="currency"
+                  nzPlaceHolder="{{ 'All' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option
+                    *ngFor="let item of currencies"
+                    [nzValue]="item.code"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="filter-flex">
+            <button class="filter-reset-btn" nz-button (click)="reset()">
+              {{ 'Reset' | i18n }}
+            </button>
+            <button class="filter-search-btn" nz-button [nzType]="'primary'">
+              {{ 'Search' | i18n }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </nz-collapse-panel>
+  </nz-collapse>
+
+  <div class="filter-content">
+    <div class="data">
+      <nz-table
+        #fixedTable
+        [nzData]="account"
+        [nzLoading]="loading"
+        [nzPageIndex]="page"
+        [nzTotal]="totalnumber"
+        nzShowSizeChanger
+        nzShowQuickJumper
+        [nzPageSize]="pageSize"
+        [nzFrontPagination]="false"
+        (nzPageIndexChange)="onPageIndexChange($event)"
+        (nzPageSizeChange)="onCurrentPageDataChange($event)"
+        (nzPageSizeChange)="onCurrentPageDataChange($event)"
+        (nzQueryParams)="onQueryParamsChange($event)"
+      >
+        <thead>
+          <tr>
+            <th appDynamicColumnWidth nzColumnKey="orderID" [nzSortFn]="true">
+              {{ 'Order Id' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="account_Login"
+              [nzSortFn]="true"
+            >
+              {{ 'Account No' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="open_Time" [nzSortFn]="true">
+              {{ 'Opened Time' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="close_Time"
+              [nzSortFn]="true"
+            >
+              {{ 'Closed Time' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="action" [nzSortFn]="true">
+              {{ 'Action' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="symbol" [nzSortFn]="true">
+              {{ 'Symbol' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="volume" [nzSortFn]="true">
+              {{ 'Volume' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="open_Price"
+              [nzSortFn]="true"
+            >
+              {{ 'Open Price' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="close_Price"
+              [nzSortFn]="true"
+            >
+              {{ 'Closed Price' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="currency" [nzSortFn]="true">
+              {{ 'Currency' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="swaps" [nzSortFn]="true">
+              {{ 'Swap' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="profit" [nzSortFn]="true">
+              {{ 'Profit' | i18n }}
+            </th>
+            <!-- <th appDynamicColumnWidth nzColumnKey="trade_Commission" [nzSortFn]="true">Commission</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of account">
+            <td>{{ data.orderID }}</td>
+            <td>{{ data.account_Login }}</td>
+            <td>{{ data.open_Time | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+            <td>{{ data.close_Time | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+            <td>{{ data.action }}</td>
+            <td>{{ data.symbol }}</td>
+            <td>{{ data.volume }}</td>
+            <td>{{ data.open_Price }}</td>
+            <td>{{ data.close_Price }}</td>
+            <td>{{ data.currency }}</td>
+            <td>
+              {{ data.swaps }}
+            </td>
+            <td>{{ data.profit }}</td>
+            <!-- <td> {{ data.trade_Commission }} </td> -->
+          </tr>
+          <tr
+            class="total-data"
+            *ngIf="totalSwap || totalProfit || totalCommission"
+          >
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: center">Total: {{ totalSwap }}</td>
+            <td style="text-align: center">Total: {{ totalProfit }}</td>
+            <!-- <td style="text-align: center"> Total: {{ totalCommission }} </td> -->
+          </tr>
+        </tbody>
+      </nz-table>
+      <div class="total-count">
+        <ng-container *ngIf="totaData">
+          <div class="count">
+            {{ 'Total Count' | i18n }}:
+            <span class="bold"> {{ totaData }} </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nz-card>
+
+<!-- <ng-template #extraTemplate>
+  <button nz-button nzType="primary" (click)="exportAsXLSX()" [disabled]="disableInput">
+    <img src="assets/images/export.svg" alt="account" style="width: 12px; vertical-align: inherit; margin-right: 5px" />
+    {{ 'Export' | i18n }}
+  </button>
+</ng-template> -->

@@ -1,0 +1,837 @@
+<div class="mobile-menu">
+  <nz-drawer
+    [nzVisible]="visibleMenu"
+    nzPlacement="right"
+    [nzTitle]="customDrawerTitle"
+    (nzOnClose)="closeMenuList()"
+    class="menu-header"
+  >
+    <nz-layout>
+      <ng-container *nzDrawerContent>
+        <nz-sider
+          nzWidth="240px"
+          nzTheme="light"
+          [(nzCollapsed)]="isCollapsed"
+          [ngClass]="status ? 'mb' : ''"
+        >
+          <div class="ant-layout-sider-children">
+            <div class="body">
+              <ul nz-menu nzMode="inline" class="main-menu">
+                <ng-container *ngFor="let menu of menus; index as i">
+                  <li
+                    [ngClass]="
+                      menu.menu_disable ? 'menu-enable' : 'menu-disable'
+                    "
+                    nz-menu-item
+                    nzMatchRouter
+                    nzMatchRouterExact
+                    *ngIf="menu.childMenus.length <= 0"
+                    (click)="openHandler(menu)"
+                    (click)="closeMenuList()"
+                  >
+                    <a [routerLink]="langs + menu.menu_URL">
+                      <img class="svg-icon" src="{{ menu.menu_Icon }}" alt="" />
+                      <span>
+                        {{
+                          menu.menu_Name === "Dashboard_CP"
+                            ? ("Dashboard" | i18n)
+                            : (menu.menu_Name | i18n)
+                        }}</span
+                      >
+                    </a>
+                    <div
+                      class="notice"
+                      *ngIf="menu.menu_URL == '/notifications'"
+                    >
+                      <span>{{ unReadNotificationCount }}</span>
+                    </div>
+                  </li>
+
+                  <li
+                    *ngIf="menu.childMenus.length > 0"
+                    nz-submenu
+                    [nzTitle]="fundTitle"
+                    [(nzOpen)]="menu.open"
+                    (nzOpenChange)="openHandler(menu)"
+                    [ngClass]="
+                      menu.menu_disable ? 'menu-enable' : 'menu-disable'
+                    "
+                  >
+                    <ng-template #fundTitle>
+                      <div class="cpt-submenu">
+                        <img
+                          class="svg-icon"
+                          src="{{ menu.menu_Icon }}"
+                          alt=""
+                        />
+                        <span> {{ menu.menu_Name | i18n }}</span>
+                      </div>
+                    </ng-template>
+                    <ul class="sub-menu">
+                      <li
+                        nz-menu-item
+                        nzMatchRouter
+                        nzMatchRouterExact
+                        (click)="closeMenuList()"
+                        *ngFor="let childMenu of menu.childMenus"
+                      >
+                        <a [routerLink]="langs + childMenu.menu_URL">
+                          <span>{{ childMenu.menu_Name | i18n }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ng-container>
+                <li
+                  *ngIf="showMenuSettings"
+                  nz-menu-item
+                  nzMatchRouter
+                  nzMatchRouterExact
+                >
+                  <a
+                    [routerLink]="langs + '/settings'"
+                    (click)="closeMenuList()"
+                  >
+                    <img
+                      class="svg-icon"
+                      src="assets/images/left-menu/settings.svg"
+                      alt=""
+                    />
+                    <span class="menu-setting-item">{{
+                      "Settings" | i18n
+                    }}</span>
+                  </a>
+                </li>
+                <li (click)="createIbModal(tplContentIb, tplFooterIb)">
+                  <div class="btn-primary spcl">
+                    <img
+                      class="svg-icon"
+                      src="../../../assets/images/icons/profile.svg"
+                      alt=""
+                    />
+                    <span>  {{
+                      "IB Portal" | i18n
+                    }}</span>
+                  </div>
+                </li>
+            <li (click)="copyTrading()">
+                  <div class="btn-primary spcl">
+                    <img
+                      class="svg-icon"
+                      src="assets/images/left-menu/copy-trading.png"
+                      alt="copy"
+                      style="width: 17px"
+                    />
+                    <span>  {{
+                      "Copy Trading" | i18n
+                    }} </span>
+                  </div>
+                </li> 
+                <div class="foot">
+                  <div>
+                    <a
+                      (click)="createTplModal(tplTitle, tplContent, tplFooter)"
+                    >
+                      <img
+                        class="svg-icon"
+                        src="assets/images/left-menu/logout.svg"
+                        alt=""
+                        style="height: 20px; margin-top: 3px"
+                      />
+                      <span class="menu-setting-item">{{
+                        "Logout" | i18n
+                      }}</span>
+                    </a>
+                  </div>
+                </div>
+              </ul>
+              <ng-container>
+                <ng-template #tplTitle>
+                  <span>{{ "Are you sure?" | i18n }}</span>
+                </ng-template>
+                <ng-template #tplContent let-params>
+                  <div
+                    class="d-flex align-items-center"
+                    style="flex-direction: column"
+                  >
+                    <img
+                      src="assets/images/oh.svg"
+                      alt="question"
+                      style="width: 70px"
+                    />
+                    <b style="margin-top: 12px"
+                      >{{ "Do you want to logout?" | i18n }}
+                    </b>
+                  </div>
+                </ng-template>
+                <ng-template #tplFooter let-ref="modalRef">
+                  <button nz-button (click)="ref.destroy()">
+                    {{ "Cancel" | i18n }}
+                  </button>
+                  <button
+                    nz-button
+                    nzType="primary"
+                    (click)="logout(ref)"
+                    class="radius-btn h-40"
+                  >
+                    {{ "Logout" | i18n }}
+                  </button>
+                </ng-template>
+              </ng-container>
+
+              <ng-container>
+                <ng-template #tplContentIb let-params>
+                  <div
+                    class="d-flex align-items-center"
+                    style="flex-direction: column"
+                  >
+                    <img
+                      src="assets/images/individual.svg"
+                      alt="question"
+                      style="width: 200px"
+                    />
+                    <b style="color: #000"
+                      >{{
+                        "You will be redirect to IB Portal site. Do you want to continue?"
+                          | i18n
+                      }}
+                    </b>
+                  </div>
+                </ng-template>
+                <ng-template #tplFooterIb let-ref="modalRef">
+                  <button nz-button (click)="ref.destroy()">
+                    {{ "No" | i18n }}
+                  </button>
+                  <button
+                    nz-button
+                    nzType="primary"
+                    (click)="ibLink(ref)"
+                    class="radius-btn h-40"
+                  >
+                    {{ "Yes" | i18n }}
+                  </button>
+                </ng-template>
+              </ng-container>
+            </div>
+          </div>
+        </nz-sider>
+        <!-- <div class="cpt-menu-content left-menu">
+      <div class="head">
+        <div class="menu-logo">
+          <img src="assets/images/logo-white.svg" alt="" />
+        </div>
+      </div>
+      <div class="body">
+        <ul nz-menu nzMode="inline">
+          <ng-container *ngFor="let menu of menus; index as i">
+            <li
+              [ngClass]="menu.menu_disable ? 'menu-enable' : 'menu-disable'"
+              nz-menu-item
+              nzMatchRouter
+              nzMatchRouterExact
+              *ngIf="menu.childMenus.length <= 0"
+              (click)="openHandler(menu)"
+            >
+              <a [routerLink]="langs + menu.menu_URL" (click)="closeMenuList()">
+                <img class="svg-icon" src="{{ menu.menu_Icon }}" alt="" />
+                <span>
+                  {{
+                    menu.menu_Name === "Dashboard_CP"
+                      ? ("Dashboard" | i18n)
+                      : (menu.menu_Name | i18n)
+                  }}</span
+                >
+              </a>
+              <div class="notice" *ngIf="menu.menu_URL == '/notifications'">
+                <span>{{ unReadNotificationCount }}</span>
+              </div>
+            </li>
+
+            <li
+              *ngIf="menu.childMenus.length > 0"
+              nz-submenu
+              [nzTitle]="fundTitle"
+              [(nzOpen)]="menu.open"
+              (nzOpenChange)="openHandler(menu)"
+              [ngClass]="menu.menu_disable ? 'menu-enable' : 'menu-disable'"
+            >
+              <ng-template #fundTitle>
+                <div class="cpt-submenu">
+                  <img class="svg-icon" src="{{ menu.menu_Icon }}" alt="" />
+                  <span> {{ menu.menu_Name | i18n }}</span>
+                </div>
+              </ng-template>
+              <ul>
+                <li
+                  nz-menu-item
+                  nzMatchRouter
+                  nzMatchRouterExact
+                  *ngFor="let childMenu of menu.childMenus"
+                >
+                  <a
+                    [routerLink]="langs + childMenu.menu_URL"
+                    (click)="closeMenuList()"
+                  >
+                    <span>{{ childMenu.menu_Name | i18n }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ng-container>
+          <li
+            *ngIf="showMenuSettings"
+            nz-menu-item
+            nzMatchRouter
+            nzMatchRouterExact
+            [ngClass]="menuStaticdisable ? 'menu-enable' : 'menu-disable'"
+          >
+            <a [routerLink]="langs + '/settings'" (click)="closeMenuList()">
+              <img
+                class="svg-icon"
+                src="assets/images/left-menu/settings.svg"
+                alt=""
+              />
+              <span class="menu-setting-item">{{ "Settings" | i18n }}</span>
+            </a>
+          </li>
+
+          <ng-container
+            *ngIf="
+              userInfo.customer_RoleTypeID ===
+                'b7a1b60d-ab86-49da-854d-7db3e57882be';
+              else mbadvance
+            "
+          >
+            <li class="basic-view-btn">
+              <button
+                nz-button
+                nzType="primary"
+                class="radius-btn dep-btn h-40 mr-3"
+                [disabled]="next"
+                (click)="
+                  createBasicModal(basicTitle, basicContent, basicFooter)
+                "
+              >
+                <span
+                  nz-icon
+                  nzType="appstore"
+                  nzTheme="fill"
+                  class="dep-span"
+                ></span>
+                {{ "Advance View" | i18n }}
+              </button>
+            </li>
+          </ng-container>
+          <ng-template #mbadvance>
+            <li class="basic-view-btn">
+              <button
+                nz-button
+                nzType="primary"
+                class="radius-btn dep-btn h-40 mr-3"
+                [disabled]="basic"
+                (click)="
+                  createBasicModal(basicTitle, basicContent, basicFooter)
+                "
+              >
+                <span
+                  nz-icon
+                  nzType="build"
+                  nzTheme="fill"
+                  class="dep-span"
+                ></span>
+                {{ "Basic View" | i18n }}
+              </button>
+            </li>
+          </ng-template>
+          <li
+            *ngIf="showMenuLogout"
+            nz-menu-item
+            nzMatchRouter
+            nzMatchRouterExact
+          >
+            <a (click)="createTplModal(tplTitle, tplContent, tplFooter)">
+              <img
+                class="svg-icon"
+                src="assets/images/left-menu/logout.svg"
+                alt=""
+              />
+              <span class="menu-setting-item">{{ "Logout" | i18n }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <ng-container>
+        <ng-template #tplTitle>
+          <span>{{ 'Are you sure?' | i18n }}</span>
+        </ng-template>
+        <ng-template #tplContent let-params>
+          <div class="d-flex align-items-center" style="flex-direction: column">
+            <img
+              src="assets/images/oh.svg"
+              alt="question"
+              style="width: 70px"
+            />
+            <b style="margin-top: 12px"
+              >{{ 'Do you want to logout?' | i18n }}
+            </b>
+          </div>
+        </ng-template>
+        <ng-template #tplFooter let-ref="modalRef">
+          <button nz-button (click)="ref.destroy()">
+            {{ 'Cancel' | i18n }}
+          </button>
+          <button
+            nz-button
+            nzType="primary"
+            (click)="logout(ref)"
+            class="radius-btn h-40"
+          >
+            {{ 'Logout' | i18n }}
+          </button>
+        </ng-template>
+      </ng-container>
+    </div> -->
+      </ng-container>
+    </nz-layout>
+  </nz-drawer>
+</div>
+<nz-layout>
+  <nz-sider
+    nzWidth="240px"
+    nzTheme="light"
+    [(nzCollapsed)]="isCollapsed"
+    class="sider"
+    [ngClass]="status ? 'mb' : ''"
+  >
+    <div class="head">
+      <div class="logo-flex">
+        <div>
+          <img class="app-logo" src="assets/images/sb-logo.png" alt="logo" />
+        </div>
+        <!-- <div class="minimize-logo" *ngIf="!isCollapsed" (click)="onCollapsed()"> -->
+        <div class="minimize-logo" *ngIf="!isCollapsed">
+          <header-fullscreen class="fullscreen-wrapper"></header-fullscreen>
+        </div>
+      </div>
+      <div class="right-btn" *ngIf="isCollapsed" (click)="onCollapsed()">
+        <i
+          nz-icon
+          [nzType]="'right'"
+          style="color: #07ece0"
+          nzTheme="outline"
+        ></i>
+      </div>
+    </div>
+    <!-- <div class="menu-sider">
+    <nz-collapse nzAccordion [nzExpandIconPosition]="'right'">
+      <nz-collapse-panel
+        *ngFor="let panel of panels"
+        [nzHeader]="panel.name"
+        [nzActive]="panel.active"
+      >
+        <p>{{ panel.name }} content</p>
+      </nz-collapse-panel>
+    </nz-collapse>
+  </div> -->
+
+    <div class="body">
+      <div
+        *ngIf="isloadingMenu; else menuData"
+        class="loading d-flex align-items-center justify-content h-40"
+      >
+        <span nz-icon [nzType]="'loading'"></span>
+      </div>
+      <ng-template #menuData>
+        <ul nz-menu nzMode="inline" class="main-menu">
+          <li>
+            <!--
+        <div class="menu-logo" [style.background-image]="'url(' + logo + ')'"></div>-->
+            <!-- <div class="header-logo">
+          <img src="assets/images/logo.svg" alt="" />
+        </div> -->
+          </li>
+          <ng-container *ngFor="let menu of menus; index as i">
+            <li
+              [ngClass]="menu.menu_disable ? 'menu-enable' : 'menu-disable'"
+              nz-menu-item
+              nzMatchRouter
+              nzMatchRouterExact
+              *ngIf="menu.childMenus.length <= 0"
+              (click)="openHandler(menu)"
+            >
+              <a [routerLink]="langs + menu.menu_URL">
+                <img class="svg-icon" src="{{ menu.menu_Icon }}" alt="" />
+                <span>
+                  {{
+                    menu.menu_Name === "Dashboard_CP"
+                      ? ("Dashboard" | i18n)
+                      : (menu.menu_Name | i18n)
+                  }}</span
+                >
+              </a>
+              <div class="notice" *ngIf="menu.menu_URL == '/notifications'">
+                <span>{{ unReadNotificationCount }}</span>
+              </div>
+            </li>
+
+            <li
+              *ngIf="menu.childMenus.length > 0"
+              nz-submenu
+              [nzTitle]="fundTitle"
+              [(nzOpen)]="menu.open"
+              (nzOpenChange)="openHandler(menu)"
+              [ngClass]="menu.menu_disable ? 'menu-enable' : 'menu-disable'"
+            >
+              <ng-template #fundTitle>
+                <div class="cpt-submenu">
+                  <img class="svg-icon" src="{{ menu.menu_Icon }}" alt="" />
+                  <span> {{ menu.menu_Name | i18n }}</span>
+                </div>
+              </ng-template>
+              <ul class="sub-menu">
+                <li
+                  nz-menu-item
+                  nzMatchRouter
+                  nzMatchRouterExact
+                  *ngFor="let childMenu of menu.childMenus"
+                  [ngClass]="
+                    childMenu?.menu_disable ? 'menu-enable' : 'menu-disable'
+                  "
+                >
+                  <a [routerLink]="langs + childMenu.menu_URL">
+                    <!-- <nz-badge [nzColor]="'#07ECE0'"></nz-badge> -->
+                    <span>{{ childMenu.menu_Name | i18n }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ng-container>
+          <li
+            *ngIf="showMenuSettings"
+            nz-menu-item
+            nzMatchRouter
+            nzMatchRouterExact
+          >
+            <a [routerLink]="langs + '/settings'" (click)="closeMenuList()">
+              <img
+                class="svg-icon"
+                src="assets/images/left-menu/settings.svg"
+                alt=""
+              />
+              <span class="menu-setting-item">{{ "Settings" | i18n }}</span>
+            </a>
+          </li>
+          <!-- <li
+          *ngIf="showMenuLogout"
+          nz-menu-item
+          nzMatchRouter
+          nzMatchRouterExact
+        >
+          <a (click)="createTplModal(tplTitle, tplContent, tplFooter)">
+            <img
+              class="svg-icon"
+              src="assets/images/left-menu/logout.svg"
+              alt=""
+            />
+            <span class="menu-setting-item">{{ 'Logout' | i18n }}</span>
+          </a>
+        </li> -->
+        </ul>
+      </ng-template>
+      <ng-container>
+        <ng-template #tplTitle>
+          <span>{{ "Are you sure?" | i18n }}</span>
+        </ng-template>
+        <ng-template #tplContent let-params>
+          <div class="d-flex align-items-center" style="flex-direction: column">
+            <img
+              src="assets/images/oh.svg"
+              alt="question"
+              style="width: 70px"
+            />
+            <b style="margin-top: 12px"
+              >{{ "Do you want to logout?" | i18n }}
+            </b>
+          </div>
+        </ng-template>
+        <ng-template #tplFooter let-ref="modalRef">
+          <button nz-button (click)="ref.destroy()">
+            {{ "Cancel" | i18n }}
+          </button>
+          <button
+            nz-button
+            nzType="primary"
+            (click)="logout(ref)"
+            class="radius-btn h-40"
+          >
+            {{ "Logout" | i18n }}
+          </button>
+        </ng-template>
+      </ng-container>
+    </div>
+    <div class="foot">
+      <ul>
+       <li (click)="copyTrading()">
+          <div class="btn-primary spcl">
+            <img
+              class="svg-icon"
+              src="assets/images/left-menu/copy-trading.png"
+              alt="copy"
+              style="width: 17px"
+            />
+            <span> {{
+                      "Copy Trading" | i18n
+                    }} </span>
+          </div>
+        </li> 
+        <li (click)="createIbModal(tplContentIb, tplFooterIb)">
+          <div class="btn-primary spcl">
+            <img
+              class="svg-icon"
+              src="../../../assets/images/icons/profile.svg"
+              alt=""
+            />
+            <span>  {{
+                      "IB Portal" | i18n
+                    }}</span>
+          </div>
+        </li>
+        <ng-container>
+          <ng-template #tplContentIb let-params>
+            <div
+              class="d-flex align-items-center"
+              style="flex-direction: column"
+            >
+              <img
+                src="assets/images/individual.svg"
+                alt="question"
+                style="width: 200px"
+              />
+              <b style="color: #000"
+                >{{
+                  "You will be redirect to IB Portal site. Do you want to continue?"
+                    | i18n
+                }}
+              </b>
+            </div>
+          </ng-template>
+          <ng-template #tplFooterIb let-ref="modalRef">
+            <button nz-button (click)="ref.destroy()">
+              {{ "No" | i18n }}
+            </button>
+            <button
+              nz-button
+              nzType="primary"
+              (click)="ibLink(ref)"
+              class="radius-btn h-40"
+            >
+              {{ "Yes" | i18n }}
+            </button>
+          </ng-template>
+        </ng-container>
+      </ul>
+      <div>
+        <a (click)="createTplModal(tplTitle, tplContent, tplFooter)">
+          <img
+            class="svg-icon"
+            src="assets/images/left-menu/logout.svg"
+            alt=""
+            style="height: 20px; margin-top: 3px"
+          />
+          <span class="menu-setting-item">{{ "Logout" | i18n }}</span>
+        </a>
+      </div>
+    </div>
+  </nz-sider>
+  <nz-layout>
+    <div class="mobile-header">
+      <div class="mobile-header-left">
+        <img class="app-logo" src="assets/images/sb-logo.png" alt="logo" />
+      </div>
+      <div class="mobile-header-right">
+         <div class="header-lang" [style.width]="width" style="margin-right: 15px;">
+              <header-i18n showLangText="false" class="langs"></header-i18n>
+            </div>
+        <a [routerLink]="langs + '/notifications'">
+          <div class="notification-count">
+            <span>{{ unReadNotificationCount }}</span>
+            <img
+              nzTrigger="click"
+              class="cursor"
+              src="assets/images/icons/notification.svg"
+            />
+          </div>
+        </a>
+        <img
+          class="cursor menu hide-lg"
+          src="assets/images/icons/menu-hamb.svg"
+          (click)="openMenu()"
+        />
+      </div>
+    </div>
+   <nz-page-header class="dfx-profile-header">
+  <nz-page-header-subtitle>
+    <div class="dfx-summary-glass">
+      <!-- SID -->
+      <div class="dfx-summary-item">
+        <div class="dfx-summary-icon dfx-user-icon">
+          <img src="assets/images/user.svg" alt="user" />
+        </div>
+
+        <div class="dfx-summary-content">
+          <p>{{ "Your SID" | i18n }}</p>
+          <h3>{{ SID }}</h3>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="dfx-summary-item">
+        <div class="dfx-summary-icon dfx-email-icon">
+          <img src="assets/images/email-header.png" alt="email" />
+        </div>
+
+        <div class="dfx-summary-content">
+          <p>{{ "Email" | i18n }}</p>
+          <h3>{{ email }}</h3>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="dfx-summary-item">
+        <div class="dfx-summary-icon dfx-status-icon">
+          <img src="assets/images/status.svg" alt="status" />
+        </div>
+
+        <div class="dfx-summary-content">
+          <p>{{ "Status" | i18n }}</p>
+          <h3 class="dfx-status-text">
+            <span
+              class="dfx-status-dot"
+              *ngIf="['Active', 'Verified', 'Funded'].includes(userDataStatus)"
+            ></span>
+            {{ userDataStatus | i18n }}
+          </h3>
+        </div>
+      </div>
+
+      <!-- Balance -->
+      <div class="dfx-summary-item">
+        <div class="dfx-summary-icon dfx-wallet-icon">
+          <img src="assets/images/wallet-head.svg" alt="wallet" />
+        </div>
+
+        <div class="dfx-summary-content">
+          <p>{{ "Total Balance" | i18n }}</p>
+          <h3>
+            {{ totals?.amount?.toFixed(2) ?? 0 }}
+            <span>{{ totals?.currency }}</span>
+          </h3>
+        </div>
+      </div>
+
+      <!-- Language -->
+      <div class="dfx-summary-lang hide-mb">
+        <div class="dfx-lang-box" [style.width]="width">
+          <header-i18n showLangText="false" class="langs"></header-i18n>
+        </div>
+      </div>
+    </div>
+  </nz-page-header-subtitle>
+</nz-page-header>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+    <nz-drawer
+      [nzWidth]="329"
+      [nzVisible]="visible"
+      nzPlacement="right"
+      nzTitle=""
+      (nzOnClose)="close()"
+    >
+      <ng-container *nzDrawerContent>
+        <div class="text-center right-profile" style="margin-top: 30px">
+          <div class="top-section">
+            <div class="img-sec">
+              <img src="assets/images/user-icon.svg" alt="" />
+            </div>
+            <div class="uinfo">
+              <div class="uname">
+                {{ tokenSrv.get()?.customer_FirstName }}&nbsp;{{
+                  tokenSrv.get()?.customer_LastName
+                }}
+              </div>
+              <div class="uemail">
+                {{ tokenSrv.get()?.user_Email }}
+              </div>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div class="header-drawer-body">
+            <div class="menu">
+              <ul>
+                <li (click)="close()">
+                  <a [routerLink]="langs + '/profile'">
+                    <i class="fa-user fas"></i>
+                    {{ "My Profile" | i18n }}
+                  </a>
+                </li>
+                <li (click)="close()">
+                  <a [routerLink]="langs + '/settings'">
+                    <i class="fas fa-cog"></i>
+                    {{ "Settings" | i18n }}
+                  </a>
+                </li>
+                <li (click)="close()">
+                  <a [routerLink]="langs + '/support'">
+                    <i class="fas fa-envelope"></i>
+                    {{ "Contact Us" | i18n }}
+                  </a>
+                </li>
+                <li>
+                  <a (click)="createTplModal(tplTitle, tplContent, tplFooter)">
+                    <i class="fas fa-sign-out-alt"></i>
+                    {{ "Logout" | i18n }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </nz-drawer>
+    <div draggable="true" class="ec-window" [ngClass]="!showEc ? 'opened' : ''">
+      <a class="ecClose" *ngIf="!showEc" (click)="ecToggle()">×</a>
+      <span *ngIf="!showEc"><iframe [src]="iframeUrl"></iframe></span>
+    </div>
+  </nz-layout>
+</nz-layout>
+<!-- <theme-btn></theme-btn> -->
+<app-setting-modal #settingModalComponent></app-setting-modal>
+<!-- <app-calendar-modal #calendarModalComponent></app-calendar-modal> -->
+<div class="modal-contact">
+  <app-contact-modal #ContactModalComponent></app-contact-modal>
+</div>
+<ng-template #customDrawerTitle>
+  <!-- Content for the title -->
+  <div class="drawer-head">
+    <!-- Your title content here -->
+    <!-- For example: -->
+    <div class="logo-flex">
+      <div>
+        <img class="app-logo" src="assets/images/sb-logo.png" alt="logo" />
+      </div>
+      <div class="minimize-logo" *ngIf="!isCollapsed">
+        <header-fullscreen class="fullscreen-wrapper"></header-fullscreen>
+      </div>
+    </div>
+    <div class="right-btn" *ngIf="isCollapsed" (click)="onCollapsed()">
+      <i
+        nz-icon
+        [nzType]="'right'"
+        style="color: #07ece0"
+        nzTheme="outline"
+      ></i>
+    </div>
+  </div>
+</ng-template>

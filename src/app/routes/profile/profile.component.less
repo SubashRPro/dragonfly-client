@@ -1,0 +1,278 @@
+@import "~@delon/theme/index";
+:host {
+  .p-verify {
+    .p-btn {
+      @media only screen and (max-width: 850px) {
+        width: 100%;
+      }
+    }
+  }
+  .verification-steps {
+    @media only screen and (max-width: 850px) {
+      display: none;
+    }
+  }
+  .profile-personal-title {
+    margin-bottom: 10px;
+    color: #51657d;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Lato", sans-serif;
+  }
+  ::ng-deep {
+    .profile-files {
+      max-width: 800px;
+      .ant-upload-list-picture-card-container,
+      .ant-upload.ant-upload-select-picture-card {
+        height: 140px !important;
+        width: 100%;
+      }
+    }
+    .profile-upload-icon {
+      i {
+        color: #3cf;
+        font-size: 48px;
+      }
+    }
+    .phone-select {
+      border: none;
+      .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+        .ant-select-selector {
+        border: none;
+      }
+    }
+    .question-title {
+      color: #3b3d42;
+      margin-left: 12px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .ant-advanced-search-form {
+      margin-left: 24px;
+      .ant-radio-group,
+      .ant-checkbox-group {
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-bottom: 12px;
+        }
+      }
+      .question-control,
+      .ant-form-item-explain {
+        padding-left: 16px;
+      }
+    }
+  }
+}
+.gray {
+  color: #acacac;
+}
+
+.suit-modal {
+  padding: 30px;
+}
+
+.verify {
+  h1 {
+    margin: 10px 0px 0px 0px;
+  }
+  p {
+    color: #6d7988;
+    font-size: 16px;
+  }
+}
+
+input:read-only {
+  background: #eee;
+  cursor: not-allowed;
+}
+
+.question {
+  .ant-form label {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+  }
+
+  .ant-radio {
+    top: 8px;
+  }
+  .ant-form-item input[type="radio"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ant-radio-inner {
+    width: 26px;
+    height: 26px;
+  }
+
+  .ant-radio-inner:after {
+    width: 12px;
+    height: 12px;
+    top: 6px;
+    left: 6px;
+  }
+}
+
+.question-icon {
+  background: #e5fdfc;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #07943c;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #07943c;
+  font-weight: 500;
+  float: left;
+  margin-right: 6px;
+}
+
+.ant-advanced-search-form .ant-radio-group {
+  margin-left: 18px;
+}
+
+.question-control.suit {
+  margin: 14px 0px 14px 0px;
+}
+
+.failed-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  p {
+    text-align: center;
+    font-size: 17px;
+    margin-bottom: 1rem;
+  }
+}
+
+.passport-container {
+  display: flex;
+  width: 100%;
+}
+
+@media screen and (min-width: 1050px) and (max-width: 1100px) {
+  .ks-width {
+    flex: 0 0 95%;
+    max-width: 95%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .passport-container {
+    display: block;
+  }
+}
+
+.select-box {
+  textarea,
+  .ant-select {
+    width: 70%;
+    @media only screen and (max-width: 850px) {
+      width: 100%;
+    }
+  }
+}
+
+.email-verify {
+  text-align: center;
+  padding: 10px;
+  img {
+    width: 130px;
+    margin-bottom: 10px;
+  }
+  h1 {
+    color: #0c2038;
+    font-size: 24px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  p {
+    color: #6d7988;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+}
+
+.modal {
+  visibility: visible;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(77, 77, 77, 0.7);
+  transition: all 0.4s;
+}
+
+.modal__content {
+  border-radius: 4px;
+  position: relative;
+  width: 750px;
+  height: 500px;
+  max-width: 90%;
+  background: #fff;
+  padding: 1em;
+}
+
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.doc-link {
+  color: #07943c;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.pad-btn {
+  margin-bottom: 30px;
+  button {
+    border: none;
+    color: #ffff;
+    font-size: 13px;
+    transition: 0.3s ease-in-out;
+    background-size: 200% auto;
+    border-radius: 9999px;
+    font-weight: 600;
+    padding: 7px 18px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .save-png {
+    background: #499c49;
+  }
+  .clear {
+    background: #c33434;
+  }
+}
+
+.sign-plate {
+  border: 1px dashed rgb(0, 0, 0);
+  margin: 10px 0px;
+  width: 603px;
+  height: 157px;
+  @media only screen and (max-width: 850px) {
+    width: 350px;
+  }
+}
+
+.sumsub-sdk {
+  border: 2px dashed #07943c;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 3rem;
+}

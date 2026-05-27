@@ -1,0 +1,339 @@
+<nz-card class="margin-calc">
+  <nz-collapse
+    [nzBordered]="false"
+    style="margin-bottom: 18px"
+    class="filter-form"
+  >
+    <nz-collapse-panel
+      [nzHeader]="headerTemplate"
+      [nzShowArrow]="false"
+      [nzActive]="isCollapse"
+      (nzActiveChange)="collapseChange($event)"
+    >
+      <ng-template #headerTemplate>
+        <div class="header-title">
+          <span>{{ 'Transfer History' | i18n }}</span>
+          <span class="filter">
+            <img
+              src="assets/images/icons/Filter_icon.svg"
+              [class]="isCollapse ? '' : 'rotate-90'"
+              alt="arrow"
+            />
+            {{ 'Filter' | i18n }}
+          </span>
+        </div>
+      </ng-template>
+      <form
+        nz-form
+        [formGroup]="formFilter"
+        (ngSubmit)="onfilter()"
+        nzLayout="vertical"
+      >
+        <div nz-row [nzGutter]="24" [nzAlign]="'middle'" nzJustify="start">
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'">
+                {{ 'Bill No' | i18n }}
+              </nz-form-label>
+              <nz-form-control>
+                <nz-input-number
+                  formControlName="billNo"
+                  nzPlaceHolder="{{ 'Bill No' | i18n }}"
+                  [nzMin]="1"
+                  [nzStep]="1"
+                >
+                </nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label> {{ 'Account Number' | i18n }}</nz-form-label>
+              <nz-form-control>
+                <nz-input-number
+                  formControlName="accountNumber"
+                  nzPlaceHolder="{{ 'Account Number' | i18n }}"
+                  [nzMin]="1"
+                  [nzStep]="1"
+                >
+                </nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>{{ 'Currency' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  formControlName="currency"
+                  nzPlaceHolder="{{ 'All' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option nzValue="" nzLabel="All"></nz-option>
+                  <nz-option
+                    *ngFor="let item of currencies"
+                    [nzValue]="item.code"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <!-- <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label> {{ 'Amount Number' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-input-number formControlName="transactionAmount" nzPlaceHolder="{{ 'Amount Number' | i18n }}" [nzMin]="1" [nzStep]="1">
+                </nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div> -->
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label> {{ 'Date' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-range-picker
+                  [nzFormat]="dateFormat"
+                  formControlName="timeline"
+                  #timeline
+                >
+                </nz-range-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label> {{ 'Status' | i18n }}</nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  formControlName="status"
+                  nzSuffixIcon="caret-down"
+                  nzPlaceHolder="{{ 'All' | i18n }}"
+                >
+                  <nz-option
+                    *ngFor="let item of allType"
+                    [nzValue]="item.id"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col class="btn-wrapper">
+            <button
+              class="filter-reset-btn"
+              nz-button
+              nzType="default"
+              (click)="reset()"
+            >
+              {{ 'Reset' | i18n }}
+            </button>
+            <button class="filter-search-btn" nz-button nzType="primary">
+              {{ 'Search' | i18n }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </nz-collapse-panel>
+  </nz-collapse>
+  <!--listing data start-->
+  <div class="filter-content">
+    <div class="data">
+      <nz-table
+        [nzData]="users"
+        [nzLoading]="loading"
+        [nzPageIndex]="page"
+        [nzTotal]="totalnumber"
+        nzShowSizeChanger
+        nzShowQuickJumper
+        [nzPageSize]="pageSize"
+        [nzFrontPagination]="false"
+        (nzPageIndexChange)="onPageIndexChange($event)"
+        (nzPageSizeChange)="onCurrentPageDataChange($event)"
+        (nzPageSizeChange)="onCurrentPageDataChange($event)"
+        (nzQueryParams)="onQueryParamsChange($event)"
+      >
+        <thead>
+          <tr>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="transaction_ID"
+              [nzSortFn]="true"
+            >
+              {{ 'Bill No' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="transfeR_TIME"
+              [nzSortFn]="true"
+            >
+              {{ 'Created Time' | i18n }}
+            </th>
+            <!-- <th nzColumnKey="type" >{{ 'Type' | i18n }}</th> -->
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="paymenT_SOURCE"
+              [nzSortFn]="true"
+            >
+              {{ 'From Account' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="paymenT_DESTINATION"
+              [nzSortFn]="true"
+            >
+              {{ 'To Account' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="price" [nzSortFn]="true">
+              {{ 'Amount' | i18n }}
+            </th>
+            <!-- <th
+              appDynamicColumnWidth
+              nzColumnKey="to_Currency"
+              [nzSortFn]="true"
+            >
+              {{ 'Currency' | i18n }}
+            </th> -->
+            <th appDynamicColumnWidth nzColumnKey="status">
+              {{ 'Status' | i18n }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of users">
+            <td>{{ data.transaction_ID }}</td>
+            <!-- <td>{{ data.transfeR_TIME | date: 'short' }}</td> -->
+            <td>{{ data.transfeR_TIME | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+            <!-- <td>{{ data.transfeR_TYPE }}</td> -->
+            <td>{{ data.paymenT_SOURCE }}</td>
+            <td>{{ data.paymenT_DESTINATION }}</td>
+            <td>{{ data.to_Currency }} {{ data.price }}</td>
+            <!-- <td>{{ data.to_Currency }}</td> -->
+            <td class="status_svg">
+              <ng-container *ngIf="data.status === 'success'">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15.875"
+                  height="15.875"
+                  viewBox="0 0 15.875 15.875"
+                >
+                  <path
+                    id="Icon_awesome-check-circle"
+                    data-name="Icon awesome-check-circle"
+                    d="M16.438,8.5A7.938,7.938,0,1,1,8.5.563,7.937,7.937,0,0,1,16.438,8.5ZM7.582,12.7l5.889-5.889a.512.512,0,0,0,0-.724l-.724-.724a.512.512,0,0,0-.724,0l-4.8,4.8L4.977,7.926a.512.512,0,0,0-.724,0l-.724.724a.512.512,0,0,0,0,.724L6.858,12.7a.512.512,0,0,0,.724,0Z"
+                    transform="translate(-0.563 -0.563)"
+                    fill="#29cb97"
+                  />
+                </svg>
+              </ng-container>
+              <ng-container *ngIf="data.status === 'pending'">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15.27"
+                  height="15.27"
+                  viewBox="0 0 15.27 15.27"
+                >
+                  <g
+                    id="Icon_ionic-md-time"
+                    data-name="Icon ionic-md-time"
+                    transform="translate(-3.375 -3.375)"
+                  >
+                    <path
+                      id="Path_10751"
+                      data-name="Path 10751"
+                      d="M11,3.375a7.635,7.635,0,1,0,7.642,7.635A7.632,7.632,0,0,0,11,3.375Zm.007,13.743a6.108,6.108,0,1,1,6.108-6.108A6.108,6.108,0,0,1,11.01,17.118Z"
+                      fill="#ffc107"
+                    />
+                    <path
+                      id="Path_10752"
+                      data-name="Path 10752"
+                      d="M17.683,10.688H16.538v4.581l4.008,2.4.573-.94L17.683,14.7Z"
+                      transform="translate(-6.291 -3.495)"
+                      fill="#ffc107"
+                    />
+                  </g>
+                </svg>
+              </ng-container>
+              <ng-container *ngIf="data.status === 'rejected'">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="19"
+                  height="16"
+                  viewBox="0 0 19 16"
+                >
+                  <defs>
+                    <clipPath id="clip-path">
+                      <rect
+                        id="Rectangle_1298"
+                        data-name="Rectangle 1298"
+                        width="19"
+                        height="16"
+                        transform="translate(244.665 69.046)"
+                        fill="#dc3545"
+                      />
+                    </clipPath>
+                  </defs>
+                  <g
+                    id="Mask_Group_1316"
+                    data-name="Mask Group 1316"
+                    transform="translate(-244.665 -69.046)"
+                    clip-path="url(#clip-path)"
+                  >
+                    <g id="__TEMP__SVG__" transform="translate(246.429 69.363)">
+                      <path
+                        id="Path_10749"
+                        data-name="Path 10749"
+                        d="M482.863,488.266a.967.967,0,1,0,1.367,1.368l5.47-5.47a.968.968,0,1,0-1.368-1.369Z"
+                        transform="translate(-478.545 -478.479)"
+                        fill="#dc3545"
+                      />
+                      <path
+                        id="Path_10750"
+                        data-name="Path 10750"
+                        d="M238.456,249.4a7.736,7.736,0,1,0,0-10.94A7.736,7.736,0,0,0,238.456,249.4Zm9.572-1.367a5.8,5.8,0,1,1,0-8.2A5.8,5.8,0,0,1,248.028,248.029Z"
+                        transform="translate(-236.19 -236.19)"
+                        fill="#dc3545"
+                        fill-rule="evenodd"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </ng-container>
+              {{ data.status | i18n }}
+            </td>
+          </tr>
+          <tr class="total-data" *ngIf="totalAmount">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: center">
+              {{ 'Total Amount' | i18n }}: {{ totalAmount }} {{ currencyData }}
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <!--pagination here-->
+      <div class="total-count">
+        <ng-container *ngIf="totaData">
+          <div class="count">
+            {{ 'Total Count' | i18n }} :
+            <span class="bold"> {{ totaData }} </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nz-card>
+
+<!-- <ng-template #extraTemplate>
+  <button nz-button nzType="primary" (click)="exportAsXLSX()" [disabled]="disableInput">
+    <img src="assets/images/export.svg" alt="account" style="width: 12px; vertical-align: inherit; margin-right: 5px" />{{
+      'Export' | i18n
+    }}
+  </button>
+</ng-template> -->

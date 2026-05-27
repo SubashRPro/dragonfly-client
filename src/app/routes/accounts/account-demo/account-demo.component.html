@@ -1,0 +1,134 @@
+<div class="tabcontent">
+  <div class="account-trading">
+    <h2 class="title-head">{{ 'Create your Demo Account' | i18n }}</h2>
+    <div class="create-account">
+      <form nz-form [formGroup]="formOpenAccount">
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" class="left-area">
+            <div class="mb-4" nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+              <nz-form-item class="mb-4">
+                <nz-form-control
+                  nzErrorTip="{{ 'Please Select Trading Platform' | i18n }}"
+                >
+                  <label>{{ 'Trading Platform' | i18n }}</label>
+                  <nz-select
+                    formControlName="Trading_Platform"
+                    nzName="Trading_Platform"
+                    nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                    class="ant-select-custom"
+                  >
+                    <nz-option nzValue="MT4" nzLabel="MT4"></nz-option>
+                      <nz-option nzValue="MT5" nzLabel="MT5"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <!-- <div class="mb-4" nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+              <nz-form-item class="mb-4">
+                <nz-form-control nzErrorTip="{{ 'selectType' | i18n }}">
+                  <label>{{ 'ACCOUNT_TYPE' | i18n }}</label>
+                  <nz-select
+                    formControlName="account_Type"
+                    nzPlaceHolder="{{ 'SELECT' | i18n }}"
+                    class="ant-select-custom"
+                    nzDisabled
+                  >
+                    <nz-option nzValue="demo" nzLabel="demo"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div> -->
+            <div class="mb-4" nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+              <nz-form-item class="mb-4">
+                <nz-form-control nzErrorTip="{{ 'selectCurrency' | i18n }}">
+                  <label>{{ 'Currency' | i18n }}</label>
+                  <nz-select
+                    formControlName="currency"
+                    nzPlaceHolder="{{ 'SELECT' | i18n }}"
+                    class="ant-select-custom"
+                  >
+                    <nz-option nzValue="USD" nzLabel="USD"></nz-option>
+                    <nz-option nzValue="EUR" nzLabel="EUR"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="mb-4" nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+              <nz-form-item class="mb-4">
+                <nz-form-control
+                  nzErrorTip="{{ 'demo_deposit_amount' | i18n }}"
+                >
+                  <label>{{ 'deposit_fund' | i18n }}</label>
+                  <nz-select
+                    formControlName="init_Balance"
+                    nzName="init_Balance"
+                    nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                    class="ant-select-custom"
+                  >
+                    <nz-option nzValue="500" nzLabel="500"></nz-option>
+                    <nz-option nzValue="1000" nzLabel="1000"></nz-option>
+                    <nz-option nzValue="5000" nzLabel="5000"></nz-option>
+                    <nz-option nzValue="10000" nzLabel="10000"></nz-option>
+                    <nz-option nzValue="20000" nzLabel="20000"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+            <div class="mb-4" nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+              <nz-form-item class="mb-4">
+                <nz-form-control nzErrorTip="{{ 'selecrtLeverage' | i18n }}">
+                  <label>{{ 'Leverage' | i18n }}</label>
+                  <nz-select
+                    formControlName="account_Leverage"
+                    nzName="accountType"
+                    nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                    class="ant-select-custom"
+                    nzDisabled
+                  >
+                    <nz-option nzValue="50" nzLabel="1:50"></nz-option>
+                    <nz-option
+                      nzValue="100"
+                      nzLabel="Dynamic Leverage"
+                    ></nz-option>
+                    <nz-option nzValue="200" nzLabel="1:200"></nz-option>
+                    <nz-option nzValue="300" nzLabel="1:300"></nz-option>
+                    <nz-option nzValue="500" nzLabel="1:500"></nz-option>
+                    <!-- <nz-option nzValue="1000" nzLabel="1:1000"></nz-option> -->
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="leverage-text">
+              <p>
+               {{ 'Our Leverage dynamic and based on your Trading Account equity.' | i18n }}
+              </p>
+            </div>
+            <div class="support-text">
+              <p>
+                  {{ 'Should you prefer a lower leverage than the one assigned to you equity bracket, simply reach out to our Trading Desk Team at' | i18n }}
+                  <a href="mailto:tradingdesk@trive.com" class="doc-link">
+                    tradingdesk@trive.com</a
+                  >
+                </p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            nz-button
+            [nzSize]="'large'"
+            nzShape="round"
+            [nzLoading]="loader"
+            nzType="primary"
+            class="login-form-button login-form-margin create-btn"
+            (click)="submitForm()"
+          >
+            {{ 'Create' | i18n }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

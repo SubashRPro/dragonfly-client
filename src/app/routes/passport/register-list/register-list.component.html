@@ -1,0 +1,94 @@
+<div class="register-list">
+  <!----open account area------>
+  <div nz-row nzJustify="center">
+    <div nz-col nzMd="18" nzLg="18" nzXl="18" nzXs="24" class="list-choose">
+      <h1 class="cpt-heading text-center">{{ 'Open Account' | i18n }}</h1>
+      <p class="cpt-text text-center lg-width register-description">
+        {{
+          'Whether you are a large firm or an individual investor, Trive Markets offers different accounts to trade global instruments:'
+            | i18n
+        }}
+      </p>
+      <div nz-row nzJustify="center">
+        <div class="method-content">
+          <nz-radio-group
+            class="justify-content-between w100 mb-flex"
+            [(ngModel)]="radioValue"
+            (ngModelChange)="onItemChange($event)"
+          >
+            <div nz-row [nzGutter]="24" nzJustify="center">
+              <div
+                class="method"
+                [ngClass]="individual ? 'active' : ''"
+                (click)="onItemChange('individual')"
+              >
+                <label nz-radio nzValue="individual"></label>
+                <div class="reg-account">
+                  <img src="assets/images/individual.png" alt="open-account" />
+                  <div class="head">{{ 'Individual' | i18n }}</div>
+                </div>
+                <p class="text-center">
+                  {{
+                    'An individual brokerage account has the name of one account owner'
+                      | i18n
+                  }}
+                </p>
+              </div>
+              <!---if any query parameters hide this partner section-->
+              <div
+                class="method"
+                [ngClass]="partner ? 'active' : ''"
+                (click)="onItemChange('partner')"
+                *ngIf="partnerQuery"
+              >
+                <label nz-radio nzValue="partner"></label>
+                <div class="reg-account">
+                  <img src="assets/images/partner-new.png" alt="open-account" />
+                  <div class="head">{{ 'Partner' | i18n }}</div>
+                </div>
+                <p class="text-center">
+                  {{ 'Trive gives you a chance to grow together.' | i18n }}
+                </p>
+              </div>
+              <div
+                class="method"
+                (click)="onItemChange('corporate')"
+                [ngClass]="corporate ? 'active' : ''"
+              >
+                <label nz-radio nzValue="corporate"></label>
+                <div class="reg-account">
+                  <img
+                    src="assets/images/Institutional.png"
+                    alt="open-account"
+                  />
+                  <div class="head">{{ 'Corporate' | i18n }}</div>
+                </div>
+                <p class="text-center">
+                  {{
+                    'Explore our comprehensive solution for corporates' | i18n
+                  }}
+                </p>
+              </div>
+            </div>
+          </nz-radio-group>
+        </div>
+      </div>
+      <div nz-row nzJustify="center" class="action-btn">
+        <button
+          nz-button
+          [disabled]="next"
+          class="cmn-btn mb-1"
+          (click)="goRegister()"
+        >
+          {{ 'Next' | i18n }}
+        </button>
+      </div>
+
+      <div nz-row nzJustify="center">
+        <button nz-button class="quick-btn" (click)="goDemo()">
+          {{ 'Demo Account' | i18n }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

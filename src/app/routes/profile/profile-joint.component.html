@@ -1,0 +1,1667 @@
+<nz-card nzTitle="Verification" [nzLoading]="prfoleloading">
+  <nz-steps [nzCurrent]="current">
+    <nz-step nzTitle="{{ 'Personal Information' | i18n }}"></nz-step>
+    <nz-step nzTitle="{{ 'Upload Documents' | i18n }}"></nz-step>
+    <nz-step nzTitle="{{ 'Questionnaire' | i18n }}"></nz-step>
+  </nz-steps>
+
+  <!-- ***************** -->
+  <div *ngIf="current === 0" class="subhead profile-personal">
+    <div class="profile-personal-title">
+      <strong>{{ 'Personal Information' | i18n }}</strong>
+    </div>
+    <nz-tabset class="trade-tab" [(nzSelectedIndex)]="selectIndex">
+      <nz-tab nzTitle="Trader 1">
+        <form nz-form [formGroup]="personalForm" nzLayout="vertical" autocomplete="off">
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item class="gender">
+                <nz-form-label>{{ 'gendertitle' | i18n }}</nz-form-label>
+                <nz-form-control nzErrorTip="Please choose your Title to proceed.">
+                  <nz-select formControlName="gender" [ngModel]="customerVersion?.customer_Gender" nzSuffixIcon="caret-down">
+                    <nz-option nzValue="Mr" nzLabel="Mr"></nz-option>
+                    <nz-option nzValue="Ms" nzLabel="Ms"></nz-option>
+                    <nz-option nzValue="Mrs" nzLabel="Mrs"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'First Name' | i18n }} ({{ 'English Name' | i18n }}) </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter first name without special characters!">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerVersion?.customer_FirstName"
+                    nz-input
+                    placeholder="{{ 'English Name' | i18n }}"
+                    formControlName="customer_FirstName"
+                    maxlength="100"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Middle Name' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter middle name without special characters!">
+                  <input
+                    nzSize="large"
+                    nz-input
+                    [ngModel]="customerVersion?.customer_MiddleName"
+                    placeholder="{{ 'Middle Name' | i18n }}"
+                    formControlName="customer_MiddleName"
+                    maxlength="100"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Last Name' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter last name without special characters!">
+                  <input
+                    nzSize="large"
+                    maxlength="100"
+                    nz-input
+                    [ngModel]="customerVersion?.customer_LastName"
+                    placeholder="{{ 'Last Name' | i18n }}"
+                    formControlName="customer_LastName"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Date Of Birth' | i18n }} </nz-form-label>
+                <nz-form-control [nzErrorTip]="errorDateTpl">
+                  <nz-date-picker
+                    class="w100"
+                    [nzDisabledDate]="disabledDate"
+                    [ngModel]="customerVersion?.customer_DoB"
+                    nzSize="large"
+                    formControlName="date"
+                  ></nz-date-picker>
+                  <ng-template #errorDateTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">The input is not valid date!</ng-container>
+                    <ng-container *ngIf="control.hasError('pattern')">
+                      We are sorry, you must be minimum 18 years to register and trade with us.
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Nationality' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please select valid Nationality">
+                  <!-- <nz-select
+                    nzShowSearch
+                    nzSize="large"
+                    autocomplete="new-password"
+                    [ngModel]="customerVersion?.customer_Nationality"
+                    formControlName="nationality"
+                    nzSuffixIcon="caret-down"
+                  >
+                    <nz-option *ngFor="let item of nationality" [nzValue]="item.code" [nzLabel]="item.description"></nz-option>
+                  </nz-select> -->
+
+                  <nz-select
+                    formControlName="nationality"
+                    nzShowSearch
+                    nzSize="large"
+                    nzAllowClear
+                    [ngModel]="customerVersion?.customer_Nationality"
+                    nzPlaceHolder="Select a Nationality"
+                    [nzCustomTemplate]="defaultTemplate"
+                  >
+                    <nz-option
+                      *ngFor="let item of nationality"
+                      nzCustomContent
+                      [nzLabel]="item.description + '|' + item.img"
+                      [nzValue]="item.code"
+                    >
+                      <div class="nationality-header">
+                        <img [src]="item.img" alt="" />
+                        <span>{{ item.description }}</span>
+                      </div>
+                    </nz-option>
+                  </nz-select>
+                  <ng-template #defaultTemplate let-selected>
+                    <div class="nationality-header">
+                      <img [src]="selected.nzLabel.split('|')[1]" alt="" />
+                      <span> {{ selected.nzLabel.split('|')[0] }}</span>
+                    </div>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label nzFor="phoneNumber">{{ 'Phone Number' | i18n }}</nz-form-label>
+                <nz-form-control [nzErrorTip]="errorTpl">
+                  <nz-input-group nzSize="large" [nzAddOnBefore]="addOnBeforeTemplate">
+                    <ng-template #addOnBeforeTemplate>
+                      <nz-select nzShowSearch style="width: 120px" formControlName="phoneNumberPrefix" class="phone-select">
+                        <nz-option
+                          *ngFor="let item of phones"
+                          [nzValue]="item.prefix"
+                          [nzLabel]="(item?.addr ?? '') + ' &nbsp;&nbsp;' + item.prefix"
+                        ></nz-option>
+                      </nz-select>
+                    </ng-template>
+                    <input
+                      type="number"
+                      autocomplete="new-password"
+                      [ngModel]="customerVersion?.phoneNumber"
+                      formControlName="phoneNumber"
+                      nz-input
+                    />
+                    <ng-template #errorTpl let-control>
+                      <ng-container *ngIf="control.hasError('required')">Please enter valid phone number</ng-container>
+                      <ng-container *ngIf="control.hasError('pattern')">Please enter valid phone number</ng-container>
+                    </ng-template>
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Email' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid Email!">
+                  <input
+                    readonly
+                    nzSize="large"
+                    autocomplete="new-password"
+                    [ngModel]="customerVersion?.customer_Email"
+                    nz-input
+                    placeholder="Email"
+                    formControlName="email"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label> Tax Identification Number</nz-form-label>
+                <nz-form-control nzErrorTip="Not valid Tax Payer Identification!">
+                  <input
+                    nzSize="large"
+                    autocomplete="new-password"
+                    [ngModel]="customerVersion?.tpi"
+                    nz-input
+                    placeholder="Tax Identification Number "
+                    formControlName="tpi"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>National ID Number / Passport Number</nz-form-label>
+                <nz-form-control nzErrorTip="National ID Number / Passport Number">
+                  <input
+                    nzSize="large"
+                    maxlength="100"
+                    nz-input
+                    [ngModel]="customerVersion?.customer_Passport"
+                    placeholder="National ID Number / Passport Number"
+                    formControlName="customer_Passport"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <!-- <div nz-col [nzSpan]="8">
+              <nz-form-item>
+                <nz-form-label>TIN </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter TIN Number">
+                  <input
+                    nzSize="large"
+                    maxlength="100"
+                    nz-input
+                    [ngModel]="customerVersion?.customer_TIN"
+                    placeholder="TIN"
+                    formControlName="customer_TIN"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div> -->
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item class="gender">
+                <nz-form-label>{{ 'Are you a U.S. citizen?' | i18n }} </nz-form-label>
+                <nz-form-control>
+                  <nz-select formControlName="is_USCitizen" [ngModel]="customerVersion?.is_USCitizen">
+                    <nz-option [nzValue]="false" nzLabel="No"></nz-option>
+                    <nz-option [nzValue]="true" nzLabel="Yes"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item class="gender">
+                <nz-form-label>{{ 'Trading Platform' | i18n }} </nz-form-label>
+                <nz-form-control>
+                  <nz-select formControlName="trading_Platform" [ngModel]="customerVersion?.requested_Platform">
+                    <nz-option [nzValue]="'MT4'" nzLabel="MT4"></nz-option>
+                    <nz-option [nzValue]="'MT5'" nzLabel="MT5"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <!--politically exposed-->
+          <div nz-row [nzGutter]="24" class="no-margin">
+            <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="The input is not valid PEP!">
+                  <label class="pep" nz-checkbox [ngModel]="customerVersion?.is_PEP" formControlName="is_PEP">
+                    {{ 'Are you a Politically Exposed Person(PEP), or closely related to a PEP?' | i18n }}
+                  </label>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24" style="margin-top: 25px">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Apartment/House Name' | i18n }}</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid address!">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerVersion?.customer_Address"
+                    nz-input
+                    placeholder="{{ 'Apartment/House Name' | i18n }}"
+                    formControlName="customer_Address"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>Flat Number </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter Flat Number">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerVersion?.customer_ApartmentNumber"
+                    nz-input
+                    placeholder="Flat Number"
+                    formControlName="customer_ApartmentNumber"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Street Name' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter the Street Name!">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerVersion?.customer_Company"
+                    nz-input
+                    placeholder="Street name"
+                    formControlName="street"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Country' | i18n }}</nz-form-label>
+                <nz-form-control nzErrorTip="Please select valid Country!">
+                  <!-- <nz-select
+                    nzShowSearch
+                    nzSize="large"
+                    [ngModel]="customerVersion?.customer_Country"
+                    formControlName="country"
+                    nzSuffixIcon="caret-down"
+                    placeholder="Country"
+                  >
+                    <nz-option *ngFor="let item of nationality" [nzValue]="item.code" [nzLabel]="item.description"></nz-option>
+                  </nz-select> -->
+                  <nz-select
+                    formControlName="country"
+                    nzShowSearch
+                    nzSize="large"
+                    nzAllowClear
+                    [ngModel]="customerVersion?.customer_Country"
+                    nzPlaceHolder="Select a Country"
+                    [nzCustomTemplate]="defaultTemplate"
+                  >
+                    <nz-option
+                      *ngFor="let item of nationality1"
+                      nzCustomContent
+                      [nzLabel]="item.description + '|' + item.img"
+                      [nzValue]="item.code"
+                    >
+                      <div class="nationality-header">
+                        <img [src]="item.img" alt="" />
+                        <span>{{ item.description }}</span>
+                      </div>
+                    </nz-option>
+                  </nz-select>
+                  <ng-template #defaultTemplate let-selected>
+                    <div class="nationality-header">
+                      <img [src]="selected.nzLabel.split('|')[1]" alt="" />
+                      <span> {{ selected.nzLabel.split('|')[0] }}</span>
+                    </div>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'State' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter the State!">
+                  <input nzSize="large" [ngModel]="customerVersion?.customer_State" nz-input placeholder="State" formControlName="state" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'City' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street city!">
+                  <input nzSize="large" [ngModel]="customerVersion?.customer_City" nz-input placeholder="City" formControlName="city" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Zip Code' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter the Zip Code!">
+                  <input
+                    type="text"
+                    nzSize="large"
+                    [ngModel]="customerVersion?.customer_ZipCode"
+                    nz-input
+                    placeholder="{{ 'Zip Code' | i18n }}"
+                    maxlength="8"
+                    formControlName="zipCode"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row nzJustify="end">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24" class="text-right">
+              <!-- <button class="cpt-btn-border" nz-button>Cancel</button> -->
+              <button class="cpt-btn-primary-border" nz-button [nzType]="'primary'" (click)="personalSubmit()">{{
+                'Submit' | i18n
+              }}</button>
+            </div>
+          </div>
+        </form>
+      </nz-tab>
+      <nz-tab nzTitle="Trader 2" [nzDisabled]="traderTwo">
+        <form nz-form [formGroup]="personalFormTwo" nzLayout="vertical" autocomplete="off">
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item class="gender">
+                <nz-form-label>{{ 'gendertitle' | i18n }}</nz-form-label>
+                <nz-form-control nzErrorTip="Please choose your Title to proceed.">
+                  <nz-select formControlName="gender" [ngModel]="customerTradeVersion?.customer_Gender" nzSuffixIcon="caret-down">
+                    <nz-option nzValue="Mr" nzLabel="Mr"></nz-option>
+                    <nz-option nzValue="Ms" nzLabel="Ms"></nz-option>
+                    <nz-option nzValue="Mrs" nzLabel="Mrs"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'First Name' | i18n }} ({{ 'English Name' | i18n }}) </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter first name without special characters!">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerTradeVersion?.customer_FirstName"
+                    nz-input
+                    placeholder="{{ 'English Name' | i18n }}"
+                    formControlName="customer_FirstName"
+                    maxlength="100"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Middle Name' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter middle name without special characters!">
+                  <input
+                    nzSize="large"
+                    nz-input
+                    [ngModel]="customerTradeVersion?.customer_MiddleName"
+                    placeholder="{{ 'Middle Name' | i18n }}"
+                    formControlName="customer_MiddleName"
+                    maxlength="100"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Last Name' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter last name without special characters!">
+                  <input
+                    nzSize="large"
+                    maxlength="100"
+                    nz-input
+                    [ngModel]="customerTradeVersion?.customer_LastName"
+                    placeholder="{{ 'Last Name' | i18n }}"
+                    formControlName="customer_LastName"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Date Of Birth' | i18n }} </nz-form-label>
+                <nz-form-control [nzErrorTip]="errorDateTpl">
+                  <nz-date-picker
+                    class="w100"
+                    [nzDisabledDate]="disabledDate"
+                    [ngModel]="customerTradeVersion?.customer_DoB"
+                    nzSize="large"
+                    formControlName="date"
+                  ></nz-date-picker>
+                  <ng-template #errorDateTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">The input is not valid date!</ng-container>
+                    <ng-container *ngIf="control.hasError('pattern')">
+                      We are sorry, you must be minimum 18 years to register and trade with us.
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Nationality' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please select valid Nationality">
+                  <!-- <nz-select
+                    nzShowSearch
+                    nzSize="large"
+                    autocomplete="new-password"
+                    [ngModel]="customerVersion?.customer_Nationality"
+                    formControlName="nationality"
+                    nzSuffixIcon="caret-down"
+                  >
+                    <nz-option *ngFor="let item of nationality" [nzValue]="item.code" [nzLabel]="item.description"></nz-option>
+                  </nz-select> -->
+
+                  <nz-select
+                    formControlName="nationality"
+                    nzShowSearch
+                    nzSize="large"
+                    nzAllowClear
+                    [ngModel]="customerTradeVersion?.customer_Nationality"
+                    nzPlaceHolder="Select a Nationality"
+                    [nzCustomTemplate]="defaultTemplate"
+                  >
+                    <nz-option
+                      *ngFor="let item of nationality"
+                      nzCustomContent
+                      [nzLabel]="item.description + '|' + item.img"
+                      [nzValue]="item.code"
+                    >
+                      <div class="nationality-header">
+                        <img [src]="item.img" alt="" />
+                        <span>{{ item.description }}</span>
+                      </div>
+                    </nz-option>
+                  </nz-select>
+                  <ng-template #defaultTemplate let-selected>
+                    <div class="nationality-header">
+                      <img [src]="selected.nzLabel.split('|')[1]" alt="" />
+                      <span> {{ selected.nzLabel.split('|')[0] }}</span>
+                    </div>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label nzFor="phoneNumber">{{ 'Phone Number' | i18n }}</nz-form-label>
+                <nz-form-control [nzErrorTip]="errorTpl">
+                  <nz-input-group nzSize="large" [nzAddOnBefore]="addOnBeforeTemplate">
+                    <ng-template #addOnBeforeTemplate>
+                      <nz-select nzShowSearch style="width: 120px" formControlName="phoneNumberPrefix" class="phone-select">
+                        <nz-option
+                          *ngFor="let item of phones"
+                          [nzValue]="item.prefix"
+                          [nzLabel]="(item?.addr ?? '') + ' &nbsp;&nbsp;' + item.prefix"
+                        ></nz-option>
+                      </nz-select>
+                    </ng-template>
+                    <input
+                      type="number"
+                      autocomplete="new-password"
+                      [ngModel]="customerTradeVersion?.phoneNumber"
+                      formControlName="phoneNumber"
+                      nz-input
+                    />
+                    <ng-template #errorTpl let-control>
+                      <ng-container *ngIf="control.hasError('required')">Please enter valid phone number</ng-container>
+                      <ng-container *ngIf="control.hasError('pattern')">Please enter valid phone number</ng-container>
+                    </ng-template>
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Email' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid Email!">
+                  <input
+                    nzSize="large"
+                    autocomplete="new-password"
+                    [ngModel]="customerTradeVersion?.customer_Email"
+                    nz-input
+                    placeholder="Email"
+                    formControlName="email"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label> Tax Identification Number</nz-form-label>
+                <nz-form-control nzErrorTip="Not valid Tax Payer Identification!">
+                  <input
+                    nzSize="large"
+                    autocomplete="new-password"
+                    [ngModel]="customerTradeVersion?.tpi"
+                    nz-input
+                    placeholder="Tax Identification Number "
+                    formControlName="tpi"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>National ID Number / Passport Number</nz-form-label>
+                <nz-form-control nzErrorTip="National ID Number / Passport Number">
+                  <input
+                    nzSize="large"
+                    maxlength="100"
+                    nz-input
+                    [ngModel]="customerTradeVersion?.customer_Passport"
+                    placeholder="National ID Number / Passport Number"
+                    formControlName="customer_Passport"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <!-- <div nz-col [nzSpan]="8">
+              <nz-form-item>
+                <nz-form-label>TIN </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter TIN Number">
+                  <input
+                    nzSize="large"
+                    maxlength="100"
+                    nz-input
+                    [ngModel]="customerVersion?.customer_TIN"
+                    placeholder="TIN"
+                    formControlName="customer_TIN"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div> -->
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item class="gender">
+                <nz-form-label>{{ 'Are you a U.S. citizen?' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please Select U.S. citizen Field">
+                  <nz-select formControlName="is_USCitizen" [ngModel]="customerTradeVersion?.is_USCitizen">
+                    <nz-option [nzValue]="false" nzLabel="No"></nz-option>
+                    <nz-option [nzValue]="true" nzLabel="Yes"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <!--politically exposed-->
+          <div nz-row [nzGutter]="24" class="no-margin">
+            <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="The input is not valid PEP!">
+                  <label class="pep" nz-checkbox [ngModel]="customerTradeVersion?.is_PEP" formControlName="is_PEP">
+                    {{ 'Are you a Politically Exposed Person(PEP), or closely related to a PEP?' | i18n }}
+                  </label>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24" style="margin-top: 25px">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Apartment/House Name' | i18n }}</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid address!">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerTradeVersion?.customer_Address"
+                    nz-input
+                    placeholder="{{ 'Apartment/House Name' | i18n }}"
+                    formControlName="customer_Address"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>Flat Number </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter Flat Number">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerTradeVersion?.customer_ApartmentNumber"
+                    nz-input
+                    placeholder="Flat Number"
+                    formControlName="customer_ApartmentNumber"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Street Name' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter the Street Name!">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerTradeVersion?.customer_Company"
+                    nz-input
+                    placeholder="Street name"
+                    formControlName="street"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Country' | i18n }}</nz-form-label>
+                <nz-form-control nzErrorTip="Please select valid Country!">
+                  <!-- <nz-select
+                    nzShowSearch
+                    nzSize="large"
+                    [ngModel]="customerVersion?.customer_Country"
+                    formControlName="country"
+                    nzSuffixIcon="caret-down"
+                    placeholder="Country"
+                  >
+                    <nz-option *ngFor="let item of nationality" [nzValue]="item.code" [nzLabel]="item.description"></nz-option>
+                  </nz-select> -->
+                  <nz-select
+                    formControlName="country"
+                    nzShowSearch
+                    nzSize="large"
+                    nzAllowClear
+                    [ngModel]="customerTradeVersion?.customer_Country"
+                    nzPlaceHolder="Select a Country"
+                    [nzCustomTemplate]="defaultTemplate"
+                  >
+                    <nz-option
+                      *ngFor="let item of nationality1"
+                      nzCustomContent
+                      [nzLabel]="item.description + '|' + item.img"
+                      [nzValue]="item.code"
+                    >
+                      <div class="nationality-header">
+                        <img [src]="item.img" alt="" />
+                        <span>{{ item.description }}</span>
+                      </div>
+                    </nz-option>
+                  </nz-select>
+                  <ng-template #defaultTemplate let-selected>
+                    <div class="nationality-header">
+                      <img [src]="selected.nzLabel.split('|')[1]" alt="" />
+                      <span> {{ selected.nzLabel.split('|')[0] }}</span>
+                    </div>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'State' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter the State!">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerTradeVersion?.customer_State"
+                    nz-input
+                    placeholder="State"
+                    formControlName="state"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'City' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street city!">
+                  <input
+                    nzSize="large"
+                    [ngModel]="customerTradeVersion?.customer_City"
+                    nz-input
+                    placeholder="City"
+                    formControlName="city"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Zip Code' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="Please enter the Zip Code!">
+                  <input
+                    type="text"
+                    nzSize="large"
+                    [ngModel]="customerTradeVersion?.customer_ZipCode"
+                    nz-input
+                    placeholder="{{ 'Zip Code' | i18n }}"
+                    maxlength="8"
+                    formControlName="zipCode"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row nzJustify="end">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24" class="text-right">
+              <!-- <button class="cpt-btn-border" nz-button>Cancel</button> -->
+              <button class="cpt-btn-primary-border" nz-button [nzType]="'primary'" (click)="personalSubmitTrader()">{{
+                'Submit' | i18n
+              }}</button>
+            </div>
+          </div>
+        </form>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+
+  <!-- ***************** -->
+  <div *ngIf="current === 1" class="subhead">
+    <div class="profile-personal-title">
+      <strong>{{ 'Upload Documents' | i18n }}</strong>
+    </div>
+
+    <nz-tabset class="trade-tab" [(nzSelectedIndex)]="uploadIndex">
+      <nz-tab nzTitle="Trader 1">
+        <form nz-form [formGroup]="documentForm" nzLayout="vertical" class="profile-files">
+          <div nz-row [nzGutter]="54">
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Document Type' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-select formControlName="documentType" style="width: 100%">
+                    <nz-option *ngIf="settingByClientParms?.kyC_SettingsIsPassport" nzValue="Passport" nzLabel="Passport"> </nz-option>
+                    <nz-option
+                      *ngIf="settingByClientParms?.kyC_SettingsIsDrivingLicense"
+                      nzValue="Driving License"
+                      nzLabel="Driving License"
+                    >
+                    </nz-option>
+                    <nz-option
+                      *ngIf="settingByClientParms?.kyC_SettingsIsNationalID"
+                      nzValue="National ID"
+                      nzLabel="National ID"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <nz-form-label>
+              <span class="gray" style="font-size: 10px">
+                Please ensure your proof of ID shows your full name, date of birth and its expiry date. Photo ID must be valid, clear and
+                colored copy. Document requirements starting from FILE TYPES - jpg, pdf, jpeg, png, tiff.
+                <br />
+                Max file size 12 Mb.
+              </span>
+            </nz-form-label>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentForm.value.documentType === 'Passport'">
+              <nz-form-item>
+                <nz-form-label
+                  >{{ 'Passport-Front *' | i18n }} <span class="gray">(Photo page - pdf, jpeg, png, tiff) </span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="passportBeforeUpload"
+                    [nzPreview]="handlePreview"
+                    [(nzFileList)]="passportFileList"
+                    (nzOnCancel)="passportPreviewVisible = false"
+                    nzListType="picture-card"
+                    [nzRemove]="handlePassportRemove"
+                    [nzShowButton]="passportFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="passportLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!passportLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">{{ 'Upload your' | i18n }}  </p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="passportPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="passportPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="passportPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentForm.value.documentType === 'Passport'">
+              <nz-form-item>
+                <nz-form-label>{{ 'Passport-Back' | i18n }} <span class="gray">(Photo page - pdf, jpeg, png, tiff) </span> </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="passportBackBeforeUpload"
+                    [nzPreview]="handleBackPreview"
+                    [(nzFileList)]="passportBackFileList"
+                    (nzOnCancel)="passportPreviewVisible = false"
+                    nzListType="picture-card"
+                    [nzRemove]="handlePassportBackRemove"
+                    [nzShowButton]="passportBackFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="passportBackLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!passportBackLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">{{ 'Upload your' | i18n }}  </p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="passportBackPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="passportBackPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="passportBackPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentForm.value.documentType === 'National ID'">
+              <nz-form-item>
+                <nz-form-label
+                  >{{ 'National ID card' | i18n }} <span class="gray"> (Front Side -jpg, pdf, jpeg, png, tiff) </span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="nationalBeforeUpload"
+                    [nzPreview]="handleNationalPreview"
+                    [(nzFileList)]="nationalFileList"
+                    nzListType="picture-card"
+                    [nzRemove]="handleNationalRemove"
+                    [nzShowButton]="nationalFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="nationalityLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!nationalityLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">Drop Front side of your National ID card</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="nationalPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="nationalPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="nationalPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentForm.value.documentType === 'National ID'">
+              <nz-form-item>
+                <nz-form-label
+                  >{{ 'National ID card' | i18n }} <span class="gray"> (Front Side -jpg, pdf, jpeg, png, tiff) </span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="nationalBackBeforeUpload"
+                    [nzPreview]="handleNationalBackPreview"
+                    [(nzFileList)]="nationalBackFileList"
+                    nzListType="picture-card"
+                    [nzRemove]="handleNationalBackRemove"
+                    [nzShowButton]="nationalBackFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="nationalityBackLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!nationalityBackLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">Drop Back side of your National ID card</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="nationalBackPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="nationalBackPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="nationalBackPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentForm.value.documentType === 'Driving License'">
+              <nz-form-item>
+                <nz-form-label>Driving License <span class="gray"> (Front Side - jpg, pdf, jpeg, png, tiff) </span> </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="drivingLicenseBeforeUpload"
+                    [nzPreview]="handleDrivingPreview"
+                    [(nzFileList)]="drivingLicenseFileList"
+                    nzListType="picture-card"
+                    [nzRemove]="handleDrivingRemove"
+                    [nzShowButton]="drivingLicenseFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="drivingLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!drivingLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">Drop Front side of your Driving License</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="drivingLicensePreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="drivingLicensePreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="drivingLicensePreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentForm.value.documentType === 'Driving License'">
+              <nz-form-item>
+                <nz-form-label>Driving License <span class="gray"> (Front Side - jpg, pdf, jpeg, png, tiff) </span> </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="drivingLicenseBackBeforeUpload"
+                    [nzPreview]="handleDrivingBackPreview"
+                    [(nzFileList)]="drivingLicenseBackFileList"
+                    nzListType="picture-card"
+                    [nzRemove]="handleDrivingBackRemove"
+                    [nzShowButton]="drivingLicenseBackFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="drivingBackLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!drivingBackLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">Drop Back side of your Driving License</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="drivingLicenseBackPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="drivingLicenseBackPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="drivingLicenseBackPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="24" *ngIf="statusCode || settingByClientParms?.kyC_IsAddressProof">
+              <nz-form-item>
+                <nz-form-label>Address Proof-Front * </nz-form-label>
+                <nz-form-label>
+                  <span class="gray" style="font-size: 10px">
+                    Proof of address must be less than 3 months old, clearly stating your name and full residential address (PO Boxes are
+                    not accepted). Document requirements starting from FILE TYPES - jpg, pdf, jpeg, png, tiff.
+                  </span>
+                </nz-form-label>
+
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="addessBeforeUpload"
+                    [nzPreview]="handleDrivingPreview"
+                    [(nzFileList)]="addessFileList"
+                    nzListType="picture-card"
+                    [nzRemove]="handleAdressRemove"
+                    [nzShowButton]="addessFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="adderssLoading ? 'loading' : ''"></i>
+                        <img *ngIf="!adderssLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">{{ 'Drop front side of your' | i18n }}</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="addressPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="addressPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="addressPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <!-- <div nz-col [nzSpan]="12" *ngIf="statusCode || settingByClientParms?.kyC_IsAddressProof">
+              <nz-form-item>
+                <nz-form-label>Address Proof-Back <span class="gray"> (Front Side - jpg, pdf, jpeg, png, tiff) </span> </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="addessBackBeforeUpload"
+                    [nzPreview]="handleDrivingPreview"
+                    [(nzFileList)]="addessBackFileList"
+                    nzListType="picture-card"
+                    [nzRemove]="handleAdressBackRemove"
+                    [nzShowButton]="addessBackFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="adderssBackLoading ? 'loading' : ''"></i>
+                        <img *ngIf="!adderssBackLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">{{ 'Drop front side of your' | i18n }} Address Proof</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="addressBackPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="addressBackPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="addressBackPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div> -->
+          </div>
+          <a (click)="imageRequirementModalComponent.showModal()">{{ 'Please check the image requirements here.' | i18n }}</a>
+          <div nz-row nzJustify="end">
+            <div nz-col [nzSpan]="24" class="text-right">
+              <button class="cpt-btn-border" nz-button (click)="createTplModal(tplTitle, tplContent, tplFooter)">{{
+                'Previous' | i18n
+              }}</button>
+              <button
+                class="cpt-btn-primary-border"
+                [disabled]="statusCode"
+                nz-button
+                [nzType]="'primary'"
+                [nzLoading]="loaddingSumbit"
+                (click)="documnetSubmit()"
+              >
+                {{ 'Submit' | i18n }}
+              </button>
+            </div>
+          </div>
+        </form>
+      </nz-tab>
+      <nz-tab nzTitle="Trader 2">
+        <form nz-form [formGroup]="documentFormTwo" nzLayout="vertical" class="profile-files">
+          <div nz-row [nzGutter]="54">
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Document Type' | i18n }} </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-select formControlName="documentType" style="width: 100%">
+                    <nz-option *ngIf="settingByClientParms?.kyC_SettingsIsPassport" nzValue="Passport" nzLabel="Passport"> </nz-option>
+                    <nz-option
+                      *ngIf="settingByClientParms?.kyC_SettingsIsDrivingLicense"
+                      nzValue="Driving License"
+                      nzLabel="Driving License"
+                    >
+                    </nz-option>
+                    <nz-option
+                      *ngIf="settingByClientParms?.kyC_SettingsIsNationalID"
+                      nzValue="National ID"
+                      nzLabel="National ID"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="24">
+            <nz-form-label>
+              <span class="gray" style="font-size: 10px">
+                Please ensure your proof of ID shows your full name, date of birth and its expiry date. Photo ID must be valid, clear and
+                colored copy. Document requirements starting from FILE TYPES - jpg, pdf, jpeg, png, tiff.
+                <br />
+                Max file size 12 Mb.
+              </span>
+            </nz-form-label>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentFormTwo.value.documentType === 'Passport'">
+              <nz-form-item>
+                <nz-form-label
+                  >{{ 'Passport-Front *' | i18n }} <span class="gray">(Photo page - pdf, jpeg, png, tiff) </span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="passportBeforeUploadTradeTwo"
+                    [nzPreview]="handlePreview"
+                    [(nzFileList)]="passportFileListTradeTwo"
+                    (nzOnCancel)="passportPreviewVisible = false"
+                    nzListType="picture-card"
+                    [nzRemove]="handlePassportRemove"
+                    [nzShowButton]="passportFileListTradeTwo.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="passportLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!passportLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">{{ 'Upload your' | i18n }} </p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="passportPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="passportPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="passportPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentFormTwo.value.documentType === 'Passport'">
+              <nz-form-item>
+                <nz-form-label>{{ 'Passport-Back' | i18n }} <span class="gray">(Photo page - pdf, jpeg, png, tiff) </span> </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="passportBackBeforeUploadTradeTwo"
+                    [nzPreview]="handleBackPreview"
+                    [(nzFileList)]="passportBackFileListTradeTwo"
+                    (nzOnCancel)="passportPreviewVisible = false"
+                    nzListType="picture-card"
+                    [nzRemove]="handlePassportBackRemove"
+                    [nzShowButton]="passportBackFileListTradeTwo.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="passportBackLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!passportBackLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">{{ 'Upload your' | i18n }}  </p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="passportBackPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="passportBackPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="passportBackPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentFormTwo.value.documentType === 'National ID'">
+              <nz-form-item>
+                <nz-form-label
+                  >{{ 'National ID card' | i18n }} <span class="gray"> (Front Side -jpg, pdf, jpeg, png, tiff) </span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="nationalBeforeUploadTradeTwo"
+                    [nzPreview]="handleNationalPreview"
+                    [(nzFileList)]="nationalFileListTradeTwo"
+                    nzListType="picture-card"
+                    [nzRemove]="handleNationalRemove"
+                    [nzShowButton]="nationalFileListTradeTwo.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="nationalityLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!nationalityLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">Drop Front side of your National ID card</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="nationalPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="nationalPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="nationalPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentFormTwo.value.documentType === 'National ID'">
+              <nz-form-item>
+                <nz-form-label
+                  >{{ 'National ID card' | i18n }} <span class="gray"> (Front Side -jpg, pdf, jpeg, png, tiff) </span>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="nationalBackBeforeUploadTradeTwo"
+                    [nzPreview]="handleNationalBackPreview"
+                    [(nzFileList)]="nationalBackFileListTradeTwo"
+                    nzListType="picture-card"
+                    [nzRemove]="handleNationalBackRemove"
+                    [nzShowButton]="nationalBackFileListTradeTwo.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="nationalityBackLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!nationalityBackLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">Drop Back side of your National ID card</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="nationalBackPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="nationalBackPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="nationalBackPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentFormTwo.value.documentType === 'Driving License'">
+              <nz-form-item>
+                <nz-form-label>Driving License <span class="gray"> (Front Side - jpg, pdf, jpeg, png, tiff) </span> </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="drivingLicenseBeforeUploadTradeTwo"
+                    [nzPreview]="handleDrivingPreview"
+                    [(nzFileList)]="drivingLicenseFileListTradeTwo"
+                    nzListType="picture-card"
+                    [nzRemove]="handleDrivingRemove"
+                    [nzShowButton]="drivingLicenseFileListTradeTwo.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="drivingLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!drivingLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">Drop Front side of your Driving License</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="drivingLicensePreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="drivingLicensePreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="drivingLicensePreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentFormTwo.value.documentType === 'Driving License'">
+              <nz-form-item>
+                <nz-form-label>Driving License <span class="gray"> (Front Side - jpg, pdf, jpeg, png, tiff) </span> </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="drivingLicenseBackBeforeUploadTradeTwo"
+                    [nzPreview]="handleDrivingBackPreview"
+                    [(nzFileList)]="drivingLicenseBackFileListTradeTwo"
+                    nzListType="picture-card"
+                    [nzRemove]="handleDrivingBackRemove"
+                    [nzShowButton]="drivingLicenseBackFileListTradeTwo.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="drivingBackLoading ? 'loading' : ''"> </i>
+                        <img *ngIf="!drivingBackLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">Drop Back side of your Driving License</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="drivingLicenseBackPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="drivingLicenseBackPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="drivingLicenseBackPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="24" *ngIf="statusCode || settingByClientParms?.kyC_IsAddressProof">
+              <nz-form-item>
+                <nz-form-label>Address Proof-Front * </nz-form-label>
+                <nz-form-label>
+                  <span class="gray" style="font-size: 10px">
+                    Proof of address must be less than 3 months old, clearly stating your name and full residential address (PO Boxes are
+                    not accepted). Document requirements starting from FILE TYPES - jpg, pdf, jpeg, png, tiff.
+                  </span>
+                </nz-form-label>
+
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="addessBeforeUpload"
+                    [nzPreview]="handleDrivingPreview"
+                    [(nzFileList)]="addessFileList"
+                    nzListType="picture-card"
+                    [nzRemove]="handleAdressRemove"
+                    [nzShowButton]="addessFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="adderssLoading ? 'loading' : ''"></i>
+                        <img *ngIf="!adderssLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">{{ 'Drop front side of your' | i18n }} </p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="addressPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="addressPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="addressPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <!-- <div nz-col [nzSpan]="12" *ngIf="statusCode || settingByClientParms?.kyC_IsAddressProof">
+              <nz-form-item>
+                <nz-form-label>Address Proof-Back <span class="gray"> (Front Side - jpg, pdf, jpeg, png, tiff) </span> </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                  <nz-upload
+                    nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                    [nzBeforeUpload]="addessBackBeforeUpload"
+                    [nzPreview]="handleDrivingPreview"
+                    [(nzFileList)]="addessBackFileList"
+                    nzListType="picture-card"
+                    [nzRemove]="handleAdressBackRemove"
+                    [nzShowButton]="addessBackFileList.length < 1"
+                  >
+                    <div class="profile-upload-icon">
+                      <p class="ant-upload-drag-icon">
+                        <i nz-icon [nzType]="adderssBackLoading ? 'loading' : ''"></i>
+                        <img *ngIf="!adderssBackLoading" src="assets/images/Profile-upload.svg" alt="" />
+                      </p>
+                      <p class="ant-upload-text" style="margin-top: 15px">{{ 'Drop front side of your' | i18n }} Address Proof</p>
+                    </div>
+                  </nz-upload>
+                  <nz-modal
+                    [nzVisible]="addressBackPreviewVisible"
+                    [nzContent]="modalContent"
+                    [nzFooter]="null"
+                    (nzOnCancel)="addressBackPreviewVisible = false"
+                  >
+                    <ng-template #modalContent>
+                      <img [src]="addressBackPreviewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                  </nz-modal>
+                </nz-form-control>
+              </nz-form-item>
+            </div> -->
+          </div>
+          <a (click)="imageRequirementModalComponent.showModal()">{{ 'Please check the image requirements here.' | i18n }}</a>
+          <div nz-row nzJustify="end">
+            <div nz-col [nzSpan]="24" class="text-right">
+              <!-- <button class="cpt-btn-border" nz-button (click)="createTplModal(tplTitle, tplContent, tplFooter)">{{
+                'Previous' | i18n
+              }}</button> -->
+              <button
+                class="cpt-btn-primary-border"
+                [disabled]="statusCode"
+                nz-button
+                [nzType]="'primary'"
+                [nzLoading]="loaddingSumbit"
+                (click)="documnetSubmitTradeTwo()"
+              >
+                {{ 'Submit' | i18n }}
+              </button>
+            </div>
+          </div>
+        </form>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+
+  <!-- ************************ -->
+  <div *ngIf="current === 2" class="subhead">
+    <div class="profile-personal-title">
+      <strong>{{ 'Questionnaire' | i18n }}</strong>
+    </div>
+    <nz-tabset class="trade-tab" [(nzSelectedIndex)]="questionIndex">
+      <nz-tab nzTitle="Trader 1">
+        <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form mt-4 ml-6" nzLayout="vertical">
+          <div *ngFor="let item of questionsAnswer; let ix = index">
+            <div *ngIf="item.type === 'Subjective'">
+              <nz-form-item *ngFor="let data of item.answers; let i = index">
+                <nz-form-label>
+                  <div class="d-flex align-items-center">
+                    <span class="question-icon">{{ item.sNo }}</span> <span class="question-title">{{ item.title }}</span>
+                  </div>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Please type valid answer!">
+                  <div class="question-control">
+                    <textarea [formControlName]="'Subjective|' + item.questionCode" nz-input placeholder=""></textarea>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div *ngIf="item.type === 'MultipleChoice'">
+              <nz-form-item>
+                <nz-form-label>
+                  <div class="d-flex align-items-center">
+                    <span class="question-icon">{{ item.sNo }}</span> <span class="question-title">{{ item.title }}</span>
+                  </div>
+                </nz-form-label>
+                <nz-form-control [nzErrorTip]="ibanErrorTpl">
+                  <div class="question-control">
+                    <nz-checkbox-group [formControlName]="'MultipleChoice|' + item.questionCode"></nz-checkbox-group>
+                  </div>
+                </nz-form-control>
+                <ng-template #ibanErrorTpl let-control>
+                  <ng-container *ngIf="control.hasError('required')">Please select valid answer!</ng-container>
+                  <ng-container *ngIf="control.hasError('pattern')"> IBAN number contains up to 34 alphanumeric characters! </ng-container>
+                </ng-template>
+              </nz-form-item>
+            </div>
+            <div *ngIf="item.type === 'SingleChoice'">
+              <nz-form-item>
+                <nz-form-label>
+                  <div class="d-flex align-items-center">
+                    <span class="question-icon">{{ item.sNo }}</span> <span class="question-title">{{ item.title }}</span>
+                  </div>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Please select valid answer!">
+                  <div class="question-control">
+                    <nz-radio-group [formControlName]="'SingleChoice|' + item.questionCode" (ngModelChange)="onOther($event)">
+                      <label
+                        nz-radio
+                        *ngFor="let ans of item.answers"
+                        [nzValue]="ans.answerID + '|' + ans.title + '|' + item.questionCode"
+                        >{{ ans.title }}</label
+                      >
+                    </nz-radio-group>
+
+                    <textarea
+                      *ngIf="item.other"
+                      [formControlName]="'Other|' + item.questionCode"
+                      nz-input
+                      placeholder="Enter Other"
+                      [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+                    ></textarea>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row nzJustify="end">
+            <div nz-col [nzSpan]="24" class="text-right">
+              <!-- <button class="cpt-btn-border" nz-button>Cancel</button> -->
+              <button class="cpt-btn-border" nz-button (click)="createTplModal(tplTitle, tplContent, tplFooter)">{{
+                'Previous' | i18n
+              }}</button>
+              <button class="cpt-btn-primary-border" nz-button [nzType]="'primary'" (click)="onSubmit()">{{ 'Submit' | i18n }}</button>
+            </div>
+          </div>
+        </form>
+      </nz-tab>
+      <nz-tab nzTitle="Trader 2">
+        <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form mt-4 ml-6" nzLayout="vertical">
+          <div *ngFor="let item of questionsAnswer; let ix = index">
+            <div *ngIf="item.type === 'Subjective'">
+              <nz-form-item *ngFor="let data of item.answers; let i = index">
+                <nz-form-label>
+                  <div class="d-flex align-items-center">
+                    <span class="question-icon">{{ item.sNo }}</span> <span class="question-title">{{ item.title }}</span>
+                  </div>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Please type valid answer!">
+                  <div class="question-control">
+                    <textarea [formControlName]="'Subjective|' + item.questionCode" nz-input placeholder=""></textarea>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div *ngIf="item.type === 'MultipleChoice'">
+              <nz-form-item>
+                <nz-form-label>
+                  <div class="d-flex align-items-center">
+                    <span class="question-icon">{{ item.sNo }}</span> <span class="question-title">{{ item.title }}</span>
+                  </div>
+                </nz-form-label>
+                <nz-form-control [nzErrorTip]="ibanErrorTpl">
+                  <div class="question-control">
+                    <nz-checkbox-group [formControlName]="'MultipleChoice|' + item.questionCode"></nz-checkbox-group>
+                  </div>
+                </nz-form-control>
+                <ng-template #ibanErrorTpl let-control>
+                  <ng-container *ngIf="control.hasError('required')">Please select valid answer!</ng-container>
+                  <ng-container *ngIf="control.hasError('pattern')"> IBAN number contains up to 34 alphanumeric characters! </ng-container>
+                </ng-template>
+              </nz-form-item>
+            </div>
+            <div *ngIf="item.type === 'SingleChoice'">
+              <nz-form-item>
+                <nz-form-label>
+                  <div class="d-flex align-items-center">
+                    <span class="question-icon">{{ item.sNo }}</span> <span class="question-title">{{ item.title }}</span>
+                  </div>
+                </nz-form-label>
+                <nz-form-control nzErrorTip="Please select valid answer!">
+                  <div class="question-control">
+                    <nz-radio-group [formControlName]="'SingleChoice|' + item.questionCode" (ngModelChange)="onOther($event)">
+                      <label
+                        nz-radio
+                        *ngFor="let ans of item.answers"
+                        [nzValue]="ans.answerID + '|' + ans.title + '|' + item.questionCode"
+                        >{{ ans.title }}</label
+                      >
+                    </nz-radio-group>
+
+                    <textarea
+                      *ngIf="item.other"
+                      [formControlName]="'Other|' + item.questionCode"
+                      nz-input
+                      placeholder="Enter Other"
+                      [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+                    ></textarea>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row nzJustify="end">
+            <div nz-col [nzSpan]="24" class="text-right">
+              <!-- <button class="cpt-btn-border" nz-button>Cancel</button> -->
+              <!-- <button class="cpt-btn-border" nz-button (click)="createTplModal(tplTitle, tplContent, tplFooter)">{{
+                'Previous' | i18n
+              }}</button> -->
+              <button class="cpt-btn-primary-border" nz-button [nzType]="'primary'" (click)="onSubmitFinal()">{{
+                'Submit' | i18n
+              }}</button>
+            </div>
+          </div>
+        </form>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+  <ng-template #tplTitle>
+    <span>Are you sure to cancel?</span>
+  </ng-template>
+  <ng-template #tplContent let-params>
+    <div class="d-flex align-items-center" style="flex-direction: column">
+      <img src="assets/images/waring.svg" alt="waring" />
+      <b style="margin-top: 12px; text-align: center">All information filled in this page will be lost if you cancel!</b>
+    </div>
+  </ng-template>
+  <ng-template #tplFooter let-ref="modalRef">
+    <button nz-button (click)="nzOnCancel(ref)">Yes, Cancel</button>
+    <button nz-button nzType="primary" (click)="ref.destroy()">Continue Filling </button>
+  </ng-template>
+  <app-image-requirement-modal #imageRequirementModalComponent></app-image-requirement-modal>
+</nz-card>

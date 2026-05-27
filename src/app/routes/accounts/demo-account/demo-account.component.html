@@ -1,0 +1,515 @@
+<div nz-row [nzGutter]="16">
+  <div
+    nz-col
+    class="gutter-row"
+    nz-col
+    nzMd="12"
+    nzLg="8"
+    nzXl="8"
+    nzXs="24"
+    (click)="showModal()"
+  >
+    <div class="trading-account">
+      <div class="trading-content">
+        <img src="assets/images/vuesax-bold-status-up.svg" width="30px" />
+        <span class="trading-title">{{ 'New demo Account' | i18n }}</span>
+      </div>
+      <span class="right-icon" nz-icon nzType="right" nzTheme="outline"></span>
+    </div>
+  </div>
+</div>
+
+<nz-card class="table-card">
+  <nz-collapse
+    [nzBordered]="false"
+    style="margin-bottom: 18px"
+    class="filter-form"
+  >
+    <nz-collapse-panel
+      [nzHeader]="headerTemplate"
+      [nzShowArrow]="false"
+      [nzActive]="isCollapse"
+      (nzActiveChange)="collapseChange($event)"
+    >
+      <ng-template #headerTemplate>
+        <div class="header-title">
+          <span>{{ 'Demo Accounts' | i18n }}</span>
+          <span class="filter">
+            <img
+              src="assets/images/icons/Filter_icon.svg"
+              [class]="isCollapse ? '' : 'rotate-90'"
+              alt="arrow"
+            />
+            {{ 'Filter' | i18n }}
+          </span>
+        </div>
+      </ng-template>
+      <form
+        nz-form
+        [formGroup]="formFilter"
+        (ngSubmit)="onfilter()"
+        nzLayout="vertical"
+      >
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'"
+                >{{ 'Account Number' | i18n }}
+              </nz-form-label>
+              <nz-form-control [nzErrorTip]="errorTpl">
+                <nz-input-number
+                  formControlName="account_Login"
+                  nzPlaceHolder="{{ 'Account Number' | i18n }}"
+                  [nzMin]="1"
+                  [nzStep]="1"
+                >
+                </nz-input-number>
+                <ng-template #errorTpl let-control>
+                  <ng-container *ngIf="control.hasError('pattern')"
+                    >{{ 'Max 9 digits are allowed' | i18n }}
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'"
+                >{{ 'Status' | i18n }}
+              </nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  formControlName="status"
+                  nzName="currency"
+                  nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option
+                    nzValue=""
+                    nzLabel="{{ 'Please Select' | i18n }}"
+                  ></nz-option>
+                  <nz-option
+                    nzValue="ToOpen"
+                    nzLabel="{{ 'To Open' | i18n }}"
+                  ></nz-option>
+                  <nz-option
+                    nzValue="Opened"
+                    nzLabel="{{ 'Opened' | i18n }}"
+                  ></nz-option>
+                  <nz-option
+                    nzValue="Disabled"
+                    nzLabel="{{ 'Disabled' | i18n }}"
+                  ></nz-option>
+                  <!-- <nz-option nzValue="ReadOnly" nzLabel="ReadOnly"></nz-option> -->
+                  <nz-option
+                    nzValue="Cancelled"
+                    nzLabel="{{ 'Cancelled' | i18n }}"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'"
+                >{{ 'Date' | i18n }}
+              </nz-form-label>
+              <nz-form-control>
+                <nz-range-picker
+                  [nzFormat]="dateFormat"
+                  formControlName="timeline"
+                ></nz-range-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="filter-flex">
+            <button
+              class="filter-reset-btn"
+              nz-button
+              nzType="default"
+              (click)="reset()"
+            >
+              {{ 'Reset' | i18n }}
+            </button>
+            <button class="filter-search-btn" nz-button nzType="primary">
+              {{ 'Search' | i18n }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </nz-collapse-panel>
+  </nz-collapse>
+
+  <div class="filter-content">
+    <div class="data">
+      <nz-table
+        #fixedTable
+        [nzData]="account"
+        [nzLoading]="loading"
+        [nzPageIndex]="page"
+        [nzTotal]="totalnumber"
+        nzShowSizeChanger
+        nzShowQuickJumper
+        [nzFrontPagination]="false"
+        [nzPageSize]="pageSize"
+        (nzPageIndexChange)="onPageIndexChange($event)"
+        (nzPageSizeChange)="onCurrentPageDataChange($event)"
+        (nzQueryParams)="onQueryParamsChange($event)"
+        style="
+          display: block;
+          width: 100%;
+          overflow-x: auto;
+          white-space: nowrap;
+        "
+      >
+        <thead>
+          <tr>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="action"
+              nzRight
+              *ngIf="menu_disable"
+            >
+              {{ 'Actions' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="account_Login"
+              [nzSortFn]="true"
+            >
+              {{ 'Account Number' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="account_Type"
+              [nzSortFn]="true"
+            >
+              {{ 'Type' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="trading_Platform"
+              [nzSortFn]="true"
+            >
+              {{ 'Platform' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="trading_Server"
+              [nzSortFn]="true"
+            >
+              {{ 'Server' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="currency" [nzSortFn]="true">
+              {{ 'Currency' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="credit" [nzSortFn]="true">
+              {{ 'Credit' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="balance" [nzSortFn]="true">
+              {{ 'Balance' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="equity" [nzSortFn]="true">
+              {{ 'Equity' | i18n }}
+            </th>
+            <!-- <th appDynamicColumnWidth nzColumnKey="openPrice">{{ 'Realized' | i18n }}</th>
+            <th appDynamicColumnWidth nzColumnKey="openPrice">{{ 'Unrealized' | i18n }}</th> -->
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="account_Leverage"
+              [nzSortFn]="true"
+            >
+              {{ 'Leverage' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="account_OpenDate"
+              [nzSortFn]="true"
+            >
+              {{ 'Open Account Time' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="account_UpdateDate"
+              [nzSortFn]="true"
+            >
+              {{ 'Last Activity' | i18n }}
+            </th>
+
+            <th appDynamicColumnWidth nzColumnKey="status" [nzSortFn]="true">
+              {{ 'Status' | i18n }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of account">
+            <td *ngIf="menu_disable">
+              <div class="action-wrapper">
+                <ul class="action-list">
+                  <!-- <li (click)="toDepoist(data)" *ngIf="userInfo.userType === 'Customer'">
+                    <a nzTooltipTitle="Deposit" nzTooltipPlacement="bottom" nz-tooltip>
+                      <img src="assets/images/AccountsDeposit.svg" alt="deposit" />
+                    </a>
+                  </li> -->
+
+                  <li (click)="goView(data.account_Login)">
+                    <a
+                      nzTooltipTitle="View Accounts"
+                      nzTooltipPlacement="bottom"
+                      nz-tooltip
+                    >
+                      <img
+                        src="assets/images/view.svg"
+                        alt="view"
+                        style="width: 23px"
+                      />
+                    </a>
+                  </li>
+
+                  <li
+                    (click)="changePasswordModalComponent.showModal(data)"
+                    *ngIf="userInfo?.user_Type === 'Customer'"
+                  >
+                    <a
+                      nzTooltipTitle="Change Password"
+                      nzTooltipPlacement="bottom"
+                      nz-tooltip
+                    >
+                      <img
+                        src="assets/images/AccountsPassword.svg"
+                        alt="password"
+                      />
+                    </a>
+                  </li>
+
+                  <!-- <li (click)="changeLeverageModalComponent.showModal(data)">
+                    <a
+                      nzTooltipTitle="Leverage change"
+                      nzTooltipPlacement="bottom"
+                      nz-tooltip
+                    >
+                      <img
+                        src="assets/images/AccountsLeveragechange.svg"
+                        alt="leverage"
+                      />
+                    </a>
+                  </li> -->
+                  <!-- <li>
+                    <div class="action-icon"></div>
+                    <ul class="sub-action-list">
+                      <li><a>Deposit Now</a></li>
+                      <li (click)="changePasswordModalComponent.showModal(data)"><a>Change Password</a></li>
+                      <li (click)="changeLeverageModalComponent.showModal(data)"><a>Change Leverage</a></li>
+                    </ul>
+                  </li> -->
+                </ul>
+              </div>
+            </td>
+            <td>{{ data.account_Login }}</td>
+            <td>{{ data.account_Type }}</td>
+            <td>{{ data.trading_Platform }}</td>
+            <td>{{ data.trading_Server }}</td>
+            <td>{{ data.currency }}</td>
+            <td>{{ data.credit }}</td>
+            <td>{{ data.balance }}</td>
+            <td>{{ data.equity }}</td>
+            <!-- <td> {{ data.realizedPL }} </td>
+            <td> {{ data.unRealizedPL }} </td> -->
+            <td>{{ data.account_Leverage }}</td>
+            <td>{{ data.account_OpenDate | date: 'short' }}</td>
+            <td>
+              {{ data.account_UpdateDate | date: 'short' }}
+            </td>
+            <td>{{ data.account_Status | i18n }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <div class="total-count">
+        <ng-container *ngIf="totaData">
+          <div class="count">
+            {{ 'Total Count' | i18n }} :
+            <span class="bold"> {{ totaData }} </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nz-card>
+
+<app-change-password-modal #changePasswordModalComponent>
+</app-change-password-modal>
+<app-change-leverage-modal
+  #changeLeverageModalComponent
+  (toParent)="getListAccount(1, pageSize, sortBy, sortOrder)"
+>
+</app-change-leverage-modal>
+<!-- <app-setting-modal #settingModalComponent></app-setting-modal> -->
+
+<ng-template #extraTemplate>
+  <div class="btn-wrap accounts_btn">
+    <a
+      class="cpt-primary-btn"
+      nz-button
+      nzType="primary"
+      (click)="settingModalComponent.showModal(1)"
+    >
+      <img
+        src="assets/images/trading-platform.svg"
+        alt="trading"
+        style="width: 14px; vertical-align: middle; margin-right: 5px"
+      />
+      {{ 'Trading Platform' | i18n }}
+    </a>
+    <a
+      class="cpt-primary-btn"
+      nz-button
+      nzType="primary"
+      [routerLink]="langs + '/account-list/account-open'"
+    >
+      <img
+        src="assets/images/open-account.svg"
+        alt="account"
+        style="width: 14px; vertical-align: middle; margin-right: 5px"
+      />
+      <ng-container *ngIf="isDemo">{{
+        'Open Demo Account' | i18n
+      }}</ng-container>
+      <ng-container *ngIf="!isDemo">{{
+        'Open New Account' | i18n
+      }}</ng-container>
+    </a>
+  </div>
+</ng-template>
+
+<!----------swap free modal-------------->
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="tplTitle"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzWidth]="500"
+  nzClassName="cpt-modal"
+  [nzOkLoading]="loader"
+  (nzOnCancel)="handleCancel()"
+  [nzFooter]="null"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitle>
+    <div class="nz-title-template">
+      <span>{{ 'New Demo Account' | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="transfer">
+      <form nz-form [formGroup]="formOpenAccount">
+        <div nz-row [nzGutter]="24">
+          <div class="mb-4" nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+            <nz-form-item class="mb-4">
+              <nz-form-control
+                nzErrorTip="{{ 'Please Select Trading Platform' | i18n }}"
+              >
+                <label>{{ 'Trading Platform' | i18n }}</label>
+                <nz-select
+                  formControlName="Trading_Platform"
+                  nzName="Trading_Platform"
+                  nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                  class="ant-select-custom"
+                  nzDisabled
+                >
+                  <nz-option nzValue="MT5" nzLabel="MT5"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="mb-4" nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+            <nz-form-item class="mb-4">
+              <nz-form-control nzErrorTip="{{ 'selectType' | i18n }}">
+                <label>{{ 'ACCOUNT_TYPE' | i18n }}</label>
+                <nz-select
+                  formControlName="account_Type"
+                  nzPlaceHolder="{{ 'SELECT' | i18n }}"
+                  class="ant-select-custom"
+                  nzDisabled
+                >
+                  <nz-option nzValue="demo" nzLabel="demo"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="mb-4" nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+            <nz-form-item class="mb-4">
+              <nz-form-control nzErrorTip="{{ 'selectCurrency' | i18n }}">
+                <label>{{ 'Currency' | i18n }}</label>
+                <nz-select
+                  formControlName="currency"
+                  nzPlaceHolder="{{ 'SELECT' | i18n }}"
+                  class="ant-select-custom"
+                  nzDisabled
+                >
+                  <nz-option nzValue="USD" nzLabel="USD"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="mb-4" nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+            <nz-form-item class="mb-4">
+              <nz-form-control nzErrorTip="{{ 'selecrtLeverage' | i18n }}">
+                <label>{{ 'Leverage' | i18n }}</label>
+                <nz-select
+                  formControlName="account_Leverage"
+                  nzName="accountType"
+                  nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option nzValue="50" nzLabel="1:50"></nz-option>
+                  <nz-option nzValue="100" nzLabel="1:100"></nz-option>
+                  <nz-option nzValue="200" nzLabel="1:200"></nz-option>
+                  <nz-option nzValue="400" nzLabel="1:400"></nz-option>
+                  <nz-option nzValue="500" nzLabel="1:500"></nz-option>
+                  <nz-option nzValue="1000" nzLabel="1:1000"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="mb-4" nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+            <nz-form-item class="mb-4">
+              <nz-form-control nzErrorTip="{{ 'demo_deposit_amount' | i18n }}">
+                <label>{{ 'deposit_fund' | i18n }}</label>
+                <nz-select
+                  formControlName="init_Balance"
+                  nzName="init_Balance"
+                  nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option nzValue="500" nzLabel="500"></nz-option>
+                  <nz-option nzValue="1000" nzLabel="1000"></nz-option>
+                  <nz-option nzValue="5000" nzLabel="5000"></nz-option>
+                  <nz-option nzValue="10000" nzLabel="10000"></nz-option>
+                  <nz-option nzValue="20000" nzLabel="20000"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div class="nz-title-template" id="print-btns">
+          <button nz-button nzType="text" (click)="handleCancel()">
+            {{ 'Cancel' | i18n }}
+          </button>
+          <button
+            nz-button
+            [nzLoading]="loader"
+            nzType="primary"
+            class="radius-btn dep-btn h-40 mr-10 px-2"
+            (click)="submitForm()"
+          >
+            {{ 'Add' | i18n }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+</nz-modal>

@@ -1,0 +1,457 @@
+<!--
+this is fund page
+ @updatetime 2021/11/18
+ @author khurshed
+-->
+
+<nz-card>
+<div class="wallet-hero">
+  <div class="wallet-hero-inner">
+
+    <!-- LEFT -->
+    <div class="wallet-left">
+      <div class="balance-title">{{ 'My Balance' | i18n }}</div>
+
+      <div *ngIf="balanceLoader; else loadBalance" class="balance-loading">
+        <i nz-icon nzType="loading"></i>
+      </div>
+
+      <ng-template #loadBalance>
+        <ng-container *ngFor="let item of fundList | keyvalue">
+          <div class="balance-row">
+            <span class="balance-amount">
+              {{ item.value ? item.value.toFixed(2) : '0.00' }}
+            </span>
+            <span class="balance-currency">{{ item.key }}</span>
+          </div>
+        </ng-container>
+      </ng-template>
+
+      <!-- ACTION PILLS -->
+      <div class="wallet-actions">
+
+        <a class="wallet-btn deposit" (click)="toLink('deposit')">
+          <span class="ic">
+            <img src="assets/images/funds/Deposit_icon.svg" alt="deposit" />
+          </span>
+          <span>{{ 'Deposit' | i18n }}</span>
+        </a>
+
+        <a
+          class="wallet-btn withdraw"
+          (click)="toLink('withdraw')"
+          [ngClass]="menu_disable ? 'menu-enable' : 'menu-disable'"
+        >
+          <span class="ic">
+            <img src="assets/images/funds/Withdraw_icon.svg" alt="withdraw" />
+          </span>
+          <span>{{ 'Withdraw' | i18n }}</span>
+        </a>
+
+        <a
+          class="wallet-btn transfer"
+          *ngIf="basicHide"
+          (click)="toLink('transfer')"
+          [ngClass]="menu_disable ? 'menu-enable' : 'menu-disable'"
+        >
+          <span class="ic">
+            <img src="assets/images/funds/Transfer_icon.svg" alt="transfer" />
+          </span>
+          <span>{{ 'Transfer' | i18n }}</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- RIGHT (pattern area) -->
+    <div class="wallet-right" aria-hidden="true"></div>
+
+  </div>
+</div>
+
+  <!-- code changes for CPTI-128 end -->
+
+  <!-- <div class="title-header">{{ 'Wallet History' | i18n }}</div> -->
+  <nz-collapse
+    [nzBordered]="false"
+    style="margin-bottom: 18px"
+    class="filter-form"
+  >
+    <nz-collapse-panel
+      [nzHeader]="headerTemplate"
+      [nzShowArrow]="false"
+      [nzActive]="isCollapse"
+      (nzActiveChange)="collapseChange($event)"
+    >
+      <ng-template #headerTemplate>
+        <div class="header-title">
+          <span>{{ 'My Funds History' | i18n }}</span>
+          <span class="filter">
+            <img
+              src="assets/images/icons/Filter_icon.svg"
+              [class]="isCollapse ? '' : 'rotate-90'"
+              alt="arrow"
+            />
+            {{ 'Filter' | i18n }}
+          </span>
+        </div>
+      </ng-template>
+      <form
+        nz-form
+        [formGroup]="formFilter"
+        (ngSubmit)="onfilter()"
+        nzLayout="vertical"
+      >
+        <div nz-row [nzGutter]="24" [nzAlign]="'middle'" nzJustify="start">
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'">
+                {{ 'Bill No' | i18n }}
+              </nz-form-label>
+              <nz-form-control>
+                <nz-input-number
+                  formControlName="billNo"
+                  nzPlaceHolder="{{ 'Bill No.' | i18n }}"
+                  [nzMin]="1"
+                  [nzStep]="1"
+                >
+                </nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>{{ 'Accounts' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <input
+                  nz-input
+                  placeholder="{{ 'Accounts' | i18n }}"
+                  formControlName="transactionAmount"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>{{ 'Currency' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  formControlName="currency"
+                  nzPlaceHolder="{{ 'All' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option nzValue="" nzLabel="All"></nz-option>
+                  <nz-option
+                    *ngFor="let item of currencies"
+                    [nzValue]="item.code"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>{{ 'Date' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-range-picker
+                  [nzFormat]="dateFormat"
+                  formControlName="timeline"
+                  #timeline
+                >
+                </nz-range-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>{{ 'Transaction Type' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  formControlName="transationType"
+                  nzSuffixIcon="caret-down"
+                  nzPlaceHolder="{{ 'All' | i18n }}"
+                  (ngModelChange)="transationTypeChange($event)"
+                >
+                  <nz-option
+                    *ngFor="let item of allTransactionType"
+                    [nzValue]="item.code"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>{{ 'Status' | i18n }} </nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  formControlName="status"
+                  nzSuffixIcon="caret-down"
+                  nzPlaceHolder="{{ 'All' | i18n }}"
+                >
+                  <nz-option
+                    *ngFor="let item of allType"
+                    [nzValue]="item.id"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col class="btn-wrapper">
+            <button
+              class="filter-reset-btn"
+              nz-button
+              nzType="default"
+              (click)="reset()"
+            >
+              {{ 'Reset' | i18n }}
+            </button>
+            <button class="filter-search-btn" nz-button nzType="primary">
+              {{ 'Search' | i18n }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </nz-collapse-panel>
+  </nz-collapse>
+
+  <!--listing data start-->
+  <div class="filter-content">
+    <div class="data">
+      <nz-table
+        [nzData]="users"
+        [nzLoading]="loading"
+        [nzPageIndex]="page"
+        [nzTotal]="totalnumber"
+        nzShowSizeChanger
+        nzShowQuickJumper
+        [nzPageSize]="pageSize"
+        [nzFrontPagination]="false"
+        (nzPageIndexChange)="onPageIndexChange($event)"
+        (nzPageSizeChange)="onCurrentPageDataChange($event)"
+        (nzQueryParams)="onQueryParamsChange($event)"
+      >
+        <thead>
+          <tr>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="transaction_ID"
+              [nzSortFn]="true"
+            >
+              {{ 'Bill No' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="virtualWallet_TransactionDate"
+              [nzSortFn]="true"
+            >
+              {{ 'Date' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="virtualWallet_TransactionType"
+              [nzSortFn]="true"
+            >
+              {{ 'Type' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="virtual_WalletTransferSource"
+              [nzSortFn]="true"
+            >
+              {{ 'From Account' | i18n }}
+            </th>
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="virtual_WalletTransferDestination"
+              [nzSortFn]="true"
+            >
+              {{ 'To Account' | i18n }}
+            </th>
+
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="wT_PaymentReference_ID"
+              [nzSortFn]="true"
+            >
+              {{ 'Payment reference ID' | i18n }}
+            </th>
+
+            <th
+              appDynamicColumnWidth
+              nzColumnKey="virtualWallet_TransactionAmount"
+              [nzSortFn]="true"
+            >
+              {{ 'Amount' | i18n }}
+            </th>
+            <!-- <th appDynamicColumnWidth nzColumnKey="currency" [nzSortFn]="true">
+              {{ 'Currency' | i18n }}
+            </th> -->
+            <th appDynamicColumnWidth nzColumnKey="Status" [nzSortFn]="true">
+              {{ 'Status' | i18n }}
+            </th>
+            <th appDynamicColumnWidth nzColumnKey="Status" [nzSortFn]="true">
+              {{ 'Cancel Withdraw' | i18n }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of users">
+            <td>{{ data.transaction_ID }}</td>
+            <td>{{ data.virtualWallet_TransactionDate | date: 'short' }}</td>
+            <td>{{ data.virtualWallet_TransactionType | i18n }}</td>
+            <td>{{ data.virtual_WalletTransferSource }}</td>
+            <td>{{ data.virtual_WalletTransferDestination }}</td>
+            <td>{{ data.wT_PaymentReference_ID }}</td>
+            <td>
+              {{ data.to_Currency }}
+              {{
+                data.virtualWallet_TransactionAmount
+                  ? data.virtualWallet_TransactionAmount.toFixed(2)
+                  : ''
+              }}
+            </td>
+            <!-- <td>{{ data.from_Currency }}</td> -->
+            <td class="status_svg">
+              <div class="status-bg">
+                <ng-container *ngIf="data.virtualWallet_Status === 'Success'">
+                  <img src="assets/images/icons/Successful.svg" alt="status" />
+                </ng-container>
+                <ng-container *ngIf="data.virtualWallet_Status === 'Pending'">
+                  <img
+                    src="assets/images/icons/Pending_icon.svg"
+                    alt="status"
+                  />
+                </ng-container>
+                <ng-container *ngIf="data.virtualWallet_Status === 'Rejected'">
+                  <img src="assets/images/icons/Rejected.svg" alt="status" />
+                </ng-container>
+                {{ data.virtualWallet_Status | i18n }}
+              </div>
+            </td>
+            <td style="text-align: center">
+              <ng-container
+                *ngIf="data.virtualWallet_TransactionType === 'Withdraw'"
+              >
+                <ng-container
+                  *ngIf="data.isCancellationAllowed; else other_content"
+                >
+                  <ul class="action-list">
+                    <li
+                      (click)="
+                        createBasicModal(basicTitle, basicContent, basicFooter)
+                      "
+                    >
+                      <a
+                        nzTooltipTitle="Cancel Withdraw"
+                        nzTooltipPlacement="bottom"
+                        nz-tooltip
+                      >
+                        <img
+                          src="assets/images/cancel-withdraw.png"
+                          alt="view"
+                          style="width: 28px; cursor: pointer"
+                        />
+                      </a>
+                    </li>
+                  </ul>
+                  <ng-container>
+                    <ng-template #basicTitle>
+                      <span>{{ 'Are you sure?' | i18n }}</span>
+                    </ng-template>
+                    <ng-template #basicContent let-params>
+                      <form
+                        nz-form
+                        [formGroup]="withdrawCancel"
+                        nzLayout="vertical"
+                      >
+                        <nz-form-item>
+                          <nz-form-label>
+                            {{ 'Comments' | i18n }}</nz-form-label
+                          >
+                          <nz-form-control
+                            nzErrorTip="{{
+                              'Please write cancel reason' | i18n
+                            }}"
+                          >
+                            <textarea
+                              nz-input
+                              formControlName="comments"
+                              placeholder="Please write here"
+                              [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+                            ></textarea>
+                          </nz-form-control>
+                        </nz-form-item>
+                      </form>
+                      <!-- <div
+                        class="d-flex align-items-center"
+                        style="flex-direction: column"
+                      >
+                        <img
+                          src="assets/images/oh.svg"
+                          alt="question"
+                          style="width: 70px"
+                        />
+                        <b style="margin-top: 12px"
+                          >{{ 'Do you want to Cancel Withdraw?' | i18n }}
+                        </b>
+                      </div> -->
+                    </ng-template>
+                    <ng-template #basicFooter let-ref="modalRef">
+                      <button nz-button (click)="closeWithdraw(ref)">
+                        {{ 'No' | i18n }}
+                      </button>
+                      <button
+                        nz-button
+                        nzType="primary"
+                        (click)="swithcBasic(data.virtualWallet_HistoryID, ref)"
+                        [nzLoading]="cancelWithdrawLoader"
+                        class="radius-btn h-40"
+                        style="width: 90px"
+                      >
+                        {{ 'Yes' | i18n }}
+                      </button>
+                    </ng-template>
+                  </ng-container>
+                </ng-container>
+                <ng-template #other_content>
+                  <a
+                    nzTooltipTitle="withdraw cannot be canceled"
+                    nzTooltipPlacement="bottom"
+                    nz-tooltip
+                  >
+                    <img
+                      src="assets/images/cancel-withdraw.png"
+                      alt="view"
+                      style="
+                        width: 28px;
+                        opacity: 0.3;
+                        cursor: pointer;
+                        filter: grayscale(1);
+                      "
+                    />
+                  </a>
+                </ng-template>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <!--pagination here-->
+      <div class="total-count">
+        <ng-container *ngIf="totaData">
+          <div class="count">
+            {{ 'Total Count' | i18n }} :
+            <span class="bold"> {{ totaData }} </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nz-card>

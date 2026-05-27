@@ -1,0 +1,234 @@
+<nz-card nzTitle="{{ 'Personal Information' | i18n }}" [nzLoading]="prfoleloading">
+  <ng-container *ngIf="registeredEmail; else otherProfile">
+    <div class="email-verify">
+      <ng-container>
+        <img src="assets/images/email-pending.png" alt="email-verification" />
+        <h1>{{ 'Email verification is Pending' | i18n }}</h1>
+        <p>
+          {{
+            'Your email verification is Pending, please go to your registered email inbox, to verify your email'
+              | i18n
+          }}
+        </p>
+        <div class="btg">
+          <button
+            nz-button
+            class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+            [nzType]="'primary'"
+            type="button"
+            [nzLoading]="loader"
+            (click)="generateLink()"
+          >
+            {{ 'Resend verification link ' | i18n }}
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-template #otherProfile>
+    <form
+      nz-form
+      [formGroup]="personalForm"
+      nzLayout="vertical"
+      autocomplete="off"
+    >
+      <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label>{{ 'Full Name' | i18n }} </nz-form-label>
+            <nz-form-control
+              nzErrorTip="Please enter first name without special characters!"
+            >
+              <input
+                nzSize="large"
+                [ngModel]="customerVersion?.customer_FirstName"
+                nz-input
+                placeholder="{{ 'English Name' | i18n }}"
+                formControlName="customer_FirstName"
+                maxlength="100"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label>{{ 'Email' | i18n }} </nz-form-label>
+            <nz-form-control nzErrorTip="The input is not valid Email!">
+              <input
+                readonly
+                nzSize="large"
+                autocomplete="new-password"
+                [ngModel]="customerVersion?.customer_Email"
+                nz-input
+                placeholder="Email"
+                formControlName="email"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <!-- <div nz-col [nzSpan]="8">
+        <nz-form-item>
+          <nz-form-label>{{ 'Middle Name' | i18n }} </nz-form-label>
+          <nz-form-control
+            nzErrorTip="Please enter middle name without special characters!"
+          >
+            <input
+              nzSize="large"
+              nz-input
+              [ngModel]="customerVersion?.customer_MiddleName"
+              placeholder="{{ 'Middle Name' | i18n }}"
+              formControlName="customer_MiddleName"
+              maxlength="100"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item>
+          <nz-form-label>{{ 'Last Name' | i18n }} </nz-form-label>
+          <nz-form-control
+            nzErrorTip="Please enter last name without special characters!"
+          >
+            <input
+              nzSize="large"
+              maxlength="100"
+              nz-input
+              [ngModel]="customerVersion?.customer_LastName"
+              placeholder="{{ 'Last Name' | i18n }}"
+              formControlName="customer_LastName"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div> -->
+      </div>
+      <div nz-row [nzGutter]="24">
+        <!-- <div nz-col [nzSpan]="8">
+        <nz-form-item>
+          <nz-form-label>{{ 'Date Of Birth' | i18n }} </nz-form-label>
+          <nz-form-control [nzErrorTip]="errorDateTpl">
+            <nz-date-picker
+              class="w100"
+              [nzDisabledDate]="disabledDate"
+              [ngModel]="customerVersion?.customer_DoB"
+              nzSize="large"
+              formControlName="date"
+            ></nz-date-picker>
+            <ng-template #errorDateTpl let-control>
+              <ng-container *ngIf="control.hasError('required')"
+                >The input is not valid date!</ng-container
+              >
+              <ng-container *ngIf="control.hasError('pattern')"
+                >We are sorry, you must be minimum 18 years to register and
+                trade with us.</ng-container
+              >
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </div> -->
+
+        <!-- <div nz-col [nzSpan]="8">
+        <nz-form-item>
+          <nz-form-label>{{ 'Gender' | i18n }}</nz-form-label>
+          <nz-form-control nzErrorTip="Please choose your Gender to proceed.">
+            <nz-radio-group
+              nzSize="large"
+              [ngModel]="customerVersion?.customer_Gender"
+              formControlName="gender"
+            >
+              <label nz-radio nzValue="Female">{{ 'Female' | i18n }}</label>
+              <label nz-radio nzValue="Male">{{ 'Male' | i18n }}</label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div> -->
+      </div>
+      <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label nzFor="phoneNumber">{{
+              'Phone Number' | i18n
+            }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="errorTpl">
+              <nz-input-group
+                nzSize="large"
+                [nzAddOnBefore]="addOnBeforeTemplate"
+              >
+                <ng-template #addOnBeforeTemplate>
+                  <nz-select
+                    nzShowSearch
+                    style="width: 120px"
+                    formControlName="phoneNumberPrefix"
+                    class="phone-select"
+                  >
+                    <nz-option
+                      *ngFor="let item of phones"
+                      [nzValue]="item.prefix"
+                      [nzLabel]="
+                        (item?.addr ?? '') + ' &nbsp;&nbsp;' + item.prefix
+                      "
+                    ></nz-option>
+                  </nz-select>
+                </ng-template>
+                <input
+                  type="number"
+                  autocomplete="new-password"
+                  [ngModel]="customerVersion?.phoneNumber"
+                  formControlName="phoneNumber"
+                  nz-input
+                />
+                <ng-template #errorTpl let-control>
+                  <ng-container *ngIf="control.hasError('required')"
+                    >Please enter valid phone number</ng-container
+                  >
+                  <ng-container *ngIf="control.hasError('pattern')"
+                    >Please enter valid phone number</ng-container
+                  >
+                </ng-template>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label>{{ 'Country of Residence' | i18n }} </nz-form-label>
+            <nz-form-control nzErrorTip="Please select valid Nationality">
+              <nz-select
+                nzShowSearch
+                nzSize="large"
+                autocomplete="new-password"
+                [ngModel]="customerVersion?.customer_Nationality"
+                formControlName="nationality"
+                nzSuffixIcon="caret-down"
+              >
+                <nz-option
+                  *ngFor="let item of nationality"
+                  [nzValue]="item.code"
+                  [nzLabel]="item.description"
+                ></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div class="line">
+         {{ 'All personal information can be modified in Trive live platform' | i18n }}
+      </div>
+
+      <div nz-row nzJustify="end">
+        <div nz-col [nzSpan]="8" class="text-right">
+          <!-- <button class="cpt-btn-border" nz-button>Cancel</button> -->
+          <button
+            *ngIf="customerVersion?.customer_Status !== 'Verified'"
+            class="cpt-btn-primary-border"
+            nz-button
+            [nzType]="'primary'"
+            (click)="personalSubmit()"
+          >
+            {{ 'Update' | i18n }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</nz-card>

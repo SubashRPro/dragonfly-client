@@ -1,0 +1,474 @@
+::ng-deep {
+  .deposit-modal {
+    margin: 0 auto;
+    h1 {
+      font-size: 24px;
+      color: #212D46;
+      font-family: 'Merriweather', serif;
+  font-weight: 600;
+  text-transform: uppercase;
+    }
+    .wallet-content {
+      background: rgba(#f4f4f4, 0.91);
+      height: 508px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 50px !important;
+      .amount {
+        font: normal normal medium 14px/16px Roboto;
+        color: #153d6a;
+      }
+      .number {
+        color: #153d6a;
+        .big {
+          font-size: 56px;
+          font-weight: bold;
+        }
+        .samll {
+          font-size: 32px;
+        }
+      }
+      .wallet {
+        display: flex;
+        .wallet-item {
+          color: #153d6a;
+        }
+        .wallet-line {
+          height: 50px;
+          background-color: #51657d;
+          width: 1px;
+          margin: 0px 30px;
+        }
+      }
+    }
+    .type-line {
+      border-bottom: 1px solid #e2e2e2;
+      margin: 20px 0;
+    }
+
+    .deposit {
+      padding: 0px 22px;
+     // border-radius: 19px;
+      .method-line {
+        font-weight: bold;
+        width: 100%;
+        font-size: 14px;
+        color: #51657d;
+        border-bottom: 1px solid #e2e2e2;
+      }
+      .account-conversion {
+        font-size: 12px;
+        color: #51657d;
+      }
+      ::ng-deep {
+        form {
+          label {
+            color: #000;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .balance {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        margin-top: 5px;
+
+        strong {
+          color: #000;
+          font-weight: 600;
+        }
+      }
+
+      .method-content {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .method {
+        cursor: pointer;
+        padding: 0px 10px;
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+        background: #fff;
+        margin-top: 14px;
+        border-radius: 10px;
+        height: 41px;
+        img {
+          width: 23px;
+          height: 39px;
+        }
+      }
+    }
+  }
+}
+
+.method-list img {
+  width: 92px;
+}
+
+.m-20 {
+  margin-top: 1.5rem;
+}
+
+
+.method-list {
+  margin-right: 2rem;
+  .ant-radio-button-wrapper {
+    padding: 8px 15px;
+    height: 49px;
+  }
+}
+
+.method-bg{
+  margin-top: 11px;
+  background: #fff;
+  padding: 7px 10px;
+  border-radius: 10px;
+  .method-head {
+    margin-bottom: 5px;
+    }
+}
+
+.method span {
+  font-size: 13px;
+}
+
+
+.withdraw-card {
+  position: relative;
+}
+
+.withdraw-card:after {
+  content: 'Please Wait...';
+  background: #000;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(27 27 27 / 60%);
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+    z-index: 999;
+    height: 100vh;
+}
+
+.radio-list {
+  position: absolute;
+  top: 1px;
+  right: 5px;
+}
+
+.payment-method-list {
+    padding: 10px;
+    align-items: center;
+    background: #fff 0 0 no-repeat padding-box;
+    box-shadow: 0 15px 50px #12453029;
+    background: #fff;
+    border-radius: 10px;
+    flex-direction: column;
+    margin-bottom: 22px;
+    position: relative;
+    h5 {
+      margin-bottom: 0.2em;
+      margin-top: 5px;
+      text-align: center;
+      font-size: 12px;
+    }
+    img {
+      width: 88px;
+      display: block;
+      margin: 0px auto;
+    }
+    ul {
+      margin: 0px;
+    padding: 0px;
+      li {
+        margin: 0px;
+        padding: 0px;
+        font-size: 12px;
+        list-style: none;
+        display: flex;
+        border-bottom: 1px solid #e8e8e8;
+        justify-content: space-between;
+        padding: 5px 0px 5px 0px;
+        .b-none {
+          border: none;
+        }
+        p {
+          margin: 0px;
+          &:last-child {
+            color: #153e6a;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+}
+
+.payment-method-list.active {
+  background: #153e6a;
+  color: #fff;
+  p , h5{
+    color: #fff !important;
+  }
+  ul {
+    li {
+      border-bottom: 1px solid #425b76;
+    }
+  }
+}
+.payment-method-list.active ul li.radio-list {
+  border: none !important;
+}
+
+.payment-method-list ul li.b-none {
+  border: none;
+}
+
+.hyperbc-wrapper {
+  max-width: 100%;
+  .hyperbc-qr {
+    box-shadow: none;
+    img {
+      width: 200px;
+    }
+  }
+}
+.hnote {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.dot-flashing {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #153d6a;
+  color: #153d6a;
+  animation: dot-flashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #153d6a;
+    color: #153d6a;
+    animation: dot-flashing 1s infinite alternate;
+    animation-delay: 0s;
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #153d6a;
+    color: #153d6a;
+    animation: dot-flashing 1s infinite alternate;
+    animation-delay: 1s;
+  }
+}
+
+@keyframes dot-flashing {
+  0% {
+    background-color: #153d6a;
+  }
+  50%, 100% {
+    background-color: rgba(21, 61, 106, 0.15);
+  }
+}
+
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin: 0;
+    display: flex;
+    margin-right: 30px;
+  }
+}
+
+
+.method {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 22%;
+  align-items: center;
+  position: relative;
+  height: 150px;
+  border: 1px solid #d9d9d9;
+    label {
+      position: absolute;
+      top: 4px;
+      left: 7px;
+    }
+  img {
+    max-width: 150px;
+    margin-bottom: 1.5rem;
+  }
+  .head {
+    font-size: 13px;
+    color:#0C2038;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-weight: 600;
+  }
+  p {
+    font-size: 14px;
+    color: #6D7988;
+  }
+
+}
+
+.gallery_scroller .method {
+    width: 167px;
+    height: 127px;
+    aspect-ratio: 1/1;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 14px;
+}
+
+.account-bg {
+  background: #fff;
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.deposit-summary {
+  h1 {
+    text-transform: capitalize;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 25px
+  }
+}
+
+.deposit-summary {
+  button {
+    margin-top: 2rem;
+  }
+}
+.summary-list {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  border-bottom: 1px solid #e9e7e7;
+  padding: 12px;
+  &:last-child {
+    border: none;
+  }
+  p {
+    margin: 0px;
+    &:last-child {
+      color: #000;
+    font-weight: 600;
+    }
+  }
+}
+
+@media screen and (min-width: 1050px) and (max-width: 1100px) {
+  .deposit-modal .deposit {
+    .ant-col-lg-12 {
+      flex: 0 0 60%;
+      max-width: 60%;
+    }
+
+    .ant-col-lg-11 {
+      flex: 0 0 38%;
+      max-width:  0 0 38%;
+  }
+
+  }
+  }
+
+  .one-img {
+    text-align: center;
+    img {
+      width: 50%;
+    }
+   h3 {
+     font-weight: bold;
+     margin: 0px;
+   }
+  }
+
+  .list {
+    ul {
+      padding: 0px 20px 0px 20px;
+      li {
+        list-style: circle;
+        margin: 0px;
+    }
+    }
+    p {
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 0px;
+    } span {
+      font-weight: 700;
+    }
+}
+
+
+.pay-btn {
+  p {
+    color: #8b8282;
+  }
+  text-align: center;
+  padding: 10px;
+}
+
+.thai-qr {
+  background: rgb(0, 67, 122);
+  padding: 14px;
+  text-align: center;
+  h1 {
+    font-size: 20px;
+    margin: 0px;
+    color: #fff;
+  }
+}
+
+.thai-btn {
+  background: #00437a;
+    border-radius: 3px;
+    height: 40px;
+}
+
+.thai-logo {
+  background: #00437a;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    img {
+      width: 120px;
+    }
+}

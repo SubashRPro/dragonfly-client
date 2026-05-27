@@ -1,0 +1,127 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="tplTitle"
+  [nzContent]="tplContent"
+  [nzWidth]="1000"
+  nzOkText="{{ 'Done' | i18n }}"
+  nzCancelText="{{ 'Cancel' | i18n }}"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  nzClassName="cpt-modal setting-modal"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzStyle]="{ top: '25px' }"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitle>
+    <div class="nz-title-template">
+      <div class="icon">
+        <img src="assets/images/calendar-modal.svg" alt="calendar-modal" />
+      </div>
+      <span> {{ 'Calendar' | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-template #tplContent>
+    <div nz-row [nzGutter]="24" class="cpt-canlendar-content">
+      <div nz-col [nzSpan]="18" style="padding: 20px 0">
+        <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+      </div>
+      <div nz-col [nzSpan]="6" style="height: 640px; overflow-y: auto; border-left: 1px solid #e2e2e2" class="dark_calendar">
+        <div class="cpt-canlendar-item" *ngFor="let item of listData">
+          <div class="d-flex justify-content-between">
+            <div class="date">{{ item.calendar_Date | date }}</div>
+            <img class="cursor" (click)="editEventClick(item)" src="assets/images/edit-calander.svg" alt="edit-calander" />
+          </div>
+          <div class="time-content">
+            <div class="d-flex">
+              <img src="assets/images/calendar-delete.svg" style="margin-right: 8px" alt="calendar-delete" />
+              <div class="title">{{ item.calendar_Events }}</div>
+            </div>
+            <div class="time-line">
+              <span class="time">{{ item.calendar_Time }}</span>
+              <div class="line" [style.background-color]="item.is_Active === 1 ? '#00B5F2' : '#f16b6b'"></div>
+            </div>
+          </div>
+          <p>{{ item.calendar_Description }}</p>
+          <nz-divider></nz-divider>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <nz-modal
+    [(nzVisible)]="isVisibleItem"
+    [nzTitle]="isEdit ? 'Edit Calendar Events' : 'Calendar Events'"
+    class="cpt-modal"
+    [nzWidth]="350"
+    [nzCloseIcon]="nzCloseIcon"
+    (nzOnCancel)="handleItemCancel()"
+    [nzOkLoading]="loading"
+    [nzFooter]="nzFooter"
+  >
+    <ng-template #nzCloseIcon>
+      <div class="nz-title-template">
+        <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+      </div>
+    </ng-template>
+    <ng-template #nzFooter>
+      <div class="nz-title-template">
+        <button
+          *ngIf="isEdit && addCalendarEventsParams.is_Active === 1"
+          nz-button
+          nzType="default"
+          (click)="delCalendar(addCalendarEventsParams.calendar_ID!)"
+          >Delete Event</button
+        >
+        <button nz-button nzType="primary" (click)="submitForm()">Save</button>
+      </div>
+    </ng-template>
+    <ng-container *nzModalContent>
+      <form nz-form [formGroup]="validateForm">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6">Lable</nz-form-label>
+          <nz-form-control [nzSpan]="16">
+            <input
+              nz-input
+              class="w100"
+              [ngModel]="addCalendarEventsParams.calendar_Events"
+              formControlName="calendar_Events"
+              placeholder="label"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6">Date</nz-form-label>
+          <nz-form-control [nzSpan]="16">
+            <nz-date-picker class="w100" [ngModel]="addCalendarEventsParams.calendar_Date" formControlName="calendar_Date"></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6">Time</nz-form-label>
+          <nz-form-control [nzSpan]="16">
+            <nz-time-picker
+              class="w100"
+              [ngModel]="addCalendarEventsParams.calendar_Time"
+              formControlName="calendar_Time"
+              nzFormat="HH:mm"
+            ></nz-time-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6">Notes</nz-form-label>
+          <nz-form-control [nzSpan]="16">
+            <textarea
+              nz-input
+              class="w100"
+              [ngModel]="addCalendarEventsParams.calendar_Description"
+              formControlName="calendar_Description"
+              placeholder="Notes"
+            ></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </ng-container>
+  </nz-modal>
+</nz-modal>

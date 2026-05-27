@@ -1,0 +1,917 @@
+<nz-card class="setting-wrap">
+  <nz-tabset nzCentered>
+    <nz-tab nzTitle="{{ 'Change Password' | i18n }}" class="password-change">
+      <div class="main-wrapper">
+        <div class="password-wrapper" *ngIf="!changePasswordSuccess">
+          <form
+            nz-form
+            [formGroup]="passwordForm"
+            class="register-form"
+            (ngSubmit)="submitFormPassword()"
+          >
+            <div
+              nz-row
+              [nzGutter]="24"
+              class="justify-content-center h-header full-length"
+            >
+              <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                <h2>{{ 'Change Password' | i18n }}</h2>
+              </div>
+            </div>
+            <div
+              nz-row
+              [nzGutter]="24"
+              class="justify-content-center full-length"
+            >
+              <div
+                nz-col
+                nzMd="24"
+                nzLg="24"
+                nzXl="24"
+                nzXs="24"
+                class="setting-ico"
+              >
+                <nz-form-item>
+                  <nz-form-control [nzErrorTip]="errorTpl0">
+                    <nz-input-group>
+                      <nz-input-group
+                        [nzSuffix]="suffixTemplate1"
+                        class="password-wrapper"
+                      >
+                        <input
+                          [type]="passwordVisible1 ? 'text' : 'password'"
+                          nzSize="large"
+                          nz-input
+                          formControlName="old_Password"
+                          autocomplete="new-password"
+                          placeholder="{{ 'Old Password' | i18n }}"
+                        />
+                      </nz-input-group>
+                      <ng-template #suffixTemplate1>
+                        <i
+                          nz-icon
+                          [nzType]="!passwordVisible1 ? 'eye-invisible' : 'eye'"
+                          (click)="passwordVisible1 = !passwordVisible1"
+                        ></i>
+                      </ng-template>
+                      <ng-template #errorTpl0 let-control>
+                        <ng-container *ngIf="control.hasError('required')">{{
+                          'This field is required' | i18n
+                        }}</ng-container>
+                        <ng-container *ngIf="control.hasError('pattern')">
+                          {{ 'password_logic' | i18n }}
+                        </ng-container>
+                      </ng-template>
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div
+                nz-col
+                nzMd="24"
+                nzLg="24"
+                nzXl="24"
+                nzXs="24"
+                class="setting-ico"
+              >
+                <nz-form-item>
+                  <nz-form-control [nzErrorTip]="errorTpl">
+                    <nz-input-group>
+                      <nz-input-group
+                        [nzSuffix]="suffixTemplate2"
+                        class="password-wrapper"
+                      >
+                        <input
+                          [type]="passwordVisible2 ? 'text' : 'password'"
+                          nzSize="large"
+                          nz-input
+                          formControlName="password"
+                          autocomplete="new-password"
+                          placeholder="{{ 'New Password' | i18n }}"
+                          (ngModelChange)="updateConfirmValidator()"
+                        />
+                      </nz-input-group>
+                      <ng-template #suffixTemplate2>
+                        <i
+                          nz-icon
+                          [nzType]="!passwordVisible2 ? 'eye-invisible' : 'eye'"
+                          (click)="passwordVisible2 = !passwordVisible2"
+                        ></i>
+                      </ng-template>
+                      <ng-template #errorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">{{
+                          'This field is required' | i18n
+                        }}</ng-container>
+                        <ng-container *ngIf="control.hasError('pattern')">
+                          {{ 'password_logic' | i18n }}
+                        </ng-container>
+                      </ng-template>
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div
+                nz-col
+                nzMd="24"
+                nzLg="24"
+                nzXl="24"
+                nzXs="24"
+                class="setting-ico"
+              >
+                <nz-form-item>
+                  <nz-form-control [nzErrorTip]="errorTplpaw">
+                    <nz-input-group>
+                      <nz-input-group
+                        [nzSuffix]="suffixTemplate3"
+                        class="password-wrapper"
+                      >
+                        <input
+                          [type]="passwordVisible3 ? 'text' : 'password'"
+                          nzSize="large"
+                          nz-input
+                          formControlName="confirmPassword"
+                          autocomplete="new-password"
+                          placeholder="{{ 'Confirm Password' | i18n }}"
+                          (ngModelChange)="updateConfirmValidator()"
+                        />
+                      </nz-input-group>
+                      <ng-template #suffixTemplate3>
+                        <i
+                          nz-icon
+                          [nzType]="!passwordVisible3 ? 'eye-invisible' : 'eye'"
+                          (click)="passwordVisible3 = !passwordVisible3"
+                        ></i>
+                      </ng-template>
+                      <ng-template #errorTplpaw let-control>
+                        <ng-container *ngIf="control.hasError('required')">{{
+                          'This field is required' | i18n
+                        }}</ng-container>
+                        <ng-container *ngIf="control.hasError('confirmPass')">
+                          {{ 'Password does not match' | i18n }}
+                        </ng-container>
+                      </ng-template>
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div class="proceed-section">
+              <div nz-row [nzGutter]="24" class="justify-content-center">
+                <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                  <div class="btg btg1">
+                    <button
+                      nz-button
+                      class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                      [nzType]="'primary'"
+                      type="submit"
+                      [nzLoading]="loader"
+                    >
+                      {{ 'Reset Password' | i18n }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="success-box" *ngIf="changePasswordSuccess">
+          <div nz-row [nzGutter]="24" class="justify-content-center h-header">
+            <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+              <img src="assets/reg-done.svg" alt="Thanks" />
+              <h2>{{ 'Your Password Is Reset' | i18n }}</h2>
+              <p>
+                {{
+                  'Please log in with your new password to access your account.'
+                    | i18n
+                }}
+              </p>
+            </div>
+          </div>
+          <div class="proceed-section">
+            <div nz-row [nzGutter]="24" class="justify-content-center">
+              <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                <div class="btg">
+                  <button
+                    nz-button
+                    class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                    [nzType]="'primary'"
+                    type="button"
+                    [nzLoading]="loader"
+                    (click)="goToLogin()"
+                  >
+                    {{ 'Login' | i18n }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="{{ 'Change Email' | i18n }}">
+      <div class="main-wrapper mobile-row">
+        {{ 'To update the email address linked to your Trive account, please email our Support Team at' | i18n }} 
+        <a href="mailto:support_int@trive.com"> support@dragonflyfx.com </a>
+        {{ 'confirming your new email address. If you no longer have access to your registered email address, contact us from your new email and include copies of your verification documents (front and back).' | i18n }} 
+        
+      </div>
+      <!-- <div class="main-wrapper">
+              <div nz-row [nzGutter]="24" class="s-head">
+                  <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="6" class="s-block s1" [ngClass]="emailTopStep1 ? 's-active' : ''">
+                      <p>{{'Current Email' | i18n}}</p>
+                  </div>
+                  <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="6" class="s-block s1" [ngClass]="emailTopStep2 ? 's-active' : ''">
+                      <p>{{'New Email' | i18n}}</p>
+                  </div>
+                  <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="6" class="s-block s1" [ngClass]="emailTopStep3 ? 's-active' : ''">
+                      <p>{{'Done!' | i18n}}</p>
+                  </div>
+              </div>
+              <div class="email-wrapper" *ngIf="!changeEmailSuccess">
+                  <div class="email-step1" *ngIf="emailStep == 1">
+                      <form
+                          nz-form
+                          [formGroup]="verifyEmailForm"
+                          class="register-form"
+                      >
+                          <div nz-row [nzGutter]="24" class="justify-content-center h-header full-length">
+                              <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                  <h2>{{'Change Email' | i18n}}</h2>
+                              </div>
+                          </div>
+                          <div nz-row [nzGutter]="24" class="justify-content-center full-length">
+                              <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                  <nz-form-item>
+                                      <nz-form-control nzErrorTip="{{ 'Please enter valid email id' | i18n }}">
+                                          <nz-input-group>
+                                              <input
+                                                  nzSize="large"
+                                                  type="text"
+                                                  nz-input
+                                                  formControlName="old_Email"
+                                                  placeholder="{{ 'Email' | i18n }}"
+                                                  class="cpt-input"
+                                                  [(ngModel)]="customerEmail"
+                                                  [readOnly]="true"
+                                              />
+                                          </nz-input-group>
+                                      </nz-form-control>
+                                  </nz-form-item>
+                              </div>
+                          </div>
+                          <div class="proceed-section mb-v">
+                              <div nz-row [nzGutter]="24" class="justify-content-center">
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <div class="btg btg1">
+                                          <button
+                                              *ngIf="!emailVerifyBtnDisable"
+                                              nz-button
+                                              [nzType]="'primary'"
+                                              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                                              type="button"
+                                              [nzLoading]="loader"
+                                              (click)="getExistingEmailOtp(false)"
+                                          >
+                                              {{ 'Send Code' | i18n }}
+                                          </button>
+                                          <button
+                                              *ngIf="emailVerifyBtnDisable"
+                                              nz-button
+                                              [nzType]="'primary'"
+                                              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                                              type="button"
+                                              disabled
+                                          >
+                                              {{ 'Code Sent!' | i18n }}
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="otp-box" *ngIf="emailVerifyBtnDisable">
+                              <div nz-row [nzGutter]="24" class="justify-content-center h-header full-length">
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <p>{{'Enter OTP sent to:' | i18n}} <span>{{customerEmail}}</span></p>
+                                  </div>
+                              </div>
+                              <div nz-row [nzGutter]="24" class="justify-content-center">
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <nz-form-item>
+                                          <nz-form-control [ngClass]="showOtpError ? 'otp-error' : ''">
+                                              <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:6}"></ng-otp-input>
+                                          </nz-form-control>
+                                          <p *ngIf="showOtpError" class="custom-error">{{ 'This field is required' | i18n }}</p>
+                                      </nz-form-item>
+                                  </div>
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <p class="resend">{{'Didnt receive code?' | i18n}} <span class="resend-link" (click)="getExistingEmailOtp(true)">{{'RESEND' | i18n}}</span></p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="proceed-section">
+                              <div nz-row [nzGutter]="24" class="justify-content-center">
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <div class="btg btg1">
+                                          <button
+                                              *ngIf="!emailVerifyBtnDisable"
+                                              nz-button
+                                              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                                              [nzType]="'primary'"
+                                              type="button"
+                                              disabled
+                                          >
+                                              {{ 'Verify' | i18n }}
+                                          </button>
+                                          <button
+                                              *ngIf="emailVerifyBtnDisable"
+                                              nz-button
+                                              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                                              [nzType]="'primary'"
+                                              type="button"
+                                              [nzLoading]="loader"
+                                              (click)="verifyExistingEmailAddress()"
+                                          >
+                                              {{ 'Verify' | i18n }}
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                  <div class="email-step2" *ngIf="emailStep == 2">
+                      <form
+                          nz-form
+                          [formGroup]="changeEmailForm"
+                          class="register-form"
+                      >
+                          <div nz-row [nzGutter]="24" class="justify-content-center h-header full-length">
+                              <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                  <h2>{{'Change Email' | i18n}}</h2>
+                              </div>
+                          </div>
+                          <div nz-row [nzGutter]="24" class="justify-content-center full-length">
+                              <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                  <nz-form-item>
+                                      <nz-form-control nzErrorTip="{{ 'Please enter valid email id' | i18n }}">
+                                          <nz-input-group>
+                                              <input
+                                                  nzSize="large"
+                                                  type="text"
+                                                  nz-input
+                                                  formControlName="new_Email"
+                                                  placeholder="{{ 'New Email' | i18n }}"
+                                                  class="cpt-input"
+                                              />
+                                          </nz-input-group>
+                                      </nz-form-control>
+                                  </nz-form-item>
+                              </div>
+                          </div>
+                          <div class="proceed-section mb-v">
+                              <div nz-row [nzGutter]="24" class="justify-content-center">
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <div class="btg btg1">
+                                          <button
+                                              *ngIf="!emailVerifyBtnDisable"
+                                              nz-button
+                                              [nzType]="'primary'"
+                                              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                                              type="button"
+                                              [nzLoading]="loader"
+                                              (click)="getNewEmailOtp(false)"
+                                          >
+                                              {{ 'Send Code' | i18n }}
+                                          </button>
+                                          <button
+                                              *ngIf="emailVerifyBtnDisable"
+                                              nz-button
+                                              [nzType]="'primary'"
+                                              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                                              type="button"
+                                              disabled
+                                          >
+                                              {{ 'Code Sent!' | i18n }}
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="otp-box" *ngIf="emailVerifyBtnDisable">
+                              <div nz-row [nzGutter]="24" class="justify-content-center h-header full-length">
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <p>{{'Enter OTP sent to:' | i18n}} <span>{{this.changeEmailForm.value.new_Email}}</span></p>
+                                  </div>
+                              </div>
+                              <div nz-row [nzGutter]="24" class="justify-content-center">
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <nz-form-item>
+                                          <nz-form-control [ngClass]="showOtpError ? 'otp-error' : ''">
+                                              <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:6}"></ng-otp-input>
+                                          </nz-form-control>
+                                          <p *ngIf="showOtpError" class="custom-error">{{ 'This field is required' | i18n }}</p>
+                                      </nz-form-item>
+                                  </div>
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <p class="resend">{{'Didnt receive code?' | i18n}} <span class="resend-link" (click)="getNewEmailOtp(true)">{{'RESEND' | i18n}}</span></p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="proceed-section">
+                              <div nz-row [nzGutter]="24" class="justify-content-center">
+                                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                                      <div class="btg btg1">
+                                          <button
+                                              *ngIf="!emailVerifyBtnDisable"
+                                              nz-button
+                                              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                                              [nzType]="'primary'"
+                                              type="button"
+                                              disabled
+                                          >
+                                              {{ 'Verify' | i18n }}
+                                          </button>
+                                          <button
+                                              *ngIf="emailVerifyBtnDisable"
+                                              nz-button
+                                              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                                              [nzType]="'primary'"
+                                              type="button"
+                                              [nzLoading]="loader"
+                                              (click)="changeExistingEmailAddress()"
+                                          >
+                                              {{ 'Update Email' | i18n }}
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+              <div class="success-box"  *ngIf="changeEmailSuccess">
+                  <div nz-row [nzGutter]="24" class="justify-content-center h-header">
+                      <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                          <img src="assets/reg-done.svg" alt="Thanks">
+                          <h2>{{'Your Email Is Changed' | i18n}}</h2>
+                          <p>{{'Please log in with your new email to access your trading account.' | i18n}}</p>
+                      </div>
+                  </div>
+                  <div class="proceed-section">
+                      <div nz-row [nzGutter]="24" class="justify-content-center">
+                          <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                              <div class="btg">
+                                  <button
+                                      nz-button
+                                      class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                                      [nzType]="'primary'"
+                                      type="button"
+                                      [nzLoading]="loader"
+                                      (click)="goToLogin()"
+                                  >
+                                      {{ 'Login' | i18n }}
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+    </nz-tab>
+    <nz-tab nzTitle="{{ 'Change Phone Number' | i18n }}">
+      <div class="main-wrapper mobile-row">
+         {{ 'To update the phone number linked to your Trive account, please email our Support Team at' | i18n }}
+        <a href="mailto:support_int@trive.com"> support@dragonflyfx.com </a> 
+        
+         {{ 'from your registered email address. Be sure to include your new phone number with country code) and your date of birth for verification purposes.' | i18n }}
+        <!-- <div nz-row [nzGutter]="24" class="s-head">
+          <div
+            nz-col
+            nzMd="6"
+            nzLg="6"
+            nzXl="6"
+            nzXs="6"
+            class="s-block s1"
+            [ngClass]="mobileTopStep1 ? 's-active' : ''"
+          >
+            <p>{{ 'Current Number' | i18n }}</p>
+          </div>
+          <div
+            nz-col
+            nzMd="6"
+            nzLg="6"
+            nzXl="6"
+            nzXs="6"
+            class="s-block s1"
+            [ngClass]="mobileTopStep2 ? 's-active' : ''"
+          >
+            <p>{{ 'New Number' | i18n }}</p>
+          </div>
+          <div
+            nz-col
+            nzMd="6"
+            nzLg="6"
+            nzXl="6"
+            nzXs="6"
+            class="s-block s1"
+            [ngClass]="mobileTopStep3 ? 's-active' : ''"
+          >
+            <p>{{ 'Done!' | i18n }}</p>
+          </div>
+        </div>
+        <div class="mobile-wrapper" *ngIf="!changePhoneSuccess">
+          <div class="mobile-step1" *ngIf="mobileStep == 1">
+            <form nz-form [formGroup]="verifyPhoneForm" class="register-form">
+              <div
+                nz-row
+                [nzGutter]="24"
+                class="justify-content-center h-header full-length"
+              >
+                <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                  <h2>{{ 'Change Phone Number' | i18n }}</h2>
+                </div>
+              </div>
+              <div
+                nz-row
+                [nzGutter]="24"
+                class="justify-content-center full-length"
+              >
+                <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                  <div class="phone-wrapper">
+                    <div class="phone-extension">
+                      <nz-form-item>
+                        <nz-form-control
+                          nzErrorTip="Please select Country of Residence!"
+                        >
+                          <nz-select
+                            nzShowSearch
+                            style="width: 120px"
+                            formControlName="phoneNumberPrefix"
+                            class="phone-select"
+                            nzDisabled
+                          >
+                            <nz-option
+                              *ngFor="let item of phones"
+                              [nzValue]="item.prefix"
+                              [nzLabel]="
+                                (item?.addr ?? '') +
+                                ' &nbsp;&nbsp;' +
+                                item.prefix
+                              "
+                            ></nz-option>
+                          </nz-select>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                    <div class="phone-number">
+                      <nz-form-item>
+                        <nz-form-control [nzErrorTip]="phoneerrorTpl">
+                          <nz-input-group>
+                            <nz-input-group>
+                              <input
+                                formControlName="customer_Mobile"
+                                type="number"
+                                nz-input
+                                placeholder="{{ 'Mobile Number' | i18n }}"
+                                [readOnly]="true"
+                              />
+                              <ng-template #phoneerrorTpl let-control>
+                                <ng-container
+                                  *ngIf="control.hasError('required')"
+                                  >{{
+                                    'Please Enter Phone Number' | i18n
+                                  }}</ng-container
+                                >
+                                <ng-container
+                                  *ngIf="control.hasError('pattern')"
+                                  >{{
+                                    'Please Enter valid Phone' | i18n
+                                  }}
+                                  Number</ng-container
+                                >
+                              </ng-template>
+                            </nz-input-group>
+                          </nz-input-group>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="proceed-section mb-v">
+                <div nz-row [nzGutter]="24" class="justify-content-center">
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <div class="btg btg1">
+                      <button
+                        *ngIf="!phoneVerifyBtnDisable"
+                        nz-button
+                        [nzType]="'primary'"
+                        class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                        type="button"
+                        [nzLoading]="loader"
+                        (click)="getExistingPhoneOtp(false)"
+                      >
+                        {{ 'Send Code' | i18n }}
+                      </button>
+                      <button
+                        *ngIf="phoneVerifyBtnDisable"
+                        nz-button
+                        [nzType]="'primary'"
+                        class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                        type="button"
+                        disabled
+                      >
+                        {{ 'Code Sent!' | i18n }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="otp-box" *ngIf="phoneVerifyBtnDisable">
+                <div
+                  nz-row
+                  [nzGutter]="24"
+                  class="justify-content-center h-header full-length"
+                >
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <p>
+                      {{ 'Enter OTP sent to:' | i18n }}
+                      <span
+                        >{{ verifyPhoneForm.value.phoneNumberPrefix }}&nbsp;{{
+                          verifyPhoneForm.value.customer_Mobile
+                        }}</span
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div nz-row [nzGutter]="24" class="justify-content-center">
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <nz-form-item>
+                      <nz-form-control
+                        [ngClass]="showOtpError ? 'otp-error' : ''"
+                      >
+                        <ng-otp-input
+                          (onInputChange)="onOtpChange($event)"
+                          [config]="{ length: 6 }"
+                        ></ng-otp-input>
+                      </nz-form-control>
+                      <p *ngIf="showOtpError" class="custom-error">
+                        {{ 'This field is required' | i18n }}
+                      </p>
+                    </nz-form-item>
+                  </div>
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <p class="resend">
+                      {{ 'Didnt receive code?' | i18n }}
+                      <span
+                        class="resend-link"
+                        (click)="getExistingPhoneOtp(true)"
+                        >{{ 'RESEND' | i18n }}</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="proceed-section">
+                <div nz-row [nzGutter]="24" class="justify-content-center">
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <div class="btg btg1">
+                      <button
+                        *ngIf="!phoneVerifyBtnDisable"
+                        nz-button
+                        class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                        [nzType]="'primary'"
+                        type="button"
+                        disabled
+                      >
+                        {{ 'Verify' | i18n }}
+                      </button>
+                      <button
+                        *ngIf="phoneVerifyBtnDisable"
+                        nz-button
+                        class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                        [nzType]="'primary'"
+                        type="button"
+                        [nzLoading]="loader"
+                        (click)="verifyExistingPhoneNumber()"
+                      >
+                        {{ 'Verify' | i18n }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="mobile-step2" *ngIf="mobileStep == 2">
+            <form nz-form [formGroup]="changePhoneForm" class="register-form">
+              <div
+                nz-row
+                [nzGutter]="24"
+                class="justify-content-center h-header full-length"
+              >
+                <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                  <h2>{{ 'Change Phone Number' | i18n }}</h2>
+                </div>
+              </div>
+              <div
+                nz-row
+                [nzGutter]="24"
+                class="justify-content-center full-length"
+              >
+                <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                  <div class="phone-wrapper">
+                    <div class="phone-extension">
+                      <nz-form-item>
+                        <nz-form-control
+                          nzErrorTip="Please select Country of Residence!"
+                        >
+                          <nz-select
+                            nzShowSearch
+                            style="width: 120px"
+                            formControlName="phoneNumberPrefix"
+                            class="phone-select"
+                          >
+                            <nz-option
+                              *ngFor="let item of phones"
+                              [nzValue]="item.prefix"
+                              [nzLabel]="
+                                (item?.addr ?? '') +
+                                ' &nbsp;&nbsp;' +
+                                item.prefix
+                              "
+                            ></nz-option>
+                          </nz-select>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                    <div class="phone-number">
+                      <nz-form-item>
+                        <nz-form-control [nzErrorTip]="phoneerrorTpl">
+                          <nz-input-group>
+                            <nz-input-group>
+                              <input
+                                formControlName="customer_Mobile"
+                                type="number"
+                                nz-input
+                                placeholder="{{ 'Mobile Number' | i18n }}"
+                              />
+                              <ng-template #phoneerrorTpl let-control>
+                                <ng-container
+                                  *ngIf="control.hasError('required')"
+                                  >{{
+                                    'Please Enter Phone Number' | i18n
+                                  }}</ng-container
+                                >
+                                <ng-container
+                                  *ngIf="control.hasError('pattern')"
+                                  >{{
+                                    'Please enter valid phone number' | i18n
+                                  }}</ng-container
+                                >
+                              </ng-template>
+                            </nz-input-group>
+                          </nz-input-group>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="proceed-section mb-v">
+                <div nz-row [nzGutter]="24" class="justify-content-center">
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <div class="btg btg1">
+                      <button
+                        *ngIf="!phoneVerifyBtnDisable"
+                        nz-button
+                        [nzType]="'primary'"
+                        class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                        type="button"
+                        [nzLoading]="loader"
+                        (click)="getNewPhoneOtp(false)"
+                      >
+                        {{ 'Send Code' | i18n }}
+                      </button>
+                      <button
+                        *ngIf="phoneVerifyBtnDisable"
+                        nz-button
+                        [nzType]="'primary'"
+                        class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                        type="button"
+                        disabled
+                      >
+                        {{ 'Code Sent!' | i18n }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="otp-box" *ngIf="phoneVerifyBtnDisable">
+                <div
+                  nz-row
+                  [nzGutter]="24"
+                  class="justify-content-center h-header full-length"
+                >
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <p>
+                      {{ 'Enter OTP sent to:' | i18n }}
+                      <span
+                        >{{ changePhoneForm.value.phoneNumberPrefix }}&nbsp;{{
+                          changePhoneForm.value.customer_Mobile
+                        }}</span
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div nz-row [nzGutter]="24" class="justify-content-center">
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <nz-form-item>
+                      <nz-form-control
+                        [ngClass]="showOtpError ? 'otp-error' : ''"
+                      >
+                        <ng-otp-input
+                          (onInputChange)="onOtpChange($event)"
+                          [config]="{ length: 6 }"
+                        ></ng-otp-input>
+                      </nz-form-control>
+                      <p *ngIf="showOtpError" class="custom-error">
+                        {{ 'This field is required' | i18n }}
+                      </p>
+                    </nz-form-item>
+                  </div>
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <p class="resend">
+                      {{ 'Didnt receive code?' | i18n }}
+                      <span
+                        class="resend-link"
+                        (click)="getNewPhoneOtp(true)"
+                        >{{ 'RESEND' | i18n }}</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="proceed-section">
+                <div nz-row [nzGutter]="24" class="justify-content-center">
+                  <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                    <div class="btg btg1">
+                      <button
+                        *ngIf="!phoneVerifyBtnDisable"
+                        nz-button
+                        class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                        [nzType]="'primary'"
+                        type="button"
+                        disabled
+                      >
+                        {{ 'Verify' | i18n }}
+                      </button>
+                      <button
+                        *ngIf="phoneVerifyBtnDisable"
+                        nz-button
+                        class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                        [nzType]="'primary'"
+                        type="button"
+                        [nzLoading]="loader"
+                        (click)="changeExistingPhoneNumber()"
+                      >
+                        {{ 'Update Number' | i18n }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="success-box" *ngIf="changePhoneSuccess">
+          <div nz-row [nzGutter]="24" class="justify-content-center h-header">
+            <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+              <img src="assets/reg-done.svg" alt="Thanks" />
+              <h2>{{ 'Your Number Is Changed' | i18n }}</h2>
+              <p></p>
+            </div>
+          </div>
+          <div class="proceed-section">
+            <div nz-row [nzGutter]="24" class="justify-content-center">
+              <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                <div class="btg">
+                  <button
+                    nz-button
+                    class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+                    [nzType]="'primary'"
+                    type="button"
+                    [nzLoading]="loader"
+                    (click)="goToDashboard()"
+                  >
+                    {{ 'Dashboard' | i18n }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </nz-tab>
+  </nz-tabset>
+</nz-card>

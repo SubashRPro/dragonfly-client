@@ -1,0 +1,227 @@
+@import "~@delon/theme/index";
+
+:host {
+  .support-top {
+    margin: 20px 0 10px;
+    .trading-account {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 24px;
+      height: 55px;
+      background-color: #f5f5f5;
+      margin-bottom: 24px;
+      cursor: pointer;
+      border-radius: 12px;
+
+      @media only screen and (max-width: 850px) {
+        margin-bottom: 10px;
+      }
+
+      &:hover {
+        border: 1px solid #07943c;
+      }
+
+      .img-box {
+        background: #07943c;
+        width: 15px;
+        height: 15px;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        position: relative;
+        margin-right: 10px;
+
+        img {
+          width: 20px;
+          height: 14px;
+        }
+      }
+
+      .right-icon {
+        position: absolute;
+        right: 16px;
+      }
+
+      .trading-title {
+        font-size: 16px;
+        color: #0c2038;
+      }
+
+      .trading-content {
+        display: flex;
+        align-items: center;
+
+        img {
+        }
+      }
+    }
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  p {
+    color: #6d7988;
+    font-size: 15px;
+  }
+
+  hr {
+    width: 100%;
+    border: 1px solid #e6e7ed;
+    margin: 30px 0 25px;
+  }
+
+  .ticket-cards {
+    .mb-c {
+      margin-top: 40px;
+    }
+    .login-form-margin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #07943c;
+      width: auto;
+      padding: 10px 15px;
+      font-size: 14px;
+      color: #fff;
+      height: auto;
+      img {
+        margin-right: 10px;
+      }
+    }
+    .list-bar {
+      background: #f5f6fa;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      padding: 15px 20px;
+      .top-img-box {
+        background: #07943c;
+        width: 15px;
+        height: 15px;
+        padding: 12px;
+        display: block;
+        border-radius: 50%;
+        position: relative;
+        margin-right: 10px;
+        img {
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          width: 17px;
+        }
+      }
+      .flex-div {
+        display: flex;
+        justify-content: space-between;
+        .notes-bar {
+          display: flex;
+          justify-content: space-between;
+          .notes-sm {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 11px;
+            color: #6d7988;
+            img {
+              margin-right: 5px;
+            }
+          }
+        }
+        &.date-bar {
+          margin-bottom: 11px;
+          .icon-bar {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+          }
+          .time-bar {
+            font-size: 11px;
+            color: #6d7988;
+          }
+        }
+        &.title-bar {
+          margin-bottom: 5px;
+          h3 {
+            font-weight: bold;
+          }
+          .view-ticket {
+            font-size: 14px;
+            color: #33ccff;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+        &.content-bar {
+          margin-bottom: 30px;
+          @media only screen and (max-width: 850px) {
+            display: block;
+            word-wrap: break-word;
+          }
+          p {
+            font-size: 14px;
+          }
+        }
+        .user-bar {
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          img {
+            width: 20px;
+            margin-right: 6px;
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .ticket-cards {
+    .ant-tabs-nav-operations {
+      @media only screen and (max-width: 850px) {
+        display: none !important;
+      }
+    }
+  }
+  .ant-card {
+    border-radius: 16px;
+  }
+  .ant-card-body {
+    padding: 24px 24px 24px;
+  }
+  .no-data-bar {
+    .data-loader {
+      margin-top: 20px;
+      text-align: center;
+      background: #f5f6fa;
+      border-radius: 12px;
+      padding: 15px 20px;
+
+      svg {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.support-head {
+  h1 {
+    font-size: 24px;
+    margin-bottom: 0px;
+  }
+  p {
+    color: #363636;
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+  span.green {
+    color: #07943c;
+  }
+}
+
+.trading-account.active {
+  border: 1px solid #07943c;
+}

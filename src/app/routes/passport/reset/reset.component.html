@@ -1,0 +1,166 @@
+<form
+  nz-form
+  [formGroup]="validateForm"
+  class="forgot-form"
+  (ngSubmit)="submitForm()"
+>
+  <div nz-row [nzGutter]="24" class="justify-content-center">
+    <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24" class="reset-set">
+      <h2>{{ 'Set your password' | i18n }}</h2>
+    </div>
+    <div
+      nz-col
+      nzMd="24"
+      nzLg="24"
+      nzXl="24"
+      nzXs="24"
+      class="password-pattern reset-wrpper"
+    >
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="errorTpl">
+          <nz-input-group>
+            <nz-input-group
+              [nzSuffix]="suffixTemplate"
+              class="password-wrapper"
+            >
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                nzSize="large"
+                nz-input
+                formControlName="password"
+                placeholder="{{ 'Password' | i18n }}"
+                (ngModelChange)="updateConfirmValidator()"
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <i
+                nz-icon
+                [nzType]="!passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              ></i>
+            </ng-template>
+            <label
+              class="col"
+              [ngClass]="
+                validateForm.controls['password'].hasError('required') ||
+                validateForm.controls['password'].hasError('minlength')
+                  ? 'text-danger'
+                  : 'text-success'
+              "
+            >
+              {{ 'Must be at least 8 characters!' | i18n }}
+            </label>
+            <label
+              class="col"
+              [ngClass]="
+                validateForm.controls['password'].hasError('required') ||
+                validateForm.controls['password'].hasError('hasNumber')
+                  ? 'text-danger'
+                  : 'text-success'
+              "
+            >
+              {{ 'Must contain at least 1 number!' | i18n }}
+            </label>
+            <label
+              class="col"
+              [ngClass]="
+                validateForm.controls['password'].hasError('required') ||
+                validateForm.controls['password'].hasError('hasCapitalCase')
+                  ? 'text-danger'
+                  : 'text-success'
+              "
+            >
+              {{ 'Must contain at least 1 in Capital Case!' | i18n }}
+            </label>
+            <label
+              class="col"
+              [ngClass]="
+                validateForm.controls['password'].hasError('required') ||
+                validateForm.controls['password'].hasError('hasSmallCase')
+                  ? 'text-danger'
+                  : 'text-success'
+              "
+            >
+              {{ 'Must contain at least 1 Letter in Small Case!' | i18n }}
+            </label>
+            <label
+              class="col"
+              [ngClass]="
+                validateForm.controls['password'].hasError('required') ||
+                validateForm.controls['password'].hasError(
+                  'hasSpecialCharacters'
+                )
+                  ? 'text-danger'
+                  : 'text-success'
+              "
+            >
+              {{ 'Must contain at least 1 Special Character!' | i18n }}
+            </label>
+            <ng-template #errorTpl let-control>
+              <ng-container *ngIf="control.hasError('required')">{{
+                'This field is required' | i18n
+              }}</ng-container>
+            </ng-template>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div
+      nz-col
+      nzMd="24"
+      nzLg="24"
+      nzXl="24"
+      nzXs="24"
+      class="password-pattern reset-wrpper"
+    >
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="errorTplpaw">
+          <nz-input-group>
+            <nz-input-group
+              [nzSuffix]="suffixTemplate1"
+              class="password-wrapper"
+            >
+              <input
+                [type]="confirmPasswordVisible ? 'text' : 'password'"
+                nzSize="large"
+                nz-input
+                formControlName="confirmPassword"
+                autocomplete="new-password"
+                placeholder="{{ 'Confirm Password' | i18n }}"
+                (ngModelChange)="updateConfirmValidator()"
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate1>
+              <i
+                nz-icon
+                [nzType]="!confirmPasswordVisible ? 'eye-invisible' : 'eye'"
+                (click)="confirmPasswordVisible = !confirmPasswordVisible"
+              ></i>
+            </ng-template>
+            <ng-template #errorTplpaw let-control>
+              <ng-container *ngIf="control.hasError('required')">{{
+                'This field is required' | i18n
+              }}</ng-container>
+              <ng-container *ngIf="control.hasError('confirmPass')">
+                {{ 'Password does not match' | i18n }}
+              </ng-container>
+            </ng-template>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+      <div class="btg btg1">
+        <button
+          nz-button
+          class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+          [nzType]="'primary'"
+          type="submit"
+          [nzLoading]="loader"
+        >
+          {{ 'Submit' | i18n }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

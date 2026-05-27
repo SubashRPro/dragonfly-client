@@ -1,0 +1,26 @@
+<nz-card nzTitle="{{ 'Market Buzz' | i18n }}" [nzLoading]="dataLoad">
+  <ng-container *ngIf="accessDenied; else other_content">
+    <div class="access">
+      <img src="assets/images/access.png" alt="" />
+      <h3>{{ 'Access Denied' | i18n }}</h3>
+      <p>
+        {{
+          'A minimum deposit of $1,000 will grant you access to Trading Central Premium Insights'
+            | i18n
+        }}
+      </p>
+    </div>
+  </ng-container>
+  <ng-template #other_content>
+    <iframe
+      allowfullscreen
+      scrolling="no"
+      id="tradingcentral"
+      [src]="url"
+      frameborder="0"
+      style="overflow: hidden; height: 971px"
+      height="2500"
+      width="100%"
+    ></iframe>
+  </ng-template>
+</nz-card>

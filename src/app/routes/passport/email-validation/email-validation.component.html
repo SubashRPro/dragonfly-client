@@ -1,0 +1,42 @@
+<form nz-form [formGroup]="loginForm" class="login-form">
+  <nz-form-item *ngIf="user?.is_MultiFactorAuthentication">
+    <nz-form-control nzErrorTip="{{ 'Please enter OTP sent to your Email' | i18n }}">
+      <nz-input-group>
+        <label>{{ 'Enter Emailed OTP' | i18n }}</label>
+        <input
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="email"
+          placeholder="{{ 'Please enter OTP sent to your Email' | i18n }}"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="user?.is_GoogleAuthentication">
+    <nz-form-control nzErrorTip="{{ 'Please enter Google auth code' | i18n }}">
+      <nz-input-group>
+        <label>{{ 'Google Authentication' | i18n }}</label>
+        <input
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="googleAuthCode"
+          placeholder="{{ 'Please enter Google auth code' | i18n }}"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <div class="d-flex justify-content-between">
+    <label> {{ 'OTP is valid only for 5 minutes' | i18n }}</label>
+    <button
+      nz-button
+      class="login-form-button login-form-margin cpt-primary-btn"
+      [nzType]="'primary'"
+      [nzLoading]="loader"
+      (click)="submitForm()"
+    >
+      {{ 'Verify' | i18n }}
+    </button>
+  </div>
+</form>

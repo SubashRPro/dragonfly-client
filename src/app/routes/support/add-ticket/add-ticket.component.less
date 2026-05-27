@@ -1,0 +1,71 @@
+@import "~@delon/theme/index";
+
+:host {
+  .title-header {
+    margin-bottom: 40px;
+  }
+
+  .cpt-brdr {
+    padding: 6px 5px !important;
+    color: #6d7988;
+    border: 2px dotted #6d7988;
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .flex-show {
+    display: flex;
+    justify-content: right;
+    @media only screen and (max-width: 850px) {
+      justify-content: center;
+      margin-top: 30px;
+    }
+  }
+  .cmn-btn-grey {
+    background: #e6e7ed;
+    color: #0c2038;
+    font-size: 18px;
+    transition: 0.3s ease-in-out;
+    background-size: 200% auto;
+    border-radius: 10px;
+    max-width: 272px;
+    height: 50px;
+    box-shadow: none;
+    padding: 0 60px;
+  }
+
+  .cmn-btn-prm {
+    background: #07943c 0 0 no-repeat padding-box;
+    color: #ffffff;
+    font-size: 18px;
+    transition: 0.3s ease-in-out;
+    background-size: 200% auto;
+    border-radius: 10px;
+    max-width: 272px;
+    height: 50px;
+    box-shadow: none;
+    padding: 0 60px;
+  }
+}
+
+::ng-deep {
+  .new-ticket-wrapper {
+    .ant-card {
+      border-radius: 16px;
+    }
+
+    .ant-card-body {
+      border-radius: 16px;
+      padding: 10px 24px 24px !important;
+      background: #f6f8fa;
+    }
+
+    .btn-transparent {
+      background: none;
+      border: none;
+      box-shadow: none !important;
+      color: #6d7988;
+    }
+  }
+}

@@ -1,0 +1,483 @@
+<div class="form-area">
+  <div nz-row [nzGutter]="24" class="s-head">
+    <div
+      nz-col
+      nzMd="6"
+      nzLg="6"
+      nzXl="6"
+      nzXs="6"
+      class="s-block s1"
+      [ngClass]="topStep1 ? 's-active' : ''"
+    >
+      <p>{{ 'Details' | i18n }}</p>
+    </div>
+    <div
+      nz-col
+      nzMd="6"
+      nzLg="6"
+      nzXl="6"
+      nzXs="6"
+      class="s-block s1"
+      [ngClass]="topStep2 ? 's-active' : ''"
+    >
+      <p>{{ 'Verification' | i18n }}</p>
+    </div>
+    <div
+      nz-col
+      nzMd="6"
+      nzLg="6"
+      nzXl="6"
+      nzXs="6"
+      class="s-block s1"
+      [ngClass]="topStep3 ? 's-active' : ''"
+    >
+      <p>{{ 'Password' | i18n }}</p>
+    </div>
+    <div
+      nz-col
+      nzMd="6"
+      nzLg="6"
+      nzXl="6"
+      nzXs="6"
+      class="s-block s1"
+      [ngClass]="topStep4 ? 's-active' : ''"
+    >
+      <p>{{ 'Done!' | i18n }}</p>
+    </div>
+  </div>
+  <form
+    nz-form
+    [formGroup]="registerForm"
+    class="register-form"
+    (ngSubmit)="submitForm()"
+  >
+    <div class="step1" *ngIf="currentStep == 1">
+      <div nz-row [nzGutter]="24" class="justify-content-center h-header">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <h2>{{ 'Trade with us' | i18n }}</h2>
+          <p>{{ 'Create an account and start trading' | i18n }}</p>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="24" class="justify-content-center">
+        <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="firstErrorTpl">
+              <nz-input-group>
+                <input
+                  type="text"
+                  [maxLength]="60"
+                  nz-input
+                  formControlName="customer_FirstName"
+                  placeholder="{{ 'First Name' | i18n }}"
+                  class="cpt-input"
+                />
+              </nz-input-group>
+              <ng-template #firstErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">{{
+                  'This field is required' | i18n
+                }}</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')"
+                  >{{
+                    'Please enter first name without special characters' | i18n
+                  }}
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="secondErrorTpl">
+              <nz-input-group>
+                <input
+                  type="text"
+                  [maxLength]="60"
+                  nz-input
+                  formControlName="customer_LastName"
+                  placeholder="{{ 'Last Name' | i18n }}"
+                  class="cpt-input"
+                />
+              </nz-input-group>
+              <ng-template #secondErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">{{
+                  'This field is required' | i18n
+                }}</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')"
+                  >{{
+                    'Please enter last name without special characters' | i18n
+                  }}
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="24" class="justify-content-center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <nz-form-item>
+            <nz-form-control
+              nzErrorTip="{{ emailValidationMsg | i18n }}"
+              [nzValidateStatus]="emailValidationStatus"
+              nzHasFeedback
+            >
+              <nz-input-group>
+                <input
+                  nzSize="large"
+                  type="text"
+                  nz-input
+                  formControlName="email"
+                  placeholder="{{ 'Email' | i18n }}"
+                  class="cpt-input"
+                  (ngModelChange)="validateEmail()"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="24" class="justify-content-center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <div class="phone-wrapper">
+            <div class="phone-extension">
+              <nz-form-item>
+                <nz-form-control
+                  nzErrorTip="{{ 'Please Enter Phone Number!' | i18n }}"
+                >
+                  <nz-select
+                    nzShowSearch
+                    style="width: 120px"
+                    formControlName="phoneNumberPrefix"
+                    class="phone-select"
+                  >
+                    <nz-option
+                      *ngFor="let item of phones"
+                      [nzValue]="item.prefix"
+                      [nzLabel]="
+                        (item?.addr ?? '') + ' &nbsp;&nbsp;' + item.prefix
+                      "
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="phone-number">
+              <nz-form-item>
+                <nz-form-control [nzErrorTip]="phoneerrorTpl">
+                  <nz-input-group>
+                    <nz-input-group>
+                      <input
+                        formControlName="phone"
+                        type="number"
+                        nz-input
+                        placeholder="{{ 'Mobile Number' | i18n }}"
+                      />
+                      <ng-template #phoneerrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">{{
+                          'Please Enter Phone Number' | i18n
+                        }}</ng-container>
+                        <ng-container *ngIf="control.hasError('pattern')">{{
+                          'Please enter valid phone number' | i18n
+                        }}</ng-container>
+                      </ng-template>
+                    </nz-input-group>
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="24" class="justify-content-center">
+        <div
+          nz-col
+          nzMd="24"
+          nzLg="24"
+          nzXl="24"
+          nzXs="24"
+          class="align-center"
+        >
+          <nz-form-item class="mb-4 mt-3">
+            <nz-form-control
+              nzErrorTip="{{ 'Please select Country of Residence' | i18n }}"
+            >
+              <nz-select
+                formControlName="customer_Nationality"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="{{ 'Country of Residence' | i18n }}"
+                [nzCustomTemplate]="defaultTemplate"
+              >
+                <nz-option
+                  *ngFor="let item of nationality"
+                  nzCustomContent
+                  [nzLabel]="item.description + '|' + item.img"
+                  [nzValue]="item.code"
+                >
+                  <div class="nationality-header">
+                    <img [src]="item.img" alt="" />
+                    <span>{{ item.description }}</span>
+                  </div>
+                </nz-option>
+              </nz-select>
+              <ng-template #defaultTemplate let-selected>
+                <div class="nationality-header">
+                  <img [src]="selected.nzLabel.split('|')[1]" alt="" />
+                  <span> {{ selected.nzLabel.split('|')[0] }}</span>
+                </div>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="24" class="justify-content-center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <nz-form-item class="mb-4">
+            <nz-form-control
+              nzErrorTip="{{ 'Please Select Trading Platform' | i18n }}"
+            >
+              <nz-input-group>
+                <nz-select
+                  formControlName="Trading_Platform"
+                  nzShowSearch
+                  nzAllowClear
+                  nzPlaceHolder="{{ 'Trading Platform' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option nzValue="MT4" nzLabel="MT4"></nz-option>
+                  <nz-option nzValue="MT5" nzLabel="MT5"></nz-option>
+                  <nz-option nzValue="cTrader" nzLabel="cTrader"></nz-option>
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="24" class="justify-content-center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <div class="tc">
+            <nz-form-item>
+              <nz-form-control [nzErrorTip]="errorTpl">
+                <label nz-checkbox formControlName="agree"> </label>
+                <span class="tnc">
+                  {{
+                    'I have read and consent to my data being used in accordance with the'
+                      | i18n
+                  }}
+                  <a [href]="links[2]" target="_blank">{{
+                    'Privacy Policy' | i18n
+                  }}</a>
+                  &
+                  <a [href]="links[1]" target="_blank">
+                    {{ 'Terms and Conditions.' | i18n }}
+                  </a>
+                </span>
+                <ng-template #errorTpl let-control>
+                  <ng-container *ngIf="control.hasError('required')">{{
+                    'This field is required' | i18n
+                  }}</ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step2" *ngIf="currentStep == 2">
+      <div nz-row [nzGutter]="24" class="justify-content-center h-header">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <h2>{{ 'Please Check Your Email' | i18n }}</h2>
+          <p>
+            {{ 'Weve sent a verification code to' | i18n }}<br />{{
+              registerForm.value.email
+            }}
+          </p>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="24" class="justify-content-center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <nz-form-item>
+            <nz-form-control [ngClass]="showOtpError ? 'otp-error' : ''">
+              <ng-otp-input
+                (onInputChange)="onOtpChange($event)"
+                [config]="{ length: 6 }"
+              ></ng-otp-input>
+            </nz-form-control>
+            <p *ngIf="showOtpError" class="custom-error">
+              {{ 'This field is required' | i18n }}
+            </p>
+          </nz-form-item>
+        </div>
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <p class="resend">
+            {{ 'Didnt get a code?' | i18n }}
+            <span class="resend-link" (click)="getEmailOtp(true)">{{
+              'Click to resend' | i18n
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="step3" *ngIf="currentStep == 3">
+      <div nz-row [nzGutter]="24" class="justify-content-center h-header">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <h2>{{ 'Set your password' | i18n }}</h2>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="24" class="justify-content-center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="errorTpl">
+              <nz-input-group>
+                <nz-input-group
+                  [nzSuffix]="suffixTemplate"
+                  class="password-wrapper"
+                >
+                  <input
+                    [type]="passwordVisible ? 'text' : 'password'"
+                    nzSize="large"
+                    nz-input
+                    formControlName="password"
+                    autocomplete="new-password"
+                    placeholder="{{ 'Password' | i18n }}"
+                    (ngModelChange)="updateConfirmValidator()"
+                  />
+                </nz-input-group>
+                <ng-template #suffixTemplate>
+                  <i
+                    nz-icon
+                    [nzType]="!passwordVisible ? 'eye-invisible' : 'eye'"
+                    (click)="passwordVisible = !passwordVisible"
+                  ></i>
+                </ng-template>
+                <ng-template #errorTpl let-control>
+                  <ng-container *ngIf="control.hasError('required')">{{
+                    'This field is required' | i18n
+                  }}</ng-container>
+                  <ng-container *ngIf="control.hasError('pattern')">
+                    {{ 'password_logic' | i18n }}
+                  </ng-container>
+                </ng-template>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="errorTplpaw">
+              <nz-input-group>
+                <nz-input-group
+                  [nzSuffix]="suffixTemplate1"
+                  class="password-wrapper"
+                >
+                  <input
+                    [type]="confirmPasswordVisible ? 'text' : 'password'"
+                    nzSize="large"
+                    nz-input
+                    formControlName="confirmPassword"
+                    autocomplete="new-password"
+                    placeholder="{{ 'Confirm Password' | i18n }}"
+                    (ngModelChange)="updateConfirmValidator()"
+                  />
+                </nz-input-group>
+                <ng-template #suffixTemplate1>
+                  <i
+                    nz-icon
+                    [nzType]="!confirmPasswordVisible ? 'eye-invisible' : 'eye'"
+                    (click)="confirmPasswordVisible = !confirmPasswordVisible"
+                  ></i>
+                </ng-template>
+                <ng-template #errorTplpaw let-control>
+                  <ng-container *ngIf="control.hasError('required')">{{
+                    'This field is required' | i18n
+                  }}</ng-container>
+                  <ng-container *ngIf="control.hasError('confirmPass')">
+                    {{ 'Password does not match' | i18n }}
+                  </ng-container>
+                </ng-template>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </div>
+    <div class="step4" *ngIf="currentStep == 4">
+      <div nz-row [nzGutter]="24" class="justify-content-center h-header">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <img src="assets/reg-done.svg" alt="Thanks" />
+          <h2>{{ 'Thank you for Registering' | i18n }}</h2>
+          <p>{{ 'You can login to your account now!' | i18n }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="proceed-section">
+      <div nz-row [nzGutter]="24" class="justify-content-center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <div class="btg btg1" *ngIf="currentStep == 1">
+            <button
+              nz-button
+              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+              [nzType]="'primary'"
+              type="submit"
+              [nzLoading]="loader"
+              (click)="nextStep(1)"
+            >
+              {{ 'Next' | i18n }}
+            </button>
+            <div class="bottom-txt">
+              <p>
+                {{ 'have an account?' | i18n }}
+                <a [routerLink]="langs + '/user/login'">{{ 'Login' | i18n }}</a>
+              </p>
+            </div>
+          </div>
+          <div class="btg" *ngIf="currentStep == 2">
+            <button
+              nz-button
+              class="login-form-button login-form-margin cpt-primary-btn cmn-btn cmn-trans-btn"
+              [nzType]="'primary'"
+              type="button"
+              (click)="prevStep(1)"
+            >
+              {{ 'Back' | i18n }}
+            </button>
+            <button
+              nz-button
+              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+              [nzType]="'primary'"
+              type="submit"
+              [nzLoading]="loader"
+              (click)="nextStep(2)"
+            >
+              {{ 'Verify' | i18n }}
+            </button>
+          </div>
+          <div class="btg btg-wrap" *ngIf="currentStep == 3">
+            <button
+              nz-button
+              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+              [nzType]="'primary'"
+              type="submit"
+              [nzLoading]="loader"
+              (click)="nextStep(3)"
+            >
+              {{ 'Next' | i18n }}
+            </button>
+            <p (click)="prevStep(2)">{{ 'Previous step' | i18n }}</p>
+          </div>
+          <div class="btg" *ngIf="currentStep == 4">
+            <button
+              nz-button
+              class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+              [nzType]="'primary'"
+              type="button"
+              [nzLoading]="loader"
+              (click)="nextStep(4)"
+            >
+              {{ 'Login Now' | i18n }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

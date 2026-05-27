@@ -1,0 +1,132 @@
+<nz-card [nzBordered]="false" class="subhead">
+  <div nz-row [nzGutter]="24" nzJustify="space-between" nzAlign="middle">
+    <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+      <div class="user-profile">
+        <div>
+          <img src="assets/images/user-icon.svg" alt="user" />
+        </div>
+        <div>
+          <h1>
+            {{ customerVersion?.firstName }}
+            {{ customerVersion?.lastName }}
+          </h1>
+          <p>{{ customerVersion?.customer_SID }}</p>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" class="text-right">
+      <div class="tag-verify">
+        <img src="assets/images/verify.svg" alt="user" />
+        <ng-container *ngIf="customerVersion?.status === 'Funded'">
+          {{ 'Funded' | i18n }}
+        </ng-container>
+        <ng-container *ngIf="customerVersion?.status === 'Verified'">
+          {{ 'Verified' | i18n }}
+        </ng-container>
+        <ng-container *ngIf="customerVersion?.status === 'Active'">
+          {{ 'Active' | i18n }}
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="line-seprator"></div>
+  <h1 class="personal-head">{{ 'Personal Information' | i18n }}</h1>
+  <div nz-row [nzGutter]="24" class="user-info">
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label>{{ 'First Name' | i18n }}</label>
+      </strong>
+      <p>
+        {{ customerVersion?.firstName }}
+      </p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label>{{ 'Last Name' | i18n }}</label>
+      </strong>
+      <p>
+        {{ customerVersion?.lastName }}
+      </p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Email' | i18n }}</label></strong
+      >
+      <p>{{ customerVersion?.email }}</p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Mobile Number' | i18n }}</label>
+      </strong>
+      <p>{{ customerVersion?.mobile }}</p>
+    </div>
+  </div>
+  <div class="line-seprator"></div>
+  <div nz-row [nzGutter]="24" class="user-info">
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Country of Residence' | i18n }}</label>
+      </strong>
+      <p>{{ customerVersion?.residence }}</p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Nationality' | i18n }}</label>
+      </strong>
+      <p>{{ customerVersion?.nationality }}</p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Client ID' | i18n }}</label>
+      </strong>
+      <p>{{ customerVersion?.customer_SID }}</p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Date of Birth' | i18n }}</label>
+      </strong>
+      <p>{{ customerVersion?.doB  }}</p>
+    </div>
+    <!-- <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Building Name/Number' | i18n }} </label>
+      </strong>
+      <p>
+        {{ customerVersion?.customer_Address }}
+      </p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Flat Number' | i18n }} </label>
+      </strong>
+      <p>{{ customerVersion?.customer_ApartmentNumber }}</p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Street Name' | i18n }} </label>
+      </strong>
+      <p>{{ customerVersion?.customer_Company }}</p>
+    </div> -->
+
+    <!-- <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'State' | i18n }}</label>
+      </strong>
+      <p>{{ customerVersion?.customer_State }}</p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'City' | i18n }}</label>
+      </strong>
+      <p>{{ customerVersion?.customer_City }}</p>
+    </div>
+    <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+      <strong>
+        <label> {{ 'Zip Code' | i18n }}</label>
+      </strong>
+      <p>{{ customerVersion?.customer_ZipCode }}</p>
+    </div> -->
+  </div>
+</nz-card>
+
+<app-setting-modal #settingModalComponent></app-setting-modal>

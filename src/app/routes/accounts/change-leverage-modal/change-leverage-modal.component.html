@@ -1,0 +1,58 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="tplTitle"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzWidth]="500"
+  nzClassName="cpt-modal"
+  [nzOkLoading]="loader"
+  (nzOnOk)="submitForm()"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitle>
+    <div class="nz-title-template">
+      <span>{{ 'Leverage Change' | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="transfer">
+      <form nz-form [formGroup]="validateForm" nzLayout="vertical">
+        <nz-form-item>
+          <nz-form-control>
+            <label>{{ 'Current Leverage' | i18n }}</label>
+            <input
+              type="text"
+              [ngModel]="leverage"
+              readonly
+              nzSize="large"
+              nz-input
+              formControlName="proportion"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="{{ 'selecrtLeverage' | i18n }}">
+            <label>{{ 'Required Leverage' | i18n }}</label>
+            <nz-select
+              nzSize="large"
+              formControlName="account_Leverage"
+              nzPlaceHolder="{{ 'Required Leverage' | i18n }}"
+              class="ant-select-custom"
+            >
+              <nz-option nzValue="50" nzLabel="1:50"></nz-option>
+              <nz-option nzValue="100" nzLabel="1:100"></nz-option>
+              <nz-option nzValue="200" nzLabel="1:200"></nz-option>
+              <nz-option nzValue="300" nzLabel="1:300"></nz-option>
+              <nz-option nzValue="400" nzLabel="1:400"></nz-option>
+              <nz-option nzValue="500" nzLabel="1:500"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </ng-container>
+</nz-modal>

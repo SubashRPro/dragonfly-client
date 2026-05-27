@@ -1,0 +1,292 @@
+<!--add bank details-->
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="tplTitle"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzWidth]="919"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Back' | i18n }}"
+  nzClassName="cpt-modal"
+  [nzOkLoading]="loadingdata"
+  [nzStyle]="{ top: '20px' }"
+  (nzOnOk)="submitForm()"
+  (nzOnCancel)="handleCancel()"
+  [nzFooter]="modalFooter"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitle>
+    <div class="nz-title-template">
+      <div class="icon">
+        <img
+          src="assets/images/Wiretransfer_modal.svg"
+          alt="Wiretransfer_modal"
+        />
+      </div>
+      <span> {{ 'Edit Bank Account' | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="transfer">
+      <nz-card>
+        <form nz-form [formGroup]="validateForm" nzLayout="vertical">
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{
+                  'Account Holder Name' | i18n
+                }}</nz-form-label>
+                <nz-form-control [nzErrorTip]="holderNameErrorTpl">
+                  <input
+                    type="text"
+                    maxlength="100"
+                    nzSize="large"
+                    nz-input
+                    formControlName="banK_USER_NAME"
+                    placeholder="{{ 'Account Holder Name' | i18n }}"
+                  />
+                  <ng-template #holderNameErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">{{
+                      'Please enter the Account Holder Name' | i18n
+                    }}</ng-container>
+                    <ng-container *ngIf="control.hasError('pattern')">
+                      {{
+                        'Please enter valid IBAN without special characters'
+                          | i18n
+                      }}</ng-container
+                    >
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Bank Name' | i18n }}</nz-form-label>
+                <nz-form-control [nzErrorTip]="bankNameErrorTpl">
+                  <input
+                    type="text"
+                    maxlength="100"
+                    nzSize="large"
+                    nz-input
+                    formControlName="banK_NAME"
+                    placeholder="{{ 'Bank Name' | i18n }}"
+                  />
+                  <ng-template #bankNameErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">{{
+                      'Please enter the Bank Name' | i18n
+                    }}</ng-container>
+                    <ng-container *ngIf="control.hasError('pattern')"
+                      >{{
+                        'Please enter valid Bank Name withour special characters'
+                          | i18n
+                      }}
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div nz-row [nzGutter]="16">
+            <div nz-col [nzSpan]="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Bank Address' | i18n }}</nz-form-label>
+                <nz-form-control [nzErrorTip]="addressErrorTpl">
+                  <input
+                    type="text"
+                    maxlength="100"
+                    nzSize="large"
+                    nz-input
+                    formControlName="banK_ADDRESS"
+                    placeholder="{{ 'Bank Address' | i18n }}"
+                  />
+                  <ng-template #addressErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">{{
+                      'Please enter the Bank Address' | i18n
+                    }}</ng-container>
+                    <ng-container *ngIf="control.hasError('pattern')">
+                      {{
+                        'Please enter valid Bank Address withour special characters'
+                          | i18n
+                      }}</ng-container
+                    >
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div nz-row [nzGutter]="16">
+            <div nz-col [nzSpan]="12">
+              <nz-form-item>
+                <nz-form-label>{{ 'Bank Country' | i18n }}</nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{ 'Please enter the Bank Country' | i18n }}"
+                >
+                  <nz-select
+                    nzShowSearch
+                    nzSize="large"
+                    formControlName="banK_NATION"
+                    nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                    class="ant-select-custom"
+                  >
+                    <nz-option
+                      *ngFor="let item of countriesOptios"
+                      [nzValue]="item.code"
+                      [nzLabel]="item.description"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="12">
+              <nz-form-item>
+                <nz-form-label>{{ 'Account Number' | i18n }}</nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{ 'Please enter the Account Number' | i18n }}"
+                >
+                  <input
+                    type="text"
+                    nzSize="large"
+                    maxlength="100"
+                    nz-input
+                    formControlName="banK_NO"
+                    [(ngModel)]="bankFill"
+                    placeholder="{{ 'Account Number' | i18n }}"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div nz-row [nzGutter]="16">
+            <div nz-col [nzSpan]="12">
+              <ng-container *ngIf="user_Nationality === 'IN'; else otherFill">
+                <nz-form-item>
+                  <nz-form-label>{{ 'IBAN' | i18n }}</nz-form-label>
+                  <nz-form-control [nzErrorTip]="ibanErrorTpl">
+                    <input
+                      type="text"
+                      nzSize="large"
+                      nz-input
+                      formControlName="banK_IBAN"
+                      [(ngModel)]="bankFill"
+                      placeholder="{{ 'IBAN' | i18n }}"
+                    />
+                  </nz-form-control>
+                  <ng-template #ibanErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')"
+                      >{{ 'Please enter the IBAN!' | i18n }}
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('pattern')">
+                      {{
+                        'IBAN number contains up to 34 alphanumeric characters!'
+                          | i18n
+                      }}
+                    </ng-container>
+                  </ng-template>
+                </nz-form-item>
+              </ng-container>
+              <ng-template #otherFill>
+                <nz-form-item>
+                  <nz-form-label>{{ 'IBAN' | i18n }}</nz-form-label>
+                  <nz-form-control [nzErrorTip]="ibanErrorTpl">
+                    <input
+                      type="text"
+                      nzSize="large"
+                      nz-input
+                      formControlName="banK_IBAN"
+                      placeholder="{{ 'IBAN' | i18n }}"
+                    />
+                  </nz-form-control>
+                  <ng-template #ibanErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')"
+                      >{{ 'Please enter the IBAN!' | i18n }}
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('pattern')">
+                      {{
+                        'IBAN number contains up to 34 alphanumeric characters!'
+                          | i18n
+                      }}
+                    </ng-container>
+                  </ng-template>
+                </nz-form-item>
+              </ng-template>
+            </div>
+            <div nz-col [nzSpan]="12">
+              <ng-container *ngIf="user_Nationality === 'IN'; else other">
+                <nz-form-item>
+                  <nz-form-label>{{ 'IFSC Code' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'Please enter the IFSC Code' | i18n }}"
+                  >
+                    <input
+                      type="text"
+                      minlength="4"
+                      maxlength="15"
+                      nzSize="large"
+                      nz-input
+                      formControlName="swifT_CODE"
+                      placeholder="{{ 'IFSC Code' | i18n }}"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </ng-container>
+              <ng-template #other>
+                <nz-form-item>
+                  <nz-form-label>{{ 'Swift Code' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'Please enter the Swift Code' | i18n }}"
+                  >
+                    <input
+                      type="text"
+                      minlength="8"
+                      maxlength="11"
+                      nzSize="large"
+                      nz-input
+                      formControlName="swifT_CODE"
+                      placeholder="{{ 'Swift Code' | i18n }}"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </ng-template>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col [nzSpan]="12">
+              <nz-form-item>
+                <nz-form-label>
+                  {{ 'Mark Default Bank Details' | i18n }}</nz-form-label
+                >
+                <nz-switch
+                  nzSize="small"
+                  class="mr"
+                  formControlName="is_Default"
+                >
+                </nz-switch>
+              </nz-form-item>
+            </div>
+          </div>
+        </form>
+      </nz-card>
+    </div>
+  </ng-container>
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">
+      {{ 'Close' | i18n }}
+    </button>
+    <button
+      nz-button
+      nzType="primary"
+      class="radius-btn"
+      (click)="submitForm()"
+      [nzLoading]="loadingdata"
+    >
+      {{ 'Save' | i18n }}
+    </button>
+  </ng-template>
+</nz-modal>

@@ -1,0 +1,407 @@
+@import "~@delon/theme/index";
+
+:host {
+  .form-area {
+    width: 82%;
+    margin: auto;
+    text-align: center;
+  }
+  .main-wrapper {
+    padding: 30px 0;
+    max-width: 420px;
+    margin: 0 auto;
+    @media only screen and (max-width: 850px) {
+      padding: 15px 0 30px;
+    }
+    .s-head {
+      margin-bottom: 50px;
+      justify-content: center;
+      font-size: 11px;
+      .s-block {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        opacity: 0.3;
+        &::after {
+          content: "";
+          position: absolute;
+          background: #e8c71e;
+          bottom: -5px;
+          width: 90%;
+          height: 8px;
+          border-radius: 10px;
+        }
+        &.s-active {
+          opacity: 1;
+        }
+      }
+    }
+    .bottom {
+      margin-top: 15px;
+    }
+    .register-form {
+      display: flex;
+      flex-wrap: wrap;
+
+      text-align: left;
+      justify-content: center;
+      .h-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      label.ant-checkbox-wrapper {
+        display: inline-flex;
+      }
+      .client-service {
+        overflow: hidden; //超出的文本隐藏
+        text-overflow: ellipsis; //溢出用省略号显示
+        white-space: nowrap; //溢出不换行
+        max-width: 350px;
+        display: block;
+        margin-right: 6px;
+      }
+
+      .agree-box {
+        text-align: left;
+
+        label {
+          display: flex;
+          font-size: 12px;
+        }
+
+        a {
+          font-size: 13px;
+          text-decoration: underline;
+        }
+      }
+
+      .refer-box {
+        text-align: right;
+
+        .ref-input {
+          margin: 10px 0;
+        }
+      }
+
+      label {
+        color: #0c2038;
+        display: block;
+      }
+
+      .ant-form-item {
+        margin-bottom: 15px;
+      }
+
+      .ant-form-item .ant-select {
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      position: relative;
+
+      .bottom {
+        display: flex;
+        position: absolute;
+        top: -58px;
+        justify-content: space-between;
+        margin-top: 25px;
+
+        span {
+          color: #caced3;
+
+          a {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .btn-code-wrapper {
+        display: flex;
+        align-items: center;
+
+        button {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .r-active {
+        color: blue;
+      }
+      .proceed-section {
+        padding-left: 12px;
+        padding-right: 12px;
+        width: 100%;
+        .btg {
+          display: flex;
+        }
+        .btg-wrap {
+          flex-wrap: wrap;
+          justify-content: center;
+          p {
+            margin-top: 15px;
+            cursor: pointer;
+          }
+        }
+      }
+      .mb-v {
+        margin-bottom: 20px;
+      }
+      .cmn-btn {
+        box-shadow: none;
+      }
+      .btg1 {
+        display: flex;
+        flex-wrap: wrap;
+        .bottom-txt {
+          text-align: center;
+          margin-top: 12px;
+          width: 100%;
+        }
+      }
+
+      input {
+        height: 48px;
+        border: 1px solid #748597;
+        border-radius: 8px;
+        letter-spacing: 0.14px;
+        padding: 15px;
+      }
+
+      .resend {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .otp-error {
+        border: 1px solid #ff4d4f;
+      }
+      .custom-error {
+        width: 100%;
+        color: #ff4d4f;
+        margin-top: 8px;
+        margin-bottom: 5px;
+      }
+      h2 {
+        color: #0c2038;
+        font-size: 24px;
+        margin: 0;
+      }
+      a {
+        color: #0c2038;
+      }
+      .resend-link {
+        font-size: 14px;
+        color: #e8c71e;
+        cursor: pointer;
+      }
+      p {
+        margin: 0;
+        color: #6d7988;
+        font-size: 13px;
+      }
+      .tnc {
+        color: #0c2038;
+        a {
+          text-decoration: underline;
+        }
+      }
+
+      .step4 {
+        img {
+          margin-bottom: 20px;
+        }
+      }
+      .phone-wrapper {
+        display: flex;
+        justify-content: space-between;
+        .phone-extension {
+          margin-right: 8px;
+        }
+        .phone-number {
+          width: 100%;
+        }
+      }
+    }
+    .success-box {
+      text-align: center;
+      img {
+        margin-bottom: 20px;
+      }
+    }
+    .otp-box {
+      span {
+        font-size: 14px;
+        color: #0c2038;
+      }
+    }
+  }
+
+  .full-length {
+    width: 100%;
+  }
+}
+
+::ng-deep {
+  .setting-wrap {
+    @media only screen and (max-width: 850px) {
+      .ant-tabs-nav-wrap {
+        text-align: center;
+        white-space: normal !important;
+        .ant-tabs-nav-list {
+          display: flex;
+        }
+      }
+    }
+  }
+  .ant-card {
+    border-radius: 16px;
+  }
+  .ant-tabs-tab-btn {
+    opacity: 50%;
+    letter-spacing: 0.6px;
+  }
+  .ant-tabs-tab-active {
+    .ant-tabs-tab-btn {
+      color: #212d46 !important;
+      opacity: 100%;
+    }
+  }
+  .ant-tabs-tab:hover,
+  .ant-tabs-tab-btn:hover {
+    color: #212d46 !important;
+  }
+  .ant-form-item-explain.ant-form-item-explain-error {
+    font-size: 12px;
+  }
+  .password-wrapper {
+    padding: 0;
+    border: inherit;
+    input {
+      padding-right: 45px;
+    }
+    .ant-input-suffix {
+      margin-left: -27px;
+      z-index: 99;
+    }
+  }
+  .ant-input-affix-wrapper > input.ant-input {
+    border: inherit;
+    outline: inherit;
+  }
+  .ng-otp-input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    input {
+      padding: 8px;
+      background: #cdfbf9;
+      border: none !important;
+      height: 50px !important;
+      width: 45px !important;
+      margin: 0 !important;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+  .register-password-cdk {
+    .success,
+    .warning,
+    .error {
+      transition: color 0.3s;
+    }
+
+    .success {
+      color: @success-color;
+    }
+
+    .warning {
+      color: @warning-color;
+    }
+
+    .error {
+      color: @error-color;
+    }
+
+    .progress-pass > .progress {
+      .ant-progress-bg {
+        background-color: @warning-color;
+      }
+    }
+  }
+
+  .nationality-header {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 29px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .nationality-text {
+      margin: 0 15px;
+    }
+  }
+
+  .read {
+    flex-direction: column;
+
+    .ant-checkbox-group-item {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    height: 48px;
+    padding: 8px 15px;
+    border: 1px solid #748597;
+    border-radius: 8px;
+    letter-spacing: 0.14px;
+  }
+  .ant-form-item {
+    margin-top: 0;
+  }
+  .ant-select-single .ant-select-selector .ant-select-selection-item {
+    line-height: 30px;
+  }
+  .tc {
+    .ant-form-item-control-input-content {
+      display: flex;
+      label {
+        margin-right: 10px;
+      }
+    }
+  }
+  .ant-form-item-has-error
+    :not(.ant-input-disabled):not(.ant-input-borderless).ant-input {
+    border: 1px solid #ff4d4f !important;
+  }
+  .ant-input[readonly] {
+    background: #f5f5f5;
+  }
+}
+
+.mt-10 {
+  margin-top: 1rem;
+}
+
+.pd-bottom {
+  margin-bottom: 10px;
+}
+
+.mobile-row {
+  text-align: center;
+  max-width: 600px !important;
+  font-size: 15px;
+  line-height: 27px;
+}

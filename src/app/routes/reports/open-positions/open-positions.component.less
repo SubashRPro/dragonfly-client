@@ -1,0 +1,152 @@
+.title {
+  margin-bottom: 20px;
+  h4 {
+    font-size: 17px;
+  }
+}
+.filter {
+  &.no-collapsed {
+    max-height: 55px;
+    overflow: hidden;
+    .sub-title {
+      .filter-collapse {
+        span {
+          top: 8px;
+          -webkit-transform: rotate(225deg);
+          -moz-transform: rotate(225deg);
+          transform: rotate(225deg);
+          -o-transform: rotate(225deg);
+        }
+      }
+    }
+  }
+  .sub-title {
+    display: flex;
+    justify-content: space-between;
+    .filter-collapse {
+      position: absolute;
+      top: -10px;
+      right: 5px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid #cccbcb;
+      span {
+        position: absolute;
+        top: 6px;
+        left: 7px;
+        background: #cccbcb;
+        width: 12px;
+        height: 12px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transition: all 0.7s ease;
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 3px;
+          right: 3px;
+          width: 12px;
+          height: 12px;
+          background: #f7f7f7;
+        }
+      }
+    }
+  }
+  form {
+    label {
+      color: #919eac;
+    }
+    input {
+      background-color: #ffffff;
+      padding: 8px;
+    }
+    .ant-form-item-has-error {
+      .ant-select-custom {
+        &.ng-invalid {
+          border-color: #ff4d4f;
+        }
+      }
+    }
+    .ant-select-custom {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 3px 0;
+      border: 1px solid #d9d9d9;
+      ::ng-deep {
+        .ant-select-selector {
+          background-color: transparent;
+          border: none;
+          border-radius: 0;
+        }
+      }
+      .ant-select-selector {
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        height: 90px;
+      }
+    }
+    .ant-radio-group-custom {
+      width: 100%;
+      background-color: #fdfdfe;
+      padding: 8px 40px;
+      border: 1px solid #d9d9d9;
+      display: flex;
+      justify-content: space-around;
+    }
+    .phone-select {
+      padding: 8px;
+    }
+    .ant-picker {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 8px;
+    }
+  }
+  .btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48%;
+      border-radius: 0;
+      padding: 18px 20px;
+      font-weight: bold;
+      margin-top: 2px;
+      &.cpt-transparent-btn {
+        color: #00b6f2;
+        &:hover {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+.filter-content {
+  margin-top: 20px;
+  .data {
+    ::ng-deep {
+      .ant-table-thead {
+        tr {
+          th {
+            background: #ffffff;
+            color: #000000;
+          }
+        }
+      }
+      tbody {
+        tr {
+          &:nth-child(even) {
+            background-color: #f6f7f8;
+          }
+        }
+      }
+    }
+  }
+}

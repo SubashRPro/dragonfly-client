@@ -1,0 +1,81 @@
+@import '~@delon/theme/index';
+:host {
+  .profile-personal-title {
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 18px;
+    color: #51657d;
+    font-size: 16px;
+  }
+
+  ::ng-deep {
+    .profile-files {
+      .ant-upload-list-picture-card-container,
+      .ant-upload.ant-upload-select-picture-card {
+        width: 350px !important;
+        height: 210px !important;
+      }
+    }
+    .profile-upload-icon {
+      i {
+        color: #3cf;
+        font-size: 48px;
+      }
+    }
+    .phone-select {
+      border: none;
+      .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+        border: none;
+      }
+    }
+    .question-title {
+      font: normal normal 600 16px/26px Montserrat;
+      color: #3b3d42;
+      margin-left: 12px;
+    }
+    .ant-advanced-search-form {
+      margin-left: 24px;
+      .ant-radio-group,
+      .ant-checkbox-group {
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-bottom: 12px;
+        }
+      }
+      .question-control,
+      .ant-form-item-explain {
+        padding-left: 16px;
+      }
+    }
+  }
+  .line {
+    font: normal normal medium 14px/16px Roboto;
+    border-bottom: 1px solid #d8dbeb;
+    padding-bottom: 10px;
+    color: #51657d;
+    margin-bottom: 22px;
+  }
+}
+.gray {
+  color: #acacac;
+}
+
+.email-verify {
+  text-align: center;
+  padding: 10px;
+  img {
+    width: 130px;
+    margin-bottom: 10px;
+  }
+  h1 {
+    color: #ec5d61;
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-weight: 600;
+  } p {
+    color: #6D7988;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+}

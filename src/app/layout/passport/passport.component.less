@@ -1,0 +1,88 @@
+.body-content {
+  display: flex;
+  justify-content: center;   // ✅ center horizontally
+  align-items: center;       // ✅ center vertically
+  height: 100%;
+  min-height: 100vh;         // ✅ full screen center
+  padding: 20px;
+}
+
+.left-content-pass {
+  flex: none;                // ✅ stop taking half screen
+  width: 100%;
+  max-width: 520px;          // ✅ control login box width
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+      width: 100%;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+    background: radial-gradient(ellipse at 50% 100%, rgba(120, 160, 255, .35) 0%, rgba(120, 160, 255, .18) 25%, rgba(248, 250, 252, .9) 55%, #f8fafc 80%), linear-gradient(to bottom, #f8fafc 0%, #eef2f7 45%, #e2e8f0 100%);
+    filter: drop-shadow(0 0 60px rgba(120, 160, 255, .35));
+    border: 1px solid rgba(255, 255, 255, .6);
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 0;
+  }
+}
+
+.content-holder {
+  width: 100%;
+  max-width: 470px;          // ✅ your form width
+  margin: 0 auto;
+}
+
+/* ✅ Completely hide/remove right block even if it exists somewhere */
+.right-content-pass {
+  display: none !important;
+}
+
+/* ===== Top Header ===== */
+.top-header {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+
+  @media (max-width: 768px) {
+    left: 20px;
+    right: 20px;
+  }
+}
+
+.logo-section {
+  .app-logo {
+    height: 50px;
+  }
+}
+
+.lang-section {
+  display: flex;
+  align-items: center;
+}
+
+.left-content {
+ background: url('../../../assets/images/auth-area.png') no-repeat center center;
+ background-size: cover;
+}
+
+// .left-content {
+//   min-height: 100vh;
+//   background-color: #f4f6fb;
+//   background-image:
+//     radial-gradient(circle at 25% 25%, #dce6f7 2px, transparent 2px),
+//     radial-gradient(circle at 75% 75%, #dce6f7 2px, transparent 2px);
+//   background-size: 40px 40px;
+// }

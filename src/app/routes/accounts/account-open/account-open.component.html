@@ -1,0 +1,165 @@
+<nz-card
+  [nzTitle]="'Open New Trading Account' | i18n"
+  [nzExtra]="extraTemplate"
+  class="margin-calc"
+>
+  <div class="content">
+    <form nz-form [formGroup]="formOpenAccount" (ngSubmit)="submitForm()">
+      <div nz-row [nzGutter]="24">
+        <div class="mb-4" nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+          <nz-form-item class="mb-4">
+            <nz-form-control
+              nzErrorTip="{{ 'Please Select Trading Platform' | i18n }}"
+            >
+              <nz-input-group>
+                <label>{{ 'Trading Platform' | i18n }}</label>
+                <nz-select
+                  formControlName="Trading_Platform"
+                  nzName="Trading_Platform"
+                  nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option nzValue="MT4" nzLabel="MT4"></nz-option>
+                  <nz-option
+                    nzValue="MT5"
+                    nzLabel="MT5"
+                    *ngIf="!isDemo"
+                  ></nz-option>
+                  <nz-option nzValue="cTrader" nzLabel="cTrader"></nz-option>
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="mb-4" nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+          <nz-form-item class="mb-4">
+            <nz-form-control nzErrorTip="{{ 'selectType' | i18n }}">
+              <nz-input-group>
+                <label>{{ 'ACCOUNT_TYPE' | i18n }}</label>
+                <nz-select
+                  formControlName="account_Type"
+                  nzPlaceHolder="{{ 'SELECT' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option
+                    *ngFor="let item of businessTYpe"
+                    [nzValue]="item.id"
+                    [nzLabel]="item.description"
+                  ></nz-option>
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <!-- <nz-form-item>
+            <nz-form-control nzErrorTip="{{ 'selectType' | i18n }}">
+              <nz-input-group>
+                <label>{{ 'ACCOUNT_TYPE' | i18n }}</label>
+                <nz-select
+                  formControlName="account_Type"
+                  nzName="accountType"
+                  nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option *ngIf="userInfo.user_Type === 'Customer'" nzValue="Standard" nzLabel="Standard"> </nz-option>
+                  <nz-option *ngIf="userInfo.user_Type === 'Customer'" nzValue="Professional" nzLabel="Pro"></nz-option>
+                  <nz-option *ngIf="userInfo.user_Type !== 'Customer'" nzValue="Demo" nzLabel="Demo"></nz-option>
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item> -->
+        </div>
+        <div class="mb-4" nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+          <nz-form-item class="mb-4">
+            <nz-form-control nzErrorTip="{{ 'selectCurrency' | i18n }}">
+              <nz-input-group>
+                <label>{{ 'Currency' | i18n }}</label>
+                <nz-select
+                  formControlName="currency"
+                  nzPlaceHolder="{{ 'SELECT' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <!-- <nz-option
+                    *ngFor="let item of currencies"
+                    [nzValue]="item.code"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option> -->
+                  <nz-option nzValue="USD" nzLabel="USD"></nz-option>
+                  <nz-option nzValue="EUR" nzLabel="EUR"></nz-option>
+                  <nz-option nzValue="GBP" nzLabel="GBP"></nz-option>
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="mb-4" nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+          <nz-form-item class="mb-4">
+            <nz-form-control nzErrorTip="{{ 'selecrtLeverage' | i18n }}">
+              <nz-input-group>
+                <label>{{ 'Leverage' | i18n }}</label>
+                <nz-select
+                  formControlName="account_Leverage"
+                  nzName="accountType"
+                  nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                  class="ant-select-custom"
+                >
+                  <nz-option nzValue="50" nzLabel="1:50"></nz-option>
+                  <nz-option nzValue="100" nzLabel="1:100"></nz-option>
+                  <nz-option nzValue="200" nzLabel="1:200"></nz-option>
+                  <nz-option nzValue="400" nzLabel="1:400"></nz-option>
+                  <nz-option nzValue="500" nzLabel="1:500"></nz-option>
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <ng-container *ngIf="isDemo">
+          <div class="mb-4" nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="24">
+            <nz-form-item class="mb-4">
+              <nz-form-control nzErrorTip="{{ 'demo_deposit_amount' | i18n }}">
+                <nz-input-group>
+                  <label>{{ 'deposit_fund' | i18n }}</label>
+                  <nz-select
+                    formControlName="init_Balance"
+                    nzName="init_Balance"
+                    nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                    class="ant-select-custom"
+                  >
+                    <nz-option nzValue="3000" nzLabel="3000"></nz-option>
+                    <nz-option nzValue="5000" nzLabel="5000"></nz-option>
+                    <nz-option nzValue="10000" nzLabel="10000"></nz-option>
+                    <nz-option nzValue="25000" nzLabel="25000"></nz-option>
+                    <nz-option nzValue="50000" nzLabel="50000"></nz-option>
+                    <nz-option nzValue="100000" nzLabel="100000"></nz-option>
+                    <nz-option nzValue="500000" nzLabel="500000"></nz-option>
+                    <nz-option nzValue="1000000" nzLabel="1000000"></nz-option>
+                    <nz-option nzValue="5000000" nzLabel="5000000"></nz-option>
+                  </nz-select>
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </ng-container>
+      </div>
+      <div class="action-wrap">
+        <button class="search-btn" nz-button (click)="cancel()">
+          {{ 'Cancel' | i18n }}
+        </button>
+        <button nz-button nzType="primary" type="submit" [nzLoading]="loader">
+          {{ 'Confirm' | i18n }}
+        </button>
+      </div>
+    </form>
+  </div>
+</nz-card>
+
+<ng-template #extraTemplate>
+  <button
+    nz-button
+    nzType="primary"
+    class="cpt-tab-btn"
+    [routerLink]="langs + '/account-list'"
+  >
+    <i nz-icon nzType="left"></i>{{ 'Back' | i18n }}
+  </button>
+</ng-template>

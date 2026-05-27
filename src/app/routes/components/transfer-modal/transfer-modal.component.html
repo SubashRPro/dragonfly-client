@@ -1,0 +1,230 @@
+<div class="transfer-modal">
+  <ng-container *ngIf="pspAllowed; else otherDeposit">
+    <nz-card [nzTitle]="nzTitle" [nzLoading]="dataLoad">
+      <ng-template #nzTitle>
+        <span>
+          {{ 'Transfer' | i18n }}
+          <span *ngIf="selectTransfer === 'C'">
+            ({{ 'Total Balance' | i18n }}: {{ total?.totalBalance }}
+            {{ total?.currency }})</span
+          >
+        </span>
+      </ng-template>
+      <div nz-row nzJustify="center">
+        <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+          <div class="transfer tr-code">
+            <form nz-form [formGroup]="validateForm" nzLayout="vertical">
+              <nz-form-item>
+                <nz-form-label>{{ 'Transfer From' | i18n }}</nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{ 'Please select Transfer From' | i18n }}"
+                  [nzExtra]="nzExtra1"
+                >
+                  <nz-select
+                    (ngModelChange)="tradingChange($event, 'From')"
+                    nzSize="large"
+                    formControlName="transferFrom"
+                    nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                    class="ant-select-custom"
+                  >
+                    <nz-option
+                      *ngFor="let item of transferOptions"
+                      [nzValue]="
+                        item.code + '|' + item.currency + '|' + item.type
+                      "
+                      [nzLabel]="item.description"
+                      [nzDisabled]="
+                        validateForm.value.transferTo ===
+                        item.code + '|' + item.currency + '|' + item.type
+                      "
+                    ></nz-option>
+                  </nz-select>
+                  <ng-template #nzExtra1>
+                    <div class="balance">
+                      {{ 'Trading Account Balance' | i18n }}:
+                      <strong
+                        >{{ transferFrom.currency }}
+                        {{ transferFrom.balance ?? 0 }}</strong
+                      >
+                    </div>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label>{{ 'Transfer To' | i18n }}</nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{ 'Please select Transfer To' | i18n }}"
+                  [nzExtra]="nzExtra"
+                >
+                  <nz-select
+                    (ngModelChange)="tradingChange($event, 'To')"
+                    nzSize="large"
+                    formControlName="transferTo"
+                    nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                    class="ant-select-custom"
+                  >
+                    <nz-option
+                      *ngFor="let item of transferOptions"
+                      [nzValue]="
+                        item.code + '|' + item.currency + '|' + item.type
+                      "
+                      [nzLabel]="item.description"
+                      [nzDisabled]="
+                        validateForm.value.transferFrom ===
+                        item.code + '|' + item.currency + '|' + item.type
+                      "
+                    ></nz-option>
+                  </nz-select>
+                  <ng-template #nzExtra>
+                    <div class="balance">
+                      {{ 'Trading Account Balance' | i18n }}:
+                      <strong
+                        >{{ transferTo.currency }}
+                        {{ transferTo.balance ?? 0 }}</strong
+                      >
+                    </div>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label>{{ 'Amount' | i18n }}</nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{ 'Please enter valid amount' | i18n }}"
+                >
+                  <!-- <input type="number" nzSize="large" nz-input formControlName="amount" placeholder="Amount" /> -->
+                  <nz-input-number
+                    formControlName="amount"
+                    nzSize="large"
+                    nzPlaceHolder="{{
+                      'Minimum Amount Should be 1 USD' | i18n
+                    }}"
+                    [nzMin]="0"
+                    [nzMax]="transferFrom.balance"
+                    [nzStep]="1"
+                    class="w100"
+                  ></nz-input-number>
+                  <div
+                    class="balance d-flex justify-content-between account-conversion"
+                  >
+                    <div>
+                      {{ 'Conversion Rate' | i18n }}:
+                      <strong
+                        >1 {{ transferFrom.currency }} = {{ exchangeRate }}
+                        {{ transferTo.currency }}</strong
+                      >
+                    </div>
+                    <div>
+                      {{ 'Transfer Amount' | i18n }}:
+                      <strong
+                        >{{ transferTo.currency }}
+                        {{
+                          (validateForm.value.amount * exchangeRate).toFixed(2)
+                        }}</strong
+                      >
+                    </div>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </form>
+            <button
+              class="cmn-btn large-bth w-100"
+              nz-button
+              [nzLoading]="transferLoader"
+              [nzType]="'primary'"
+              (click)="onInitiateTransfer()"
+            >
+              {{ 'Submit' | i18n }}
+            </button>
+          </div>
+          <!-- <div nz-col class="wallet-content" [nzSpan]="12">
+          <div class="amount">Amount</div>
+          <div class="number">
+            <span class="big">{{ this.validateForm.value.amount ?? 0 }}</span>
+            <span class="samll">USD</span>
+          </div>
+  
+          <div class="wallet">
+            <div class="wallet-item">
+              <div>Transfer From</div>
+              <div>{{ transferFrom.balance }} ({{ transferFrom.currency }})</div>
+            </div>
+            <div class="wallet-line"></div>
+            <div class="wallet-item">
+              <div>Balance</div>
+              <div>{{ transferTo?.balance ?? '0.0000' }} ({{ transferTo?.currency ?? 'USD' }} )</div>
+            </div>
+            <div class="wallet-line" *ngIf="validateForm.value.wallet !== 1"></div>
+            <div class="wallet-item">
+              <div>Credit Amount</div>
+              <div>{{ validateForm.value.currencie?.split('|')[1] }} ({{ (validateForm.value.amount * exchangeRate).toFixed(4) }})</div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+        </div>
+      </div>
+    </nz-card>
+  </ng-container>
+  <ng-template #otherDeposit>
+    <nz-card [nzTitle]="nzTitle" [nzLoading]="dataLoad">
+      <ng-template #nzTitle>
+        <span>
+          {{ 'Transfer' | i18n }}
+        </span>
+      </ng-template>
+      <div nz-row nzJustify="center">
+        <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+          <div class="transfer tr-code psp-block">
+            <img
+              src="assets/images/block.png"
+              alt="info"
+              style="width: 150px"
+            />
+            <h3>
+              Sorry, you cannot be able to initiate the transfer now. Kindly
+              reach out to
+              <a href="mailto:support_int@trive.com">
+               support_int@trive.com
+              </a>
+              for more details.
+            </h3>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </ng-template>
+</div>
+
+<ng-template #tplContent let-params>
+  <div class="text-center">
+    <div>
+      <img
+        src="assets/images/oh.svg"
+        alt="question"
+        style="width: 70px; margin-bottom: 1rem"
+      />
+    </div>
+    <span style="font-size: 18px">{{ 'Are you sure?' | i18n }}</span>
+  </div>
+  <!-- <form
+    nz-form
+    [formGroup]="validateOtpForm"
+    nzLayout="vertical"
+    class="login-form transfer-log"
+  >
+    <nz-form-item>
+      <nz-form-label nzFor="email">{{ 'Enter OTP' | i18n }}</nz-form-label>
+      <nz-form-control nzErrorTip="Please input code!">
+        <input
+          type="text"
+          nz-input
+          formControlName="otp"
+          placeholder="{{ 'Enter OTP' | i18n }}"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <p class="otp-info">
+      {{ 'We sent OTP to your email, OTP will be valid for 5 minutes' | i18n }}
+    </p>
+  </form> -->
+</ng-template>

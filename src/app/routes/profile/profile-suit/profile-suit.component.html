@@ -1,0 +1,189 @@
+<nz-card [nzLoading]="prfoleloading">
+  <div nz-row nzJustify="center">
+    <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+      <nz-steps [nzCurrent]="current" nzProgressDot>
+        <nz-step nzTitle="{{ 'Suitability Test' | i18n }}"></nz-step>
+        <nz-step nzTitle="{{ 'Upload Documents' | i18n }}"></nz-step>
+      </nz-steps>
+    </div>
+  </div>
+  <div nz-row nzJustify="center">
+    <div nz-col nzMd="18" nzLg="18" nzXl="18" nzXs="24">
+      <!-- ************Suitability Test ************ -->
+      <div *ngIf="current === 0" class="subhead verify question">
+        <h1 class="cpt-heading mt-4 text-center">
+          {{ 'Suitability Test' | i18n }}
+        </h1>
+        <p class="text-center">
+          {{ 'Please answer the questions below' | i18n }}
+        </p>
+        <form nz-form [formGroup]="SuitableForm" class="ant-advanced-search-form mt-4 ml-6" nzLayout="vertical">
+          <div *ngIf="isSecondAnswer; else other_content">
+            <div *ngFor="let item of suitableSecondAnswer; let ix = index">
+              <div>
+                <div class="question-icon">{{ ix + 1 }}</div>
+                <div class="question-title">
+                  {{ item.question }}
+                  <nz-form-control nzErrorTip="{{ 'Please select valid answer!' | i18n }}">
+                    <div class="question-control suit">
+                      <nz-radio-group [formControlName]="'answerTypeSecond|' + item.id" (ngModelChange)="onSecondSuitability($event)">
+                        <label nz-radio *ngFor="let ans of item.sT_Answers" [nzValue]="ans.id + '|' + ans.answer + '|' + item.id">
+                          {{ ans.answer }}
+                        </label>
+                      </nz-radio-group>
+                    </div>
+                  </nz-form-control>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #other_content>
+            <div *ngFor="let item of suitableAnswer; let ix = index">
+              <div>
+                <div class="question-icon">{{ ix + 1 }}</div>
+                <div class="question-title">
+                  {{ item.question }}
+                  <nz-form-control nzErrorTip="{{ 'Please select valid answer!' | i18n }}">
+                    <div class="question-control suit">
+                      <nz-radio-group [formControlName]="'answerType|' + item.id" (ngModelChange)="onSuitability($event)">
+                        <label nz-radio *ngFor="let ans of item.sT_Answers" [nzValue]="ans.id + '|' + ans.answer + '|' + item.id">
+                          {{ ans.answer }}
+                        </label>
+                      </nz-radio-group>
+                    </div>
+                  </nz-form-control>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <div nz-row nzJustify="center">
+            <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24" class="text-center">
+              <div *ngIf="isSecondAnswer; else Secondcontent">
+                <button class="cmn-btn mb-2 p-btn" nz-button [nzType]="'primary'" (click)="suitabilitySecondSubmit()">
+                  {{ 'Next' | i18n }}
+                </button>
+              </div>
+              <ng-template #Secondcontent>
+                <button class="cmn-btn mb-2 p-btn" nz-button [nzType]="'primary'" (click)="suitabilitySubmit()">
+                  {{ 'Next' | i18n }}
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- **********Documents Upload******* -->
+      <div *ngIf="current === 1" class="profile-files subhead verify">
+        <h1 class="cpt-heading mt-4">{{ 'Upload the POA Document' | i18n }}</h1>
+        <!-- <p class="proof">
+          {{
+            'Please ensure your proof of ID shows your full name, date of birth and
+          its expiry date. photo ID must be valid, clear and colored copy.'
+              | i18n
+          }}
+        </p> -->
+        <form nz-form [formGroup]="documentForm" nzLayout="vertical">
+          <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" *ngIf="documentForm.value.documentType === 'Passport'">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="The input is not valid street zip Code!">
+                <nz-upload
+                  nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                  [nzBeforeUpload]="passportBeforeUpload"
+                  [nzPreview]="handlePreview"
+                  [(nzFileList)]="passportFileList"
+                  (nzOnCancel)="passportPreviewVisible = false"
+                  nzListType="picture-card"
+                  [nzRemove]="handlePassportRemove"
+                  [nzShowButton]="passportFileList.length < 1"
+                >
+                  <div class="profile-upload-icon">
+                    <p class="ant-upload-drag-icon">
+                      <i nz-icon [nzType]="passportLoading ? 'loading' : ''"> </i>
+                      <img *ngIf="!passportLoading" src="assets/images/Profile-upload.svg" alt="" />
+                    </p>
+                    <p class="ant-upload-text" style="margin-top: 15px"> Click here to upload your documents </p>
+                  </div>
+                </nz-upload>
+                <nz-modal
+                  [nzVisible]="passportPreviewVisible"
+                  [nzContent]="modalContent"
+                  [nzFooter]="null"
+                  (nzOnCancel)="passportPreviewVisible = false"
+                >
+                  <ng-template #modalContent>
+                    <img [src]="passportPreviewImage" [ngStyle]="{ width: '100%' }" />
+                  </ng-template>
+                </nz-modal>
+              </nz-form-control>
+              <!-- <nz-form-label>
+              <span class="upload">{{ 'Please Upload the front of the document' | i18n }}</span>
+            </nz-form-label> -->
+            </nz-form-item>
+          </div>
+        </form>
+        <div nz-row nzJustify="center">
+          <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24" class="text-center">
+            <button
+              class="cmn-btn mb-2"
+              [disabled]="statusCode"
+              nz-button
+              [nzType]="'primary'"
+              [nzLoading]="loaddingSumbit"
+              (click)="documnetSubmit()"
+            >
+              {{ 'Submit' | i18n }}
+            </button>
+          </div>
+        </div>
+        <div nz-row nzJustify="center">
+          <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24" class="text-center">
+            <button class="back-btn" nzType="text" nz-button (click)="createTplModal(tplTitle, tplContent, tplFooter)">
+              <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+              {{ 'Back' | i18n }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <ng-template #tplTitle>
+        <span> {{ 'Are you sure to cancel?' | i18n }}</span>
+      </ng-template>
+      <ng-template #tplContent let-params>
+        <div class="d-flex align-items-center" style="flex-direction: column">
+          <img src="assets/images/waring.svg" alt="waring" />
+          <b style="margin-top: 12px; text-align: center">All information filled in this page will be lost if you cancel!</b>
+        </div>
+      </ng-template>
+      <ng-template #tplFooter let-ref="modalRef">
+        <button nz-button (click)="nzOnCancel(ref)">
+          {{ 'Yes, Cancel' | i18n }}
+        </button>
+        <button nz-button nzType="primary" class="radius-btn" (click)="ref.destroy()">
+          {{ 'Continue Filling' | i18n }}
+        </button>
+      </ng-template>
+      <app-image-requirement-modal #imageRequirementModalComponent></app-image-requirement-modal>
+    </div>
+  </div>
+</nz-card>
+
+<nz-modal
+  [(nzVisible)]="supportModal"
+  [nzWidth]="600"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Back' | i18n }}"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+>
+  <ng-container *nzModalContent>
+    <div class="failed-modal">
+      <p>
+        Unfortunately, you did not pass the second attempt of your suitability test. Kindly get in touch with our support team
+        <a href="mailto:support_int@trive.com"> support@dragonflyfx.com </a> for further assistance.
+      </p>
+      <div>
+        <button nz-button class="cpt-primary-btn cmn-btn" [nzType]="'primary'" (click)="goContact()"> OK </button>
+      </div>
+    </div>
+  </ng-container>
+</nz-modal>

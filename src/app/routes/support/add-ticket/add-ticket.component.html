@@ -1,0 +1,117 @@
+<div class="new-ticket-wrapper">
+  <nz-card>
+    <div class="new-ticket">
+      <div class="title-header">{{ 'New Service Request' | i18n }}</div>
+      <form
+        nz-form
+        [formGroup]="addTicketForm"
+        class="ant-advanced-search-form"
+        nzLayout="vertical"
+      >
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'"
+                >{{ 'Type' | i18n }}
+              </nz-form-label>
+              <nz-form-control nzErrorTip="{{ 'Please Select' | i18n }}">
+                <nz-select
+                  (ngModelChange)="ticketTypeOnChange($event)"
+                  nzSize="large"
+                  nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                  formControlName="ticket_TypeCode"
+                  nzSuffixIcon="caret-down"
+                >
+                  <nz-option
+                    *ngFor="let item of ticketType"
+                    [nzValue]="item.code"
+                    [nzLabel]="item.description"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'"
+                >{{ 'Category' | i18n }}
+              </nz-form-label>
+              <nz-form-control nzErrorTip="{{ 'Please Select' | i18n }}">
+                <nz-select
+                  nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                  nzSize="large"
+                  formControlName="ticket_CategoryCode"
+                  nzSuffixIcon="caret-down"
+                >
+                  <nz-option
+                    *ngFor="let item of categories"
+                    [nzValue]="item.code"
+                    [nzLabel]="item.description"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="24">
+            <nz-form-item>
+              <nz-form-label [nzFor]="'field'"
+                >{{ 'Post your comments here' | i18n }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{ 'Please type the Message!' | i18n }} "
+              >
+                <textarea
+                  formControlName="ticket_Message"
+                  placeholder="{{ 'Request Details' | i18n }} "
+                  rows="4"
+                  nz-input
+                  maxlength="500"
+                ></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="6">
+            <nz-upload
+              nzFileType="image/png,image/jpeg,image/tiff,*/pdf,*/jpg,*/gif"
+              [(nzFileList)]="fileList"
+              [nzBeforeUpload]="beforeUpload"
+            >
+              <div>
+                <button nz-button class="cpt-btn-border cpt-brdr">
+                  <i nz-icon nzType="upload"></i>
+                  {{ 'Upload documents here' | i18n }}
+                </button>
+              </div>
+              <p style="margin-left: 8px; color: #6d7988">
+                jpg, png, tiff, gif
+              </p>
+            </nz-upload>
+          </div>
+        </div>
+        <div nz-row nzJustify="end">
+          <div
+            nz-col
+            nzMd="12"
+            nzLg="12"
+            nzXl="12"
+            nzXs="24"
+            class="text-right flex-show"
+          >
+            <button class="cmn-btn-grey" nz-button (click)="onLink()">
+              {{ 'Cancel' | i18n }}
+            </button>
+            <button
+              class="cmn-btn-prm"
+              nz-button
+              [nzType]="'primary'"
+              [nzLoading]="loadingSubmit"
+              (click)="submitForm()"
+            >
+              {{ 'Submit' | i18n }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nz-card>
+</div>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Success</title>
+    <style>
+      .cmn-btn {
+        background: #e8c71e 0 0 no-repeat padding-box;
+        color: #0c2038;
+        font-size: 18px;
+        transition: 0.3s ease-in-out;
+        background-size: 200% auto;
+        box-shadow: 0 16px 23px #e8c71e33;
+        border-radius: 10px;
+        width: 272px;
+        height: 50px;
+        outline: 0;
+        border: 0;
+      }
+
+      .funds-succss {
+        height: 100%;
+        color: #153d6a;
+        position: relative;
+      }
+
+      .funds-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 auto;
+        width: 555px;
+        height: 439px;
+        background: #eff3f7 0% 0% no-repeat padding-box;
+        border: 1px solid #d8dbeb;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .funds-content img {
+        margin: 2rem 0;
+        width: 160px;
+      }
+    </style>
+    <script type="text/javascript">
+      function invokeNative() {
+        MessageInvoker.postMessage("Trigger from Javascript code");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="funds-succss">
+      <div class="funds-content">
+        <img src="./images/success.svg" alt="success" />
+        <form>
+          <input
+            type="button"
+            class="cmn-btn"
+            value="View Transaction Details"
+            onclick="invokeNative()"
+          />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

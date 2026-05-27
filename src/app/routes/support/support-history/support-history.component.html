@@ -1,0 +1,29 @@
+<div class="new-ticket-history">
+  <nz-card nzTitle="{{'Support Center - Ticket Code:' | i18n}} {{ info?.ticket_Code }}" [nzExtra]="extraTemplate">
+    <app-view-ticket></app-view-ticket>
+    <nz-tabset [nzTabBarExtraContent]="extratabsTemplate">
+      <nz-tab nzTitle="{{ 'Previous Attachments' | i18n }}">
+        <st
+          #st
+          [columns]="attachColumns"
+          [data]="attachments"
+          showQuickJumper
+          [total]="params.total"
+          [pi]="params.pageNumber"
+          [ps]="params.pageSize"
+          [responsive] = false
+        ></st>
+      </nz-tab>
+    </nz-tabset>
+  </nz-card>
+
+  <!---back button-->
+  <ng-template #extraTemplate>
+    <button nz-button class="btn-transparent" (click)="backClick()">
+      <i nz-icon nzType="left" nzTheme="outline"></i> {{ 'Back' | i18n }}
+    </button>
+  </ng-template>
+  <ng-template #extratabsTemplate>
+    <nz-range-picker [(ngModel)]="date" nzFormat="yyyy-mm-dd hh:mm:ss" (ngModelChange)="onChange($event)"></nz-range-picker>
+  </ng-template>
+</div>

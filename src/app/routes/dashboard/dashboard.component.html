@@ -1,0 +1,400 @@
+
+
+
+<div class="dashboard-container">
+  <div class="hero-wrap">
+
+    <!-- LEFT CONTENT -->
+    <div class="hero-left">
+
+      <h2 class="hero-title">
+        Welcome back, <span class="name">{{ userName }}</span> 👋
+      </h2>
+
+      <!-- Verified Chip -->
+      <div class="status-chip verified">
+        <span class="dot"></span>
+        <span class="status-text">{{customerStatus}}</span>
+      </div>
+
+      <!-- ACTION DOCK -->
+      <div class="action-dock">
+
+        <button nz-button class="dock-item" (click)="goDeposit()" [disabled]="verifiedBtn">
+          <span class="dock-ic green">
+            <i nz-icon nzType="arrow-up"></i>
+          </span>
+          <span class="dock-text">{{ 'Deposit' | i18n }}</span>
+        </button>
+
+        <div class="dock-divider"></div>
+
+        <button nz-button class="dock-item" (click)="Withdraw()" [disabled]="verifiedBtn">
+          <span class="dock-ic orange">
+            <i nz-icon nzType="arrow-down"></i>
+          </span>
+          <span class="dock-text">{{ 'Withdraw' | i18n }}</span>
+        </button>
+
+        <div class="dock-divider"></div>
+
+        <button nz-button class="dock-item" (click)="openAccount()" [disabled]="verifiedBtn">
+          <span class="dock-ic blue">
+            <i nz-icon nzType="plus"></i>
+          </span>
+          <span class="dock-text">{{ 'Open Account' | i18n }}</span>
+        </button>
+
+        <div class="dock-divider"></div>
+
+        <button nz-button class="dock-item" (click)="goKyc()">
+          <span class="dock-ic purple">
+            <i nz-icon nzType="user"></i>
+          </span>
+          <span class="dock-text">{{ 'Profile' | i18n }}</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="hero-right">
+      <div class="hero-art">
+        <iframe
+          src="https://lottie.host/embed/e042da59-64fe-4825-b927-6d164cb384eb/1k5lo4OTAe.lottie"
+          frameBorder="0"
+        ></iframe>
+      </div>
+    </div>
+
+  </div>
+    <div class="dash-heading">
+        <img
+          src="assets/images/icons/trading.png"
+          alt="wallet"
+          style="width: 29px; margin-right: 9px; margin-top: -8px"
+        />
+         {{ 'Trading Summary' | i18n }}
+      </div>
+   <div class="stats-grid pastel">
+  <!-- Trading Balance -->
+  <div class="stat-tile pink">
+    <div class="tile-icon">
+      <img src="assets/images/wallet-balance.svg" alt="wallet" />
+    </div>
+
+    <div class="tile-value">
+      {{ totals?.amount?.toFixed(2) ?? 0 }}
+      <span class="currency">{{ totals?.currency }}</span>
+    </div>
+
+    <div class="tile-label">{{ 'Trading Balance' | i18n }}</div>
+  </div>
+
+  <!-- Total Lots -->
+  <div class="stat-tile yellow">
+    <div class="tile-icon">
+      <img src="assets/images/lots.svg" alt="lots" />
+    </div>
+
+    <div class="tile-value">
+      {{ totals?.total_Lot ?? 0 }}
+    </div>
+
+    <div class="tile-label">{{ 'Total Lots' | i18n }}</div>
+  </div>
+
+  <!-- Open Positions -->
+  <div class="stat-tile green">
+    <div class="tile-icon">
+      <img src="assets/images/open-position.svg" alt="open-position" />
+    </div>
+
+    <div class="tile-value">
+      {{ totals?.total_OpenPosition ?? 0 }}
+    </div>
+
+    <div class="tile-label">{{ 'Open Positions' | i18n }}</div>
+  </div>
+
+  <!-- Profit -->
+  <div class="stat-tile blue">
+    <div class="tile-icon">
+      <img src="assets/images/profit.svg" alt="profit" />
+    </div>
+
+    <div class="tile-value">
+      {{ totals?.total_Profit ?? 0 }}
+      <span class="currency">{{ totals?.currency }}</span>
+    </div>
+
+    <div class="tile-label">{{ 'Profit' | i18n }}</div>
+  </div>
+
+  <!-- Swaps -->
+  <div class="stat-tile purple">
+    <div class="tile-icon">
+      <img src="assets/images/swaps.svg" alt="swaps" />
+    </div>
+
+    <div class="tile-value">
+      {{ totals?.total_Swap ?? 0 }}
+    </div>
+
+    <div class="tile-label">{{ 'Swaps' | i18n }}</div>
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="dashboard">
+  <div class="informed">
+    <div class="dash-heading black head-border">
+      <img
+        src="assets/images/informed.svg"
+        alt="wallet"
+        style="width: 29px; margin-right: 9px"
+      />
+      {{ 'Stay Informed' | i18n }}
+    </div>
+    <div class="list">
+      <ul>
+        <li *ngFor="let item of notifications | slice: 0:5">
+          <!-- <span nz-icon nzType="info-circle" nzTheme="fill"></span> -->
+          {{ item.description }}
+
+          <span>
+            <img src="assets/images/server-time.svg" class="time-icon" alt="" />
+            {{ item.created_Date | date: 'dd/MM/yyyy' }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="24">
+    <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24" class="statistics">
+      <!-- <nz-card class="chart-data">
+        <div class="profit">
+          <h2>{{ "Statistics" | i18n }}</h2>
+          <div>{{ "Profit/Loss" | i18n }}</div>
+        </div>
+        <div class="s-btns">
+          <nz-radio-group
+            [(ngModel)]="daily"
+            (ngModelChange)="ngModelChange($event)"
+          >
+            <label nz-radio-button nzValue="daily">{{ "Daily" | i18n }}</label>
+            <label nz-radio-button nzValue="weekly">
+              {{ "Weekly" | i18n }}</label
+            >
+            <label nz-radio-button nzValue="monthly">
+              {{ "Monthly" | i18n }}</label
+            >
+            <label nz-radio-button nzValue="yearly">
+              {{ "Yearly" | i18n }}</label
+            >
+          </nz-radio-group>
+        </div>
+        <ng-container *ngIf="statistics?.length > 0; else noData">
+          <div echarts [options]="options" class="chart-container"></div>
+        </ng-container>
+        <ng-template #noData>
+          <div class="no-text">No data</div>
+        </ng-template>
+      </nz-card> -->
+    </div>
+  </div>
+</div>
+
+<!------after login video modal without kyc-->
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzWidth]="600"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Back' | i18n }}"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+>
+  <ng-container *nzModalContent>
+    <div class="transfer video-home">
+      <video className="video" autoPlay loop muted>
+        <source src="assets/account-open.mp4" type="video/mp4" />
+      </video>
+      <ng-container *ngIf="current === 0">
+        <h1>{{ 'Congratulations' | i18n }} {{ user }} !</h1>
+        <p>{{ 'Your account has been created' | i18n }}</p>
+        <div>
+          <button
+            nz-button
+            class="cpt-primary-btn cmn-btn large-bth mb-2"
+            [nzType]="'primary'"
+            (click)="goVerify()"
+          >
+            {{ 'Next' | i18n }}
+          </button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="current === 1">
+        <h1>{{ 'Unlock all features!' | i18n }}</h1>
+        <p>
+          {{ 'Please follow the steps to unlock all the feature' | i18n }}
+        </p>
+        <div>
+          <!-- <button nz-button class="quick-btn large-bth mb-2">
+            Skip For Now
+          </button> -->
+          <button
+            nz-button
+            class="cpt-primary-btn cmn-btn large-bth mb-2"
+            [nzType]="'primary'"
+            (click)="goProfile()"
+          >
+            {{ 'Verify My Account' | i18n }}
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="isVisibleSuit"
+  [nzWidth]="700"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Back' | i18n }}"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+>
+  <ng-container *nzModalContent>
+    <div class="suit-modal">
+      <form nz-form [formGroup]="registerForm" class="register-form">
+        <h1>{{ 'Dear Client' | i18n }}</h1>
+        <p>
+          This is to inform you that your account will be active under Trive
+          International until 31st March 2023.
+        </p>
+        <p>
+          To proceed with your account migration to Trive Markets PTY LTD
+          regulated by FSCA, please follow the steps.
+        </p>
+        <p>
+          During the migration process you will be required to provide
+          additional documentation and/or information which are required under
+          the relevant regulatory body. Please click to accept:
+        </p>
+        <div class="mt-10">
+          <nz-form-item>
+            <nz-form-control class="inline-content">
+              <label nz-checkbox formControlName="applicants"> </label>
+              <span style="color: #009be2">
+                <a
+                  href="#"
+                  target="_blank"
+                >
+                  Terms & Conditions
+                </a>
+              </span>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div>
+          <nz-form-item>
+            <nz-form-control class="inline-content">
+              <label nz-checkbox formControlName="agree"> </label>
+              <span style="color: #009be2"
+                ><a
+                  href="#"
+                  target="_blank"
+                >
+                  Privacy Policy
+                </a>
+              </span>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </form>
+      <p style="margin-top: 10px">
+        By clicking you are confirming that you have read, understood, and agree
+        with Terms & Conditions and Policies & Guidelines.
+      </p>
+      <p>
+        In case any further clarification is needed on the above, please contact
+        your Relationship Manager or e-mail us on
+        <a href="mailto:support_int@trive.com">
+           support_int@trive.com
+        </a>
+        address.
+      </p>
+      <p>Thank you for your cooperation!</p>
+      <div class="btn-flex">
+        <button
+          nz-button
+          class="cpt-primary-btn cmn-btn large-bth mb-2 mr-20"
+          (click)="withdraw()"
+        >
+          {{ 'Cancel' | i18n }}
+        </button>
+        <button
+          nz-button
+          class="cmn-btn large-bth mb-2"
+          [nzType]="'primary'"
+          (click)="goSuit()"
+        >
+          {{ 'Accept' | i18n }}
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</nz-modal>
+
+<!--------------email verification modal----------->
+<nz-modal
+  [(nzVisible)]="isVisibleEmail"
+  [nzWidth]="600"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Back' | i18n }}"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+  [nzCloseIcon]="nzCloseIcon"
+  (nzOnCancel)="handleEmailCancel()"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img
+        src="assets/images/Close-Modal.svg"
+        alt="SettingsMain"
+        style="width: 13px"
+      />
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="email-verify">
+      <ng-container>
+        <img src="assets/images/welcome-mail.png" alt="welcome" />
+        <h1 class="cpt-heading">{{ 'Welcome Aboard!' | i18n }}</h1>
+        <!-- <p>{{ 'Your account has been created' | i18n }}</p> -->
+        <p>
+          {{
+            'We are excited to have you join us! What would you like to do first?'
+              | i18n
+          }}
+        </p>
+        <div nz-row nzJustify="center">
+          <button nz-button class="quick-btn mb-1" (click)="goDeposit()">
+            {{ 'Deposit Now' | i18n }}
+            <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+          </button>
+        </div>
+        <div nz-row nzJustify="center">
+          <button nz-button class="quick-btn" (click)="goKyc()">
+            {{ 'Complete Verification' | i18n }}
+            <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</nz-modal>

@@ -1,0 +1,42 @@
+<div class="modal-contact">
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    [nzTitle]="tplTitle"
+    [nzContent]="tplContent"
+    [nzWidth]="500"
+    nzCancelText="Close"
+    (nzOnCancel)="handleCancel()"
+    nzClassName="cpt-modal setting-modal modal-contact"
+    [nzCloseIcon]="nzCloseIcon"
+    [nzStyle]="{ top: '25px' }"
+  >
+    <ng-template #nzCloseIcon>
+      <div class="nz-title-template">
+        <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+      </div>
+    </ng-template>
+    <ng-template #tplTitle>
+      <div class="nz-title-template">
+        <span> {{ 'Contact Us' | i18n }}</span>
+      </div>
+    </ng-template>
+    <ng-template #tplContent>
+      <div class="phone">
+        <img src="assets/images/phoneIcon.svg" alt="contact" />
+        <a style="color: #000000d9" [href]="'tel:' + phone">{{ phone }}</a>
+      </div>
+      <div class="phone">
+        <img src="assets/images/website.svg" alt="website" />
+        <a style="color: #000000d9" [href]="'https://' + web" target="_blank"> {{ web }} </a>
+      </div>
+
+      <div class="phone">
+        <img src="assets/images/EmailIcon.svg" alt="email" />
+        <a style="color: #000000d9" [href]="'mailto:' + email"> {{ email }}</a>
+        <div #container>
+          <img src="assets/images/copy.svg" alt="email" style="width: 18px; margin-left: 1rem" (click)="copyContent()" />
+        </div>
+      </div>
+    </ng-template>
+  </nz-modal>
+</div>

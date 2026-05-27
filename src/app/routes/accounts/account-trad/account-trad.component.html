@@ -1,0 +1,200 @@
+<nz-card [nzLoading]="reasonText">
+  <div class="account-trading">
+    <div *ngIf="zindex == 0" id="London" class="tabcontent">
+      <h2 class="title-head">{{ 'Create your New Account' | i18n }}</h2>
+      <div class="create-account">
+        <form nz-form [formGroup]="formOpenAccount" (ngSubmit)="submitForm()">
+          <div nz-row [nzGutter]="24">
+            <div
+              nz-col
+              nzMd="12"
+              nzLg="12"
+              nzXl="12"
+              nzXs="24"
+              class="left-area"
+            >
+              <nz-form-item>
+                <nz-form-control nzErrorTip="{{ 'selectType' | i18n }}">
+                  <label>{{ 'Account Type' | i18n }}</label>
+                  <nz-select
+                    formControlName="account_Type"
+                    nzPlaceHolder="{{ 'Account Type' | i18n }}"
+                    class="ant-select-custom"
+                  >
+                    <nz-option
+                      *ngFor="let item of businessTYpe"
+                      [nzValue]="item.id"
+                      [nzLabel]="item.description"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control
+                  nzErrorTip="{{ 'Please Select Trading Platform' | i18n }}"
+                >
+                  <label>{{ 'Trading Platform' | i18n }}</label>
+                  <nz-select
+                    formControlName="trading_Platform"
+                    nzName="trading_Platform"
+                    nzPlaceHolder="{{ 'Trading Platform' | i18n }}"
+                    class="ant-select-custom"
+                    (ngModelChange)="changeReason($event)"
+                  >
+                     <nz-option nzValue="MT4" nzLabel="MT4"></nz-option>
+                    <nz-option nzValue="MT5" nzLabel="MT5"></nz-option>
+                    <!-- <nz-option nzValue="cTrader" nzLabel="cTrader"></nz-option> -->
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control nzErrorTip="{{ 'selectCurrency' | i18n }}">
+                  <label>{{ 'Currency' | i18n }}</label>
+                  <nz-select
+                    formControlName="currency"
+                    nzPlaceHolder="{{ 'Currency' | i18n }}"
+                    class="ant-select-custom"
+                  >
+                    <!-- <nz-option
+                    *ngFor="let item of currencies"
+                    [nzValue]="item.code"
+                    [nzLabel]="item.description"
+                  >
+                  </nz-option> -->
+                    <nz-option nzValue="USD" nzLabel="USD"></nz-option>
+                    <!-- <nz-option nzValue="CENT" nzLabel="CENT"></nz-option> -->
+                    <!-- <nz-option nzValue="GBP" nzLabel="GBP"></nz-option> -->
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="{{ 'selecrtLeverage' | i18n }}">
+                  <label>{{ 'Leverage' | i18n }}</label>
+                  <nz-select
+                    formControlName="account_Leverage"
+                    nzName="accountType"
+                    nzPlaceHolder="{{ 'Leverage' | i18n }}"
+                    class="ant-select-custom"
+                    nzDisabled
+                  >
+                    <nz-option nzValue="50" nzLabel="1:50"></nz-option>
+                    <nz-option nzValue="100" nzLabel="1:100"></nz-option>
+                    <nz-option nzValue="200" nzLabel="1:200"></nz-option>
+                    <nz-option nzValue="300" nzLabel="1:300"></nz-option>
+                    <nz-option
+                      nzValue="500"
+                      nzLabel="Dynamic Leverage"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <div class="leverage-text">
+                <p>
+                  
+                  {{ 'Our Leverage dynamic and based on your Trading Account equity.' | i18n }}
+                  <!-- To view the leverage brackets, click
+                  <a
+                    href="https://www.arfx.com/about/legal-documents/leverage-adjusment-policy"
+                    target="_blank"
+                    class="doc-link"
+                  >
+                    Here</a
+                  > -->
+                </p>
+              </div>
+              <div class="support-text">
+                <p>
+                  {{ 'Should you prefer a lower leverage than the one assigned to you equity bracket, simply reach out to our Trading Desk Team at' | i18n }}
+                  <a href="mailto:tradingdesk@trive.com" class="doc-link">
+                    tradingdesk@trive.com</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              nz-button
+              [nzSize]="'large'"
+              [nzLoading]="loader"
+              class="login-form-button login-form-margin create-btn cmn-btn"
+              [nzType]="'primary'"
+            >
+              {{ 'Create' | i18n }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</nz-card>
+<!--account success modal-->
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="tplTitle"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzWidth]="500"
+  nzClassName="cpt-modal"
+  (nzOnCancel)="handleCancel()"
+  [nzFooter]="null"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitle>
+    <div class="nz-title-template">
+      <span> Account Message </span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="trade-msg">
+      <img
+        src="assets/images/thanks.svg"
+        alt="thanks"
+        style="width: 60px; margin-bottom: 20px"
+      />
+      <h4>
+        {{ successMessage }}
+      </h4>
+    </div>
+  </ng-container>
+</nz-modal>
+
+<!----account additional message------>
+
+<nz-modal
+  [(nzVisible)]="isVisibleAccount"
+  [nzTitle]="tplTitleAccount"
+  [nzCloseIcon]="nzCloseIconAccount"
+  [nzWidth]="600"
+  nzClassName="cpt-modal"
+  (nzOnCancel)="handleCancelAccount()"
+  [nzFooter]="null"
+>
+  <ng-template #nzCloseIconAccount>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitleAccount>
+    <div class="nz-title-template">
+      <span>   {{ 'Additional Account open request' | i18n }} </span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="link-data">
+      <h4> {{ 'You have reached your Live Trading Account limit.' | i18n }}</h4>
+      <p>
+         {{ 'To request an additional account as an exception or change the type of your existing trading account, please email' | i18n }}
+        <a class="link-account" href="mailto:support_int@trive.com">
+         support_int@trive.com
+        </a> {{ 'with your desired account type, opening leverage, and the reason for your request.' | i18n }}
+       
+      </p>
+    </div>
+  </ng-container>
+</nz-modal>

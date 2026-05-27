@@ -1,0 +1,332 @@
+<div class="dashboard">
+  <div class="dashboard-header">
+    <div class="details">
+      <h3>{{ 'Trade with' | i18n }}</h3>
+      <h2>{{ 'Trade with CPT International' | i18n }}</h2>
+      <p>
+        {{ 'Access global financial market and get premium support' | i18n }}
+      </p>
+      <div class="line"></div>
+    </div>
+    <img src="assets/images/home-bg.jpg" alt="" />
+  </div>
+
+  <!--share link move here -->
+  <!-- <div nz-row nzJustify="space-between" nzAlign="middle" class="share">
+    <h4>{{ 'Invite a friend and enjoy earnings from their activity.' | i18n }} </h4>
+    <div nz-row>
+      <p>{{ 'Your personal referral link' | i18n }}</p>
+      <button nz-button nzGhost (click)="onCype()"><i nz-icon nzType="copy" nzTheme="outline"></i>{{ 'Copy Link' | i18n }}</button>
+      <button nz-popover [nzPopoverContent]="contentTemplate" nzPopoverPlacement="bottomRight" nz-button nzType="default" nzGhost
+        ><i nz-icon nzType="share-alt" nzTheme="outline"></i>{{ 'Share' | i18n }}</button
+      >
+    </div>
+    <ng-template #contentTemplate>
+      <div class="home-share">
+        <a href="https://www.instagram.com/cptsocial/" target="_blank"><img src="assets/images/share/instagram.svg" alt="facebook" /></a>
+        <a href="https://www.facebook.com/cptsocial/" target="_blank"><img src="assets/images/share/facebook.svg" alt="facebook" /></a>
+        <a href="https://www.linkedin.com/company/cptsocial/" target="_blank"
+          ><img src="assets/images/share/linkedin-in.svg" alt="linkedin"
+        /></a>
+        <a href="https://twitter.com/cptsocial" target="_blank"><img src="assets/images/share/twitter.svg" alt="twitter" /></a>
+        <a href="tel:+448001120900" target="_blank"><img src="assets/images/share/whatsapp.svg" alt="whatsapp" /></a>
+      </div>
+    </ng-template>
+  </div> -->
+
+  <div nz-row nzGutter="16">
+    <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+      <nz-card [nzTitle]="'Balance' | i18n" class="min-height">
+        <div *ngIf="balanceLoader; else loadBalance" class="center-data">
+          <i nz-icon [nzType]="'loading'"></i>
+        </div>
+        <ng-template #loadBalance>
+          <div class="mt-md">
+            <div echarts [options]="options" class="demo-chart"></div>
+          </div>
+        </ng-template>
+      </nz-card>
+    </div>
+    <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+      <nz-card
+        [nzTitle]="
+          !isMargin ? ('Margin Calculator' | i18n) : ('Trade Calculator' | i18n)
+        "
+        [nzExtra]="extraTemplate"
+        class="min-height margin-calc"
+      >
+        <form
+          nz-form
+          [formGroup]="validateForm"
+          nzLayout="vertical"
+          class="mt-md"
+        >
+          <div nz-row>
+            <div nz-col nzMd="7" nzLg="7" nzXl="7" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Currency Pair' | i18n }}</nz-form-label>
+                <nz-form-control>
+                  <nz-select
+                    formControlName="symbol"
+                    nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                    nzSize="large"
+                  >
+                    <nz-option
+                      *ngFor="let i of symbol"
+                      [nzValue]="i.code"
+                      [nzLabel]="i.description"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzMd="7" nzLg="7" nzXl="7" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Account Currency' | i18n }}</nz-form-label>
+                <nz-form-control>
+                  <nz-select
+                    formControlName="currency"
+                    nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                    nzSize="large"
+                  >
+                    <nz-option
+                      *ngFor="let i of currency"
+                      [nzValue]="i"
+                      [nzLabel]="i"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzMd="7" nzLg="7" nzXl="7" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>{{ 'Leverage' | i18n }}</nz-form-label>
+                <nz-form-control>
+                  <nz-select
+                    formControlName="leverage"
+                    nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                    nzSize="large"
+                  >
+                    <nz-option
+                      *ngFor="let i of leverage"
+                      [nzValue]="i"
+                      [nzLabel]="i"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzMd="7" nzLg="7" nzXl="7" nzXs="12">
+              <nz-form-item>
+                <nz-form-label>{{ 'Position Size' | i18n }}</nz-form-label>
+                <nz-form-control>
+                  <nz-input-number
+                    class="w100"
+                    nzSize="large"
+                    formControlName="positionSize"
+                    [nzMin]="0"
+                    [nzStep]="1"
+                    placeholder="Position Size"
+                    (ngModelChange)="positionSizeChange()"
+                  ></nz-input-number>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1">
+              <nz-form-item>
+                <nz-form-label></nz-form-label>
+                <nz-form-control>
+                  <div class="or-title">{{ 'Or' | i18n }}</div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="7" nzLg="7" nzXl="7" nzXs="11">
+              <nz-form-item>
+                <nz-form-label>{{ 'MT4 Lot' | i18n }}</nz-form-label>
+                <nz-form-control>
+                  <nz-input-number
+                    class="w100"
+                    nzSize="large"
+                    formControlName="lots"
+                    [nzMin]="0"
+                    [nzStep]="1"
+                    placeholder="MT4 lot"
+                    nzDisabled
+                  ></nz-input-number>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1" *ngIf="!isMargin"></div>
+            <div nz-col nzMd="7" nzLg="7" nzXl="7" nzXs="24" *ngIf="!isMargin">
+              <nz-form-item>
+                <nz-form-label></nz-form-label>
+                <nz-form-control>
+                  <button
+                    class="cpt-primary-btn"
+                    nz-button
+                    nzType="primary"
+                    nzSize="large"
+                    width="100%"
+                    (click)="onCalculate('Margin')"
+                  >
+                    <i nz-icon nzType="calculator" nzTheme="outline"></i>
+                    {{ 'Calculate' | i18n }}
+                  </button>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row *ngIf="isMargin">
+            <div nz-col nzMd="7" nzLg="7" nzXl="7" nzXs="12">
+              <nz-form-item>
+                <nz-form-label>{{ 'Opening Price' | i18n }}</nz-form-label>
+                <nz-form-control>
+                  <nz-input-number
+                    class="w100"
+                    nzSize="large"
+                    formControlName="open_price"
+                    [nzMin]="0"
+                    [nzStep]="1"
+                    placeholder="Opening Price"
+                    (ngModelChange)="positionSizeChange()"
+                  ></nz-input-number>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzMd="7" nzLg="7" nzXl="7" nzXs="11">
+              <nz-form-item>
+                <nz-form-label>{{ 'Closing Price' | i18n }}</nz-form-label>
+                <nz-form-control>
+                  <nz-input-number
+                    class="w100"
+                    nzSize="large"
+                    formControlName="close_price"
+                    [nzMin]="0"
+                    [nzStep]="1"
+                    placeholder="Closing Price"
+                  ></nz-input-number>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzMd="7" nzLg="7" nzXl="7" nzXs="11">
+              <nz-form-item>
+                <nz-form-label></nz-form-label>
+                <nz-form-control>
+                  <button
+                    nz-button
+                    nzType="primary"
+                    nzSize="large"
+                    width="100%"
+                    (click)="onCalculate('Profit')"
+                  >
+                    <i nz-icon nzType="calculator" nzTheme="outline"></i>
+                    {{ 'Calculate' | i18n }}
+                  </button>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </form>
+        <div nz-row nzGutter="40">
+          <div nz-col nzSpan="6" class="margin-calculator">
+            <div class="margin-calculator-value">
+              <span>{{ 'Margin Value' | i18n }}</span>
+              <strong>{{
+                calculator.marginValue
+                  ? calculator.marginValue
+                  : calculator.profitValue
+              }}</strong>
+            </div>
+            <div class="border"></div>
+          </div>
+          <div nz-col nzSpan="6" class="margin-calculator">
+            <div class="margin-calculator-value">
+              <span>{{ 'Pip Value' | i18n }}</span>
+              <strong>{{ calculator.pipValue }}</strong>
+            </div>
+            <div class="border"></div>
+          </div>
+          <div nz-col nzSpan="6" class="margin-calculator">
+            <div class="margin-calculator-value">
+              <span>{{ 'Short Swap' | i18n }}</span>
+              <strong>{{ calculator.shortSwap }}</strong>
+            </div>
+            <div class="border"></div>
+          </div>
+          <div nz-col nzSpan="6" class="margin-calculator">
+            <div class="margin-calculator-value">
+              <span>{{ 'Long Swap' | i18n }}</span>
+              <strong>{{ calculator.longSwap }}</strong>
+            </div>
+            <div class="border"></div>
+          </div>
+        </div>
+        <ng-template #extraTemplate>
+          <div style="margin-bottom: 5px">
+            <nz-switch
+              class="margin-switch"
+              [(ngModel)]="isMargin"
+              (ngModelChange)="ngModelChange()"
+            ></nz-switch>
+          </div>
+        </ng-template>
+      </nz-card>
+    </div>
+  </div>
+</div>
+
+<!------after login video modal without kyc-->
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzWidth]="600"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Back' | i18n }}"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+>
+  <ng-container *nzModalContent>
+    <div class="transfer video-home">
+      <video className="video" autoPlay loop muted>
+        <source src="assets/account-open.mp4" type="video/mp4" />
+      </video>
+      <ng-container *ngIf="current === 0">
+        <h1>Congratulations {{ user }}</h1>
+        <p>Your account has been created</p>
+        <div>
+          <button
+            nz-button
+            class="cpt-primary-btn cmn-btn large-bth mb-2"
+            [nzType]="'primary'"
+            (click)="goVerify()"
+          >
+            Next
+          </button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="current === 1">
+        <h1>Unlock all features!</h1>
+        <p>Please confirm your documents and unlock all the features</p>
+        <div>
+          <button nz-button class="quick-btn large-bth mb-2">
+            Skip For Now
+          </button>
+          <button
+            nz-button
+            class="cpt-primary-btn cmn-btn large-bth mb-2"
+            [nzType]="'primary'"
+            (click)="goProfile()"
+          >
+            Verify My Account
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</nz-modal>

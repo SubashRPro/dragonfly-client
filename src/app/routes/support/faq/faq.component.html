@@ -1,0 +1,19 @@
+<nz-collapse [nzExpandIconPosition]="'right'">
+  <nz-collapse-panel
+    *ngFor="let faq of FAQs"
+    [nzHeader]="faq.title"
+    nzDisabled="false"
+  >
+    <div style="padding: 10px 30px 20px">
+      <nz-collapse [nzExpandIconPosition]="'right'">
+        <nz-collapse-panel
+          *ngFor="let items of faq.content"
+          [nzHeader]="items.question"
+          nzDisabled="false"
+        >
+          <div style="padding: 10px 40px 20px" [innerHtml]="items.answer"></div>
+        </nz-collapse-panel>
+      </nz-collapse>
+    </div>
+  </nz-collapse-panel>
+</nz-collapse>

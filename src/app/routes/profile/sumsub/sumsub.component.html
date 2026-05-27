@@ -1,0 +1,7 @@
+<div class="sdk-loading" *ngIf="loader; else contentLoaded">
+   {{ 'Please wait terminal loading...' | i18n }}
+</div>
+
+<ng-template #contentLoaded>
+  <div id="sumsub-websdk-container"></div>
+</ng-template>

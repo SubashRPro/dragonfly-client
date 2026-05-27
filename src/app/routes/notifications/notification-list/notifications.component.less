@@ -1,0 +1,78 @@
+@import '~@delon/theme/index';
+
+:host {
+  .notify-card {
+    min-height: 500px;
+  }
+  .notice-bar {
+    margin-bottom: 5px;
+    .date {
+      color: #6d7988;
+      margin-bottom: 7px;
+      margin-top: 20px;
+    }
+    .list {
+      background: #F5F6FA;
+      border-radius: 12px;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @media only screen and (max-width: 850px) {
+        flex-wrap: wrap;
+      }
+      .notice {
+        .title {
+          color: #121D33;
+          font-weight: bold;
+          font-size: 16px;
+          margin-bottom: 5px;
+        }
+        .content {
+          color: #6D7988;
+          font-size: 14px;
+        }
+      }
+      .action {
+        @media only screen and (max-width: 850px) {
+          margin-top: 20px;
+        }
+        margin-right: 25px;
+      }
+    }
+  }
+  .cmn-default {
+    box-shadow: none;
+    background: #E6E7ED;
+    border: none;
+    width: auto;
+    padding: 13px 25px;
+    font-size: 16px;
+    height: auto;
+    &:hover {
+      box-shadow: none;
+      background: #E6E7ED;
+      color: #0c2038;
+      border: none;
+    }
+  }
+}
+
+::ng-deep {
+  .ant-card {
+    border-radius: 16px;
+  }
+  .ant-card-body {
+    padding: 24px 24px 24px;
+  }
+  .data-loader {
+    margin-top: 20px;
+    text-align: center;
+    background: #F5F6FA;
+    border-radius: 12px;
+    padding: 15px 20px;
+    svg {
+      font-size: 24px;
+    }
+  }
+}

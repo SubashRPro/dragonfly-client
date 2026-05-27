@@ -1,0 +1,32 @@
+<nz-card
+  nzTitle="{{ info.type }} {{ info.status_details }}"
+  style="height: 100%"
+>
+  <div class="funds-succss">
+    <div class="funds-content">
+      <img
+        [src]="
+          'assets/images/status/' +
+          (info.status_details ? info.status_details : 'oh') +
+          '.svg'
+        "
+        alt="success"
+      />
+      <div>{{ info.type }} {{ 'Amount' | i18n }}</div>
+      <div class="funds-amount">
+        <span class="amount">{{ info.amount }}</span>
+        <span class="currency">{{ info.currency }}</span>
+      </div>
+      <div style="margin: 12px 0">
+        <strong style="color: #0d2c50">
+          {{ 'Thank you!' | i18n }} {{ 'Amount' | i18n }}</strong
+        >
+      </div>
+      <p>{{ 'Your transaction has been' | i18n }} {{ info.status_details }}.</p>
+      <p>{{ 'Generally it takes 24 hours to review and approve!' | i18n }}</p>
+      <button nz-button nzType="primary" (click)="goWallet()">
+        {{ 'View Transaction Details' | i18n }}
+      </button>
+    </div>
+  </div>
+</nz-card>

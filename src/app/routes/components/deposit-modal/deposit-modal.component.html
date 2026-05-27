@@ -1,0 +1,1641 @@
+<div class="deposit-modal">
+  <nz-card
+    [ngClass]="loaderSubmit ? 'withdraw-card' : ''"
+    [nzLoading]="dataLoad"
+  >
+    <ng-container *ngIf="pspAllowed; else otherDeposit">
+      <div class="withdraw-info">
+        <p>
+          <img
+            src="assets/images/status/info.png"
+            alt="info"
+            style="width: 20px; vertical-align: middle; margin-right: 5px"
+          />
+          {{ "Please select any payment method to proceed further" | i18n }}
+        </p>
+      </div>
+      <div class="psp-row deposit-mobile">
+        <nz-tabset nzType="card" class="psp-width">
+          <nz-tab
+            *ngFor="let item of pspList"
+            [nzTitle]="titleTemplate"
+            class="psp-list"
+            (nzClick)="tableClick(item)"
+          >
+            <ng-template #titleTemplate>
+              <div class="trans">
+                <img
+                  *ngIf="item?.groupName === 'Bank Transfer'"
+                  src="../../../../assets/images/banktransfer.svg"
+                  style="width: 25px; margin-right: 10px"
+                  alt=""
+                />
+                <img
+                  *ngIf="item?.groupName === 'Cryptocurrency'"
+                  src="../../../../assets/images/cryptocurrency.svg"
+                  style="width: 25px; margin-right: 5px"
+                  alt=""
+                />
+                <img
+                  *ngIf="item?.groupName === 'Card'"
+                  src="../../../../assets/images/credit-debit-card.svg"
+                  style="width: 25px; margin-right: 10px"
+                  alt=""
+                />
+                <img
+                  *ngIf="item?.groupName === 'Wallet'"
+                  src="../../../../assets/images/ewallet.svg"
+                  style="width: 25px; margin-right: 10px"
+                  alt=""
+                />
+                {{ item?.groupName | i18n }}
+              </div>
+            </ng-template>
+            <div class="method-content psp-method">
+              <h1 class="deposit-head mb20">{{ "Deposit Method" | i18n }}</h1>
+              <nz-radio-group
+                class="w100"
+                [(ngModel)]="pspdata"
+                (ngModelChange)="onItemChange($event)"
+              >
+                <div class="gallery_scroller">
+                  <ng-container *ngFor="let value of item?.availablePSPs">
+                    <div
+                      class="method"
+                      (click)="
+                        onItemChange(
+                          value?.name + '|' + value?.default_Currency
+                        )
+                      "
+                      *ngIf="value.is_Client_Deposit_Allowed"
+                    >
+                      <label
+                        nz-radio
+                        [nzValue]="value?.name + '|' + value?.default_Currency"
+                      ></label>
+                      <img
+                        [src]="'assets/images/funds/' + value?.logo"
+                        [alt]="value?.name"
+                        style="width: 80px"
+                      />
+                      <div
+                        class="head"
+                        [innerHTML]="value?.displayName | i18n"
+                      ></div>
+                    </div>
+                  </ng-container>
+                </div>
+              </nz-radio-group>
+
+              <!--payment methid method------>
+              <h1 class="deposit-head mt20" id="scroll-payment">
+                {{ "Deposit To" | i18n }}
+              </h1>
+              <!-- <ng-container *ngIf="mtpayCharges">
+                 <div class="pay-info">
+                          <ul>
+                            <li>
+                              <span
+                                nz-icon
+                                nzType="info-circle"
+                                nzTheme="fill"
+                              ></span>
+                              {{ 'Charge 1.8% of deposit amount' | i18n }} 
+                            </li>
+                          </ul>
+                        </div>
+              </ng-container> -->
+
+              <!----desposit form here---->
+              <ng-container *ngIf="depositScreen">
+                <div class="deposit form-padding">
+                  <div nz-row nzJustify="space-between">
+                    <div
+                      nz-col
+                      nzMd="24"
+                      nzLg="24"
+                      nzXl="24"
+                      nzXs="24"
+                      class="account-bg"
+                    >
+                      <ng-container *ngIf="egpayHide">
+                        <h4>{{ "Please select any type" | i18n }}</h4>
+                        <nz-radio-group
+                          class="w100 eg-payrow"
+                          [(ngModel)]="egValue"
+                          (ngModelChange)="onItemEgChange($event)"
+                        >
+                          <div class="eg-method" (click)="onItemEgChange('1')">
+                            <label nz-radio-button nzValue="1">
+                              <span class="head">
+                                <img
+                                  src="assets/images/funds/wiretransfer-modal.svg"
+                                  alt="SettingsMain"
+                                  style="width: 23px; vertical-align: middle"
+                                />
+                                BankCard</span
+                              >
+                            </label>
+                          </div>
+                          <div class="eg-method" (click)="onItemEgChange('2')">
+                            <label nz-radio-button nzValue="2">
+                              <span class="head">
+                                <img
+                                  src="assets/images/funds/wechat.png"
+                                  alt="SettingsMain"
+                                  style="width: 25px; vertical-align: middle"
+                                />
+                                {{ "WeChatPay" | i18n }}</span
+                              >
+                            </label>
+                          </div>
+                          <div class="eg-method" (click)="onItemEgChange('4')">
+                            <label nz-radio-button nzValue="4">
+                              <span class="head">
+                                <img
+                                  src="assets/images/funds/alipay.png"
+                                  alt="SettingsMain"
+                                  style="width: 24px; vertical-align: middle"
+                                />
+                                {{ "Alipay" | i18n }}</span
+                              >
+                            </label>
+                          </div>
+                        </nz-radio-group>
+                      </ng-container>
+
+                      <form
+                        nz-form
+                        [formGroup]="validateForm"
+                        nzLayout="vertical"
+                      >
+                        <!-- <nz-form-item *ngIf="validateForm.value.wallet === 1">
+                          <nz-form-label>{{ 'Wallet Number' | i18n }}</nz-form-label>
+                          <nz-form-control>
+                            <input
+                              type="text"
+                              nz-input
+                              nzSize="large"
+                              formControlName="walletNumber"
+                              placeholder="{{ 'MIDDLE_NAME' | i18n }}"
+                              class="cpt-input"
+                              readonly
+                            />
+                            <div class="balance">
+                              <div></div>
+                              <div>
+                                {{ 'Wallet Balance' | i18n }}:
+                                <strong
+                                  >{{ walletBalance?.currency ?? 'USD' }}
+                                  {{ walletBalance?.balance ?? 0 }}</strong
+                                >
+                              </div>
+                            </div>
+                          </nz-form-control>
+                        </nz-form-item> -->
+
+                        <nz-form-item
+                          *ngIf="
+                            validateForm.value.wallet === 2 ||
+                            validateForm.value.wallet === 1
+                          "
+                        >
+                          <nz-form-label>{{
+                            "Trading Account" | i18n
+                          }}</nz-form-label>
+                          <nz-form-control
+                            [nzSpan]="24"
+                            nzErrorTip="{{
+                              'Please select any Account' | i18n
+                            }}"
+                          >
+                            <nz-select
+                              nzSize="large"
+                              formControlName="accounts"
+                              nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                              nzSize="large"
+                              [(ngModel)]="selectAccount"
+                              (ngModelChange)="tradingChange($event)"
+                              nzShowSearch
+                            >
+                              <nz-option
+                                *ngFor="let item of accounts"
+                                [nzValue]="item.code + '|' + item.mT_Currency"
+                                [nzLabel]="item.description"
+                              ></nz-option>
+                            </nz-select>
+                            <div class="balance">
+                              <div *ngIf="validateForm.value.wallet === 2">
+                                {{ "Margin" | i18n }}:
+                                <strong style="margin-right: 10px">{{
+                                  total?.margin?.toFixed(2) ?? 0
+                                }}</strong>
+                                {{ "Equity" | i18n }}:<strong>
+                                  {{ total?.equity?.toFixed(2) ?? 0 }}</strong
+                                >
+                              </div>
+                              <div>
+                                {{ "Trading Account Balance" | i18n }}:
+                                <strong
+                                  >{{ tradingBalance?.currency }}
+                                  {{ tradingBalance?.balance ?? 0 }}</strong
+                                >
+                              </div>
+                            </div>
+                          </nz-form-control>
+                        </nz-form-item>
+                        <!-----egpay wallet only for egypt country-->
+                        <ng-container *ngIf="egWalletPay">
+                          <div nz-col [nzSpan]="24" class="eg-text">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ "Vodafone Pay ID" | i18n }}
+                              </nz-form-label>
+                              <nz-form-control>
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="Vodafone Pay ID"
+                                  formControlName="walletID"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                        </ng-container>
+                        <nz-form-item>
+                          <nz-form-control
+                            [nsnzSpan]="24"
+                            nzErrorTip="{{
+                              'Please enter valid amount!' | i18n
+                            }}"
+                          >
+                            <div nz-row [nzGutter]="8">
+                              <div nz-col [nzSpan]="14">
+                                <nz-form-label>
+                                  {{ "Amount" | i18n }}
+                                </nz-form-label>
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  [placeholder]="
+                                    'MIN_DEPOSIT' | i18n: { amount: minDeposit }
+                                  "
+                                  formControlName="amount"
+                                  appTwoDigitDecimaNumber
+                                />
+
+                                <!-- <nz-input-number
+                                  formControlName="amount"
+                                  nzSize="large"
+                                  nzPlaceHolder="{{ 'Amount' | i18n }}"
+                                  [nzMin]="1"
+                                  [nzStep]="1"
+                                  class="w100"
+                                  appTwoDigitDecimaNumber
+                                >
+                                </nz-input-number> -->
+                                <!-- <input type="number" nz-input nzSize="large" formControlName="amount" placeholder="Amount" class="cpt-input" /> -->
+                              </div>
+                              <div nz-col [nzSpan]="10">
+                                <nz-form-label>
+                                  {{ "Currency" | i18n }}
+                                </nz-form-label>
+                                <nz-select
+                                  nzSize="large"
+                                  formControlName="currencie"
+                                  nzPlaceHolder="{{ 'SELECT' | i18n }}"
+                                  class="ant-select-custom"
+                                  nzSize="large"
+                                  (ngModelChange)="currencieChange($event)"
+                                  [nzDisabled]="curDisable"
+                                >
+                                  <nz-option
+                                    *ngFor="let item of currencies"
+                                    [nzValue]="
+                                      item.code + '|' + item.description
+                                    "
+                                    [nzLabel]="item.description"
+                                  ></nz-option>
+                                </nz-select>
+                              </div>
+                            </div>
+                          </nz-form-control>
+                        </nz-form-item>
+                        <!---ompay start here------>
+                        <nz-form-item *ngIf="showOMPAYTypes">
+                          <nz-form-control
+                            [nsnzSpan]="24"
+                            nzErrorTip="{{ 'Please select any type' | i18n }}"
+                          >
+                            <div nz-row [nzGutter]="8">
+                              <div nz-col [nzSpan]="24">
+                                <nz-form-label>
+                                  {{ "OM Type" | i18n }}
+                                  <span class="obligation"> *</span>
+                                </nz-form-label>
+                                <div class="radio-items">
+                                  <nz-radio-group formControlName="omType">
+                                    <label
+                                      *ngFor="let item of showOMPAYTypes"
+                                      nz-radio
+                                      [nzValue]="item.id"
+                                      >{{ item.name }}</label
+                                    >
+                                  </nz-radio-group>
+                                </div>
+                              </div>
+                            </div>
+                          </nz-form-control>
+                        </nz-form-item>
+                        <!---ompay end here------>
+                        <!--help pay payment method-->
+                        <ng-container *ngIf="helpPay">
+                          <nz-form-item>
+                            <nz-form-label>
+                              {{ "Bank List" | i18n }}</nz-form-label
+                            >
+                            <nz-form-control
+                              [nzSpan]="24"
+                              nzErrorTip="{{ 'Please select any Bank' | i18n }}"
+                            >
+                              <nz-select
+                                nzSize="large"
+                                nzShowSearch
+                                nzAllowClear
+                                formControlName="banklist"
+                                nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                                nzSize="large"
+                              >
+                                <nz-option
+                                  *ngFor="let item of bankList"
+                                  [nzValue]="item.key"
+                                  [nzLabel]="item.value"
+                                ></nz-option>
+                              </nz-select>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </ng-container>
+                        <!--help pay payment end-->
+
+                        <!--Ex link payment method-->
+                        <div nz-row [nzGutter]="8" *ngIf="expay">
+                          <div
+                            nz-col
+                            nz-col
+                            nzMd="14"
+                            nzLg="14"
+                            nzXl="14"
+                            nzXs="12"
+                          >
+                            <ng-container>
+                              <nz-form-item>
+                                <nz-form-label>
+                                  {{ "Coin Name" | i18n }}</nz-form-label
+                                >
+                                <nz-form-control
+                                  [nzSpan]="24"
+                                  nzErrorTip="{{
+                                    'Please select any Coin' | i18n
+                                  }}"
+                                >
+                                  <nz-select
+                                    nzSize="large"
+                                    nzShowSearch
+                                    formControlName="coinName"
+                                    [(ngModel)]="coinName"
+                                    nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                                    nzSize="large"
+                                  >
+                                    <nz-option
+                                      nzLabel="USDT"
+                                      nzValue="USDT"
+                                    ></nz-option>
+                                  </nz-select>
+                                </nz-form-control>
+                              </nz-form-item>
+                            </ng-container>
+                          </div>
+                          <div nz-col nzMd="10" nzLg="10" nzXl="10" nzXs="12">
+                            <ng-container>
+                              <nz-form-item>
+                                <nz-form-label>
+                                  {{ "Network" | i18n }}</nz-form-label
+                                >
+                                <nz-form-control
+                                  [nzSpan]="24"
+                                  nzErrorTip="{{
+                                    'Please select any Network' | i18n
+                                  }}"
+                                >
+                                  <nz-select
+                                    nzSize="large"
+                                    nzShowSearch
+                                    [(ngModel)]="protocol"
+                                    formControlName="protocol"
+                                    nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                                    nzSize="large"
+                                  >
+                                    <nz-option
+                                      nzLabel="ERC20"
+                                      nzValue="ERC20"
+                                    ></nz-option>
+                                    <nz-option
+                                      nzLabel="TRC20"
+                                      nzValue="TRC20"
+                                    ></nz-option>
+                                    <nz-option
+                                      nzLabel="BEP20"
+                                      nzValue="BEP20"
+                                    ></nz-option>
+                                  </nz-select>
+                                </nz-form-control>
+                              </nz-form-item>
+                            </ng-container>
+                          </div>
+                        </div>
+                        <!--Ex link payment end-->
+
+                        <!--bvnk coin list
+                        <ng-container *ngIf="bvnkPay">
+                          <nz-form-item>
+                            <nz-form-label> {{ 'Coin List' | i18n }}</nz-form-label>
+                            <nz-form-control
+                              [nzSpan]="24"
+                              nzErrorTip="{{ 'Please select any Coin' | i18n }}"
+                            >
+                              <nz-select
+                                nzSize="large"
+                                formControlName="bvnkList"
+                                nzPlaceHolder="Please Select"
+                                class="ant-select-custom"
+                              >
+                                <nz-option nzValue="ETH" nzLabel="Ether"></nz-option>
+                                <nz-option nzValue="TRX" nzLabel="Tron"></nz-option>
+                                <nz-option
+                                  nzValue="USDT.ERC20"
+                                  nzLabel="Tether USD (ERC20)"
+                                ></nz-option>
+                                <nz-option
+                                  nzValue="USDT.TRC20"
+                                  nzLabel="Tether USD (Tron/TRC20)"
+                                ></nz-option>
+                                <nz-option
+                                  nzValue="LTCT"
+                                  nzLabel="Litecoin Testnet"
+                                ></nz-option>
+                                <nz-option nzValue="XRP" nzLabel="XRP"></nz-option>
+                              </nz-select>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </ng-container>
+                   -->
+
+                        <ng-container *ngIf="isHyperBCList">
+                          <nz-form-item>
+                            <nz-form-label>{{
+                              "Coin List" | i18n
+                            }}</nz-form-label>
+                            <nz-form-control
+                              [nzSpan]="24"
+                              nzErrorTip="{{ 'Please select any Coin' | i18n }}"
+                            >
+                              <nz-select
+                                nzSize="large"
+                                nzShowSearch
+                                nzAllowClear
+                                formControlName="hyperBCCoin"
+                                nzPlaceHolder="{{ 'Please Select' | i18n }}"
+                                nzSize="large"
+                              >
+                                <nz-option
+                                  *ngFor="
+                                    let item of hyperBCCoinList | keyvalue
+                                  "
+                                  [nzValue]="item.key"
+                                  [nzLabel]="item.value"
+                                ></nz-option>
+                              </nz-select>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </ng-container>
+                        <!--wire transfer method------>
+                        <ng-container *ngIf="wirePay">
+                          <div nz-col [nzSpan]="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ "Payment reference ID" | i18n }}
+                              </nz-form-label>
+                              <nz-form-control>
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="Payment reference ID"
+                                  formControlName="paymentreferID"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                        </ng-container>
+                        <!--------wire transfer method------------>
+                        <!--wire transfer method------>
+                        <ng-container *ngIf="MtPay">
+                          <div nz-col [nzSpan]="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ "Chinese Given Name" | i18n }}
+                                <span class="obgliation"> * </span>
+                              </nz-form-label>
+                              <nz-form-control>
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder=" {{
+                                    'Chinese Given Name' | i18n
+                                  }}"
+                                  formControlName="Customer_ChineseName"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                        </ng-container>
+                        <!--------wire transfer method------------>
+                        <!--monipay method------>
+                        <ng-container *ngIf="moniPay">
+                          <div nz-col [nzSpan]="24">
+                            <nz-form-item>
+                              <nz-form-label>
+                                {{ "UPI Id" | i18n }}
+                                <span class="obgliation"> * </span>
+                              </nz-form-label>
+                              <nz-form-control>
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="UPI id"
+                                  formControlName="upiId"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                        </ng-container>
+                        <!-- australia form -->
+                        <ng-container *ngIf="alterPayAus">
+                          <div nz-row [nzGutter]="8">
+                            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                              <nz-form-item>
+                                <nz-form-label>{{
+                                  "Nationality" | i18n
+                                }}</nz-form-label>
+                                <nz-form-control
+                                  nzErrorTip="{{
+                                    'Please select valid Country' | i18n
+                                  }}"
+                                >
+                                  <nz-select
+                                    formControlName="country"
+                                    nzShowSearch
+                                    nzSize="large"
+                                    nzAllowClear
+                                    [ngModel]="user_Nationality"
+                                    nzPlaceHolder="{{ 'PLEASE_SELECT' | i18n }}"
+                                    [nzCustomTemplate]="defaultTemplate"
+                                  >
+                                    <nz-option
+                                      *ngFor="let item of nationality1"
+                                      nzCustomContent
+                                      [nzLabel]="
+                                        item.description + '|' + item.img
+                                      "
+                                      [nzValue]="item.code"
+                                    >
+                                      <div class="nationality-header">
+                                        <img [src]="item.img" alt="" />
+                                        <span>{{ item.description }}</span>
+                                      </div>
+                                    </nz-option>
+                                  </nz-select>
+                                  <ng-template #defaultTemplate let-selected>
+                                    <div class="nationality-header">
+                                      <img
+                                        [src]="selected.nzLabel.split('|')[1]"
+                                        alt=""
+                                      />
+                                      <span>
+                                        {{
+                                          selected.nzLabel.split("|")[0]
+                                        }}</span
+                                      >
+                                    </div>
+                                  </ng-template>
+                                </nz-form-control>
+                              </nz-form-item>
+                            </div>
+                            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                              <nz-form-item>
+                                <nz-form-label
+                                  >{{ "State" | i18n }}
+                                </nz-form-label>
+                                <nz-form-control [nzErrorTip]="errorState">
+                                  <input
+                                    nzSize="large"
+                                    nz-input
+                                    placeholder="{{ 'State' | i18n }}"
+                                    formControlName="state"
+                                  />
+                                  <ng-template #errorState let-control>
+                                    <ng-container
+                                      *ngIf="control.hasError('required')"
+                                      >{{ "Please enter the State" | i18n }}
+                                    </ng-container>
+                                    <ng-container
+                                      *ngIf="control.hasError('pattern')"
+                                    >
+                                      {{
+                                        "State should be maximum 3 character"
+                                          | i18n
+                                      }}
+                                    </ng-container>
+                                  </ng-template>
+                                </nz-form-control>
+                              </nz-form-item>
+                            </div>
+                            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                              <nz-form-item>
+                                <nz-form-label
+                                  >{{ "City" | i18n }}
+                                </nz-form-label>
+                                <nz-form-control
+                                  nzErrorTip="{{
+                                    'Please enter the city' | i18n
+                                  }} "
+                                >
+                                  <input
+                                    nzSize="large"
+                                    nz-input
+                                    placeholder="{{ 'City' | i18n }} "
+                                    formControlName="city"
+                                  />
+                                </nz-form-control>
+                              </nz-form-item>
+                            </div>
+                            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                              <nz-form-item>
+                                <nz-form-label
+                                  >{{ "Address" | i18n }}
+                                </nz-form-label>
+                                <nz-form-control [nzErrorTip]="errorAddress">
+                                  <input
+                                    nzSize="large"
+                                    nz-input
+                                    placeholder="{{ 'Address' | i18n }}"
+                                    formControlName="street"
+                                  />
+                                  <ng-template #errorAddress let-control>
+                                    <ng-container
+                                      *ngIf="control.hasError('required')"
+                                      >{{ "Please enter the Address" | i18n }}
+                                    </ng-container>
+                                    <ng-container
+                                      *ngIf="control.hasError('pattern')"
+                                    >
+                                      {{
+                                        "Address should be minimum 5 character"
+                                          | i18n
+                                      }}
+                                    </ng-container>
+                                  </ng-template>
+                                </nz-form-control>
+                              </nz-form-item>
+                            </div>
+                            <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                              <nz-form-item>
+                                <nz-form-label
+                                  >{{ "Zip Code" | i18n }}
+                                </nz-form-label>
+                                <nz-form-control
+                                  nzErrorTip="{{
+                                    'Please enter the Zip Code' | i18n
+                                  }}"
+                                >
+                                  <input
+                                    type="text"
+                                    nzSize="large"
+                                    nz-input
+                                    placeholder="{{ 'Zip Code' | i18n }}"
+                                    maxlength="8"
+                                    formControlName="zipCode"
+                                  />
+                                </nz-form-control>
+                              </nz-form-item>
+                            </div>
+                          </div>
+                        </ng-container>
+                        <!-- bridger pay form -->
+                        <ng-container *ngIf="bridgePayForm">
+                          <div nz-col [nzSpan]="24">
+                            <nz-form-item>
+                              <nz-form-label class="national-id">
+                                {{ "National ID" | i18n }}
+                              </nz-form-label>
+                              <p class="nation-text">
+                                * A National ID is necessary for Capitec PSP.
+                                Please provide this information if you intend to
+                                make payments through Capitec PSP.
+                              </p>
+                              <nz-form-control>
+                                <input
+                                  nzSize="large"
+                                  nz-input
+                                  placeholder="National ID"
+                                  formControlName="pesronalId"
+                                />
+                              </nz-form-control>
+                            </nz-form-item>
+                          </div>
+                        </ng-container>
+                      </form>
+                      <!-- <ng-template #nzfromExtra>
+                          <div
+                            class="d-flex justify-content-between account-conversion"
+                            *ngIf="balanceLoader"
+                          >
+                            <div class="balance">
+                              {{ 'Conversion Rate' | i18n }}:
+                              <strong 
+                                >1
+                                {{
+                                  validateForm.value?.accounts?.split('|')[1] ??
+                                    walletBalance.currency ??
+                                    '--'
+                                }}
+                                ={{ exchangeRate }}
+                                {{
+                                  validateForm.value?.currencie?.split('|')[1] ?? '--'
+                                }}</strong
+                              >
+                            </div>
+                            <div class="balance">
+                              {{ 'Fund Amount' | i18n }}:
+                              <strong
+                                >{{ validateForm.value.currencie?.split('|')[1] }}
+                                {{
+                                  (validateForm.value.amount * exchangeRate).toFixed(2)
+                                }}</strong
+                              >
+                            </div>
+                          </div>
+                        </ng-template> -->
+                      <div class="demo" *ngIf="gpayBtn" style="display: none">
+                        <google-pay-button
+                          [environment]="this.gpayInfo.environment"
+                          [buttonColor]="'black'"
+                          [buttonType]="'buy'"
+                          [paymentRequest]="{
+                            apiVersion: 2,
+                            apiVersionMinor: 0,
+                            allowedPaymentMethods: [
+                              {
+                                type: 'CARD',
+                                parameters: {
+                                  allowedAuthMethods:
+                                    this.gpayInfo.allowedCardAuthMethods,
+                                  allowedCardNetworks:
+                                    this.gpayInfo.allowedCardNetworks
+                                },
+                                tokenizationSpecification: {
+                                  type: 'PAYMENT_GATEWAY',
+                                  parameters: {
+                                    gateway: 'example',
+                                    gatewayMerchantId:
+                                      'exampleGatewayMerchantId'
+                                  }
+                                }
+                              }
+                            ],
+                            merchantInfo: {
+                              merchantId: this.gpayInfo.merchantID,
+                              merchantName: this.gpayInfo.merchantName
+                            },
+                            transactionInfo: {
+                              totalPriceStatus: 'FINAL',
+                              totalPriceLabel: 'Total',
+                              totalPrice: this.gpayInfo.amount.toString(),
+                              currencyCode: this.gpayInfo.currency,
+                              countryCode: 'US',
+                              transactionId: this.gpayInfo.transactionID
+                            }
+                          }"
+                          [style.width.px]="buttonWidth"
+                          [style.height.px]="buttonHeight"
+                          (loadpaymentdata)="onLoadPaymentData($event)"
+                          (cancel)="onCancel($event)"
+                        ></google-pay-button>
+                      </div>
+                    </div>
+                    <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+                      <div class="deposit-summary" *ngIf="summaryLoader">
+                        <div class="summary-col">
+                          <div class="summary-list">
+                            <p>{{ "Conversion Rate" | i18n }}:</p>
+                            <p>
+                              1 {{ tradingBalance?.currency }} =
+                              {{ exchangeRate }}
+                              {{ validateForm.value?.currencie?.split("|")[1] }}
+                            </p>
+                          </div>
+                          <div class="summary-list">
+                            <p>{{ "You will receive" | i18n }}:</p>
+                            <p>
+                              {{ tradingBalance?.currency }}
+                              {{
+                                (
+                                  validateForm.value.amount / exchangeRate
+                                ).toFixed(2)
+                              }}
+                            </p>
+                          </div>
+                          <!-- <div class="summary-list">
+                              <p>{{ 'Process Time' | i18n }}:</p>
+                              <p>
+                                <ng-container *ngIf="instant; else otherContent">
+                                  {{ 'Instant' | i18n }}
+                                </ng-container>
+                                <ng-template #otherContent>
+                                  {{ 'within 24 to 48 hours' | i18n }}</ng-template
+                                >
+                              </p>
+                            </div> -->
+                        </div>
+                        <button
+                          class="cmn-btn large-bth w-100"
+                          nz-button
+                          [nzType]="'primary'"
+                          (click)="handleOk()"
+                        >
+                          {{ egpayHide ? "Submit" : ("Next" | i18n) }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </nz-tab>
+        </nz-tabset>
+        <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+          <div class="deposit info-text">
+            <div class="creative">
+              {{ "Keep in Mind" | i18n }}
+              <img
+                src="assets/images/communication.png"
+                alt="info"
+                style="width: 50px; vertical-align: bottom"
+              />
+            </div>
+            <ul>
+              <li>
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{ "The minimum deposit amount" | i18n
+                }}<span class="bold"> {{ minDeposit }} </span> USD
+                {{ "and Maximum" | i18n }}
+                <span class="bold"> {{ maxDeposit }} </span> USD
+              </li>
+              <li>
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Minimum and maximum limits vary by method and are shown in SCA. Please ensure your deposit amount is within these limits."
+                    | i18n
+                }}
+              </li>
+              <li>
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Before proceeding, make sure you have selected the correct trading account."
+                    | i18n
+                }}
+              </li>
+              <li *ngIf="cryptoText">
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Each deposit address is single-use and valid for 1 hour only. Do not save or reuse this address for future deposits."
+                    | i18n
+                }}
+              </li>
+              <li *ngIf="cryptoText">
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Please send the exact amount displayed in SCA. Provider fees must be considered to avoid mismatches."
+                    | i18n
+                }}
+              </li>
+              <li *ngIf="cryptoText">
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Supported networks: TRC20, ERC20, BEP20, BinancePay." | i18n
+                }}
+              </li>
+              <li *ngIf="cryptoText">
+                <p style="margin-bottom: 1px">
+                  <b> {{ "Important:" | i18n }} </b>
+                </p>
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Deposits sent via an unsupported or incorrect network may be permanently lost and cannot be recovered."
+                    | i18n
+                }}
+              </li>
+              <li *ngIf="cardText">
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{ "Credit and debit cards are accepted." | i18n }}
+              </li>
+              <li *ngIf="cardText">
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Refunds cannot exceed the original deposit amount. Any excess must be withdrawn using another method."
+                    | i18n
+                }}
+              </li>
+              <li *ngIf="cardText">
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Third-party cards are not allowed. The cardholder name must match the account holder."
+                    | i18n
+                }}
+              </li>
+              <li *ngIf="bankText">
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Please avoid making multiple deposits with the same amount, as this may trigger fraud checks."
+                    | i18n
+                }}
+              </li>
+              <li *ngIf="bankText">
+                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+                {{
+                  "Repeated attempts within a short period may be flagged by the PSP and lead to transaction rejection."
+                    | i18n
+                }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #otherDeposit>
+      <div nz-row nzJustify="center">
+        <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+          <div class="transfer tr-code psp-block">
+            <img
+              src="assets/images/block.png"
+              alt="info"
+              style="width: 150px"
+            />
+            <h3>
+              Sorry, you cannot be able to initiate the deposit now. Kindly
+              reach out to
+              <a href="mailto:support_int@trive.com"> support@dragonflyfx.com </a>
+              for more details.
+            </h3>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <div class="deposit-line"></div>
+    <div class="deposit-history" #depositHistory>
+      <app-fundsdeposit-history *ngIf="loadDepositHistory">
+      </app-fundsdeposit-history>
+    </div>
+    <h1 class="deposit-head mb20">{{ "deposit_status_title" | i18n }}</h1>
+
+    <div class="deposit-descr">
+      <div class="ico">
+        <img
+          src="assets/images/icons/pending.png"
+          alt="deposit"
+          style="width: 20px"
+        />
+        <span class="pending">{{ "status_pending" | i18n }}</span>
+      </div>
+      <div class="text">
+        {{ "deposit_pending_description" | i18n }}
+      </div>
+    </div>
+
+    <div class="deposit-descr">
+      <div class="ico">
+        <img
+          src="assets/images/icons/completed.png"
+          alt="deposit"
+          style="width: 20px"
+        />
+        <span class="completed">{{ "status_success" | i18n }}</span>
+      </div>
+      <div class="text">
+        {{ "deposit_success_description" | i18n }}
+      </div>
+    </div>
+
+    <div class="deposit-descr">
+      <div class="ico">
+        <img
+          src="assets/images/icons/rejected.png"
+          alt="deposit"
+          style="width: 20px"
+        />
+        <span class="rejected">{{ "status_rejected" | i18n }}</span>
+      </div>
+      <div class="text">
+        {{ "deposit_rejected_description" | i18n }}
+      </div>
+    </div>
+
+    <!-- <div class="text-center additional-info mt20">
+      For additional information you can also refer to our Deposit and
+      Withdrawal Conditions on the link
+      <a
+        href="https://www.Trive.com/trading/deposits-withdrawals"
+        target="_blank"
+      >
+        HERE
+      </a>
+    </div> -->
+  </nz-card>
+</div>
+
+<app-bank-details
+  #bankDetailsComponent
+  (toParent)="onToParent()"
+></app-bank-details>
+<app-success-modal #successModalComponent></app-success-modal>
+<app-crypto-wallet #cryptoWalletComponent></app-crypto-wallet>
+<!-- <app-quick-pay #quickPayComponent (toParent)="onToParent()"></app-quick-pay> -->
+<!--crypto wallet pay from-->
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="tplTitle"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzWidth]="500"
+  nzClassName="cpt-modal"
+  (nzOnCancel)="handleCancelCoin()"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitle>
+    <div class="nz-title-template">
+      <span> {{ "Coin Payment" | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <div class="transfer">
+      <form nz-form [formGroup]="cryptoForm" nzLayout="vertical">
+        <nz-form-item>
+          <nz-form-control
+            nzErrorTip="{{ 'Please select any coin method' | i18n }}"
+          >
+            <label>{{ "Conversion Type" | i18n }}</label>
+            <nz-select
+              nzSize="large"
+              formControlName="coin_pay"
+              nzPlaceHolder="Please Select"
+              class="ant-select-custom"
+            >
+              <nz-option nzValue="ETH" nzLabel="Ether"></nz-option>
+              <nz-option nzValue="TRX" nzLabel="Tron"></nz-option>
+              <nz-option
+                nzValue="USDT.ERC20"
+                nzLabel="Tether USD (ERC20)"
+              ></nz-option>
+              <nz-option
+                nzValue="USDT.TRC20"
+                nzLabel="Tether USD (Tron/TRC20)"
+              ></nz-option>
+              <nz-option nzValue="LTCT" nzLabel="Litecoin Testnet"></nz-option>
+              <nz-option nzValue="XRP" nzLabel="XRP"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleCancelCoin()">
+      {{ "Cancel" | i18n }}
+    </button>
+    <button
+      nz-button
+      nzType="primary"
+      (click)="submitCoinForm()"
+      [nzLoading]="isConfirmLoading"
+    >
+      {{ (isConfirmLoading ? "redirect" : "Submit") | i18n }}
+    </button>
+  </div>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="isVisiblef"
+  [nzTitle]="tplTitlefatoorah"
+  [nzCloseIcon]="nzCloseIconf"
+  [nzWidth]="700"
+  nzClassName="cpt-modal fatoorah-modal"
+  (nzOnCancel)="handleCancelf()"
+  [nzStyle]="{ top: '15px' }"
+>
+  <ng-template #nzCloseIconf>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitlefatoorah>
+    <div class="nz-title-template">
+      <span> {{ "MyFatoorah" | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <nz-card [nzLoading]="loadingpayment">
+      <p>{{ "Please Select any Payment Method to Proceed Further" | i18n }}</p>
+      <div nz-row [nzGutter]="24" nzJustify="center">
+        <div
+          nz-col
+          nzMd="8"
+          nzLg="8"
+          nzXl="8"
+          nzXs="12"
+          *ngFor="let item of paymentList"
+        >
+          <div
+            class="payment-method-list"
+            [ngClass]="item.isDefault ? 'active' : ''"
+          >
+            <img src="{{ item.imageUrl }}" alt="paylist" />
+            <h5>{{ item.paymentMethodEn }}</h5>
+            <ul>
+              <li>
+                <p>{{ "Payment Currency" | i18n }}:</p>
+                <p>{{ item.paymentCurrencyIso }}</p>
+              </li>
+              <!-- <li>
+                <p> Service Charge: </p>
+                <p> {{ item.serviceCharge }} </p>
+              </li> -->
+              <li class="b-none">
+                <p>{{ "Total Amount" | i18n }}:</p>
+                <p>{{ item.totalAmount }} {{ paymentCurrency }}</p>
+              </li>
+              <div class="radio-list">
+                <nz-radio-group>
+                  <label
+                    nz-radio
+                    [ngModel]="item.isDefault"
+                    name="custom"
+                    (ngModelChange)="selectBankAccount(item)"
+                  ></label>
+                </nz-radio-group>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+    <!-- <nz-radio-group nzButtonStyle="solid">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="12">
+          <label nz-radio-button nzValue="A">
+            <img src="https://demo.myfatoorah.com/imgs/payment-methods/s.png" />
+          </label>
+        </div>
+        <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="12">
+          <label nz-radio-button nzValue="A">Hangzhou</label>
+        </div>
+        <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="12">
+          <label nz-radio-button nzValue="A">Hangzhou</label>
+        </div>
+        <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="12">
+          <label nz-radio-button nzValue="A">Hangzhou</label>
+        </div>
+      </div>
+    </nz-radio-group> -->
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleCancelf()">Cancel</button>
+    <button
+      nz-button
+      nzType="primary"
+      (click)="submitFatoorah()"
+      [nzLoading]="isConfirmLoadingf"
+    >
+      {{ (isConfirmLoadingf ? "redirect" : "Submit") | i18n }}
+    </button>
+  </div>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="isVisibleHyperModal"
+  [nzTitle]="tplTitleHyperBC"
+  [nzCloseIcon]="nzCloseIconf"
+  [nzWidth]="700"
+  nzClassName="cpt-modal fatoorah-modal"
+  (nzOnCancel)="closeHyperBCModal()"
+  [nzStyle]="{ top: '15px' }"
+>
+  <ng-template #nzCloseIconf>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitleHyperBC>
+    <div class="nz-title-template">
+      <span> {{ "HyperBC" | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <nz-card>
+      <p class="hnote">
+        {{
+          "Please scan the QR code or use the following address to pay the amount."
+            | i18n
+        }}
+      </p>
+      <div nz-row [nzGutter]="24" nzJustify="center">
+        <div
+          nz-col
+          nzMd="12"
+          nzLg="12"
+          nzXl="12"
+          nzXs="12"
+          class="hyperbc-wrapper"
+        >
+          <div class="payment-method-list hyperbc-qr">
+            <img src="{{ hyperQrCode }}" alt="paylist" />
+            <h5></h5>
+            <ul>
+              <li>
+                <p style="margin-right: 10px">Address:</p>
+                <p>{{ hyperCoinAddress }}</p>
+              </li>
+              <li class="b-none">
+                <p>{{ "Total Amount" | i18n }}:</p>
+                <p>{{ hyperQrAmount }} {{ hyperCoinSelected }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </ng-container>
+  <div *nzModalFooter>
+    <div class="loader-wrapper">
+      <p>{{ "Wating for your action" | i18n }}</p>
+      <span class="dot-flashing"></span>
+    </div>
+  </div>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="isVisibleLean"
+  [nzTitle]="tplTitleLean"
+  [nzCloseIcon]="nzCloseIconf"
+  [nzWidth]="700"
+  nzClassName="cpt-modal fatoorah-modal"
+  (nzOnCancel)="handleCancelLean()"
+  [nzStyle]="{ top: '15px' }"
+>
+  <ng-template #nzCloseIconf>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitleLean>
+    <div class="nz-title-template">
+      <span> {{ "Lean Payment Method" | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <nz-card>
+      <div nz-row [nzGutter]="24" nzJustify="center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <p style="text-align: center">
+            There will be a cool down waiting period. You will be notified once
+            approved by bank
+          </p>
+        </div>
+      </div>
+    </nz-card>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleCancelLean()">
+      Cancel
+    </button>
+    <button nz-button nzType="primary" (click)="leanConnect(leanInitData)">
+      {{ "Proceed" | i18n }}
+    </button>
+  </div>
+</nz-modal>
+
+<!--help pay html form submit-->
+<div #dataContainer class="test-data"></div>
+<!--help pay html form submit-->
+
+<!-------maximum exceed number ------------->
+<nz-modal
+  [(nzVisible)]="exceed"
+  [nzWidth]="600"
+  nzOkText="{{ 'Submit' | i18n }}"
+  nzCancelText="{{ 'Back' | i18n }}"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+>
+  <ng-container *nzModalContent>
+    <div class="exceed-modal">
+      <ng-container *ngIf="kycMessage; else otherKycMsg">
+        <h1>
+          {{
+            "You have exceeded the maximum allowed deposit limit, before KYC.
+          Please complete your profile to unlock the unlimited deposit and many
+          other exciting features."
+              | i18n
+          }}
+        </h1>
+      </ng-container>
+
+      <ng-template #otherKycMsg>
+        <h1>
+          {{ "Account verification is required for deposit above 300$" | i18n }}
+        </h1>
+      </ng-template>
+      <button
+        nz-button
+        class="cpt-primary-btn cmn-btn mb-2"
+        [nzType]="'primary'"
+        (click)="goVerify()"
+      >
+        {{ "Complete Profile" | i18n }}
+      </button>
+    </div>
+  </ng-container>
+</nz-modal>
+
+<!----bvnk payment method----->
+
+<nz-modal
+  [(nzVisible)]="isVisibleBVNK"
+  [nzWidth]="800"
+  [nzTitle]="tplTitleBVNK"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+  [nzCloseIcon]="nzCloseIconBVNK"
+  (nzOnCancel)="handleCancelBVNK()"
+  [nzStyle]="{ top: '25px' }"
+>
+  <ng-template #nzCloseIconBVNK>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitleBVNK>
+    <div class="nz-title-template">
+      <span> {{ "BridgerPay" | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <nz-card>
+      <div nz-row [nzGutter]="24" nzJustify="center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <iframe
+            style="width: 100%; height: 720px"
+            frameborder="0"
+            [src]="bvnkURL"
+          ></iframe>
+        </div>
+      </div>
+    </nz-card>
+  </ng-container>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="isVisibleCheeze"
+  [nzWidth]="800"
+  [nzTitle]="tplTitleCheeze"
+  nzClassName="cpt-modal home-modal"
+  [nzFooter]="null"
+  [nzCloseIcon]="nzCloseIconCheeze"
+  (nzOnCancel)="handleCancelCheeze()"
+  [nzStyle]="{ top: '25px' }"
+>
+  <ng-template #nzCloseIconCheeze>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitleCheeze>
+    <div class="nz-title-template">
+      <span> {{ "CheezePay" | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <nz-card>
+      <div nz-row [nzGutter]="24" nzJustify="center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <iframe
+            id="tcsframe"
+            #iframe
+            style="width: 100%; height: 720px"
+            frameborder="0"
+            [src]="cheezeUrl"
+          ></iframe>
+        </div>
+      </div>
+    </nz-card>
+  </ng-container>
+</nz-modal>
+
+<!-----coop pay------->
+
+<nz-modal
+  [(nzVisible)]="isVisibleCop"
+  [nzWidth]="1100"
+  [nzTitle]="tplTitleCoop"
+  nzClassName="mtpay-modal"
+  [nzFooter]="null"
+  [nzCloseIcon]="nzCloseIconCop"
+  (nzOnCancel)="handleCancelCop()"
+  [nzStyle]="{ top: '25px' }"
+>
+  <ng-template #nzCloseIconCop>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitleCoop>
+    <div class="nz-title-template">
+      <span> {{ "MTPay" | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <nz-card>
+      <div nz-row [nzGutter]="24" nzJustify="center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24" class="cop-img">
+          <iframe
+            id="copframe"
+            #copframe
+            style="width: 100%; height: 720px"
+            frameborder="0"
+            [src]="copUrl"
+          ></iframe>
+        </div>
+      </div>
+    </nz-card>
+  </ng-container>
+</nz-modal>
+
+<!----1-2 pay ----->
+<nz-modal
+  [(nzVisible)]="isVisibleOneTwo"
+  [nzWidth]="400"
+  nzClassName="cpt-modal onetwo-modal"
+  [nzFooter]="null"
+  (nzOnCancel)="handleCancelOneTwo()"
+  nzMaskClosable="false"
+  nzCentered
+>
+  <ng-container *nzModalContent>
+    <nz-card>
+      <div nz-row [nzGutter]="24" nzJustify="center">
+        <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24">
+          <div class="thai-logo">
+            <img src="assets/images/funds/1-2pay.png" alt="" />
+          </div>
+          <div class="one-img">
+            <h3>{{ onetwoPay?.one2pay_ref }}</h3>
+            <ng-container *ngIf="showBtn; else other_content">
+              <img [src]="oneTwoUrl" />
+            </ng-container>
+
+            <ng-template #other_content>
+              <div class="no-qr">
+                <img src="assets/images/no-qr.png" alt="noqr" />
+              </div>
+            </ng-template>
+          </div>
+
+          <div class="list">
+            <ul>
+              <li>
+                QR Code has a 15-minutes time limit and cannot be scanned again.
+              </li>
+              <li>After 15 minutes, scanned QR cannot be used for payment.</li>
+            </ul>
+            <p>
+              Remaning Time :
+              <span>
+                <countdown
+                  [config]="config"
+                  (event)="onTimerFinished($event)"
+                ></countdown>
+              </span>
+            </p>
+          </div>
+          <div class="pay-btn">
+            <p>
+              Please click the below button, after completing the transaction by
+              scanning the given QR code
+            </p>
+            <button
+              class="thai-btn"
+              nz-button
+              nzType="primary"
+              (click)="paymentComplete()"
+            >
+              {{ showBtn ? "Payment Completed" : "Close" }}
+            </button>
+          </div>
+          <div class="thai-qr">
+            <h1>{{ onetwoPay?.code_type }}</h1>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </ng-container>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="isVisiblePayHub"
+  [nzTitle]="tplTitlePayHub"
+  [nzCloseIcon]="nzCloseIconP"
+  [nzWidth]="700"
+  nzClassName="cpt-modal fatoorah-modal"
+  (nzOnCancel)="handleCancelP()"
+  [nzStyle]="{ top: '15px' }"
+  [nzFooter]="null"
+>
+  <ng-template #nzCloseIconP>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitlePayHub>
+    <div class="nz-title-template">
+      <span> {{ "PaymentHub List" | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <nz-card [nzLoading]="loadingpayment">
+      <p>{{ "Please Click any payment method to proceed" | i18n }}</p>
+      <div nz-row [nzGutter]="24" nzJustify="center">
+        <div
+          nz-col
+          nzMd="8"
+          nzLg="8"
+          nzXl="8"
+          nzXs="12"
+          *ngFor="let item of paymentHubList"
+        >
+          <div class="payment-method-list">
+            <div class="logo-section">
+              <img
+              [src]="'https://paymentsinternational.trive.com/payicon/' + item.displayname + '.svg'"
+              class="gateway-icon"
+              alt="icon"
+              style="width: 40px;"
+            />
+            <h5 style="font-size: 16px; font-weight: 600">
+              {{ item.displayname }}
+            </h5>
+            </div>
+         
+
+            <ul *ngFor="let limit of item.limitrange">
+              <li style="font-weight: 600; font-size: 14px">
+                <p>{{ "Payment Currency" | i18n }}:</p>
+                <p>{{ limit.CurrencyCode }}</p>
+              </li>
+
+              <li>
+                <p>{{ "Min Limit" | i18n }}:</p>
+                <p>{{ limit.MinLimit }}</p>
+              </li>
+
+              <li class="b-none">
+                <p>{{ "Max Limit" | i18n }}:</p>
+                <p>{{ limit.MaxLimit }}</p>
+              </li>
+            </ul>
+
+            <div class="radio-list">
+              <nz-radio-group>
+                <label
+                  nz-radio
+                  [ngModel]="item.isDefault"
+                  (ngModelChange)="selectPayHub(item)"
+                ></label>
+              </nz-radio-group>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </ng-container>
+</nz-modal>

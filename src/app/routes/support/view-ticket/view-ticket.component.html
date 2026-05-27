@@ -1,0 +1,142 @@
+<div class="vt">
+  <div class="patch">
+    <div nz-row [nzGutter]="24">
+      <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="12">
+        <span> {{ 'Created Time' | i18n }}: </span>
+        <span> {{ info?.created_Date }} </span>
+      </div>
+      <div nz-col nzMd="6" nzLg="6" nzXl="6" nzXs="12">
+        <span> {{ 'Category' | i18n }}: </span>
+        <span> {{ info?.ticket_Category }} </span>
+      </div>
+      <div nz-col nzMd="4" nzLg="4" nzXl="4" nzXs="12">
+        <span> {{ 'Status' | i18n }}: </span>
+        <span> {{ info?.ticket_Status | i18n }} </span>
+      </div>
+    </div>
+  </div>
+  <div class="gray__bg">
+    <!-- <st
+      #st
+      [data]="activities"
+      showQuickJumper
+      [total]="params.total"
+      [pi]="params.pageNumber"
+      [ps]="params.pageSize"
+      [columns]="columns"
+    ></st> -->
+
+    <nz-table
+      #fixedTable
+      [nzData]="activities"
+      nzSize="small"
+      [nzScroll]="{ x: '1100px' }"
+      [nzLoading]="loading"
+      [nzPageIndex]="page"
+      [nzTotal]="totalnumber"
+      nzShowSizeChanger
+      nzShowQuickJumper
+      [nzFrontPagination]="false"
+      [nzPageSize]="pageSize"
+      (nzPageIndexChange)="onPageIndexChange($event)"
+      (nzPageSizeChange)="onCurrentPageDataChange($event)"
+      (nzPageSizeChange)="onCurrentPageDataChange($event)"
+    >
+      <thead>
+        <tr>
+          <th nzColumnKey="created_Date">{{ 'Date' | i18n }}</th>
+          <th nzColumnKey="created_By">{{ 'User' | i18n }}</th>
+          <th nzColumnKey="ticket_Message">{{ 'Remarks' | i18n }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of activities">
+          <td>{{ data.created_Date | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{ data.created_By }}</td>
+          <td [innerHtml]="data.ticket_Message"></td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+    <form
+      nz-form
+      [formGroup]="addTicketForm"
+      class="ant-advanced-search-form"
+      nzLayout="vertical"
+    >
+      <div nz-row [nzGutter]="24">
+        <!-- <div nz-col [nzSpan]="824">
+          <nz-form-item>
+            <nz-form-label [nzFor]="'field'">{{ 'Description' | i18n }} </nz-form-label>
+            {{ info?.ticket_Description }}
+          </nz-form-item>
+        </div> -->
+        <div nz-col [nzSpan]="24">
+          <nz-form-item>
+            <nz-form-label [nzFor]="'ticket_Message'"
+              >{{ 'Post your comment here' | i18n }}
+            </nz-form-label>
+            <nz-form-control>
+              <textarea
+                formControlName="ticket_Message"
+                rows="4"
+                nz-input
+              ></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-upload [nzFileList]="fileList" [nzBeforeUpload]="beforeUpload">
+            <button
+              nz-button
+              class="cpt-btn-border cpt-brdr"
+              [disabled]="fileList.length == 1"
+            >
+              <i nz-icon nzType="upload"></i>
+              {{ 'Upload documents here' | i18n }}
+            </button>
+          </nz-upload>
+          <p class="upload-title gray" style="color: #6d7988">
+            pdf, jpeg, png, tiff
+          </p>
+        </div>
+      </div>
+      <div nz-row nzJustify="end">
+        <div
+          nz-col
+          nzMd="12"
+          nzLg="12"
+          nzXl="12"
+          nzXs="24"
+          class="text-right flex-show"
+        >
+          <button class="cmn-btn-grey" nz-button (click)="onLink()">
+            {{ 'Cancel' | i18n }}
+          </button>
+          <button
+            class="cmn-btn-prm"
+            nz-button
+            [nzType]="'primary'"
+            [nzLoading]="loadingSubmit"
+            (click)="submitForm()"
+          >
+            {{ 'Submit' | i18n }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- </nz-card> -->
+
+  <!---back button-->
+  <ng-template #extraTemplate>
+    <button
+      nz-button
+      nzType="primary"
+      class="btn-transparent"
+      routerLink="/support"
+    >
+      <i nz-icon nzType="left" nzTheme="outline"></i> {{ 'Back' | i18n }}
+    </button>
+  </ng-template>
+</div>

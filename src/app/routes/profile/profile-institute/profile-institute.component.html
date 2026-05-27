@@ -1,0 +1,2470 @@
+<nz-card [nzLoading]="prfoleloading" class="p-verify">
+  <ng-container *ngIf="registeredEmail; else otherProfile">
+    <div class="email-verify">
+      <ng-container>
+        <img src="assets/images/email-pending.png" alt="email-verification" />
+        <h1>{{ 'Email verification is Pending' | i18n }}</h1>
+        <p>
+          {{
+            'Your email verification is Pending, please go to your registered email inbox, to verify your email'
+              | i18n
+          }}
+        </p>
+        <div class="btg">
+          <button
+            nz-button
+            class="login-form-button login-form-margin cpt-primary-btn cmn-btn"
+            [nzType]="'primary'"
+            type="button"
+            [nzLoading]="loader"
+            (click)="generateLink()"
+          >
+            {{ 'Resend verification link ' | i18n }}
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-template #otherProfile>
+    <nz-steps [nzCurrent]="current" nzProgressDot class="verification-steps">
+      <nz-step nzTitle="{{ 'Company Details' | i18n }}"></nz-step>
+      <nz-step nzTitle="{{ 'Directors Details' | i18n }}"></nz-step>
+      <nz-step nzTitle="{{ 'Representative Details' | i18n }}"></nz-step>
+      <nz-step nzTitle="{{ 'ShareHolders Details' | i18n }}"></nz-step>
+      <nz-step nzTitle="{{ 'Financial Details' | i18n }}"></nz-step>
+      <nz-step nzTitle="{{ 'Upload Documents' | i18n }}"></nz-step>
+    </nz-steps>
+    <div nz-row nzJustify="center">
+      <div nz-col nzMd="20" nzLg="20" nzXl="20" nzXs="24">
+        <!-- ******* Personal Details********** -->
+        <div *ngIf="current === 0" class="subhead profile-personal verify">
+          <div class="profile-personal-title" id="scroll-error">
+            {{ 'Company Details' | i18n }}
+          </div>
+          <form
+            nz-formz
+            [formGroup]="personalForm"
+            nzLayout="vertical"
+            autocomplete="off"
+          >
+            <div nz-row [nzGutter]="24" class="company-details">
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label
+                    >{{ 'Place of Business' | i18n }}
+                  </nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <nz-select
+                      formControlName="place_Of_Business"
+                      nzShowSearch
+                      [ngModel]="companyVersion?.place_Of_Business"
+                      nzSize="large"
+                      nzAllowClear
+                      nzPlaceHolder="{{ 'Choose' | i18n }} "
+                      [nzCustomTemplate]="defaultTemplate"
+                    >
+                      <nz-option
+                        *ngFor="let item of nationality"
+                        nzCustomContent
+                        [nzLabel]="item.description + '|' + item.img"
+                        [nzValue]="item.code"
+                      >
+                        <div class="nationality-header">
+                          <img [src]="item.img" alt="" />
+                          <span>{{ item.description }}</span>
+                        </div>
+                      </nz-option>
+                    </nz-select>
+                    <ng-template #defaultTemplate let-selected>
+                      <div class="nationality-header">
+                        <img [src]="selected.nzLabel.split('|')[1]" alt="" />
+                        <span> {{ selected.nzLabel.split('|')[0] }}</span>
+                      </div>
+                    </ng-template>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>
+                    {{ 'Principal Business Activity' | i18n }}</nz-form-label
+                  >
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="companyVersion?.principal_Business_Activity"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="principal_Business_Activity"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label> {{ 'Tax Domicile' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="companyVersion?.tax_Domicile"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="tax_Domicile"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>
+                    {{ 'Tax Identification Number' | i18n }}</nz-form-label
+                  >
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      [ngModel]="companyVersion?.tax_Identification_Number"
+                      formControlName="tax_Identification_Number"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>
+                    {{ 'Legal Entity Identifier (LEI)' | i18n }}</nz-form-label
+                  >
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      [ngModel]="companyVersion?.legal_Entity_Identifier"
+                      nzSize="large"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="legal_Entity_Identifier"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label
+                    >{{ 'Client Representatives Name' | i18n }}
+                  </nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="companyVersion?.client_Representative_Name"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="client_Representative_Name"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>
+                    {{ 'Representative Position' | i18n }}</nz-form-label
+                  >
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="companyVersion?.representative_Position"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="representative_Position"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>
+                    {{ 'Shareholding Type' | i18n }}</nz-form-label
+                  >
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      [ngModel]="companyVersion?.shareholding_Type"
+                      nzSize="large"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="shareholding_Type"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>
+                    {{ 'Nature of Business' | i18n }}</nz-form-label
+                  >
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      [ngModel]="companyVersion?.nature_Of_Business"
+                      nzSize="large"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="nature_Of_Business"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>
+                    {{ 'Registered Address' | i18n }}</nz-form-label
+                  >
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      [ngModel]="companyVersion?.registered_Address"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="registered_Address"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>{{ 'Street Name' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      [ngModel]="companyVersion?.street_Name"
+                      nzSize="large"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="street_Name"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>{{
+                    'Building Name/ Number' | i18n
+                  }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      [ngModel]="companyVersion?.building_Name"
+                      nzSize="large"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="building_Name"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>{{ 'Unit Number' | i18n }} </nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      [ngModel]="companyVersion?.unit_No"
+                      nzSize="large"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="unit_No"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label> {{ 'Zip Code' | i18n }} </nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      [ngModel]="companyVersion?.zip_Code"
+                      nzSize="large"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="zip_Code"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div class="profile-personal-title">
+              {{ 'Business Address' | i18n }}
+            </div>
+            <!--listed question-->
+            <div nz-row [nzGutter]="24">
+              <div nz-col [nzSpan]="12">
+                <label class="auth-head">
+                  {{
+                    'Is your registered address same as the business address?'
+                      | i18n
+                  }}
+                </label>
+                <nz-form-item class="mb-4 mt-4">
+                  <nz-form-control>
+                    <nz-radio-group
+                      class="d-flex"
+                      [ngModel]="
+                        companyVersion?.is_Business_Address_Same ? true : false
+                      "
+                      formControlName="is_Business_Address_Same"
+                      (ngModelChange)="toggleBusinessAddress($event)"
+                    >
+                      <label nz-radio [nzValue]="true">
+                        {{ 'Yes' | i18n }}</label
+                      >
+                      <label nz-radio [nzValue]="false">
+                        {{ 'No' | i18n }}</label
+                      >
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div
+              nz-row
+              [nzGutter]="24"
+              *ngIf="business"
+              class="company-details"
+            >
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label> {{ 'Street Number' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="companyVersion?.b_Street_Name"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="b_Street_Name"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>{{ 'Building Name' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="companyVersion?.b_Building_Name"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="b_Building_Name"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>{{ 'Unit Number' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      [ngModel]="companyVersion?.b_Unit_No"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="b_Unit_No"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label> {{ 'Zip Code' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      [ngModel]="companyVersion?.b_Zip_Code"
+                      nz-input
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="b_Zip_Code"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <!--listed question-->
+            <!--listed question-->
+            <div nz-row [nzGutter]="24">
+              <div nz-col [nzSpan]="20">
+                <label class="auth-head">
+                  {{
+                    'Are you authorized by any regulatory by any regulatory body?'
+                      | i18n
+                  }}
+                </label>
+                <nz-form-item class="mb-4 mt-4">
+                  <nz-form-control>
+                    <nz-radio-group
+                      class="d-flex"
+                      formControlName="is_Authorized"
+                      [ngModel]="companyVersion?.is_Authorized ? true : false"
+                      (ngModelChange)="toggleAuthorized($event)"
+                    >
+                      <label nz-radio [nzValue]="true">
+                        {{ 'Yes' | i18n }}</label
+                      >
+                      <label nz-radio [nzValue]="false">
+                        {{ 'No' | i18n }}</label
+                      >
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div
+              nz-row
+              [nzGutter]="24"
+              *ngIf="authorized"
+              class="company-details"
+            >
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>
+                    {{ 'Regulatory body' | i18n }}
+                  </nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      placeholder="USD/EUR"
+                      [ngModel]="companyVersion?.regulatory_Body"
+                      formControlName="regulatory_Body"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label> {{ 'Ref Number' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      [ngModel]="companyVersion?.ref_Number"
+                      nzSize="large"
+                      nz-input
+                      placeholder="USD/EUR"
+                      formControlName="ref_Number"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <!--listed question-->
+            <div nz-row [nzGutter]="24" class="no-margin">
+              <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+                <label class="auth-head">
+                  {{
+                    'Are you a US Citizen, ot act on behalf of controlling persons who are US persons?'
+                      | i18n
+                  }}
+                </label>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-radio-group
+                      class="d-flex"
+                      [ngModel]="companyVersion?.is_US_Citizen ? true : false"
+                      formControlName="is_US_Citizen"
+                      (ngModelChange)="toggleUS($event)"
+                    >
+                      <label nz-radio [nzValue]="true">
+                        {{ 'Yes' | i18n }}
+                      </label>
+                      <label nz-radio [nzValue]="false">
+                        {{ 'No' | i18n }}
+                      </label>
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <!--listed question-->
+            <div nz-row nzJustify="center">
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <!-- <button class="cpt-btn-border" nz-button>Cancel</button> -->
+                <button
+                  class="cmn-btn p-btn"
+                  nz-button
+                  [nzType]="'primary'"
+                  (click)="personalSubmit()"
+                >
+                  {{ 'Next' | i18n }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="current === 1" class="subhead profile-personal verify">
+          <form
+            [formGroup]="directorForm"
+            nz-form
+            nzLayout="vertical"
+            (ngSubmit)="onDirectorSubmit()"
+            class="commpany-profile mt-10"
+          >
+            <div class="company-content commpany-profile mt-10">
+              <div formArrayName="directors" class="commpany-profile mt-10">
+                <div
+                  *ngFor="let emp of directors.controls; let i = index"
+                  [formGroupName]="i"
+                  class="commpany-profile mt-10"
+                >
+                  <div nz-row [nzGutter]="24" class="no-margin">
+                    <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+                      <h2 id="scroll-error">
+                        {{ 'Director' | i18n }} {{ i + 1 }}
+                      </h2>
+                    </div>
+                  </div>
+                  <div nz-row [nzGutter]="24" class="company-details">
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{ 'First Name' | i18n }}</nz-form-label>
+                        <nz-form-control>
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="first_Name"
+                          />
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            directors.controls[i].get('first_Name')?.errors
+                              ?.required &&
+                            isValidDirectorFormSubmitted != null &&
+                            !isValidDirectorFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{ 'Last Name' | i18n }}</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="last_Name"
+                          />
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            directors.controls[i].get('last_Name')?.errors
+                              ?.required &&
+                            isValidDirectorFormSubmitted != null &&
+                            !isValidDirectorFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>
+                          {{ 'Date of Birth' | i18n }}</nz-form-label
+                        >
+                        <nz-form-control [nzErrorTip]="errorDateTpl">
+                          <nz-date-picker
+                            class="w100"
+                            [nzDisabledDate]="disabledDate"
+                            nzSize="large"
+                            formControlName="dob"
+                          ></nz-date-picker>
+                          <ng-template #errorDateTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')"
+                              >{{ 'Please enter the date' | i18n }}
+                            </ng-container>
+                          </ng-template>
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            directors.controls[i].get('dob')?.errors
+                              ?.required &&
+                            isValidDirectorFormSubmitted != null &&
+                            !isValidDirectorFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{ 'Email' | i18n }} </nz-form-label>
+                        <nz-form-control [nzErrorTip]="errorTpl2">
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="email"
+                          />
+                          <ng-template #errorTpl2 let-control>
+                            <ng-container *ngIf="control.hasError('email')">
+                              {{ 'Please enter valid email id' | i18n }}
+                            </ng-container>
+                          </ng-template>
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            directors.controls[i].get('email')?.errors
+                              ?.required &&
+                            isValidDirectorFormSubmitted != null &&
+                            !isValidDirectorFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label nzFor="phoneNumber">{{
+                          'Phone' | i18n
+                        }}</nz-form-label>
+                        <nz-form-control [nzErrorTip]="errorTpl">
+                          <nz-input-group
+                            nzSize="large"
+                            [nzAddOnBefore]="addOnBeforeTemplate"
+                          >
+                            <ng-template #addOnBeforeTemplate>
+                              <nz-select
+                                nzShowSearch
+                                style="width: 120px"
+                                formControlName="phoneNumberPrefix"
+                                class="phone-select"
+                              >
+                                <nz-option
+                                  *ngFor="let item of phones"
+                                  [nzValue]="item.prefix"
+                                  [nzLabel]="
+                                    (item?.addr ?? '') +
+                                    ' &nbsp;&nbsp;' +
+                                    item.prefix
+                                  "
+                                ></nz-option>
+                              </nz-select>
+                            </ng-template>
+                            <input
+                              type="number"
+                              autocomplete="new-password"
+                              formControlName="phoneNumber"
+                              nz-input
+                            />
+                            <ng-template #errorTpl let-control>
+                              <ng-container
+                                *ngIf="control.hasError('required')"
+                              >
+                                {{ 'Please enter phone number' | i18n }}
+                              </ng-container>
+                              <ng-container *ngIf="control.hasError('pattern')">
+                                {{ 'Please enter valid phone number' | i18n }}
+                              </ng-container>
+                            </ng-template>
+                          </nz-input-group>
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            directors.controls[i].get('phoneNumber')?.errors
+                              ?.required &&
+                            isValidDirectorFormSubmitted != null &&
+                            !isValidDirectorFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{
+                          'Residential Address' | i18n
+                        }}</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="resudential_Address"
+                          />
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            directors.controls[i].get('resudential_Address')
+                              ?.errors?.required &&
+                            isValidDirectorFormSubmitted != null &&
+                            !isValidDirectorFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{
+                          'Passport Number' | i18n
+                        }}</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="passportNumber"
+                          />
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            directors.controls[i].get('passportNumber')?.errors
+                              ?.required &&
+                            isValidDirectorFormSubmitted != null &&
+                            !isValidDirectorFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!--listed question-->
+                  <div nz-row [nzGutter]="24" class="no-margin">
+                    <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+                      <label class="auth-head">
+                        {{ 'Politically Exposed Person?' | i18n }}
+                      </label>
+                      <nz-form-item>
+                        <nz-form-control>
+                          <nz-radio-group
+                            class="d-flex"
+                            formControlName="is_Politically_Exposed_Person"
+                            (ngModelChange)="directortogglePolitically($event)"
+                          >
+                            <label nz-radio [nzValue]="true">
+                              {{ 'Yes' | i18n }}
+                            </label>
+                            <label nz-radio [nzValue]="false">
+                              {{ 'No' | i18n }}
+                            </label>
+                          </nz-radio-group>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!--listed question-->
+                  <!--listed question-->
+                  <div nz-row [nzGutter]="24">
+                    <div nz-col [nzSpan]="20">
+                      <label class="auth-head">
+                        {{ 'Are you a US National/Resident?' | i18n }}
+                      </label>
+                      <nz-form-item class="mb-4 mt-4">
+                        <nz-form-control>
+                          <nz-radio-group
+                            class="d-flex"
+                            formControlName="is_US_National"
+                            (ngModelChange)="directortoggleUsNational($event)"
+                          >
+                            <label nz-radio [nzValue]="true">
+                              {{ 'Yes' | i18n }}</label
+                            >
+                            <label nz-radio [nzValue]="false">
+                              {{ 'No' | i18n }}</label
+                            >
+                          </nz-radio-group>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!--listed question-->
+                  <div
+                    nz-row
+                    [nzGutter]="24"
+                    *ngIf="usNatioanl"
+                    class="company-details"
+                  >
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label> {{ 'Fatca' | i18n }}</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="USD/EUR"
+                            formControlName="fatca"
+                          />
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>CRS</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="USD/EUR"
+                            formControlName="crs"
+                          />
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!-----listed question-->
+                  <!--listed question-->
+                  <div nz-row [nzGutter]="24" class="no-margin">
+                    <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+                      <label class="auth-head">
+                        {{ 'Are you representative?' | i18n }}</label
+                      >
+                      <nz-form-item>
+                        <nz-form-control>
+                          <nz-radio-group
+                            class="d-flex"
+                            formControlName="is_Representative"
+                            (ngModelChange)="directortogglerepresantive($event)"
+                          >
+                            <label nz-radio [nzValue]="true">
+                              {{ 'Yes' | i18n }}
+                            </label>
+                            <label nz-radio [nzValue]="false">
+                              {{ 'No' | i18n }}
+                            </label>
+                          </nz-radio-group>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!--listed question-->
+                  <!--listed question-->
+                  <div nz-row [nzGutter]="24" class="no-margin">
+                    <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+                      <label class="auth-head">
+                        {{ 'Are you ShareHolder?' | i18n }}
+                      </label>
+                      <nz-form-item>
+                        <nz-form-control>
+                          <nz-radio-group
+                            class="d-flex"
+                            formControlName="is_ShareHolder"
+                            (ngModelChange)="directortoggleShareHolder($event)"
+                          >
+                            <label nz-radio [nzValue]="true">
+                              {{ 'Yes' | i18n }}
+                            </label>
+                            <label nz-radio [nzValue]="false">
+                              {{ 'No' | i18n }}
+                            </label>
+                          </nz-radio-group>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!--documents upload here -->
+                  <div class="auth-head">
+                    {{ 'Directors Docuements' | i18n }}
+                  </div>
+                  <div nz-row [nzGutter]="24" class="file-upload">
+                    <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                      <h1>
+                        {{ 'Proof of Id' | i18n }}
+                        <span class="obligation">
+                          * {{ 'required' | i18n }}
+                        </span>
+                      </h1>
+                      <nz-form-item>
+                        <nz-form-control>
+                          <nz-upload
+                            nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                            [nzBeforeUpload]="drUpload"
+                            [nzPreview]="drPreview"
+                            [(nzFileList)]="drFileList"
+                            (nzOnCancel)="drPreviewVisible = false"
+                            nzListType="picture-card"
+                            [nzRemove]="drRemove"
+                            [nzShowButton]="drFileList.length < 1"
+                          >
+                            <div class="profile-upload-icon">
+                              <p class="ant-upload-drag-icon">
+                                <i
+                                  nz-icon
+                                  [nzType]="drLoading ? 'loading' : ''"
+                                >
+                                </i>
+                                <img
+                                  *ngIf="!drLoading"
+                                  src="assets/images/upload.png"
+                                  style="width: 50px"
+                                  alt="upload"
+                                />
+                              </p>
+                              <p
+                                class="ant-upload-text"
+                                style="margin-top: 15px"
+                              >
+                                {{
+                                  'Click here to upload your documents' | i18n
+                                }}
+                              </p>
+                            </div>
+                          </nz-upload>
+                          <nz-modal
+                            [nzVisible]="drPreviewVisible"
+                            [nzContent]="modalContent2"
+                            [nzFooter]="null"
+                            (nzOnCancel)="drPreviewVisible = false"
+                          >
+                            <ng-template #modalContent2>
+                              <img
+                                [src]="drPreviewImage"
+                                [ngStyle]="{ width: '100%' }"
+                              />
+                            </ng-template>
+                          </nz-modal>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                      <h1>
+                        {{ 'Proof of Address (within 3 months)' | i18n }}
+                        <span class="obligation">
+                          * {{ 'required' | i18n }}
+                        </span>
+                      </h1>
+                      <nz-form-item>
+                        <nz-form-control>
+                          <nz-upload
+                            nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                            [nzBeforeUpload]="prdrUpload"
+                            [nzPreview]="prdrPreview"
+                            [(nzFileList)]="prdrFileList"
+                            (nzOnCancel)="prdrPreviewVisible = false"
+                            nzListType="picture-card"
+                            [nzRemove]="prdrRemove"
+                            [nzShowButton]="prdrFileList.length < 1"
+                          >
+                            <div class="profile-upload-icon">
+                              <p class="ant-upload-prdrag-icon">
+                                <i
+                                  nz-icon
+                                  [nzType]="prdrLoading ? 'loading' : ''"
+                                >
+                                </i>
+                                <img
+                                  *ngIf="!prdrLoading"
+                                  src="assets/images/upload.png"
+                                  style="width: 50px"
+                                  alt="upload"
+                                />
+                              </p>
+                              <p
+                                class="ant-upload-text"
+                                style="margin-top: 15px"
+                              >
+                                {{
+                                  'Click here to upload your documents' | i18n
+                                }}
+                              </p>
+                            </div>
+                          </nz-upload>
+                          <nz-modal
+                            [nzVisible]="prdrPreviewVisible"
+                            [nzContent]="modalContent2"
+                            [nzFooter]="null"
+                            (nzOnCancel)="prdrPreviewVisible = false"
+                          >
+                            <ng-template #modalContent2>
+                              <img
+                                [src]="prdrPreviewImage"
+                                [ngStyle]="{ width: '100%' }"
+                              />
+                            </ng-template>
+                          </nz-modal>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <div class="auth-head">
+                    {{ 'Shareholders Docuements (Owning 25% or more)' | i18n }}
+                  </div>
+                  <div nz-row [nzGutter]="24" class="file-upload">
+                    <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                      <h1>{{ 'Proof of Id' | i18n }}</h1>
+                      <nz-form-item>
+                        <nz-form-control>
+                          <nz-upload
+                            nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                            [nzBeforeUpload]="prUpload"
+                            [(nzFileList)]="prFileList"
+                            (nzOnCancel)="prPreviewVisible = false"
+                            nzListType="picture-card"
+                            [nzRemove]="prRemove"
+                            [nzShowButton]="prFileList.length < 1"
+                          >
+                            <div class="profile-upload-icon">
+                              <p class="ant-upload-prag-icon">
+                                <i
+                                  nz-icon
+                                  [nzType]="prLoading ? 'loading' : ''"
+                                >
+                                </i>
+                                <img
+                                  *ngIf="!prLoading"
+                                  src="assets/images/upload.png"
+                                  style="width: 50px"
+                                  alt="upload"
+                                />
+                              </p>
+                              <p
+                                class="ant-upload-text"
+                                style="margin-top: 15px"
+                              >
+                                {{
+                                  'Click here to upload your documents' | i18n
+                                }}
+                              </p>
+                            </div>
+                          </nz-upload>
+                          <nz-modal
+                            [nzVisible]="prPreviewVisible"
+                            [nzContent]="modalContent2"
+                            [nzFooter]="null"
+                            (nzOnCancel)="prPreviewVisible = false"
+                          >
+                            <ng-template #modalContent2>
+                              <img
+                                [src]="prPreviewImage"
+                                [ngStyle]="{ width: '100%' }"
+                              />
+                            </ng-template>
+                          </nz-modal>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                      <h1>{{ 'Proof of Address (within 3 months)' | i18n }}</h1>
+                      <nz-form-item>
+                        <nz-form-control>
+                          <nz-upload
+                            nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                            [nzBeforeUpload]="shareAdUpload"
+                            [(nzFileList)]="shareAdFileList"
+                            (nzOnCancel)="shareAdPreviewVisible = false"
+                            nzListType="picture-card"
+                            [nzRemove]="shareAdRemove"
+                            [nzShowButton]="shareAdFileList.length < 1"
+                          >
+                            <div class="profile-upload-icon">
+                              <p class="ant-upload-prag-icon">
+                                <i
+                                  nz-icon
+                                  [nzType]="shareAdLoading ? 'loading' : ''"
+                                >
+                                </i>
+                                <img
+                                  *ngIf="!shareAdLoading"
+                                  src="assets/images/upload.png"
+                                  style="width: 50px"
+                                  alt="upload"
+                                />
+                              </p>
+                              <p
+                                class="ant-upload-text"
+                                style="margin-top: 15px"
+                              >
+                                {{
+                                  'Click here to upload your documents' | i18n
+                                }}
+                              </p>
+                            </div>
+                          </nz-upload>
+                          <nz-modal
+                            [nzVisible]="shareAdPreviewVisible"
+                            [nzContent]="modalContent2"
+                            [nzFooter]="null"
+                            (nzOnCancel)="shareAdPreviewVisible = false"
+                          >
+                            <ng-template #modalContent2>
+                              <img
+                                [src]="shareAdPreviewImage"
+                                [ngStyle]="{ width: '100%' }"
+                              />
+                            </ng-template>
+                          </nz-modal>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!--documents upload here -->
+                  <!--action add and delete button here-->
+                  <div>
+                    <span
+                      class="add-more"
+                      nz-button
+                      nzType="text"
+                      (click)="addDirectors()"
+                    >
+                      <span nz-icon nzType="plus" nzTheme="outline"></span>
+                      {{ 'Add More' | i18n }}
+                    </span>
+                    <span class="add-more del" (click)="deleteDirectors(i)">
+                      <span nz-icon nzType="delete" nzTheme="outline"></span>
+                      {{ 'Delete' | i18n }}
+                    </span>
+                  </div>
+                  <!--action add and delete button here-->
+                  <hr />
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button
+                class="cmn-btn p-btn"
+                nz-button
+                [nzType]="'primary'"
+                type="submit"
+                [nzLoading]="loaderCompany"
+              >
+                {{ 'Next' | i18n }}
+              </button>
+            </div>
+            <div class="text-center mt-4">
+              <button
+                class="back-btn"
+                nzType="text"
+                nz-button
+                (click)="createTplModal(tplTitle, tplContent, tplFooter)"
+              >
+                <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+                {{ 'Back' | i18n }}
+              </button>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="current === 2" class="subhead profile-personal verify">
+          <form
+            nz-formz
+            [formGroup]="repFrom"
+            nzLayout="vertical"
+            autocomplete="off"
+          >
+            <div nz-row [nzGutter]="24" class="company-details">
+              <div
+                nz-col
+                nzMd="8"
+                nzLg="8"
+                nzXl="8"
+                nzXs="24"
+                id="scroll-error"
+              >
+                <nz-form-item>
+                  <nz-form-label>{{ 'First Name' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="reprentiveVersion?.first_Name"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="first_Name"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>{{ 'Last Name' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="reprentiveVersion?.last_Name"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="last_Name"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label> {{ 'Date of Birth' | i18n }}</nz-form-label>
+                  <nz-form-control [nzErrorTip]="errorDateTpl">
+                    <nz-date-picker
+                      class="w100"
+                      [nzDisabledDate]="disabledDate"
+                      nzSize="large"
+                      [ngModel]="reprentiveVersion?.dob"
+                      formControlName="dob"
+                    ></nz-date-picker>
+                    <ng-template #errorDateTpl let-control>
+                      <ng-container *ngIf="control.hasError('required')"
+                        >{{ 'Please enter the date' | i18n }}
+                      </ng-container>
+                    </ng-template>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>{{ 'Email' | i18n }} </nz-form-label>
+                  <nz-form-control
+                    nzErrorTip=" {{ 'The input is not valid Email!' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="reprentiveVersion?.email"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="email"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label nzFor="phoneNumber">{{
+                    'Phone' | i18n
+                  }}</nz-form-label>
+                  <nz-form-control [nzErrorTip]="errorTpl">
+                    <nz-input-group
+                      nzSize="large"
+                      [nzAddOnBefore]="addOnBeforeTemplate"
+                    >
+                      <ng-template #addOnBeforeTemplate>
+                        <nz-select
+                          nzShowSearch
+                          style="width: 120px"
+                          formControlName="phoneNumberPrefix"
+                          class="phone-select"
+                        >
+                          <nz-option
+                            *ngFor="let item of phones"
+                            [nzValue]="item.prefix"
+                            [nzLabel]="
+                              (item?.addr ?? '') + ' &nbsp;&nbsp;' + item.prefix
+                            "
+                          ></nz-option>
+                        </nz-select>
+                      </ng-template>
+                      <input
+                        type="number"
+                        autocomplete="new-password"
+                        formControlName="phoneNumber"
+                        [ngModel]="reprentiveVersion?.phoneNumber"
+                        nz-input
+                      />
+                      <ng-template #errorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                          {{ 'Please enter phone number' | i18n }}
+                        </ng-container>
+                        <ng-container *ngIf="control.hasError('pattern')">
+                          {{ 'Please enter valid phone number' | i18n }}
+                        </ng-container>
+                      </ng-template>
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>{{
+                    'Residential Address' | i18n
+                  }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="reprentiveVersion?.resudential_Address"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="resudential_Address"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>{{ 'Passport Number' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="reprentiveVersion?.passportNumber"
+                      placeholder="{{ 'Type here' | i18n }}"
+                      formControlName="passportNumber"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <!--listed question-->
+            <div nz-row [nzGutter]="24" class="no-margin">
+              <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+                <label class="auth-head">
+                  {{ 'Politically Exposed Person?' | i18n }}
+                </label>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-radio-group
+                      class="d-flex"
+                      [ngModel]="
+                        reprentiveVersion?.is_Politically_Exposed_Person
+                      "
+                      formControlName="is_Politically_Exposed_Person"
+                      (ngModelChange)="togglePolitically($event)"
+                    >
+                      <label nz-radio [nzValue]="true">
+                        {{ 'Yes' | i18n }}
+                      </label>
+                      <label nz-radio [nzValue]="false">
+                        {{ 'No' | i18n }}
+                      </label>
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <!--listed question-->
+            <!--listed question-->
+            <div nz-row [nzGutter]="24">
+              <div nz-col [nzSpan]="20">
+                <label class="auth-head">
+                  {{ 'Are you a US National/Resident?' | i18n }}
+                </label>
+                <nz-form-item class="mb-4 mt-4">
+                  <nz-form-control>
+                    <nz-radio-group
+                      class="d-flex"
+                      formControlName="is_US_National"
+                      [ngModel]="reprentiveVersion?.is_US_National"
+                      (ngModelChange)="toggleUsNational($event)"
+                    >
+                      <label nz-radio [nzValue]="true">
+                        {{ 'Yes' | i18n }}</label
+                      >
+                      <label nz-radio [nzValue]="false">
+                        {{ 'No' | i18n }}</label
+                      >
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div
+              nz-row
+              [nzGutter]="24"
+              *ngIf="usNatioanl"
+              class="company-details"
+            >
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label> {{ 'Fatca' | i18n }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      nzSize="large"
+                      nz-input
+                      [ngModel]="reprentiveVersion?.fatca"
+                      placeholder="USD/EUR"
+                      formControlName="fatca"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                <nz-form-item>
+                  <nz-form-label>CRS</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This Field is required' | i18n }}"
+                  >
+                    <input
+                      [ngModel]="reprentiveVersion?.crs"
+                      nzSize="large"
+                      nz-input
+                      placeholder="USD/EUR"
+                      formControlName="crs"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+
+            <div nz-row nzJustify="center">
+              <div
+                nz-col
+                nzMd="8"
+                nzLg="8"
+                nzXl="8"
+                nzXs="24"
+                class="text-center"
+              >
+                <button
+                  class="cmn-btn p-btn"
+                  nz-button
+                  [nzType]="'primary'"
+                  (click)="reprensativeSubmit()"
+                >
+                  {{ 'Next' | i18n }}
+                </button>
+                <div class="text-center">
+                  <button
+                    class="back-btn"
+                    nzType="text"
+                    nz-button
+                    (click)="createTplModal(tplTitle, tplContent, tplFooter)"
+                  >
+                    <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+                    {{ 'Back' | i18n }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="current === 3" class="subhead profile-personal verify">
+          <form
+            [formGroup]="shareForm"
+            nz-form
+            nzLayout="vertical"
+            (ngSubmit)="onShareSubmit()"
+            class="commpany-profile mt-10"
+          >
+            <div class="company-content commpany-profile mt-10">
+              <div formArrayName="shares" class="commpany-profile mt-10">
+                <div
+                  *ngFor="let emp of shares.controls; let i = index"
+                  [formGroupName]="i"
+                  class="commpany-profile mt-10"
+                >
+                  <div nz-row [nzGutter]="24" class="no-margin">
+                    <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+                      <h2 id="scroll-error">
+                        {{ 'ShareHolders' | i18n }} {{ i + 1 }}
+                      </h2>
+                    </div>
+                  </div>
+                  <div nz-row [nzGutter]="24" class="company-details">
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{ 'First Name' | i18n }}</nz-form-label>
+                        <nz-form-control>
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="first_Name"
+                          />
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            shares.controls[i].get('first_Name')?.errors
+                              ?.required &&
+                            isValidShareFormSubmitted != null &&
+                            !isValidShareFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{ 'Last Name' | i18n }}</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="last_Name"
+                          />
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            shares.controls[i].get('last_Name')?.errors
+                              ?.required &&
+                            isValidShareFormSubmitted != null &&
+                            !isValidShareFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>
+                          {{ 'Date of Birth' | i18n }}</nz-form-label
+                        >
+                        <nz-form-control [nzErrorTip]="errorDateTpl">
+                          <nz-date-picker
+                            class="w100"
+                            [nzDisabledDate]="disabledDate"
+                            nzSize="large"
+                            formControlName="dob"
+                          ></nz-date-picker>
+                          <ng-template #errorDateTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')"
+                              >{{ 'Please enter the date' | i18n }}
+                            </ng-container>
+                          </ng-template>
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            shares.controls[i].get('dob')?.errors?.required &&
+                            isValidShareFormSubmitted != null &&
+                            !isValidShareFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{ 'Email' | i18n }} </nz-form-label>
+                        <nz-form-control
+                          nzErrorTip=" {{
+                            'The input is not valid Email!' | i18n
+                          }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="email"
+                          />
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            shares.controls[i].get('email')?.errors?.required &&
+                            isValidShareFormSubmitted != null &&
+                            !isValidShareFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label nzFor="phoneNumber">{{
+                          'Phone' | i18n
+                        }}</nz-form-label>
+                        <nz-form-control [nzErrorTip]="errorTpl">
+                          <nz-input-group
+                            nzSize="large"
+                            [nzAddOnBefore]="addOnBeforeTemplate"
+                          >
+                            <ng-template #addOnBeforeTemplate>
+                              <nz-select
+                                nzShowSearch
+                                style="width: 120px"
+                                formControlName="phoneNumberPrefix"
+                                class="phone-select"
+                              >
+                                <nz-option
+                                  *ngFor="let item of phones"
+                                  [nzValue]="item.prefix"
+                                  [nzLabel]="
+                                    (item?.addr ?? '') +
+                                    ' &nbsp;&nbsp;' +
+                                    item.prefix
+                                  "
+                                ></nz-option>
+                              </nz-select>
+                            </ng-template>
+                            <input
+                              type="number"
+                              autocomplete="new-password"
+                              formControlName="phoneNumber"
+                              nz-input
+                            />
+                            <ng-template #errorTpl let-control>
+                              <ng-container
+                                *ngIf="control.hasError('required')"
+                              >
+                                {{ 'Please enter phone number' | i18n }}
+                              </ng-container>
+                              <ng-container *ngIf="control.hasError('pattern')">
+                                {{ 'Please enter valid phone number' | i18n }}
+                              </ng-container>
+                            </ng-template>
+                          </nz-input-group>
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            shares.controls[i].get('phoneNumber')?.errors
+                              ?.required &&
+                            isValidShareFormSubmitted != null &&
+                            !isValidShareFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{
+                          'Residential Address' | i18n
+                        }}</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="resudential_Address"
+                          />
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            shares.controls[i].get('resudential_Address')
+                              ?.errors?.required &&
+                            isValidShareFormSubmitted != null &&
+                            !isValidShareFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>{{
+                          'Passport Number' | i18n
+                        }}</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="{{ 'Type here' | i18n }}"
+                            formControlName="passportNumber"
+                          />
+                        </nz-form-control>
+                        <label
+                          *ngIf="
+                            shares.controls[i].get('passportNumber')?.errors
+                              ?.required &&
+                            isValidShareFormSubmitted != null &&
+                            !isValidShareFormSubmitted
+                          "
+                          class="error"
+                        >
+                          {{ 'This Field is required' | i18n }}
+                        </label>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!--listed question-->
+                  <div nz-row [nzGutter]="24" class="no-margin">
+                    <div nz-co nzMd="16" nzLg="16" nzXl="16" nzXs="24">
+                      <label class="auth-head">
+                        {{ 'Politically Exposed Person?' | i18n }}
+                      </label>
+                      <nz-form-item>
+                        <nz-form-control>
+                          <nz-radio-group
+                            class="d-flex"
+                            formControlName="is_Politically_Exposed_Person"
+                            (ngModelChange)="directortogglePolitically($event)"
+                          >
+                            <label nz-radio [nzValue]="true">
+                              {{ 'Yes' | i18n }}
+                            </label>
+                            <label nz-radio [nzValue]="false">
+                              {{ 'No' | i18n }}
+                            </label>
+                          </nz-radio-group>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!--listed question-->
+                  <!--listed question-->
+                  <div nz-row [nzGutter]="24">
+                    <div nz-col [nzSpan]="20">
+                      <label class="auth-head">
+                        {{ 'Are you a US National/Resident?' | i18n }}
+                      </label>
+                      <nz-form-item class="mb-4 mt-4">
+                        <nz-form-control>
+                          <nz-radio-group
+                            class="d-flex"
+                            formControlName="is_US_National"
+                            (ngModelChange)="SharetoggleUsNational($event)"
+                          >
+                            <label nz-radio [nzValue]="true">
+                              {{ 'Yes' | i18n }}</label
+                            >
+                            <label nz-radio [nzValue]="false">
+                              {{ 'No' | i18n }}</label
+                            >
+                          </nz-radio-group>
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!--listed question-->
+                  <div
+                    nz-row
+                    [nzGutter]="24"
+                    *ngIf="usNatioanl"
+                    class="company-details"
+                  >
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label> {{ 'Fatca' | i18n }}</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="USD/EUR"
+                            formControlName="fatca"
+                          />
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                    <div nz-col nzMd="8" nzLg="8" nzXl="8" nzXs="24">
+                      <nz-form-item>
+                        <nz-form-label>CRS</nz-form-label>
+                        <nz-form-control
+                          nzErrorTip="{{ 'This Field is required' | i18n }}"
+                        >
+                          <input
+                            nzSize="large"
+                            nz-input
+                            placeholder="USD/EUR"
+                            formControlName="crs"
+                          />
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                  <!-----listed question-->
+                  <!--action add and delete button here-->
+                  <div>
+                    <span
+                      class="add-more"
+                      nz-button
+                      nzType="text"
+                      (click)="addShares()"
+                    >
+                      <span nz-icon nzType="plus" nzTheme="outline"></span>
+                      {{ 'Add More' | i18n }}
+                    </span>
+                    <span class="add-more del" (click)="deleteShares(i)">
+                      <span nz-icon nzType="delete" nzTheme="outline"></span>
+                      {{ 'Delete' | i18n }}
+                    </span>
+                  </div>
+                  <!--action add and delete button here-->
+                  <hr />
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button
+                class="cmn-btn p-btn"
+                nz-button
+                [nzType]="'primary'"
+                type="submit"
+              >
+                {{ 'Next' | i18n }}
+              </button>
+            </div>
+            <div class="text-center mt-4">
+              <button
+                class="back-btn"
+                nzType="text"
+                nz-button
+                (click)="createTplModal(tplTitle, tplContent, tplFooter)"
+              >
+                <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+                {{ 'Back' | i18n }}
+              </button>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="current === 4" class="subhead profile-personal verify">
+          <form
+            nz-form
+            [formGroup]="validateForm"
+            class="ant-advanced-search-form mt-4 ml-6"
+            nzLayout="vertical"
+          >
+            <div *ngFor="let item of questionsAnswer; let ix = index">
+              <div *ngIf="item.type === 'Subjective'">
+                <nz-form-item *ngFor="let data of item.answers; let i = index">
+                  <nz-form-label>
+                    <div class="d-flex align-items-center">
+                      <span class="question-title">{{ item.title }}</span>
+                    </div>
+                  </nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'Please type valid answer!' | i18n }}"
+                  >
+                    <div class="question-control corporate">
+                      <input
+                        nzSize="large"
+                        nz-input
+                        [ngModel]="data?.title"
+                        placeholder="{{ 'Type here' | i18n }}"
+                        [formControlName]="'Subjective|' + item.questionCode"
+                      />
+                    </div>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div class="text-center">
+              <button
+                class="cmn-btn mb-2 p-btn"
+                nz-button
+                [nzType]="'primary'"
+                (click)="onSubmit()"
+              >
+                {{ 'Next' | i18n }}
+              </button>
+            </div>
+            <div class="text-center">
+              <button
+                class="back-btn"
+                nzType="text"
+                nz-button
+                (click)="createTplModal(tplTitle, tplContent, tplFooter)"
+              >
+                <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+                {{ 'Back' | i18n }}
+              </button>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="current === 5" class="subhead profile-personal verify">
+          <form nz-form [formGroup]="documentForm" nzLayout="vertical">
+            <div nz-row [nzGutter]="24" class="file-upload">
+              <div
+                nz-col
+                nzMd="12"
+                nzLg="12"
+                nzXl="12"
+                nzXs="24"
+                id="scroll-error"
+              >
+                <h1>
+                  {{ 'Certificate of Incorporation or equivalent' | i18n }}
+                  <span class="obligation"> * {{ 'required' | i18n }} </span>
+                </h1>
+                <nz-form-item>
+                  <nz-form-control
+                    nzErrorTip="The input is not valid street zip Code!"
+                  >
+                    <nz-upload
+                      nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                      [nzBeforeUpload]="incorpUpload"
+                      [nzPreview]="handlePreview"
+                      [(nzFileList)]="incorpFileList"
+                      (nzOnCancel)="incorpPreviewVisible = false"
+                      nzListType="picture-card"
+                      [nzRemove]="handleIncorpRemove"
+                      [nzShowButton]="incorpFileList.length < 1"
+                    >
+                      <div class="profile-upload-icon">
+                        <p class="ant-upload-drag-icon">
+                          <i nz-icon [nzType]="incorpLoading ? 'loading' : ''">
+                          </i>
+                          <img
+                            *ngIf="!incorpLoading"
+                            src="assets/images/upload.png"
+                            style="width: 50px"
+                            alt="upload"
+                          />
+                        </p>
+                        <p class="ant-upload-text" style="margin-top: 15px">
+                          {{ 'Click here to upload your documents' | i18n }}
+                        </p>
+                      </div>
+                    </nz-upload>
+                    <nz-modal
+                      [nzVisible]="incorpPreviewVisible"
+                      [nzContent]="modalContent"
+                      [nzFooter]="null"
+                      (nzOnCancel)="incorpPreviewVisible = false"
+                    >
+                      <ng-template #modalContent>
+                        <img
+                          [src]="incorpPreviewImage"
+                          [ngStyle]="{ width: '100%' }"
+                        />
+                      </ng-template>
+                    </nz-modal>
+                  </nz-form-control>
+                  <!-- <nz-form-label>
+              <span class="upload">{{ 'Please Upload the front of the document' | i18n }}</span>
+            </nz-form-label> -->
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                <h1>
+                  {{ 'Memorandum and Articles of Association' | i18n }}
+                  <span class="obligation"> * required </span>
+                </h1>
+                <nz-form-item>
+                  <nz-form-control
+                    nzErrorTip="The input is not valid street zip Code!"
+                  >
+                    <nz-upload
+                      nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                      [nzBeforeUpload]="memoUpload"
+                      [nzPreview]="memoPreview"
+                      [(nzFileList)]="memoFileList"
+                      (nzOnCancel)="memoPreviewVisible = false"
+                      nzListType="picture-card"
+                      [nzRemove]="memoRemove"
+                      [nzShowButton]="memoFileList.length < 1"
+                    >
+                      <div class="profile-upload-icon">
+                        <p class="ant-upload-drag-icon">
+                          <i nz-icon [nzType]="memoLoading ? 'loading' : ''">
+                          </i>
+                          <img
+                            *ngIf="!memoLoading"
+                            src="assets/images/upload.png"
+                            style="width: 50px"
+                            alt="upload"
+                          />
+                        </p>
+                        <p class="ant-upload-text" style="margin-top: 15px">
+                          {{ 'Click here to upload your documents' | i18n }}
+                        </p>
+                      </div>
+                    </nz-upload>
+                    <nz-modal
+                      [nzVisible]="memoPreviewVisible"
+                      [nzContent]="modalContent1"
+                      [nzFooter]="null"
+                      (nzOnCancel)="memoPreviewVisible = false"
+                    >
+                      <ng-template #modalContent1>
+                        <img
+                          [src]="memoPreviewImage"
+                          [ngStyle]="{ width: '100%' }"
+                        />
+                      </ng-template>
+                    </nz-modal>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                <h1>
+                  {{
+                    'Proof of registered address issued within 6 months:' | i18n
+                  }}
+                  <span class="obligation"> * {{ 'required' | i18n }}</span>
+                </h1>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-upload
+                      nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                      [nzBeforeUpload]="proofUpload"
+                      [nzPreview]="proofPreview"
+                      [(nzFileList)]="proofFileList"
+                      (nzOnCancel)="proofPreviewVisible = false"
+                      nzListType="picture-card"
+                      [nzRemove]="proofRemove"
+                      [nzShowButton]="proofFileList.length < 1"
+                    >
+                      <div class="profile-upload-icon">
+                        <p class="ant-upload-drag-icon">
+                          <i nz-icon [nzType]="proofLoading ? 'loading' : ''">
+                          </i>
+                          <img
+                            *ngIf="!proofLoading"
+                            src="assets/images/upload.png"
+                            style="width: 50px"
+                            alt="upload"
+                          />
+                        </p>
+                        <p class="ant-upload-text" style="margin-top: 15px">
+                          {{ 'Click here to upload your documents' | i18n }}
+                        </p>
+                      </div>
+                    </nz-upload>
+                    <nz-modal
+                      [nzVisible]="proofPreviewVisible"
+                      [nzContent]="modalContent2"
+                      [nzFooter]="null"
+                      (nzOnCancel)="proofPreviewVisible = false"
+                    >
+                      <ng-template #modalContent2>
+                        <img
+                          [src]="proofPreviewImage"
+                          [ngStyle]="{ width: '100%' }"
+                        />
+                      </ng-template>
+                    </nz-modal>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                <h1>
+                  {{ 'License' | i18n }}
+                  <span class="obligation"> * {{ 'required' | i18n }} </span>
+                  <span
+                    nz-icon
+                    nz-tooltip
+                    nzTooltipTitle="{{
+                      '(Only applicable if your organization is registered by the Financial Authority within your jurisdiction)'
+                        | i18n
+                    }}"
+                    nzTooltipPlacement="top"
+                    nzType="info-circle"
+                    nzTheme="outline"
+                  ></span>
+                </h1>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-upload
+                      nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                      [nzBeforeUpload]="lcUpload"
+                      [nzPreview]="lcPreview"
+                      [(nzFileList)]="lcFileList"
+                      (nzOnCancel)="lcPreviewVisible = false"
+                      nzListType="picture-card"
+                      [nzRemove]="lcRemove"
+                      [nzShowButton]="lcFileList.length < 1"
+                    >
+                      <div class="profile-upload-icon">
+                        <p class="ant-upload-drag-icon">
+                          <i nz-icon [nzType]="lcLoading ? 'loading' : ''"> </i>
+                          <img
+                            *ngIf="!lcLoading"
+                            src="assets/images/upload.png"
+                            style="width: 50px"
+                            alt="upload"
+                          />
+                        </p>
+                        <p class="ant-upload-text" style="margin-top: 15px">
+                          {{ 'Click here to upload your documents' | i18n }}
+                        </p>
+                      </div>
+                    </nz-upload>
+                    <nz-modal
+                      [nzVisible]="lcPreviewVisible"
+                      [nzContent]="modalContent3"
+                      [nzFooter]="null"
+                      (nzOnCancel)="lcPreviewVisible = false"
+                    >
+                      <ng-template #modalContent3>
+                        <img
+                          [src]="lcPreviewImage"
+                          [ngStyle]="{ width: '100%' }"
+                        />
+                      </ng-template>
+                    </nz-modal>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                <h1>
+                  {{ 'Ownership Chart' | i18n }}
+                  <span class="obligation"> * {{ 'required' | i18n }} </span>
+                </h1>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-upload
+                      nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                      [nzBeforeUpload]="ownerUpload"
+                      [nzPreview]="ownerPreview"
+                      [(nzFileList)]="ownerFileList"
+                      (nzOnCancel)="ownerPreviewVisible = false"
+                      nzListType="picture-card"
+                      [nzRemove]="ownerRemove"
+                      [nzShowButton]="ownerFileList.length < 1"
+                    >
+                      <div class="profile-upload-icon">
+                        <p class="ant-upload-drag-icon">
+                          <i nz-icon [nzType]="ownerLoading ? 'loading' : ''">
+                          </i>
+                          <img
+                            *ngIf="!ownerLoading"
+                            src="assets/images/upload.png"
+                            style="width: 50px"
+                            alt="upload"
+                          />
+                        </p>
+                        <p class="ant-upload-text" style="margin-top: 15px">
+                          {{ 'Click here to upload your documents' | i18n }}
+                        </p>
+                      </div>
+                    </nz-upload>
+                    <nz-modal
+                      [nzVisible]="ownerPreviewVisible"
+                      [nzContent]="modalContent4"
+                      [nzFooter]="null"
+                      (nzOnCancel)="ownerPreviewVisible = false"
+                    >
+                      <ng-template #modalContent4>
+                        <img
+                          [src]="ownerPreviewImage"
+                          [ngStyle]="{ width: '100%' }"
+                        />
+                      </ng-template>
+                    </nz-modal>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                <h1>
+                  {{ 'Board Resolution' | i18n }}
+                  <span class="obligation"> * {{ 'required' | i18n }} </span>
+                </h1>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-upload
+                      nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                      [nzBeforeUpload]="boardUpload"
+                      [nzPreview]="boardPreview"
+                      [(nzFileList)]="boardFileList"
+                      (nzOnCancel)="boardPreviewVisible = false"
+                      nzListType="picture-card"
+                      [nzRemove]="boardRemove"
+                      [nzShowButton]="boardFileList.length < 1"
+                    >
+                      <div class="profile-upload-icon">
+                        <p class="ant-upload-drag-icon">
+                          <i nz-icon [nzType]="boardLoading ? 'loading' : ''">
+                          </i>
+                          <img
+                            *ngIf="!boardLoading"
+                            src="assets/images/upload.png"
+                            style="width: 50px"
+                            alt="upload"
+                          />
+                        </p>
+                        <p class="ant-upload-text" style="margin-top: 15px">
+                          {{ 'Click here to upload your documents' | i18n }}
+                        </p>
+                      </div>
+                    </nz-upload>
+                    <nz-modal
+                      [nzVisible]="boardPreviewVisible"
+                      [nzContent]="modalContent5"
+                      [nzFooter]="null"
+                      (nzOnCancel)="boardPreviewVisible = false"
+                    >
+                      <ng-template #modalContent5>
+                        <img
+                          [src]="boardPreviewImage"
+                          [ngStyle]="{ width: '100%' }"
+                        />
+                      </ng-template>
+                    </nz-modal>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                <h1>
+                  {{ 'Register of Directors' | i18n }}
+                  <span class="obligation"> * {{ 'required' | i18n }} </span>
+                </h1>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-upload
+                      nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                      [nzBeforeUpload]="directorsUpload"
+                      [nzPreview]="directorsPreview"
+                      [(nzFileList)]="directorsFileList"
+                      (nzOnCancel)="directorsPreviewVisible = false"
+                      nzListType="picture-card"
+                      [nzRemove]="directorsRemove"
+                      [nzShowButton]="directorsFileList.length < 1"
+                    >
+                      <div class="profile-upload-icon">
+                        <p class="ant-upload-drag-icon">
+                          <i
+                            nz-icon
+                            [nzType]="directorsLoading ? 'loading' : ''"
+                          >
+                          </i>
+                          <img
+                            *ngIf="!directorsLoading"
+                            src="assets/images/upload.png"
+                            style="width: 50px"
+                            alt="upload"
+                          />
+                        </p>
+                        <p class="ant-upload-text" style="margin-top: 15px">
+                          {{ 'Click here to upload your documents' | i18n }}
+                        </p>
+                      </div>
+                    </nz-upload>
+                    <nz-modal
+                      [nzVisible]="directorsPreviewVisible"
+                      [nzContent]="modalContent6"
+                      [nzFooter]="null"
+                      (nzOnCancel)="directorsPreviewVisible = false"
+                    >
+                      <ng-template #modalContent6>
+                        <img
+                          [src]="directorsPreviewImage"
+                          [ngStyle]="{ width: '100%' }"
+                        />
+                      </ng-template>
+                    </nz-modal>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                <h1>
+                  {{ 'Register of Members/Shareholders' | i18n }}
+                  <span class="obligation"> * {{ 'required' | i18n }} </span>
+                </h1>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-upload
+                      nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                      [nzBeforeUpload]="membersUpload"
+                      [nzPreview]="membersPreview"
+                      [(nzFileList)]="membersFileList"
+                      (nzOnCancel)="membersPreviewVisible = false"
+                      nzListType="picture-card"
+                      [nzRemove]="membersRemove"
+                      [nzShowButton]="membersFileList.length < 1"
+                    >
+                      <div class="profile-upload-icon">
+                        <p class="ant-upload-drag-icon">
+                          <i nz-icon [nzType]="membersLoading ? 'loading' : ''">
+                          </i>
+                          <img
+                            *ngIf="!membersLoading"
+                            src="assets/images/upload.png"
+                            style="width: 50px"
+                            alt="upload"
+                          />
+                        </p>
+                        <p class="ant-upload-text" style="margin-top: 15px">
+                          {{ 'Click here to upload your documents' | i18n }}
+                        </p>
+                      </div>
+                    </nz-upload>
+                    <nz-modal
+                      [nzVisible]="membersPreviewVisible"
+                      [nzContent]="modalContent7"
+                      [nzFooter]="null"
+                      (nzOnCancel)="membersPreviewVisible = false"
+                    >
+                      <ng-template #modalContent7>
+                        <img
+                          [src]="membersPreviewImage"
+                          [ngStyle]="{ width: '100%' }"
+                        />
+                      </ng-template>
+                    </nz-modal>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
+                <h1>
+                  {{ 'Latest Financial Statement' | i18n }}
+                  <span class="obligation"> * {{ 'required' | i18n }} </span>
+                </h1>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-upload
+                      nzFileType="image/png,image/jpeg,image/gif,image/bmp,application/pdf,image/tiff"
+                      [nzBeforeUpload]="statementUpload"
+                      [nzPreview]="statementPreview"
+                      [(nzFileList)]="statementFileList"
+                      (nzOnCancel)="statementPreviewVisible = false"
+                      nzListType="picture-card"
+                      [nzRemove]="statementRemove"
+                      [nzShowButton]="statementFileList.length < 1"
+                    >
+                      <div class="profile-upload-icon">
+                        <p class="ant-upload-drag-icon">
+                          <i
+                            nz-icon
+                            [nzType]="statementLoading ? 'loading' : ''"
+                          >
+                          </i>
+                          <img
+                            *ngIf="!statementLoading"
+                            src="assets/images/upload.png"
+                            style="width: 50px"
+                            alt="upload"
+                          />
+                        </p>
+                        <p class="ant-upload-text" style="margin-top: 15px">
+                          {{ 'Click here to upload your documents' | i18n }}
+                        </p>
+                      </div>
+                    </nz-upload>
+                    <nz-modal
+                      [nzVisible]="statementPreviewVisible"
+                      [nzContent]="modalContent8"
+                      [nzFooter]="null"
+                      (nzOnCancel)="statementPreviewVisible = false"
+                    >
+                      <ng-template #modalContent8>
+                        <img
+                          [src]="statementPreviewImage"
+                          [ngStyle]="{ width: '100%' }"
+                        />
+                      </ng-template>
+                    </nz-modal>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+          </form>
+          <div nz-row nzJustify="center">
+            <div
+              nz-col
+              nzMd="8"
+              nzLg="8"
+              nzXl="8"
+              nzXs="24"
+              class="text-center"
+            >
+              <button
+                class="cmn-btn mb-2"
+                nz-button
+                [nzType]="'primary'"
+                [nzLoading]="loaddingSumbit"
+                (click)="documnetSubmit()"
+              >
+                {{ 'Submit' | i18n }}
+              </button>
+            </div>
+          </div>
+          <div nz-row nzJustify="center">
+            <div
+              nz-col
+              nzMd="8"
+              nzLg="8"
+              nzXl="8"
+              nzXs="24"
+              class="text-center"
+            >
+              <button
+                class="back-btn"
+                nzType="text"
+                nz-button
+                (click)="createTplModal(tplTitle, tplContent, tplFooter)"
+              >
+                <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+                {{ 'Back' | i18n }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <ng-template #tplTitle>
+          <span> {{ 'Are you sure to cancel?' | i18n }}</span>
+        </ng-template>
+        <ng-template #tplContent let-params>
+          <div class="d-flex align-items-center" style="flex-direction: column">
+            <img src="assets/images/waring.svg" alt="waring" />
+            <b style="margin-top: 12px; text-align: center"
+              >All information filled in this page will be lost if you
+              cancel!</b
+            >
+          </div>
+        </ng-template>
+        <ng-template #tplFooter let-ref="modalRef">
+          <button nz-button (click)="nzOnCancel(ref)">
+            {{ 'Yes, Cancel' | i18n }}
+          </button>
+          <button
+            nz-button
+            nzType="primary"
+            class="radius-btn"
+            (click)="ref.destroy()"
+          >
+            {{ 'Continue Filling' | i18n }}
+          </button>
+        </ng-template>
+        <app-image-requirement-modal
+          #imageRequirementModalComponent
+        ></app-image-requirement-modal>
+      </div>
+    </div>
+  </ng-template>
+</nz-card>

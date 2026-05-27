@@ -1,0 +1,683 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="tplTitle"
+  [nzContent]="tplContent"
+  [nzWidth]="826"
+  nzCancelText="{{ 'Cancel' | i18n }}"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  nzOkText="{{ 'Confirm' | i18n }}"
+  nzClassName="cpt-modal setting-modal"
+  [nzCloseIcon]="nzCloseIcon"
+  [nzStyle]="{ top: '25px' }"
+>
+  <ng-template #nzCloseIcon>
+    <div class="nz-title-template">
+      <img src="assets/images/Close-Modal.svg" alt="SettingsMain" />
+    </div>
+  </ng-template>
+  <ng-template #tplTitle>
+    <div class="nz-title-template">
+      <div class="icon">
+        <img src="assets/images/SettingsMain.svg" alt="SettingsMain" />
+      </div>
+      <span> {{ 'Settings' | i18n }}</span>
+    </div>
+  </ng-template>
+  <ng-template #tplContent>
+    <div class="setting-modal-tabs">
+      <nz-tabset nzTabPosition="left" [nzSelectedIndex]="tabs">
+        <nz-tab nzTitle="{{ 'Profile' | i18n }}">
+          <div class="border-card">
+            <div
+              class="fs-14 fw-bold font-title-color br"
+              style="font-weight: bold; color: #51657d"
+            >
+              {{ 'Profile Information' | i18n }}
+            </div>
+            <div class="divider"></div>
+
+            <div class="profile-tabs">
+              <span
+                [ngClass]="proIndex === 0 ? 'active' : ''"
+                (click)="onIndex(0)"
+                >Change Email ID</span
+              >
+              <span
+                [ngClass]="proIndex === 1 ? 'active' : ''"
+                (click)="onIndex(1)"
+                >Change Phone Number</span
+              >
+              <span
+                [ngClass]="proIndex === 2 ? 'active' : ''"
+                (click)="onIndex(2)"
+                >Change Password</span
+              >
+            </div>
+
+            <!-- <div class="title mb-1 mt-4" style="color: #51657d"> {{ 'Change Email Id' | i18n }} </div> -->
+
+            <div *ngIf="proIndex === 0">
+              <form
+                nz-form
+                [formGroup]="verifyEmail"
+                nzLayout="vertical"
+                style="margin-top: 30px"
+              >
+                <div nz-row nzGutter="16" class="mb-2">
+                  <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="14">
+                    <nz-form-label nzFor="new_Email">{{
+                      'Verify Current Email' | i18n
+                    }}</nz-form-label>
+                    <nz-form-control
+                      nzErrorTip="{{ 'Please enter valid email id' | i18n }}"
+                    >
+                      <input
+                        formControlName="new_Email"
+                        [(ngModel)]="email"
+                        type="text"
+                        nz-input
+                        readonly
+                        placeholder="{{ 'Enter Email Here' | i18n }}"
+                      />
+                    </nz-form-control>
+                  </div>
+                  <div nz-col nzMd="4" nzLg="4" nzXl="4" nzXs="4">
+                    <nz-form-label>&nbsp;</nz-form-label>
+                    <nz-form-control>
+                      <button
+                        [disabled]="vcountDown"
+                        nz-button
+                        nzType="primary"
+                        [nzLoading]="loader"
+                        nzGhost
+                        (click)="onGetCode('v')"
+                      >
+                        {{ showVButtonText | i18n }}
+                      </button>
+                    </nz-form-control>
+                  </div>
+                </div>
+                <div nz-row nzGutter="16" class="mb-2">
+                  <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="14">
+                    <nz-form-label nzFor="new_Email">{{
+                      'Enter Code' | i18n
+                    }}</nz-form-label>
+                    <nz-form-control
+                      nzErrorTip="{{
+                        'Please enter OTP sent to your Email' | i18n
+                      }}"
+                    >
+                      <input
+                        formControlName="email_OTP"
+                        type="text"
+                        nz-input
+                        placeholder="{{ 'Enter Code' | i18n }}"
+                      />
+                    </nz-form-control>
+                  </div>
+                  <div nz-col nzMd="4" nzLg="4" nzXl="4" nzXs="4">
+                    <nz-form-label>&nbsp;</nz-form-label>
+                    <nz-form-control>
+                      <button
+                        type="submit"
+                        [nzLoading]="vLoading"
+                        nz-button
+                        nzType="primary"
+                        nzGhost
+                        (click)="vsubmitForm()"
+                      >
+                        {{ 'Verify' | i18n }}
+                      </button>
+                    </nz-form-control>
+                  </div>
+                </div>
+              </form>
+
+              <form
+                nz-form
+                *ngIf="change_email_form"
+                [formGroup]="changeEmail"
+                nzLayout="vertical"
+                style="margin-top: 30px"
+              >
+                <div nz-row nzGutter="16" class="mb-2">
+                  <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="14">
+                    <nz-form-label nzFor="new_Email">{{
+                      'Enter New Email' | i18n
+                    }}</nz-form-label>
+                    <nz-form-control
+                      nzErrorTip="{{ 'Please enter valid email id' | i18n }}"
+                    >
+                      <input
+                        formControlName="new_Email"
+                        type="text"
+                        nz-input
+                        placeholder="{{ 'Enter Email Here' | i18n }}"
+                      />
+                    </nz-form-control>
+                  </div>
+                  <div nz-col nzMd="4" nzLg="4" nzXl="4" nzXs="4">
+                    <nz-form-label>&nbsp;</nz-form-label>
+                    <nz-form-control>
+                      <button
+                        [disabled]="countDown"
+                        nz-button
+                        nzType="primary"
+                        [nzLoading]="loader"
+                        nzGhost
+                        (click)="onGetCode('n')"
+                      >
+                        {{ showButtonText | i18n }}
+                      </button>
+                    </nz-form-control>
+                  </div>
+                </div>
+                <div nz-row nzGutter="16" class="mb-2">
+                  <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="14">
+                    <nz-form-label nzFor="new_Email">{{
+                      'Enter Code' | i18n
+                    }}</nz-form-label>
+                    <nz-form-control
+                      nzErrorTip="{{
+                        'Please enter OTP sent to your Email' | i18n
+                      }}"
+                    >
+                      <input
+                        formControlName="email_OTP"
+                        type="text"
+                        nz-input
+                        placeholder="{{ 'Enter Code' | i18n }}"
+                      />
+                    </nz-form-control>
+                  </div>
+                  <div nz-col nzMd="4" nzLg="4" nzXl="4" nzXs="4">
+                    <nz-form-label>&nbsp;</nz-form-label>
+                    <nz-form-control>
+                      <button
+                        type="submit"
+                        [nzLoading]="changeLoading"
+                        nz-button
+                        nzType="primary"
+                        nzGhost
+                        (click)="submitForm()"
+                      >
+                        {{ 'Submit' | i18n }}
+                      </button>
+                    </nz-form-control>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div *ngIf="proIndex === 1">
+              <form
+                nz-form
+                [formGroup]="verifyPhone"
+                #f="ngForm"
+                nzLayout="vertical"
+                style="margin-top: 30px"
+              >
+                <div nz-row nzGutter="16" class="mb-2">
+                  <div nz-col nzMd="14" nzLg="14" nzXl="14" nzXs="24">
+                    <nz-form-item>
+                      <ngx-intl-tel-input
+                        [cssClass]="'custom'"
+                        [preferredCountries]="preferredCountries"
+                        [enableAutoCountrySelect]="true"
+                        [enablePlaceholder]="true"
+                        [searchCountryFlag]="true"
+                        [searchCountryField]="[
+                          SearchCountryField.Iso2,
+                          SearchCountryField.Name
+                        ]"
+                        [selectFirstCountry]="true"
+                        [selectedCountryISO]="selectedCountryISO"
+                        [phoneValidation]="true"
+                        [separateDialCode]="true"
+                        name="customer_Mobile"
+                        formControlName="customer_Mobile"
+                      >
+                      </ngx-intl-tel-input>
+                    </nz-form-item>
+                  </div>
+                  <div nz-col nzMd="4" nzLg="4" nzXl="4" nzXs="12">
+                    <nz-form-label>&nbsp;</nz-form-label>
+                    <nz-form-control>
+                      <button
+                        [disabled]="countVSMSDown"
+                        nz-button
+                        nzType="primary"
+                        [nzLoading]="isVSmsSend"
+                        nzGhost
+                        (click)="onVGetSMSCode()"
+                      >
+                        {{ showVPButtonText | i18n }}
+                      </button>
+                    </nz-form-control>
+                  </div>
+                </div>
+                <div nz-row nzGutter="16" class="mb-2">
+                  <div nz-col nzMd="14" nzLg="14" nzXl="14" nzXs="14">
+                    <nz-form-label>{{ 'Enter Code' | i18n }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{ 'Enter Code' | i18n }}">
+                      <input
+                        formControlName="code"
+                        type="text"
+                        nz-input
+                        placeholder="{{ 'Enter Code' | i18n }}"
+                      />
+                    </nz-form-control>
+                  </div>
+                  <div nz-col nzMd="4" nzLg="4" nzXl="4" nzXs="4">
+                    <nz-form-label>&nbsp;</nz-form-label>
+                    <nz-form-control>
+                      <button
+                        type="submit"
+                        [nzLoading]="changeVSmsLoading"
+                        nz-button
+                        nzType="primary"
+                        nzGhost
+                        (click)="vSubmitSmsForm()"
+                      >
+                        {{ 'Verify' | i18n }}
+                      </button>
+                    </nz-form-control>
+                  </div>
+                </div>
+              </form>
+
+              <form
+                *ngIf="change_phone_form"
+                nz-form
+                [formGroup]="changePhone"
+                nzLayout="vertical"
+                style="margin-top: 30px"
+              >
+                <div nz-row nzGutter="16" class="mb-2">
+                  <div nz-col nzMd="14" nzLg="14" nzXl="14" nzXs="24">
+                    <nz-form-label nzFor="customer_Mobile">{{
+                      'Enter New Phone Number' | i18n
+                    }}</nz-form-label>
+                    <nz-form-control [nzErrorTip]="errorTpl">
+                      <nz-input-group
+                        nzSize="large"
+                        [nzAddOnBefore]="addOnBeforeTemplate"
+                      >
+                        <ng-template #addOnBeforeTemplate>
+                          <nz-select
+                            nzShowSearch
+                            style="width: 120px"
+                            formControlName="phoneNumberPrefix"
+                            class="phone-select"
+                          >
+                            <nz-option
+                              *ngFor="let item of phones"
+                              [nzValue]="item.prefix"
+                              [nzLabel]="
+                                (item?.addr ?? '') +
+                                ' &nbsp;&nbsp;' +
+                                item.prefix
+                              "
+                            ></nz-option>
+                          </nz-select>
+                        </ng-template>
+
+                        <input
+                          formControlName="customer_Mobile"
+                          type="number"
+                          nz-input
+                          placeholder="{{
+                            'Enter Current Phone Number' | i18n
+                          }}"
+                        />
+                        <ng-template #errorTpl let-control>
+                          <ng-container *ngIf="control.hasError('required')"
+                            >Please enter valid phone number</ng-container
+                          >
+                          <ng-container *ngIf="control.hasError('pattern')"
+                            >Please enter valid phone number</ng-container
+                          >
+                        </ng-template>
+                      </nz-input-group>
+                    </nz-form-control>
+                  </div>
+                  <div nz-col nzMd="4" nzLg="4" nzXl="4" nzXs="12">
+                    <nz-form-label>&nbsp;</nz-form-label>
+                    <nz-form-control>
+                      <button
+                        [disabled]="countSMSDown"
+                        nz-button
+                        nzType="primary"
+                        [nzLoading]="isSmsSend"
+                        nzGhost
+                        (click)="onGetSMSCode()"
+                      >
+                        {{ showVCButtonText | i18n }}
+                      </button>
+                    </nz-form-control>
+                  </div>
+                </div>
+                <div nz-row nzGutter="16" class="mb-2">
+                  <div nz-col nzMd="14" nzLg="14" nzXl="14" nzXs="14">
+                    <nz-form-label>{{ 'Enter Code' | i18n }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{ 'Enter Code' | i18n }}">
+                      <input
+                        formControlName="code"
+                        type="text"
+                        nz-input
+                        placeholder="{{ 'Enter Code' | i18n }}"
+                      />
+                    </nz-form-control>
+                  </div>
+                  <div nz-col nzMd="4" nzLg="4" nzXl="4" nzXs="12">
+                    <nz-form-label>&nbsp;</nz-form-label>
+                    <nz-form-control>
+                      <button
+                        type="submit"
+                        [nzLoading]="changeSmsLoading"
+                        nz-button
+                        nzType="primary"
+                        nzGhost
+                        (click)="submitSmsForm()"
+                      >
+                        {{ 'Submit' | i18n }}
+                      </button>
+                    </nz-form-control>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- <div class="title mb-1 mt-4" style="color: #51657d"> {{ 'Change Password' | i18n }} </div> -->
+            <form
+              nz-form
+              [formGroup]="changePassword"
+              nzLayout="vertical"
+              class="change-password"
+              *ngIf="proIndex === 2"
+              (ngSubmit)="changeSubmitPassword()"
+              style="margin-top: 30px"
+            >
+              <div nz-row nzGutter="16">
+                <div
+                  nz-col
+                  nzMd="12"
+                  nzLg="12"
+                  nzXl="12"
+                  nzXs="24"
+                  class="mb-2"
+                >
+                  <nz-form-label>{{
+                    'Enter Current Password' | i18n
+                  }}</nz-form-label>
+                  <nz-form-control
+                    nzErrorTip="{{ 'This field is required' | i18n }}"
+                  >
+                    <nz-input-group [nzSuffix]="suffixTemplate1">
+                      <input
+                        [type]="passwordVisible1 ? 'text' : 'password'"
+                        nz-input
+                        placeholder="{{ 'Existing Password' | i18n }}"
+                        [(ngModel)]="password1"
+                        formControlName="old_Password"
+                      />
+                    </nz-input-group>
+                    <ng-template #suffixTemplate1>
+                      <i
+                        nz-icon
+                        [nzType]="!passwordVisible1 ? 'eye-invisible' : 'eye'"
+                        (click)="passwordVisible1 = !passwordVisible1"
+                      ></i>
+                    </ng-template>
+                  </nz-form-control>
+                </div>
+              </div>
+              <div nz-row nzGutter="16">
+                <div
+                  nz-col
+                  nzMd="12"
+                  nzLg="12"
+                  nzXl="12"
+                  nzXs="24"
+                  class="mb-2"
+                >
+                  <nz-form-label>{{
+                    'Enter New Password' | i18n
+                  }}</nz-form-label>
+                  <nz-form-control [nzErrorTip]="errorTpl1">
+                    <nz-input-group [nzSuffix]="suffixTemplate2">
+                      <input
+                        [type]="passwordVisible2 ? 'text' : 'password'"
+                        nz-input
+                        placeholder="{{ 'New Password' | i18n }}"
+                        [(ngModel)]="password2"
+                        formControlName="password"
+                        (ngModelChange)="updateConfirmValidator()"
+                      />
+                    </nz-input-group>
+                    <ng-template #suffixTemplate2>
+                      <i
+                        nz-icon
+                        [nzType]="!passwordVisible2 ? 'eye-invisible' : 'eye'"
+                        (click)="passwordVisible2 = !passwordVisible2"
+                      ></i>
+                    </ng-template>
+                    <ng-template #errorTpl1 let-control>
+                      <ng-container *ngIf="control.hasError('required')">{{
+                        'This field is required' | i18n
+                      }}</ng-container>
+                      <ng-container *ngIf="control.hasError('pattern')">
+                        {{
+                          'Minimum 8 letters with the combination of At least one capital Alphabets + Numbers + Special Characters (!, @, #, $,
+                        %, ^, &, *)'
+                            | i18n
+                        }}
+                      </ng-container>
+                    </ng-template>
+                  </nz-form-control>
+                </div>
+              </div>
+              <div nz-row nzGutter="16">
+                <div
+                  nz-col
+                  nzMd="12"
+                  nzLg="12"
+                  nzXl="12"
+                  nzXs="24"
+                  class="mb-2"
+                >
+                  <nz-form-label>{{
+                    'Re-Enter New Password' | i18n
+                  }}</nz-form-label>
+                  <nz-form-control [nzErrorTip]="errorTpl">
+                    <nz-input-group [nzSuffix]="suffixTemplate3">
+                      <input
+                        [type]="passwordVisible3 ? 'text' : 'password'"
+                        nz-input
+                        placeholder="{{ 'Re Enter New Password' | i18n }}"
+                        [(ngModel)]="password3"
+                        formControlName="new_Password"
+                      />
+                    </nz-input-group>
+                    <ng-template #suffixTemplate3>
+                      <i
+                        nz-icon
+                        [nzType]="!passwordVisible3 ? 'eye-invisible' : 'eye'"
+                        (click)="passwordVisible3 = !passwordVisible3"
+                      ></i>
+                    </ng-template>
+                    <ng-template #errorTpl let-control>
+                      <ng-container *ngIf="control.hasError('required')"
+                        >{{ 'Please confirm your password!' | i18n }}
+                      </ng-container>
+                      <ng-container *ngIf="control.hasError('confirm')">
+                        {{
+                          'Two passwords that you enter is inconsistent!' | i18n
+                        }}
+                      </ng-container>
+                    </ng-template>
+                  </nz-form-control>
+                </div>
+                <div nz-col nzSpan="12">
+                  <nz-form-label>&nbsp;</nz-form-label>
+                  <nz-form-control>
+                    <button
+                      [nzLoading]="loading"
+                      nz-button
+                      nzType="primary"
+                      nzGhost
+                    >
+                      {{ 'Confirm' | i18n }}
+                    </button>
+                  </nz-form-control>
+                </div>
+              </div>
+            </form>
+          </div>
+        </nz-tab>
+        <nz-tab
+          nzTitle="{{ 'Trading Platform' | i18n }} "
+          *ngIf="loginInfo.user_Type === 'Customer'"
+        >
+          <div class="border-card">
+            <div class="fs-14 fw-bold font-title-color dark-patch br">
+              <img src="assets/images/platform/MT4Icon.png" alt="MT4Icon" />
+            </div>
+            <div class="divider"></div>
+
+            <div class="trading-box">
+              <div class="trading-box-item" (click)="openLink(ios)">
+                <img src="assets/images/platform/Apple.svg" alt="Apple" />
+                <h4 class="mt-3 fs-14">{{ 'IOS' | i18n }}</h4>
+                <div class="btn">{{ 'Download' | i18n }}</div>
+              </div>
+              <div class="trading-box-item" (click)="openLink(android)">
+                <img src="assets/images/platform/Android.svg" alt="Android" />
+                <h4 class="mt-3 fs-14">{{ 'Android' | i18n }}</h4>
+                <div class="btn">{{ 'Download' | i18n }}</div>
+              </div>
+              <div class="trading-box-item" (click)="openLink(windows)">
+                <img src="assets/images/platform/Windows.svg" alt="Windows" />
+                <h4 class="mt-3 fs-14">{{ 'Windows' | i18n }}</h4>
+                <div class="btn">{{ 'Download' | i18n }}</div>
+              </div>
+              <div class="trading-box-item" (click)="openLink(web)">
+                <img src="assets/images/platform/Web.svg" alt="Web" />
+                <h4 class="mt-3 fs-14">{{ 'Web' | i18n }}</h4>
+                <div class="btn">{{ 'Link' | i18n }}</div>
+              </div>
+            </div>
+
+            <div class="fs-14 fw-bold font-title-color dark-patch br">
+              Trading Central
+            </div>
+            <div class="divider"></div>
+            <div class="trading-box">
+              <div class="trading-box-item" (click)="openTrading()">
+                <img
+                  src="assets/images/trading-center-icon.png"
+                  alt="trading-center-icon"
+                />
+                <h4 class="mt-3 fs-14">Trading Central</h4>
+                <div class="btn">{{ 'Link' | i18n }}</div>
+              </div>
+            </div>
+            <!-- <div class="fs-14 fw-bold font-title-color dark-patch w-100 br">
+              <img src="assets/images/platform/ctrader.png" alt="ctrader" />
+            </div>
+            <div class="divider"></div>
+            <div class="trading-box">
+              <div class="trading-box-item">
+                <img src="assets/images/platform/Apple.svg" alt="Apple" />
+                <h4 class="mt-3 fs-14">{{ 'IOS' | i18n }}</h4>
+                <div class="btn"> {{ 'Download' | i18n }}</div>
+              </div>
+              <div class="trading-box-item">
+                <img src="assets/images/platform/Android.svg" alt="Android" />
+                <h4 class="mt-3 fs-14">Android</h4>
+                <div class="btn"> {{ 'Download' | i18n }}</div>
+              </div>
+              <div class="trading-box-item">
+                <img src="assets/images/platform/Windows.svg" alt="Windows" />
+                <h4 class="mt-3 fs-14">Windows</h4>
+                <div class="btn"> {{ 'Download' | i18n }}</div>
+              </div>
+              <div class="trading-box-item">
+                <img src="assets/images/platform/Web.svg" alt="Web" />
+                <h4 class="mt-3 fs-14">{{ 'Web' | i18n }} </h4>
+                <div class="btn"> {{ 'Link' | i18n }} </div>
+              </div>
+            </div> -->
+          </div>
+        </nz-tab>
+        <!-- <nz-tab [nzTitle]="'Security' | i18n" *ngIf="loginInfo.user_Type === 'Customer'">
+          <div class="border-card">
+            <div class="fs-14 fw-bold font-title-color br" style="font-weight: bold; color: #51657d">
+              {{ 'Security' | i18n }}
+            </div>
+            <div class="divider"></div>
+            <div class="general-content" style="padding: 20px">
+         <div nz-row class="mt-3 mb-2">
+                <div nz-col nzSpan="2">
+                  <img src="assets/images/multifcatorauthentication.svg" alt="twofactor" />
+                </div>
+                <div nz-col nzSpan="9">
+                  <h3 class="fs-14"> {{ 'Two Factor Authentication' | i18n }}</h3>
+                </div>
+                <div nz-col nzSpan="4">
+                  <nz-switch [(ngModel)]="status" (ngModelChange)="changeStatus()" [nzLoading]="loading"></nz-switch>
+                </div>
+              </div>
+              <div nz-row class="mt-3 mb-2">
+                <div nz-col nzSpan="2">
+                  <img src="assets/images/multifcatorauthentication.svg" alt="twofactor" />
+                </div>
+                <div nz-col nzSpan="9">
+                  <h3 class="fs-14"> {{ 'Google Authentication' | i18n }}</h3>
+                </div>
+                <div nz-col nzSpan="4">
+                  <nz-switch [(ngModel)]="googleSwitchValue" (click)="googleState = true"></nz-switch>
+                </div>
+              </div>
+              <div *ngIf="googleState">
+                <div class="fs-14 fw-bold font-title-color br mt-4" style="font-weight: bold; color: #51657d">
+                  {{ 'Follow steps below to set up authentication via mobile app' | i18n }}
+                </div>
+                <div class="divider"></div>
+                <div class="authentication-content">
+                  <div class="authentication-left">
+                    <p>1.Please download Google <strong>Authenticator App</strong> </p>
+                    <p>2.<strong>Scan the QR code</strong> displayed using the App </p>
+                    <p>3.<strong>Enter Authentication code below</strong></p>
+                    <div>
+                      <input class="qc-code-input" [(ngModel)]="googleAuthCode" style="width: 146px" nz-input placeholder="Enter Code" />
+                      <button
+                        style="margin-left: 8px"
+                        (click)="onSettingGoogleAuth()"
+                        [nzLoading]="googleLoading"
+                        nz-button
+                        nzType="primary"
+                        nzGhost
+                      >
+                        {{ 'Confirm' | i18n }}
+                      </button>
+                    </div>
+                  </div>
+                  <div class="authentication-right">
+                    <img [src]="qrImg" alt="qrImg" />
+                    <p>Or enter the code below</p>
+                    <div class="qr-code-number" (click)="copyContent()">
+                      <span>{{ qrCode }}</span>
+                      <i nz-icon nzType="copy" nzTheme="outline"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nz-tab> -->
+      </nz-tabset>
+    </div>
+  </ng-template>
+</nz-modal>
