@@ -33,7 +33,7 @@ export class FaqComponent implements OnInit {
     //     },
     //     {
     //       question: "How can I upload or send my documents to you?",
-    //       answer: `You can upload documents via your Client Portal or send by email to <a href='kyc@Trive.com' target='_blank'>kyc@Trive.com</a>`,
+    //       answer: `You can upload documents via your Client Portal or send by email to <a href='kyc@dragonflyfx.com' target='_blank'>kyc@dragonflyfx.com</a>`,
     //     },
     //     {
     //       question: "How long does it take to verify my documents?",
@@ -184,7 +184,7 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "Do you offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law?",
-    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@trive.com' target='_blank'>support@trive.com</a>.`,
+    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@dragonflyfx.com' target='_blank'>support@dragonflyfx.com</a>.`,
     //     },
     //     {
     //       question:
@@ -251,7 +251,7 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "Do you offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law?",
-    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@trive.com' target='_blank'>support@trive.com</a>.`,
+    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@dragonflyfx.com' target='_blank'>support@dragonflyfx.com</a>.`,
     //     },
     //     {
     //       question:
@@ -315,7 +315,7 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "Do you offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law?",
-    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@trive.com' target='_blank'>support@trive.com</a>.`,
+    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@dragonflyfx.com' target='_blank'>support@dragonflyfx.com</a>.`,
     //     },
     //     {
     //       question:
@@ -382,7 +382,7 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "Do you offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law?",
-    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@trive.com' target='_blank'>support@trive.com</a>.`,
+    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@dragonflyfx.com' target='_blank'>support@dragonflyfx.com</a>.`,
     //     },
     //     {
     //       question:
@@ -444,7 +444,7 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "Do you offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law?",
-    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@trive.com' target='_blank'>support@trive.com</a>.`,
+    //       answer: `Yes, we offer Islamic (Swap-Free) trading conditions for account holders who observe Sharia law. These accounts are free from swaps or interest charges, ensuring compliance with Islamic principles. The company reserves the right to request an additional <strong>Proof of Faith</strong> document from the client. Islamic Account requests can be send directly to our Support Team at <a href='mailto:support@dragonflyfx.com' target='_blank'>support@dragonflyfx.com</a>.`,
     //     },
     //     {
     //       question:
@@ -589,13 +589,13 @@ export class FaqComponent implements OnInit {
         {
           question:
             "How can I withdraw funds from my account if the amount exceeds the deposited amount? ",
-          answer: `If your withdrawal amount exceeds your initial deposit amount, the profits will be credited to you by either bank transfer e-wallet. For more information, please contact us at <a href='mailto:support_int@trive.com' target='_blank'> support_int@trive.com</a> `,
+          answer: `If your withdrawal amount exceeds your initial deposit amount, the profits will be credited to you by either bank transfer e-wallet. For more information, please contact us at <a href='mailto:support_int@dragonflyfx.com' target='_blank'> support_int@dragonflyfx.com</a> `,
         },
         {
           question:
             "How can I withdraw if the card I used to deposit has been cancelled or expired?",
           answer: `<p>After the cancellation of a card, banks are obliged to allow limited transaction types, including refunds, usually for at least 6 months. You should therefore withdraw funds to the card you used to deposit, even if this card has been cancelled. You will receive these funds to your new card which is connected to the same bank account as your previous, cancelled card. </p><br/>
-                    <p>If the bank account linked to the card is completely closed, you will need to send proof of account closure to our finance department at <a href='mailto:support_int@trive.com' target='_blank'> support_int@trive.com/a> </p>`,
+                    <p>If the bank account linked to the card is completely closed, you will need to send proof of account closure to our finance department at <a href='mailto:support_int@dragonflyfx.com' target='_blank'> support_int@dragonflyfx.com/a> </p>`,
         },
       ],
     },
