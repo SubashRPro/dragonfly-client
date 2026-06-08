@@ -1,10 +1,61 @@
 <div class="left-content">
 
-  <!-- ✅ NEW HEADER -->
+  <!-- BACKGROUND -->
+  <div class="liquid-market-bg">
+
+    <!-- Floating Orbs -->
+    <div class="liquid-orb orb-one"></div>
+    <div class="liquid-orb orb-two"></div>
+    <div class="liquid-orb orb-three"></div>
+
+    <!-- Market Flow Lines -->
+    <div class="wave-line wave-one"></div>
+    <div class="wave-line wave-two"></div>
+    <div class="wave-line wave-three"></div>
+
+    <!-- Pulse Rings -->
+    <div class="pulse-ring ring-one"></div>
+    <div class="pulse-ring ring-two"></div>
+
+    <!-- Animated Market Bars -->
+    <div class="market-bars">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Floating Cards -->
+
+    <div class="glass-card card-left">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>Market Trends</span>
+    </div>
+
+    <div class="glass-card card-right">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>Secure Trading</span>
+    </div>
+
+    <div class="glass-card card-bottom">
+      <i class="fa-solid fa-wallet"></i>
+      <span>Fast Deposits</span>
+    </div>
+
+    <!-- Floating Dots -->
+    <div class="trade-dot dot-a"></div>
+    <div class="trade-dot dot-b"></div>
+    <div class="trade-dot dot-c"></div>
+
+  </div>
+
+  <!-- HEADER -->
   <div class="top-header">
+
     <div class="logo-section">
       <img
-           src="../../../assets/images/sb-logo.png"
+        src="../../../assets/images/sb-logo.png"
         alt="logo"
         class="app-logo"
       />
@@ -13,14 +64,20 @@
     <div class="lang-section">
       <header-i18n showLangText="false"></header-i18n>
     </div>
+
   </div>
 
+  <!-- LOGIN CONTENT -->
   <div class="body-content">
+
     <div class="left-content-pass">
+
       <div class="content-holder">
         <router-outlet></router-outlet>
       </div>
+
     </div>
+
   </div>
 
 </div>

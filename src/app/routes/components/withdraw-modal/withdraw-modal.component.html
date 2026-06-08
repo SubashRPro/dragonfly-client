@@ -562,127 +562,113 @@
           </ng-container>
         </div>
         <div nz-col nzMd="11" nzLg="11" nzXl="11" nzXs="24">
-          <div id="scroll-payment" class="info-text">
-            <!-- <div class="head-title">
-              <span>Keep in </span> <span class="highlight"> Mind </span>
-              <img
-                src="../../../../assets/images/idea.png"
-                height="50px"
-                alt=""
-              />
-            </div> -->
-            <div class="creative">
-              {{ "keep_in" | i18n }}
-              <span>{{ "mind" | i18n }}</span>
-              <img
-                src="assets/images/communication.png"
-                alt="info"
-                style="width: 50px; vertical-align: bottom;"
-              />
-            </div>
+         <div id="scroll-payment" class="dfx-withdraw-secure-card">
+  <div class="dfx-withdraw-dots"></div>
 
-            <ul>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "Minimum withdrawal amount:" | i18n }} <b> 20 USD </b>
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "Requests made outside working hours will be processed on the next business day." | i18n }}
-              </li>
-              <li>
-                <p style="margin-bottom: 1px;"> <b>  {{ "Method Requirements" | i18n }}: </b> </p>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "Withdrawals should be made using the same method used for deposits" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "Card deposits: the original deposit amount will be refunded to the same card first." | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "Crypto withdrawals are sent only to your registered wallet address." | i18n }}
-              </li>
-               <li>
-                <p style="margin-bottom: 1px;"> <b>  {{ "Information Accuracy" | i18n }} :</b> </p>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "Withdrawals should be made using the same method used for deposits" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "Please ensure your bank details / wallet address are complete and correct. Incorrect information may lead to delays or cancellation." | i18n }}
-              </li>
-                <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "Third-party withdrawals are not allowed. The account holder name must match your trading account." | i18n }}
-              </li>
-            </ul>
+  <div class="dfx-withdraw-hero">
+    <div class="dfx-withdraw-orbit orbit-one"></div>
+    <div class="dfx-withdraw-orbit orbit-two"></div>
 
-            <!-- <ul *ngIf="pspdata === 'creditDebitCards'">
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "min_amount" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "card_refund_policy" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "card_time" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "processing_hours" | i18n }}
-              </li>
-            </ul>
+    <div class="dfx-wallet-main">
+      <span nz-icon nzType="wallet" nzTheme="fill"></span>
+      <div class="dfx-wallet-arrow">
+        <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
+      </div>
+    </div>
 
-            <ul *ngIf="pspdata === 'eWallets'">
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "min_amount" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "return_to_source" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "card_refund_policy" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "correct_ewallet_details" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "processing_hours" | i18n }}
-              </li>
-            </ul>
+    <div class="dfx-withdraw-check">
+      <span nz-icon nzType="check" nzTheme="outline"></span>
+    </div>
+  </div>
 
-            <ul *ngIf="pspdata === 'crypto'">
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "min_amount" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "correct_crypto_details" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "card_refund_policy" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "crypto_time" | i18n }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "processing_hours" | i18n }}
-              </li>
-            </ul> -->
-          </div>
+  <div class="dfx-withdraw-content">
+    <h2>{{ "Secure" | i18n }} <span>{{ "Withdrawals" | i18n }}</span></h2>
+    <p>
+      {{
+        "Your funds are released through verified and protected payment channels"
+          | i18n
+      }}
+    </p>
+  </div>
+
+  <div class="dfx-withdraw-limit-grid">
+    <div class="dfx-withdraw-limit-card green">
+      <div class="dfx-withdraw-limit-icon">
+        <span nz-icon nzType="wallet" nzTheme="outline"></span>
+      </div>
+
+      <div>
+        <h3>20 USD</h3>
+        <p>{{ "Minimum Withdrawal" | i18n }}</p>
+      </div>
+    </div>
+
+    <div class="dfx-withdraw-limit-card blue">
+      <div class="dfx-withdraw-limit-icon">
+        <span nz-icon nzType="clock-circle" nzTheme="fill"></span>
+      </div>
+
+      <div>
+        <h3>24 {{ "Hours" | i18n }}</h3>
+        <p>{{ "Processing Time" | i18n }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dfx-withdraw-feature-grid">
+    <div class="dfx-withdraw-feature-item">
+      <span nz-icon nzType="safety-certificate" nzTheme="fill"></span>
+      <div>
+        <h4>{{ "Verified Method" | i18n }}</h4>
+        <p>{{ "Same deposit source" | i18n }}</p>
+      </div>
+    </div>
+
+    <div class="dfx-withdraw-feature-item">
+      <span nz-icon nzType="bank" nzTheme="fill"></span>
+      <div>
+        <h4>{{ "Bank Validation" | i18n }}</h4>
+        <p>{{ "Account verification" | i18n }}</p>
+      </div>
+    </div>
+
+    <div class="dfx-withdraw-feature-item">
+      <span nz-icon nzType="user" nzTheme="outline"></span>
+      <div>
+        <h4>{{ "Identity Match" | i18n }}</h4>
+        <p>{{ "No third-party withdrawals" | i18n }}</p>
+      </div>
+    </div>
+
+    <div class="dfx-withdraw-feature-item">
+      <span nz-icon nzType="lock" nzTheme="fill"></span>
+      <div>
+        <h4>{{ "Secure Transfer" | i18n }}</h4>
+        <p>{{ "Protected processing" | i18n }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dfx-withdraw-footer">
+    <div class="dfx-withdraw-footer-icon">
+      <span nz-icon nzType="safety-certificate" nzTheme="fill"></span>
+    </div>
+
+    <div>
+      <h4>{{ "Protected Withdrawal Gateway" | i18n }}</h4>
+      <p>
+        {{
+          "Withdrawals are processed only to verified accounts"
+            | i18n
+        }}
+      </p>
+    </div>
+
+    <div class="dfx-withdraw-footer-lock">
+      <span nz-icon nzType="lock" nzTheme="outline"></span>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </ng-container>

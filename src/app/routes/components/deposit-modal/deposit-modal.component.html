@@ -883,101 +883,98 @@
           </nz-tab>
         </nz-tabset>
         <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24">
-          <div class="deposit info-text">
-            <div class="creative">
-              {{ "Keep in Mind" | i18n }}
-              <img
-                src="assets/images/communication.png"
-                alt="info"
-                style="width: 50px; vertical-align: bottom"
-              />
-            </div>
-            <ul>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "The minimum deposit amount" | i18n
-                }}<span class="bold"> {{ minDeposit }} </span> USD
-                {{ "and Maximum" | i18n }}
-                <span class="bold"> {{ maxDeposit }} </span> USD
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Minimum and maximum limits vary by method and are shown in SCA. Please ensure your deposit amount is within these limits."
-                    | i18n
-                }}
-              </li>
-              <li>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Before proceeding, make sure you have selected the correct trading account."
-                    | i18n
-                }}
-              </li>
-              <li *ngIf="cryptoText">
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Each deposit address is single-use and valid for 1 hour only. Do not save or reuse this address for future deposits."
-                    | i18n
-                }}
-              </li>
-              <li *ngIf="cryptoText">
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Please send the exact amount displayed in SCA. Provider fees must be considered to avoid mismatches."
-                    | i18n
-                }}
-              </li>
-              <li *ngIf="cryptoText">
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Supported networks: TRC20, ERC20, BEP20, BinancePay." | i18n
-                }}
-              </li>
-              <li *ngIf="cryptoText">
-                <p style="margin-bottom: 1px">
-                  <b> {{ "Important:" | i18n }} </b>
-                </p>
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Deposits sent via an unsupported or incorrect network may be permanently lost and cannot be recovered."
-                    | i18n
-                }}
-              </li>
-              <li *ngIf="cardText">
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{ "Credit and debit cards are accepted." | i18n }}
-              </li>
-              <li *ngIf="cardText">
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Refunds cannot exceed the original deposit amount. Any excess must be withdrawn using another method."
-                    | i18n
-                }}
-              </li>
-              <li *ngIf="cardText">
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Third-party cards are not allowed. The cardholder name must match the account holder."
-                    | i18n
-                }}
-              </li>
-              <li *ngIf="bankText">
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Please avoid making multiple deposits with the same amount, as this may trigger fraud checks."
-                    | i18n
-                }}
-              </li>
-              <li *ngIf="bankText">
-                <span nz-icon nzType="info-circle" nzTheme="fill"></span>
-                {{
-                  "Repeated attempts within a short period may be flagged by the PSP and lead to transaction rejection."
-                    | i18n
-                }}
-              </li>
-            </ul>
-          </div>
+                  <div class="dfx-secure-funding-card">
+  <div class="dfx-secure-bg-dots"></div>
+
+  <div class="dfx-secure-hero">
+    <div class="dfx-orbit orbit-one"></div>
+    <div class="dfx-orbit orbit-two"></div>
+
+    <div class="dfx-shield-main">
+      <span nz-icon nzType="lock" nzTheme="fill"></span>
+    </div>
+
+    <div class="dfx-check-badge">
+      <span nz-icon nzType="check" nzTheme="outline"></span>
+    </div>
+  </div>
+
+  <div class="dfx-secure-content">
+    <h2>{{ "Secure" | i18n }} <span>Funding</span></h2>
+    <p>{{ "Your deposits are protected with bank-grade security" | i18n }}</p>
+  </div>
+
+  <div class="dfx-limit-grid">
+    <div class="dfx-limit-card min">
+      <div class="dfx-limit-icon">
+        <span nz-icon nzType="wallet" nzTheme="outline"></span>
+      </div>
+      <div>
+        <h3>${{ minDeposit }}</h3>
+        <p>{{ "Minimum Deposit" | i18n }}</p>
+      </div>
+    </div>
+
+    <div class="dfx-limit-card max">
+      <div class="dfx-limit-icon">
+        <span nz-icon nzType="line-chart" nzTheme="outline"></span>
+      </div>
+      <div>
+        <h3>${{ maxDeposit }}</h3>
+        <p>{{ "Maximum Deposit" | i18n }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dfx-feature-grid">
+    <div class="dfx-feature-item">
+      <span nz-icon nzType="safety-certificate" nzTheme="fill"></span>
+      <div>
+        <h4>{{ "SSL Encrypted" | i18n }}</h4>
+        <p>{{ "256-bit security" | i18n }}</p>
+      </div>
+    </div>
+
+    <div class="dfx-feature-item">
+      <span nz-icon nzType="thunderbolt" nzTheme="fill"></span>
+      <div>
+        <h4>{{ "Instant Processing" | i18n }}</h4>
+        <p>{{ "Real-time deposits" | i18n }}</p>
+      </div>
+    </div>
+
+    <div class="dfx-feature-item">
+      <span nz-icon nzType="credit-card" nzTheme="fill"></span>
+      <div>
+        <h4>{{ "Verified Payments" | i18n }}</h4>
+        <p>{{ "Cards accepted" | i18n }}</p>
+      </div>
+    </div>
+
+    <div class="dfx-feature-item">
+      <span nz-icon nzType="lock" nzTheme="fill"></span>
+      <div>
+        <h4>{{ "Secure Transactions" | i18n }}</h4>
+        <p>{{ "Protected gateway" | i18n }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dfx-secure-footer">
+    <div class="dfx-footer-icon">
+      <span nz-icon nzType="safety-certificate" nzTheme="fill"></span>
+    </div>
+
+    <div>
+      <h4>{{ "100% Secure Payment Gateway" | i18n }}</h4>
+      <p>{{ "Your funds are safe with DragonflyFX" | i18n }}</p>
+    </div>
+
+    <div class="dfx-footer-lock">
+      <span nz-icon nzType="lock" nzTheme="outline"></span>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </ng-container>

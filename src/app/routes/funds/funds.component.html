@@ -1,75 +1,71 @@
 <!--
 this is fund page
- @updatetime 2021/11/18
+ @updatetime 2026/06/01
  @author khurshed
 -->
 
 <nz-card>
-<div class="wallet-hero">
-  <div class="wallet-hero-inner">
 
-    <!-- LEFT -->
-    <div class="wallet-left">
-      <div class="balance-title">{{ 'My Balance' | i18n }}</div>
+<div class="dfx-wallet-banner">
+  <div class="dfx-wallet-info">
+    <div class="dfx-wallet-icon">
+      <i class="fa-solid fa-wallet"></i>
+    </div>
 
-      <div *ngIf="balanceLoader; else loadBalance" class="balance-loading">
+    <div>
+      <div class="dfx-wallet-title">
+        {{ 'My Balance' | i18n }}
+      </div>
+
+      <div *ngIf="balanceLoader; else loadBalance" class="dfx-balance-loading">
         <i nz-icon nzType="loading"></i>
       </div>
 
       <ng-template #loadBalance>
         <ng-container *ngFor="let item of fundList | keyvalue">
-          <div class="balance-row">
-            <span class="balance-amount">
+          <div class="dfx-wallet-balance">
+            <span class="dfx-balance-value">
               {{ item.value ? item.value.toFixed(2) : '0.00' }}
             </span>
-            <span class="balance-currency">{{ item.key }}</span>
+            <span class="dfx-balance-currency">{{ item.key }}</span>
           </div>
         </ng-container>
       </ng-template>
-
-      <!-- ACTION PILLS -->
-      <div class="wallet-actions">
-
-        <a class="wallet-btn deposit" (click)="toLink('deposit')">
-          <span class="ic">
-            <img src="assets/images/funds/Deposit_icon.svg" alt="deposit" />
-          </span>
-          <span>{{ 'Deposit' | i18n }}</span>
-        </a>
-
-        <a
-          class="wallet-btn withdraw"
-          (click)="toLink('withdraw')"
-          [ngClass]="menu_disable ? 'menu-enable' : 'menu-disable'"
-        >
-          <span class="ic">
-            <img src="assets/images/funds/Withdraw_icon.svg" alt="withdraw" />
-          </span>
-          <span>{{ 'Withdraw' | i18n }}</span>
-        </a>
-
-        <a
-          class="wallet-btn transfer"
-          *ngIf="basicHide"
-          (click)="toLink('transfer')"
-          [ngClass]="menu_disable ? 'menu-enable' : 'menu-disable'"
-        >
-          <span class="ic">
-            <img src="assets/images/funds/Transfer_icon.svg" alt="transfer" />
-          </span>
-          <span>{{ 'Transfer' | i18n }}</span>
-        </a>
-
-      </div>
     </div>
+  </div>
 
-    <!-- RIGHT (pattern area) -->
-    <div class="wallet-right" aria-hidden="true"></div>
+  <div class="dfx-wallet-actions">
+    <button class="dfx-action-btn deposit-btn" (click)="toLink('deposit')">
+      <div class="action-circle deposit-circle">
+        <i class="fa-solid fa-arrow-down"></i>
+      </div>
+      <span>{{ 'Deposit' | i18n }}</span>
+    </button>
 
+    <button
+      class="dfx-action-btn withdraw-btn"
+      (click)="toLink('withdraw')"
+      [ngClass]="menu_disable ? 'menu-enable' : 'menu-disable'"
+    >
+      <div class="action-circle withdraw-circle">
+        <i class="fa-solid fa-arrow-up"></i>
+      </div>
+      <span>{{ 'Withdraw' | i18n }}</span>
+    </button>
+
+    <button
+      *ngIf="basicHide"
+      class="dfx-action-btn transfer-btn"
+      (click)="toLink('transfer')"
+      [ngClass]="menu_disable ? 'menu-enable' : 'menu-disable'"
+    >
+      <div class="action-circle transfer-circle">
+        <i class="fa-solid fa-right-left"></i>
+      </div>
+      <span>{{ 'Transfer' | i18n }}</span>
+    </button>
   </div>
 </div>
-
-  <!-- code changes for CPTI-128 end -->
 
   <!-- <div class="title-header">{{ 'Wallet History' | i18n }}</div> -->
   <nz-collapse

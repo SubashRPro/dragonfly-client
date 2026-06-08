@@ -146,68 +146,48 @@
 </div>
 </div>
 
-
-
-
-<div class="dashboard">
-  <div class="informed">
-    <div class="dash-heading black head-border">
-      <img
-        src="assets/images/informed.svg"
-        alt="wallet"
-        style="width: 29px; margin-right: 9px"
-      />
-      {{ 'Stay Informed' | i18n }}
-    </div>
-    <div class="list">
-      <ul>
-        <li *ngFor="let item of notifications | slice: 0:5">
-          <!-- <span nz-icon nzType="info-circle" nzTheme="fill"></span> -->
-          {{ item.description }}
-
-          <span>
-            <img src="assets/images/server-time.svg" class="time-icon" alt="" />
-            {{ item.created_Date | date: 'dd/MM/yyyy' }}
-          </span>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div nz-row [nzGutter]="24">
-    <div nz-col nzMd="24" nzLg="24" nzXl="24" nzXs="24" class="statistics">
-      <!-- <nz-card class="chart-data">
-        <div class="profit">
-          <h2>{{ "Statistics" | i18n }}</h2>
-          <div>{{ "Profit/Loss" | i18n }}</div>
+<div class="dfx-informed-wrapper">
+  <div class="dfx-informed-card">
+    <div class="dfx-informed-header">
+      <div class="dfx-informed-title">
+        <div class="dfx-informed-icon">
+          <img src="assets/images/informed.svg" alt="informed" />
         </div>
-        <div class="s-btns">
-          <nz-radio-group
-            [(ngModel)]="daily"
-            (ngModelChange)="ngModelChange($event)"
-          >
-            <label nz-radio-button nzValue="daily">{{ "Daily" | i18n }}</label>
-            <label nz-radio-button nzValue="weekly">
-              {{ "Weekly" | i18n }}</label
-            >
-            <label nz-radio-button nzValue="monthly">
-              {{ "Monthly" | i18n }}</label
-            >
-            <label nz-radio-button nzValue="yearly">
-              {{ "Yearly" | i18n }}</label
-            >
-          </nz-radio-group>
+
+        <div>
+          <h2>{{ 'Stay Informed' | i18n }}</h2>
+          <p>Important alerts and updates</p>
         </div>
-        <ng-container *ngIf="statistics?.length > 0; else noData">
-          <div echarts [options]="options" class="chart-container"></div>
-        </ng-container>
-        <ng-template #noData>
-          <div class="no-text">No data</div>
-        </ng-template>
-      </nz-card> -->
+      </div>
+
+      <button class="dfx-view-all-btn" type="button">
+        {{ 'View All' | i18n }}
+        <span nz-icon nzType="right" nzTheme="outline"></span>
+      </button>
+    </div>
+
+    <div class="dfx-informed-list">
+      <div
+        class="dfx-informed-item"
+        *ngFor="let item of notifications | slice: 0:5"
+      >
+        <div class="dfx-alert-icon">
+          <img src="assets/images/informed.svg" alt="alert" />
+        </div>
+
+        <div class="dfx-alert-content">
+          <h4>{{ item.description }}</h4>
+          <!-- <p>We will notify you once it is complete.</p> -->
+        </div>
+
+        <div class="dfx-alert-date">
+          <img src="assets/images/server-time.svg" alt="time" />
+          <span>{{ item.created_Date | date: 'dd/MM/yyyy' }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
 <!------after login video modal without kyc-->
 
 <nz-modal

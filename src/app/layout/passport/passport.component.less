@@ -47,7 +47,7 @@
 
 /* ===== Top Header ===== */
 .top-header {
-  position: absolute;
+  position: absolute !important;
   top: 20px;
   left: 40px;
   right: 40px;
@@ -73,9 +73,255 @@
   align-items: center;
 }
 
+// .left-content {
+//  background: url('../../../assets/images/auth-area.png') no-repeat center center;
+//  background-size: cover;
+// }
+
 .left-content {
- background: url('../../../assets/images/auth-area.png') no-repeat center center;
- background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at center,
+    #ffffff 0%,
+    #f6fbff 45%,
+    #eefcf5 100%
+  );
+}
+
+/* =======================
+   BACKGROUND CONTAINER
+======================= */
+
+.liquid-market-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* =======================
+   FLOATING ORBS
+======================= */
+
+.liquid-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(15px);
+  opacity: 0.5;
+}
+
+.orb-one {
+  width: 420px;
+  height: 420px;
+  top: 10%;
+  right: 8%;
+  background: rgba(22, 163, 74, 0.15);
+}
+
+.orb-two {
+  width: 380px;
+  height: 380px;
+  left: 5%;
+  bottom: 5%;
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.orb-three {
+  width: 260px;
+  height: 260px;
+  bottom: 15%;
+  right: 35%;
+  background: rgba(59, 130, 246, 0.08);
+}
+
+/* =======================
+   MARKET FLOW LINES
+======================= */
+
+.wave-line {
+  position: absolute;
+  width: 130%;
+  height: 250px;
+  border-top: 3px solid rgba(22, 163, 74, 0.12);
+  border-radius: 50%;
+}
+
+.wave-one {
+  top: 28%;
+  left: -15%;
+}
+
+.wave-two {
+  bottom: 20%;
+  right: -15%;
+  border-color: rgba(59, 130, 246, 0.12);
+}
+
+.wave-three {
+  bottom: 10%;
+  left: 20%;
+}
+
+/* =======================
+   PULSE RINGS
+======================= */
+
+.pulse-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(22, 163, 74, 0.1);
+}
+
+.ring-one {
+  width: 320px;
+  height: 320px;
+  top: 28%;
+  right: 15%;
+}
+
+.ring-two {
+  width: 250px;
+  height: 250px;
+  left: 12%;
+  bottom: 18%;
+  border-color: rgba(59, 130, 246, 0.12);
+}
+
+/* =======================
+   MARKET BARS
+======================= */
+
+.market-bars {
+  position: absolute;
+  left: 10%;
+  top: 42%;
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.market-bars span {
+  width: 14px;
+  border-radius: 20px;
+  background: linear-gradient(
+    to top,
+    rgba(22, 163, 74, 0.5),
+    rgba(34, 197, 94, 0.8)
+  );
+}
+
+.market-bars span:nth-child(1) {
+  height: 80px;
+}
+
+.market-bars span:nth-child(2) {
+  height: 130px;
+}
+
+.market-bars span:nth-child(3) {
+  height: 105px;
+}
+
+.market-bars span:nth-child(4) {
+  height: 170px;
+}
+
+.market-bars span:nth-child(5) {
+  height: 120px;
+}
+
+/* =======================
+   GLASS CARDS
+======================= */
+
+.glass-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  height: 56px;
+  padding: 0 18px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.6);
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  backdrop-filter: blur(18px);
+
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.glass-card i {
+  color: #16a34a;
+  font-size: 16px;
+}
+
+.card-left {
+  top: 22%;
+  left: 16%;
+}
+
+.card-right {
+  top: 18%;
+  right: 12%;
+}
+
+.card-bottom {
+  bottom: 18%;
+  right: 22%;
+}
+
+/* =======================
+   FLOATING DOTS
+======================= */
+
+.trade-dot {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.dot-a {
+  width: 14px;
+  height: 14px;
+  background: #22c55e;
+  top: 30%;
+  right: 27%;
+}
+
+.dot-b {
+  width: 18px;
+  height: 18px;
+  background: #22c55e;
+  top: 62%;
+  right: 6%;
+}
+
+.dot-c {
+  width: 10px;
+  height: 10px;
+  background: #3b82f6;
+  top: 16%;
+  right: 18%;
+}
+
+/* =======================
+   HEADER & CONTENT
+======================= */
+
+.top-header,
+.body-content {
+  position: relative;
+  z-index: 2;
 }
 
 // .left-content {
