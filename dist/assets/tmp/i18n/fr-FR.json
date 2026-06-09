@@ -1,0 +1,2408 @@
+{
+
+"500": "500",
+
+"1000": "1 000",
+
+"2000": "2 000",
+
+"5000": "5 000",
+
+"Congratulations": "Félicitations",
+
+"Your account has been created": "Votre compte a été créé",
+
+"Next": "Suivant",
+
+"Unlock all features!": "Débloquez toutes les fonctionnalités !",
+
+"Please follow the steps to unlock all the feature": "Suivez les étapes suivantes pour débloquer toutes les fonctionnalités",
+
+"Skip For Now": "Passez pour le moment",
+
+"Verify My Account": "Vérifier mon compte",
+
+"Hello!": "Bonjour !",
+
+"Accounts": "Comptes",
+
+"Funds": "Fonds",
+
+"Copy Trading": "Copier Trading",
+
+"soon": "bientôt",
+
+"Notifications": "Notifications",
+
+"Support Center": "Centre d'assistance",
+
+"Settings": "Paramètres",
+
+"Logout": "Déconnexion",
+
+"Total Balance": "Solde total",
+
+"Total Lots": "Total lots",
+
+"Open Positions": "Postes à pourvoir",
+
+"Profit": "Profit",
+
+"Deposit": "Dépôt",
+
+"Daily": "Quotidien",
+
+"Weekly": "Hebdomadaire",
+
+"Monthly": "Mensuel",
+
+"Yearly": "Annuel",
+
+"Statistics": "Statistiques",
+
+"Profit/Loss": "Profit/Perte",
+
+"Month": "Mois",
+
+"Total amount of funds available on your trading accounts": "Montant total des fonds disponibles sur vos comptes de trading",
+
+"List of all the transactions been executed": "Liste de toutes les transactions exécutées",
+
+"A list of your long or short positions": "Une liste de vos positions longues ou courtes",
+
+"Amount earned by as a result of successful trades": "Montant gagné par suite de transactions réussies",
+
+"My Profile": "Mon profil",
+
+"Market News": "Nouvelles du marché",
+
+"Contact Us": "Nous contacter",
+
+"Today": "Aujourd'hui",
+
+"Withdrawal Pending": "Retrait en instance",
+
+"Live Support Chat": "Assistance en ligne par chat",
+
+"CPT Support": "Assistance CPT",
+
+"Type your message...": "Tapez votre message...",
+
+"Messages": "Messages",
+
+"Search": "Recherche",
+
+"No Chats": "Pas de chats",
+
+"Start New Chat": "Commencer un nouveau chat",
+
+"Reach our to support team for any inquiries": "Contactez notre équipe d'assistance pour toute question",
+
+"Chat Now": "Chatter maintenant",
+
+"Your withdrawal request is being processed. We will notify you once it is complete.": "Votre demande de retrait est en cours de traitement. Nous vous en informerons dès qu'elle sera terminée.",
+
+"Transfer Rejected": "Transfert rejeté",
+
+"We were unable to process your transfer request at this time. Please check your transfer details or contact our support team for assistance.": "Nous n'avons pas pu traiter votre demande de transfert pour le moment. Veuillez vérifier les détails de votre transfert ou contacter notre équipe d'assistance pour obtenir de l'aide.",
+
+"Yesterday": "Hier",
+
+"Withdrawal Successful": "Retrait réussi",
+
+"Your withdrawal request has been approved. Your funds will be transferred to your designated account shortly.": "Votre demande de retrait a été approuvée. Vos fonds seront transférés sous peu sur le compte que vous avez indiqué.",
+
+"Transfer Successful": "Transfert réussi",
+
+"Your transfer request has been successful. Your funds have been transferred to your designated account.": "Votre demande de transfert a été acceptée. Vos fonds ont été transférés sur le compte que vous avez indiqué.",
+
+"My Funds": "Mes fonds",
+
+"Virefy": "Vérifier",
+
+"Actions": "Actions",
+
+"Account1": "Compte1",
+
+"Currency": "Monnaie",
+
+"Account Type": "Type de compte",
+
+"Balance": "Solde",
+
+"Equity": "Fonds propres",
+
+"Leverage": "Effet de levier",
+
+"Fee Paid": "Frais payés",
+
+"Last Activity": "Dernière opération",
+
+"Status": "Etat",
+
+"Standard": "Standard",
+
+"Inactive": "Inactif",
+
+"My Accounts": "Mes comptes",
+
+"Account Details": "Coordonnées du compte",
+
+"New Trading Account": "Nouveau compte de trading",
+
+"Margin/Trade Calculator": "Calculateur de marge/transaction",
+
+"View Account": "Visualiser le compte",
+
+"Change Password": "Modifier le mot de passe",
+
+"Change Leverage": "Modifier l'effet de levier",
+
+"Monitor the performance of your trading account, track investments, and manage your risk exposure.": "Surveillez la performance de votre compte de trading, suivez vos investissements et gérez votre exposition au risque.",
+
+"Amount available in your trading account": "Montant disponible sur votre compte de trading",
+
+"Realized P/L is profit & loss on a trade": "Le rapport P/L est le résultat de Profit/Perte sur une transaction",
+
+"Profit or loss held in your current open positions": "Profits ou pertes détenus dans vos positions ouvertes actuelles",
+
+"Percentage of profitable trades compared to the total number of trades executed": "Pourcentage de transactions profitables par rapport au nombre total de transactions exécutées",
+
+"My Balance": "Mon solde",
+
+"Realized P/L": "Pertes/Profits réalisés",
+
+"Unrealized P/L": "Perte/Profits non réalisés",
+
+"Win %": "% gain",
+
+"A/C Name": "Nom de compte",
+
+"Email ID": "Montant à créditer",
+
+"Open": "Ouvert",
+
+"Open Time": "Heures d'ouverture",
+
+"Trading Platform": "Plateforme de trading",
+
+"Open Trades": "Transactions en cours",
+
+"History": "Historique",
+
+"Order ID": "Référence de l'ordre",
+
+"A/C  No": "Numéro de compte",
+
+"Action": "Action",
+
+"Symbol": "Symbole",
+
+"Volume": "Volume",
+
+"Open Price": "Prix ouvert",
+
+"Swap": "Echanger",
+
+"Profit(UER)": "Profit(UER)",
+
+"to": "à",
+
+"Apply": "Confirmer",
+
+"Account Number": "Numéro de compte",
+
+"Old Password": "Ancien mot de passe",
+
+"Confirm Password": "Confirmer le mot de passe",
+
+"Reset Password": "Réinitialiser le mot de passe",
+
+"Your Password Is Reset": "Votre mot de passe a été réinitialisé",
+
+"Please log in with your new password to access your trading account": "Veuillez vous connecter avec votre nouveau mot de passe pour accéder à votre compte de trading",
+
+"Back To Accounts": "Retour aux comptes",
+
+"Old Leverage": "Ancien effet de levier",
+
+"New Leverage": "Nouvel effet de levier",
+
+"Cancel": "Annuler",
+
+"Create your account": "Créez votre compte",
+
+"Account Types": "Types de comptes",
+
+"Create": "Créer",
+
+"New Trading Account Successfully Created": "Le nouveau compte de trading a bien été créé",
+
+"Please take a moment to review your account details and deposit funds to start trading.": "Veuillez prendre un moment pour consulter les détails de votre compte et déposer des fonds pour commencer à négocier.",
+
+"Deposit Account": "Compte de dépôt",
+
+"Margin Calculator": "Calculateur de marge",
+
+"Trade Calculator": "Calculateur de trading",
+
+"Currency Pair": "Paire de monnaies",
+
+"Account Currency": "Monnaie du compte",
+
+"Position Size": "Taille de la position",
+
+"MT4 Lot": "Lot MT4",
+
+"Calculate": "Calculer",
+
+"Margin Value": "Valeur de la marge",
+
+"Short Swap": "Échange à court terme",
+
+"Pip Value": "Valeur Pip",
+
+"Long Swap": "Long Swap",
+
+"New Password": "Nouveau mot de passe",
+
+"Change Email": "Modifier l'adresse électronique",
+
+"Change Phone Number": "Modifier le numéro de téléphone",
+
+"Current Email": "Adresse électronique actuelle",
+
+"New Email": "Nouvelle adresse électronique",
+
+"Done!": "Fait !",
+
+"Email": "Adresse électronique",
+
+"Send Code": "Envoyer code",
+
+"Code Sent!": "Code envoyé !",
+
+"Enter the OTP sent to": "Saisir le OTP envoyé à",
+
+"Didn't receive code?": "Code pas reçu ?",
+
+"Your Email Is Changed": "Votre adresse électronique a été modifiée",
+
+"Current phone number": "Numéro de téléphone actuel",
+
+"New phone number": "Nouveau numéro de téléphone",
+
+"Your Number Is Changed": "Votre numéro a été modifié",
+
+"Verified Account": "Compte vérifié",
+
+"Personal Information": "Données personnelles",
+
+"User Nationality": "Nationalité de l'utilisateur",
+
+"ID Number": "Numéro d'identité",
+
+"User Date of Birth": "Date de naissance de l'utilisateur",
+
+"Phone Number": "Numéro de téléphone",
+
+"Language": "Langue",
+
+"User Address": "Adresse de l'utilisateur",
+
+"Balance Information": "Informations sur le solde",
+
+"Verification Requested": "Vérification requise",
+
+"Unverified Account": "Compte non vérifié",
+
+"FUNDS: My Funds  -  Deposit - Withdraw - Transfer": "FONDS : Mes fonds - Dépôt - Retrait - Transfert",
+
+"My Main Balance": "Mon solde principal",
+
+"Withdraw": "Retrait",
+
+"Transfer": "Transfer",
+
+"Filter": "Filtrer",
+
+"My Funds History": "Historique de mes fonds",
+
+"Bill No": "Numéro de facture",
+
+"Type": "Type",
+
+"From Account": "Du compte",
+
+"To Account": "Vers le compte",
+
+"Amount": "Montant",
+
+"Rejected": "Rejeté",
+
+"Pending": "En instance",
+
+"Successful": "Réussi",
+
+"Filter By:": "Filtrer par :",
+
+"Status By:": "Etat par :",
+
+"All": "Tout",
+
+"Add Time": "Ajouter l'heure",
+
+"Apply Filter": "Appliquer le filtre",
+
+"Reset": "Réinitialiser",
+
+"Download Platform": "Télécharger la plateforme",
+
+"Trading Central": "Centrale de trading",
+
+"PAYMENT OPTION": "OPTION DE PAIEMENT",
+
+"Wire Transfer": "Virement bancaire",
+
+"Alternative Methods": "Autres méthodes",
+
+"Select deposit account": "Sélectionner le compte de dépôt",
+
+"Deposit amount": "Montant du dépôt",
+
+"Account Balance: 100 USD": "Solde du compte : 100 USD",
+
+"Deposit Summary": "Résumé du dépôt",
+
+"Deposit To": "Déposé sur",
+
+"Trading Account": "Compte de trading",
+
+"Account Balance": "Solde du compte",
+
+"Deposit Amount": "Montant du dépôt",
+
+"Fees": "Frais",
+
+"Process Time": "Temps de traitement",
+
+"Instant": "Immédiat",
+
+"Account Details USD": "Détails du compte en USD",
+
+"Account Name": "Nom du compte",
+
+"Bank Name": "Nom de la banque",
+
+"Branch Name": "Nom de l'agence",
+
+"Bank Address": "Adresse de la banque",
+
+"Back": "Retour",
+
+"Your transaction has been received.": "Votre transaction a été reçue.",
+
+"Generally it takes  2-4 working days to review and approve!": "En général, il faut compter 2 à 4 jours ouvrables pour l'examen et l'approbation !",
+
+"View Transactions": "Visualiser les transactions",
+
+"Deposited Amount": "Montant déposé",
+
+"Generally it takes 48 hours to review and approve!": "En général, il faut compter 48 heures pour l'examen et l'approbation !",
+
+"Back To My Funds": "Retour à Mes Fonds",
+
+"FUNDS AND TRANSFER:": "FONDS ET TRANSFERTS :",
+
+"Transfer From": "Transférer de",
+
+"Transfer To": "Transférer vers",
+
+"Conversion Rate": "Taux de conversion",
+
+"Credit Amount": "Montant à créditer",
+
+"Submit": "Soumettre",
+
+"Transfer Request Received": "Demande de transfert reçue",
+
+"Support Center:": "Centre d'assistance :",
+
+"Send  us e-mail": "Envoyez-nous un e-mail",
+
+"Start a live chat": "Commencer un chat en ligne",
+
+"Search for a question": "Rechercher une question",
+
+"Type your question or search keyword": "Tapez votre question ou votre mot-clé de recherche",
+
+"All Tickets": "Tous les tickets",
+
+"In Progress": "En cours de traitement",
+
+"Resolved": "Résolu",
+
+"Getting Started": "Démarrer",
+
+"Live account": "Compte en ligne",
+
+"Withdrawal": "Retrait",
+
+"New Ticket": "Nouveau ticket",
+
+"New Service Request": "Nouvelle demande d'assistance",
+
+"Select type": "Sélectionner le type",
+
+"Request Details": "Détails de la demande",
+
+"Write the details here": "Notez les détails ici",
+
+"Upload documents here": "Télécharger les documents ici",
+
+"Category": "Catégorie",
+
+"Select Category": "Sélectionner la catégorie",
+
+"Your Request Has Been Sent!": "Votre demande a été envoyée !",
+
+"Thank you for your request,our support team will contact you soon.": "Merci pour votre demande, notre équipe d'assistance vous contactera bientôt.",
+
+"Back to support center": "Retour au centre d'assistance",
+
+"BankDetails1": "Les paiements de tiers ne sont pas acceptés. Le nom de l'expéditeur doit correspondre au nom de votre compte enregistré.",
+
+"BankDetails2": "Les fonds envoyés par virement bancaire peuvent être soumis à des taux de conversion.",
+
+"BankDetails3": "La banque émettrice ou la banque correspondante peut déduire des frais pour le traitement d'un virement bancaire. CPT Markets n'applique aucun frais et déposera sur votre compte le montant net reçu.",
+
+"BankDetails4": "À chaque transaction réussie, les fonds seront ajoutés à votre compte MT4 dès réception. Le délai de traitement est généralement de 3 à 5 jours ouvrables.",
+
+"BankDetails5": "Pour une traçabilité plus rapide de vos transactions, veuillez nous envoyer une copie de votre confirmation de virement bancaire via pièce jointe afin que nous puissions vérifier tous les détails nécessaires.",
+
+"BankDetails6": "La méthode de votre retrait doit correspondre à la méthode de votre dépôt. À cet égard, le retrait de votre dépôt ne peut être effectué que sur le même compte à partir duquel vous avez initialement déposé.",
+
+"No need for Boot Camp or Parallels Desktop": "Pas besoin de Boot Camp ou de Parallels Desktop",
+
+"Over 1000 instruments including Forex, CFDs, and Futures": "Plus de 1000 instruments dont le Forex, les CFDs et les Futures",
+
+"Spreads as low as 0.6 pips": "Spreads à partir de 0,6 pips",
+
+"Full EA (Expert Advisor) Functionality": "Fonctionnalité complète d'EA (Conseiller Expert)",
+
+"1 Click Trading": "Trading en 1 clic",
+
+"Technical Analysis Tools with 50 indicators and charting tools": "Outils d'analyse technique avec 50 indicateurs et outils graphiques",
+
+"3 Chart Types": "3 types de graphiques",
+
+"Micro Lot Accounts": "Comptes de micro-lots",
+
+"Hedging Allowed": "Couverture autorisée",
+
+"A user-friendly": "Outil convivial",
+
+"Downloading MT4 is simple and easy, follow these steps:": "Le téléchargement de MT4 est simple et facile, suivez les étapes suivantes :",
+
+"Create an account (Live or Demo)": "Créer un compte (Live ou Démo)",
+
+"Download and install MT4": "Télécharger et installer MT4",
+
+"Login with your account details": "Connectez-vous avec les coordonnées de votre compte",
+
+"or MetaTrader 5": "ou MetaTrader 5",
+
+"Intuitive interface": "Interface intuitive",
+
+"Fully customizable": "Entièrement personnalisable",
+
+"Advanced analytics": "Analyse avancée",
+
+"Flexible and convenient": "Souple et pratique",
+
+"Secure and stable platform": "Plateforme sûre et stable",
+
+"Industry-favourite choice": "Le choix préféré du secteur",
+
+"MetaTrader 5 expert advisors": "Conseillers experts MetaTrader 5",
+
+"More assets, more opportunities": "Plus d'atouts, plus d'opportunités",
+
+"Available for Windows or Mac": "Disponible pour Windows ou Mac",
+
+"Downloading MT5 is simple and easy, follow these steps:": "Le téléchargement de MT5 est simple et facile, suivez les étapes suivantes :",
+
+"Open Account": "Ouvrir un compte",
+
+"Whether you are a large firm or an individual investor, CPT Markets offers different accounts to trade global instruments:": "Que vous soyez une grande entreprise ou un investisseur individuel, CPT Markets propose différents comptes pour trader des instruments mondiaux :",
+
+"Individual": "Individuel",
+
+"Partner": "Partenaire",
+
+"Institutional": "Institutionnel",
+
+"An individual brokerage account has the name of one account owner": "Un compte de courtage individuel porte le nom d'un seul titulaire",
+
+"CPT Markets gives you a chance to grow together.": "CPT Markets vous donne la possibilité de grandir ensemble.",
+
+"Explore our comprehensive solution for institutional investors": "Découvrez notre solution complète pour les investisseurs institutionnels",
+
+"Platform": "Plateforme",
+
+"Profile": "Profil",
+
+"Reports": "Rapports",
+
+"Please Select Trading Platform": "Veuillez sélectionner une plateforme de trading",
+
+"Balance History": "Historique du solde",
+
+"Bank Details": "Coordonnées bancaires",
+
+"Bank Country": "Pays de la banque",
+
+"IBAN": "IBAN",
+
+"Swift Code": "Code Swift",
+
+"Add Bank Details": "Ajouter des coordonnées bancaires",
+
+"Add Bank Account": "Ajouter un compte bancaire",
+
+"Account Holder Name": "Nom du titulaire du compte",
+
+"Upload Bank Statement": "Télécharger le relevé bancaire",
+
+"Close": "Fermer",
+
+"Confirm": "Confirmer",
+
+"Date": "Date",
+
+"Start date": "Date de début",
+
+"End date": "Date de fin",
+
+"Transaction Type": "Type de transaction",
+
+"Please Select": "Veuillez sélectionner",
+
+"Please enter the Account Holder Name": "Veuillez saisir le nom du titulaire du compte",
+
+"Please enter valid IBAN without special characters": "Veuillez saisir un IBAN valide sans caractères spéciaux",
+
+"Please enter the Bank Address": "Veuillez saisir l'adresse de la banque",
+
+"Please enter the Bank Country": "Veuillez saisir le pays de la banque",
+
+"Please enter the Account Number": "Veuillez saisir le numéro de compte",
+
+"Please enter the IBAN!": "Veuillez saisir l'IBAN !",
+
+"IBAN number contains up to 34 alphanumeric characters!": "Le numéro IBAN peut contenir jusqu'à 34 caractères alphanumériques !",
+
+"Mark Default Bank Details": "Indiquez les coordonnées bancaires par défaut",
+
+"Edit Bank Account": "Modifier le compte bancaire",
+
+"Save": "Sauvegarder",
+
+"User Name": "Nom de l'utilisateur",
+
+"User Email": "Adresse électronique de l'utilisateur",
+
+"User Date Of Birth": "User Date Of Birth",
+
+"Fill the form below with your exact information as your legal documents in (English)": "Remplissez le formulaire ci-dessous avec vos informations exactes ainsi que vos documents légaux en (anglais)",
+
+"Title": "Titre",
+
+"Please choose your Title to proceed.": "Veuillez choisir votre titre pour continuer.",
+
+"Please enter first name without special characters!": "Veuillez saisir le prénom sans caractères spéciaux !",
+
+"Please enter middle name without special characters!": "Veuillez saisir le deuxième prénom sans caractères spéciaux !",
+
+"Please enter last name without special characters": "Veuillez saisir le nom de famille sans caractères spéciaux",
+
+"Please enter the date": "Veuillez saisir la date",
+
+"We are sorry, you must be minimum 18 years to register and trade with us.": "Nous sommes désolés, vous devez avoir au moins 18 ans pour vous inscrire et traiter avec nous.",
+
+"Please select valid Nationality": "Veuillez sélectionner une nationalité valide",
+
+"Select a Nationality": "Choisir une nationalité",
+
+"Please enter  phone number": "Veuillez saisir votre numéro de téléphone",
+
+"Please enter valid phone number": "Veuillez saisir un numéro de téléphone valide",
+
+"Tax Identification Number": "Numéro d'identification fiscale",
+
+"Are you a U.S. citizen?": "Êtes-vous citoyen américain ?",
+
+"Yes": "Oui",
+
+"No": "Non",
+
+"Are you a Politically Exposed Person(PEP), or closely related to a PEP?": "Êtes-vous une personne politiquement exposée (PPE) ou un proche parent d'une PPE ?",
+
+"Please enter Flat Number": "Veuillez saisir le numéro de l'appartement",
+
+"Please enter the Street Name": "Veuillez saisir le nom de la rue",
+
+"Please select valid Country": "Veuillez sélectionner un pays valide",
+
+"Please enter the State": "Veuillez saisir l'État",
+
+"Please enter the city": "Veuillez saisir la ville",
+
+"Please enter the Zip Code": "Veuillez saisir le Zip Code",
+
+"Please answer the questions below": "Veuillez répondre aux questions ci-dessous",
+
+"Please type valid answer!": "Veuillez saisir une réponse valide !",
+
+"Please select valid answer!": "Veuillez sélectionner une réponse valide !",
+
+"Proof Of ID": "Preuve d'identité",
+
+"Please ensure your proof of ID shows your full name, date of birth and its expiry date. photo ID must be valid, clear and colored copy.": "Veillez à ce que votre pièce d'identité indique votre nom complet, votre date de naissance et sa date d'expiration. La photo d'identité doit être valide, claire et en couleur.",
+
+"Accepted document file type - jpg, pdf, jpeg, tiff. Max file size 12 Mb.": "Types de fichiers acceptés : jpg, pdf, jpeg, tiff. Taille maximale du fichier : 5 Mo.",
+
+"Please Upload the front of the document": "Veuillez télécharger le recto du document",
+
+"Please Upload the back of the document": "Veuillez télécharger le verso du document",
+
+"Drop Front side of your National ID card": "Déposez le recto de votre carte d'identité nationale",
+
+"Please Upload the Front of the document": "Veuillez télécharger le recto du document",
+
+"Drop Back side of your National ID card": "Déposez le verso de votre carte d'identité nationale",
+
+"Please Upload the Back of the document": "Veuillez télécharger le verso du document",
+
+"Drop Front side of your Driving License": "Déposez le recto de votre permis de conduire",
+
+"Drop Back side of your Driving License": "Déposez le verso de votre permis de conduire",
+
+"Address Proof-Front": "Justificatif d'adresse - verso",
+
+"proofData": "Données justificatives",
+
+"Suitability Test": "Test d'aptitude",
+
+"Are you sure to cancel?": "Êtes-vous sûr de vouloir annuler ?",
+
+"Yes, Cancel": "Oui, annuler",
+
+"Continue Filling": "Continuer à remplir les données",
+
+"OK": "OK",
+
+"support": "Assistance",
+
+"View All": "Visualiser le tout",
+
+"Opened Time": "Heure d'ouverture",
+
+"Closed Time": "Heure de fermeture",
+
+"Closed Price": "Prix de fermeture",
+
+"Hello": "Bonjour",
+
+"Verify Current Email": "Vérifier l'adresse électronique actuelle",
+
+"Minimum 6 letters with the combination of Alphabets + Numbers (Special Character not Allowed)": "Minimum 6 lettres avec la combinaison Alphabets + Chiffres (Caractères spéciaux non autorisés)",
+
+"Two passwords that you enter is inconsistent!": "Les deux mots de passe que vous avez saisis ne correspondent pas !",
+
+"Leverage Change": "Changement de l'effet de levier",
+
+"Current Leverage": "Effet de levier actuel",
+
+"Required Leverage": "Effet de levier requis",
+
+"Password Reset": "Réinitialisation du mot de passe",
+
+"Your password has been successfully reset.": "Votre mot de passe a bien été réinitialisé.",
+
+"Click below to login.": "Cliquez ci-dessous pour vous connecter.",
+
+"Market Analysis": "Analyse du marché",
+
+"Default": "Défaut",
+
+"Please enter the Bank Name": "Veuillez saisir le nom de la banque",
+
+"Please enter the Swift Code": "Veuillez saisir le code Swift",
+
+"Please select any Account": "Veuillez sélectionner un compte",
+
+"Please enter valid amount!": "Veuillez saisir un montant valide !",
+
+"Please Select the Deposit Bank Accounts Details": "Veuillez sélectionner les détails des comptes bancaires de dépôt",
+
+"Please type the Message!": "Veuillez taper le message !",
+
+"Please enter valid email id": "Veuillez saisir une adresse électronique valide",
+
+"Please Enter Phone Number": "Veuillez saisir votre numéro de téléphone",
+
+"Please Enter valid phone number": "Veuillez saisir un numéro de téléphone valide",
+
+"Please enter first name without special characters": "Veuillez saisir le prénom sans caractères spéciaux",
+
+"The input is not valid Email!": "La saisie n'est pas une adresse électronique valide !",
+
+"Your balance is insufficient": "Votre solde est insuffisant",
+
+"Minimum Amount Should be 1 USD": "Le montant minimum doit être de 1 USD",
+
+"Please select nationality!": "Veuillez choisir une nationalité !",
+
+"Please Upload File": "Veuillez télécharger le fichier",
+
+"selectType": "sélectionner le Type",
+
+"selectCurrency": "sélectionner la Monnaie",
+
+"selecrtLeverage": "sélectionner l'Effet de levier",
+
+"Please enter number": "Veuillez saisir le numéro",
+
+"This field is required": "Ce champ est obligatoire",
+
+"We sent OTP to your email, OTP will be valid for 5 minutes": "Nous avons envoyé un OTP à votre adresse électronique. L'OTP est valide pour 5 minutes",
+
+"Are you sure to Delete Bank Account?": "Êtes-vous sûr de vouloir supprimer votre compte bancaire ?",
+
+"Trading Account Balance": "Solde du compte de trading",
+
+"Transfer Amount": "Montant du transfert",
+
+"Enter OTP": "Saisir l'OTP",
+
+"Withdraw Amount": "Montant du retrait",
+
+"Withdraw Summary": "Résumé du retrait",
+
+"Withdraw From": "Retrait de",
+
+"Withdrawal Amount": "Montant retiré",
+
+"within 24 to 48 hours": "dans les 24 à 48 heures",
+
+"Margin": "Marge",
+
+"Exchange Rate": "Taux de change",
+
+"Upload Transaction Receipt": "Télécharger le reçu de la transaction",
+
+"Edit": "Modifier",
+
+"Delete": "Supprimer",
+
+"Order Id": "Référence de l'ordre",
+
+"Closed Positions": "Positions fermées",
+
+"Deposit History": "Historique des dépôts",
+
+"Withdraw History": "Historique des retraits",
+
+"Transfer History": "Historique des transferts",
+
+"Closed Position": "Position fermée",
+
+"Close Time": "Heure de fermeture",
+
+"Deposited Time": "Heure du dépôt",
+
+"Created Time": "Heure de création",
+
+"Analyst Views": "Avis des analystes",
+
+"Economic Calendar": "Calendrier économique",
+
+"Market Buzz": "Le buzz du marché",
+
+"Education": "Education",
+
+"Analyst Views Data": "Données de l'avis des analystes",
+
+"Access Denied": "Accès refusé",
+
+"To get access to premium Trading Central Insights , please deposit a minimum of $1000.": "Pour avoir accès aux informations premium de Trading Central, veuillez déposer un minimum de 1000 $.",
+
+"Terms of Use": "Conditions d'utilisation",
+
+"Select": "Sélectionnez",
+
+"Agree": "Approuvé",
+
+"Send us e-mail": "Envoyez-nous un e-mail",
+
+"View Ticket": "Visualiser le ticket",
+
+"Support Center - Ticket Code:": "Centre d'assistance - Code Ticket :",
+
+"Post your comments here": "Publiez vos commentaires ici",
+
+"User Residence": "Adresse de résidence de l'utilisateur",
+
+"Address Information": "Informations sur l'adresse",
+
+"Building Name/Number": "Nom/numéro de l'immeuble",
+
+"Flat Number": "Numéro de l'appartement",
+
+"Country": "Pays",
+
+"State": "Etat",
+
+"City": "Ville",
+
+"Zip Code": "Zip Code",
+
+"Document Information": "Information concernant le document",
+
+"Street Name": "Nom de la rue",
+
+"Funded": "Alimenté",
+
+"Verified": "Vérifié",
+
+"Active": "Actif",
+
+"Failed": "Echec",
+
+"Your Request Is Sent": "Votre demande a été envoyée",
+
+"Your CPT Markets account has been successfully created and is currently under review. You will be notified by email once approved.": "Votre compte CPT Markets a bien été créé et est actuellement en cours d'examen. Vous serez informé par courriel une fois que votre demande aura été approuvée.",
+
+"Dashboard": "Tableau de bord",
+
+"License": "Licence",
+
+"Address": "Adresse",
+
+"Please enter the Building Name/Number": "Veuillez saisir le nom/numéro de l'immeuble",
+
+"Driving License": "Permis de conduire",
+
+"National ID": "Document national d'identification",
+
+"Thank you!": "Merci !",
+
+"Your transaction has been": "Votre transaction a été",
+
+"Generally it takes 24 hours to review and approve!": "En général, il faut compter 24 heures pour l'examen et l'approbation !",
+
+"View Transaction Details": "Afficher les détails de la transaction",
+
+"Are you sure to exit the current payment?": "Êtes-vous sûr de vouloir abandonner le paiement en cours ?",
+
+"The current return cannot be undone": "Le retour en arrière ne pourra pas être annulé",
+
+"S.No": "No. S",
+
+"Corporate": "Entreprise",
+
+"Explore our comprehensive solution for corporates": "Découvrez notre solution complète pour les entreprises",
+
+"coming soon": "prochainement",
+
+"Country of Residence": "Pays de résidence",
+
+"Please select Country of Residence": "Veuillez sélectionner le pays de résidence",
+
+"Front file Name": "Recto du nom du fichier",
+
+"Back File Name": "Verso du nom du fichier",
+
+"Upload Time": "Temps de chargement",
+
+"Document Type": "Type de document",
+
+"Current Number": "Numéro actuel",
+
+"New Number": "Nouveau numéro",
+
+"Are you sure?": "Êtes-vous sûr ?",
+
+"Do you want to logout?": "Voulez-vous vous déconnecter ?",
+
+"Remember me": "Se rappeler de moi",
+
+"Login": "Se connecter",
+
+"Register": "S'inscrire",
+
+"Forgot Password": "Mot de passe oublié",
+
+"Dont have an account?": "Vous n'avez pas de compte ?",
+
+"Sign up for free?": "S'inscrire gratuitement ?",
+
+"to your account": "à votre compte",
+
+"Open an account": "Ouvrir un compte",
+
+"in less than 2 minutes": "en moins de 2 minutes",
+
+"Details": "Détails",
+
+"Trade with us": "Tradez avec nous",
+
+"Create an account and start trading": "Créez un compte et commencez à trader",
+
+"Verification": "Vérification",
+
+"Password": "Mot de passe",
+
+"Full Name": "Nom complet",
+
+"Mobile Number": "Numéro de portable",
+
+"Nationality": "Nationalité",
+
+"I have read and consent to my data being used in accordance with the": "J'ai lu et j'accepte que mes données soient utilisées conformément à la",
+
+"Privacy Policy": "Politique de confidentialité",
+
+"Terms and Conditions.": "Conditions d'utilisation.",
+
+"have an account?": "vous avez un compte ?",
+
+"Please Check Your Email": "Veuillez consulter votre courrier électronique",
+
+"Weve sent a verification code to": "Nous avons envoyé un code de vérification à",
+
+"Didnt get a code?": "Vous n'avez pas eu de code ?",
+
+"Click to resend": "Cliquer pour renvoyer",
+
+"Verify": "Vérifier",
+
+"OTP sent!": "OTP envoyé !",
+
+"An Exciting Trading Beginning": "Un début de trading passionnant",
+
+"login success": "connexion réussie",
+
+"Enter OTP sent to:": "Saisissez l'OTP envoyé à :",
+
+"Didnt receive code?": "Vous n'avez pas reçu de code ?",
+
+"RESEND": "RENVOYER",
+
+"Get The Code": "Obtenir le code",
+
+"Demo Account": "Compte de démonstration",
+
+"Total Count": "Nombre total",
+
+"Opening Price": "Prix d'ouverture",
+
+"Closing Price": "Prix de clôture",
+
+"agree_tc": "approuver_conditions",
+
+"Home": "Page d'accueil",
+
+"Trade with": "Tradez avec",
+
+"Trade with CPT International": "Tradez avec CPT International",
+
+"Access global financial market and get premium support": "Accédez aux marchés financiers mondiaux et bénéficiez d'une assistance de premier ordre",
+
+"Invite a friend and enjoy earnings from their activity.": "Invitez un ami et profitez des gains de son activité.",
+
+"Your personal referral link": "Votre lien de recommandation personnel",
+
+"Copy Link": "Copier le lien",
+
+"Share": "Partager",
+
+"To Open": "Pour ouvrir",
+
+"Opened": "Ouvert",
+
+"Disabled": "Désactivé",
+
+"Read Only": "Lecture seule",
+
+"Cancelled": "Annulé",
+
+"Open New Account": "Ouvrir un nouveau compte",
+
+"My Wallet": "Mon portefeuille",
+
+"Wallet Balance": "Solde du portefeuille",
+
+"Wallet History": "Historique du portefeuille",
+
+"Transaction Amount": "Montant de la transaction",
+
+"Amount Number": "Numéro du montant",
+
+"Transfer In": "Transfert en aval",
+
+"Transfer Out": "Transfert en amont",
+
+"In Process": "En cours de traitement",
+
+"Success": "Réussi",
+
+"Go To": "Aller vers",
+
+"Wallet": "Portefeuille",
+
+"Wallet Number": "Numéro de portefeuille",
+
+"Select Deposit Method": "Sélectionner la méthode de dépôt",
+
+"Select Withdraw Method": "Sélectionner la méthode de retrait",
+
+"Crypto Wallet": "Portefeuille Crypto",
+
+"Proceed": "Poursuivre",
+
+"Profit(USD)": "Profit(USD)",
+
+"Commission": "Commission",
+
+"Export": "Exporter",
+
+"gendertitle": "titre (M., Mme, etc.)",
+
+"Upload Documents": "Télécharger les documents",
+
+"Questionnaire": "Questionnaire",
+
+"First Name": "Prénom",
+
+"English Name": "Nom en anglais",
+
+"Middle Name": "Deuxième prénom",
+
+"Last Name": "Nom de famille",
+
+"Date Of Birth": "Date de naissance",
+
+"Select Date": "Sélectionner la date",
+
+"Gender": "Sexe",
+
+"Female": "Féminin",
+
+"Male": "Masculin",
+
+"Apartment/House Name": "Nom de l'appartement ou de la maison",
+
+"Support": "Support",
+
+"Open New Ticket": "Ouvrir un nouveau ticket",
+
+"Service Request Id": "Identifiant de la demande d'assistance",
+
+"Created Date": "Date de création",
+
+"View": "Visualisation",
+
+"Authentication": "Authentification",
+
+"Two Factor Authentication": "Authentification à double facteur",
+
+"Profile Information": "Informations sur le profil",
+
+"Change Email Id": "Modifier l'adresse électronique",
+
+"Enter Email Here": "Saisir l'adresse électronique ici",
+
+"Get Code": "Obtenir un code",
+
+"Enter Code": "Saisir le code",
+
+"Existing Password": "Mot de passe actuel",
+
+"Re Enter New Password": "Re-saisir le nouveau mot de passe",
+
+"Update": "Actualiser",
+
+"Calendar": "Calendrier",
+
+"Ok": "OK",
+
+"Start earning with your personal referral link": "Commencez à gagner de l'argent grâce à votre lien de recommandation personnel",
+
+"Trasnfer": "Transfert",
+
+"Provide a valid email": "Indiquer une adresse électronique valide",
+
+"Password does not match": "Le mot de passe ne correspond pas",
+
+"Verification Code": "Code de vérification",
+
+"Enter the code": "Saisissez le code",
+
+"Agree terms & condition to proceed": "Accepter les conditions pour continuer",
+
+"I have a referer": "J'ai un référent",
+
+"Already have an account?": "Vous avez déjà un compte ?",
+
+"I have read and accepted CPT Internation": "J'ai lu et accepté le document CPT International",
+
+"Please confirm your password!": "Veuillez confirmer votre mot de passe !",
+
+"passwordPattern": "modèle de mot de passe",
+
+"Previous": "Précédent",
+
+"PLEASE_SELECT": "SELECTIONNEZ_SVP",
+
+"Open New Trading Account": "Ouvrir un nouveau compte de trading",
+
+"ACCOUNT_TYPE": "TYPE_DE_COMPTE",
+
+"CURRENCY": "MONNAIE",
+
+"Credit": "Crédit",
+
+"Account Details and Terms of Use": "Coordonnées du compte et conditions d'utilisation",
+
+"SWIFT Code": "Code SWIFT",
+
+"Transaction Receipt": "Reçu de transaction",
+
+"Upload": "Télécharger",
+
+"Done": "Terminé",
+
+"Note: By submitting this form I have understood CPT’s withdrawal policy.": "Note : En soumettant ce formulaire, j'ai compris la politique de retrait de CPT.",
+
+"Ticket Code": "Code de ticket",
+
+"Passport": "Passeport",
+
+"Drop front side of your": "Déposez le recto de votre",
+
+"Upload your": "Téléchargez votre",
+
+"Please check the image requirements here.": "Veuillez vérifier les exigences en matière d'images ici.",
+
+"Description": "Description",
+
+"Post your comment here": "Publiez votre commentaire ici",
+
+"Information": "Information",
+
+"Google Authentication": "Authentification google",
+
+"Security": "Sécurité",
+
+"Support History": "Historique de l'assistance",
+
+"Activities": "Activités",
+
+"Attachments": "Pièces jointes",
+
+"User": "Utilisateur",
+
+"Remarks": "Remarques",
+
+"File Name": "Nom de fichier",
+
+"Download file": "Téléchargement en aval du fichier",
+
+"Document Upload": "Téléchargement en amont du fichier",
+
+"Close Price": "Prix de clôture",
+
+"OTP is valid only for 5 minutes": "L'OTP n'est valable que pour 5 minutes",
+
+"Enter Emailed OTP": "Saisir l'OTP envoyé par e-mail",
+
+"Please enter Google auth code": "Veuillez saisir le code d'authentification Google",
+
+"Please enter OTP sent to your Email": "Veuillez saisir l'OTP envoyé à votre adresse électronique",
+
+"Please enter your email ID": "Veuillez saisir votre adresse électronique",
+
+"We will send an email to your inbox, OTP will be valid for 5 minutes only": "Nous vous enverrons un e-mail, l'OTP ne sera valable que pour 5 minutes",
+
+"Send OTP": "Envoyer OTP",
+
+"Do not have an account?": "Vous n'avez pas de compte ?",
+
+"Email id logic to be checked like @ or .com or .ae": "Vérifiez la logique de la syntaxe de l'adresse électronique : comme @ ou .com ou .ae",
+
+"Please enter New Password": "Veuillez saisir votre nouveau mot de passe",
+
+"Re-enter New Password": "Saisir à nouveau le nouveau mot de passe",
+
+"Export success": "Opération d'exportation réussie",
+
+"Realized": "Effectué",
+
+"Unrealized": "Non-effectué",
+
+"redirect": "rediriger",
+
+"tradingPlatformReq": "plateformeTradingReq",
+
+"tradingPlatform": "plateformeTrading",
+
+"Open Demo Account": "Ouvrir un compte de démonstration",
+
+"demo_deposit_amount": "montant_dépôt_démo",
+
+"deposit_fund": "fonds_déposé",
+
+"Set your password": "Définir votre mot de passe",
+
+"password_logic": "logique_mot_de_passe",
+
+"Thank you for Registering": "Merci de vous être inscrit",
+
+"You can login to your account now!": "Vous pouvez vous connecter à votre compte maintenant !",
+
+"Previous step": "Étape précédente",
+
+"Login Now": "Connectez-vous maintenant",
+
+"Open Demo Account with us": "Ouvrez un compte de démonstration auprès de nous",
+
+"Please enter your email, we'll send you a code to Verify.": "Veuillez saisir votre adresse électronique, nous vous enverrons un code de vérification.",
+
+"Forgot My Password": "J'ai oublié mon mot de passe",
+
+"MT4": "MT4",
+
+"MT5": "MT5",
+
+"Download and install MT5": "Télécharger et installer MT5",
+
+"Not Found": "Introuvable",
+
+"No Tickets": "Aucun ticket",
+
+"Please log in with your new password to access your trading account.": "Veuillez vous connecter avec votre nouveau mot de passe pour accéder à votre compte de trading.",
+
+"Update Email": "Mise à jour de l'adresse électronique",
+
+"Please log in with your new email to access your trading account.": "Veuillez vous connecter avec votre nouvel e-mail pour accéder à votre compte de trading.",
+
+"Update Number": "Mettre à jour le numéro",
+
+"Previous Attachments": "Pièces jointes précédentes",
+
+"This email already exists": "Cette adresse électronique existe déjà",
+
+"Please confirm your documents and unlock all the features": "Veuillez confirmer vos documents et déverrouiller toutes les fonctionnalités",
+
+"Triple A": "Triple A",
+
+"Google Pay": "Google Pay",
+
+"E Pay": "E-Pay",
+
+"UPI": "UPI",
+
+"MyFatoorah": "MyFatoorah",
+
+"help2pay": "help2pay",
+
+"HyperBC": "HyperBC",
+
+"Bank List": "Liste des banques",
+
+"Please select any Bank": "Veuillez sélectionner une banque",
+
+"Coin List": "Liste des pièces de monnaie",
+
+"Please select any Coin": "Veuillez sélectionner une pièce de monnaie",
+
+"Coin Payment": "Paiement des pièces de monnaie",
+
+"Conversion Type": "Type de conversion",
+
+"Please select any coin method": "Veuillez choisir un mode de paiement",
+
+"Please Select any Payment Method to Proceed Further": "Veuillez sélectionner un mode de paiement pour continuer",
+
+"Payment Currency": "Monnaie de paiement",
+
+"Total Amount": "Montant total",
+
+"Please scan the QR code or use the following address to pay the amount.": "Veuillez scanner le code QR ou utiliser l'adresse suivante pour payer le montant.",
+
+"Wating for your action": "Dans l'attente de votre action",
+
+"Is this operation confirmed ?": "Cette opération est-elle confirmée ?",
+
+"Receiving Address": "Adresse de réception",
+
+"Receiving Address is required": "L'adresse de réception est obligatoire",
+
+"To Coin": "Vers la monnaie",
+
+"Bank Account Name": "Intitulé du compte bancaire",
+
+"Bank Account Name is required": "L'intitulé du compte bancaire est obligatoire",
+
+"Bank Account Number": "Numéro du compte bancaire",
+
+"Bank Account Number is required": "Le numéro du compte bancaire est obligatoire",
+
+"Use Existing Bank Account": "Utiliser un compte bancaire existant",
+
+"Add New Bank Account": "Ajouter un nouveau compte bancaire",
+
+"You do not have any bank added please click on add New Bank Account": "Vous n'avez pas de banque ajoutée, veuillez cliquer sur ajouter un nouveau compte bancaire",
+
+"Please select Transfer From": "Veuillez sélectionner Transfert à partir de",
+
+"Please select Transfer To": "Veuillez sélectionner Transfert vers",
+
+"Please enter valid amount": "Veuillez saisir un montant valide",
+
+"Bill No.": "Facture No.",
+
+"Copied": "Copié",
+
+"Minimum Amount Should be 1 USD.": "Le montant minimum doit être de 1 USD.",
+
+"You_have_reached_the_maximum_number_of_accounts": "Vous_avez_atteint_le_nombre_maximum_de_comptes",
+
+"User_verification_is_pending_and_account_can_not_be_created": "La_vérification_de_l'utilisateur_est_en_instance_et_le_compte_ne_peut_pas_être_créé",
+
+"Invalid_request_Notification_not_found": "Demande_invalide_Notification_non_trouvée",
+
+"Sharpen your trading skills": "Améliorez vos compétences en matière de trading",
+
+"on a demo account": "avec un compte démo",
+
+"Open Account Time": "Temps d'ouverture du compte",
+
+"Fund Amount": "Montant du fonds",
+
+"Fund Currency": "Devise du fonds",
+
+"Logged in success": "Connexion réussie",
+
+"Invalid session or expired": "Session invalide ou périmée",
+
+"Registered successfully": "Inscription réussie",
+
+"Updated successfully": "Mise à jour réussie",
+
+"Action succeeded": "Action réussie",
+
+"Record created successfully": "Création de la fiche réussie",
+
+"oops!, No results found": "oops, aucun résultat trouvé !",
+
+"Unable to login, please try again later": "Impossible de se connecter, veuillez réessayer plus tard",
+
+"unable to generate access token": "Impossible de générer un jeton d'accès",
+
+"Login access denied to your account": "Accès à votre compte refusé",
+
+"Sorry, either your username or password is incorrect. Please check your details and try again": "Désolé, votre nom d'utilisateur ou votre mot de passe est incorrect. Veuillez vérifier vos données et réessayer",
+
+"Due to high risk, the selected country not allowed to register": "En raison du risque élevé, le pays sélectionné n'est pas autorisé à s'inscrire",
+
+"OTP verification failed, invalid or expired. please enter valid OTP code": "La vérification OTP (mot de passe à usage unique) a échoué, n'est pas valide ou a expiré. Veuillez saisir un code OTP valide",
+
+"SMS otp has expired or already used. Please generate new SMS otp": "L'OTP par SMS a expiré ou est déjà utilisé. Veuillez générer un nouvel OTP",
+
+"Invalid SMS OTP": "L'OTP par SMS n'est pas valide",
+
+"Invalid referrer code": "Code référent invalide",
+
+"Invalid customer type": "Type de client invalide",
+
+"Unable to create user record": "Impossible de créer la fiche utilisateur",
+
+"Failed to assign unique number": "Échec de l'attribution d'un numéro unique",
+
+"User with same Email-ID already exists": "Un utilisateur avec la même adresse e-mail existe déjà",
+
+"Invalid request": "Demande invalide",
+
+"Unable to verify user, please try again later": "Impossible de vérifier l'utilisateur, veuillez réessayer plus tard",
+
+"User doesn't exists": "L'utilisateur n'existe pas",
+
+"Error while processing your request, please contact support team": "Erreur lors du traitement de votre demande, veuillez contacter l'équipe d'assistance",
+
+"OTP has been verified": "L'OTP a été vérifié",
+
+"Unable to register new user, please try again later": "Impossible d`inscrire un nouvel utilisateur, veuillez réessayer plus tard",
+
+"Invalid google authentication code": "Code d'authentification google invalide",
+
+"Google auth has been successfully verified": "L'authentification Google a bien été vérifiée",
+
+"Invalid code format": "Format de code invalide",
+
+"Password updated": "Mot de passe mis à jour",
+
+"Unable to switch account": "Impossible de changer de compte",
+
+"Unable to list currencies": "Impossible de lister les devises",
+
+"Unable to retrieve terms & condition links": "Impossible de récupérer les liens vers les conditions générales d'utilisation",
+
+"Unable to get background images": "Impossible d'obtenir des images d'arrière-plan",
+
+"Unable to get profit detail": "Impossible d'obtenir le détail des profits",
+
+"Unable to retrieve symbols": "Impossible de récupérer les symboles",
+
+"Unable to retrieve margin detail": "Impossible de récupérer les détails de la marge",
+
+"Unable to retrieve customer types": "Impossible de récupérer les types de clients",
+
+"Invalid email id, please provide valid mail id": "Adresse e-mail invalide, veuillez fournir une adresse valide",
+
+"User not found": "Utilisateur introuvable",
+
+"User doesn't have access to the requested menu or page": "L'utilisateur n'a pas accès au menu ou à la page demandée",
+
+"Invalid set password token or expired": "Mot de passe invalide ou périmé",
+
+"Unable to switch, user detail not found": "Impossible de changer, données utilisateur introuvables",
+
+"not allowed to create a demo user": "Pas d'autorisation pour créer un utilisateur démo",
+
+"Not allowed to created more than 2 accounts": "Il n'est pas permis de créer plus de 2 comptes",
+
+"Unable to get country list": "Impossible d'obtenir la liste des pays",
+
+"Unable to get language list": "Impossible d'obtenir la liste des langues",
+
+"Unable to retrieve transaction type": "Impossible de récupérer le type de transaction",
+
+"Unable to retrieve payment status": "Impossible d'obtenir l'état des paiements",
+
+"Unable to get currency exchange": "Impossible d'obtenir un change de devises",
+
+"Unable to retrieve accounts": "Impossible de récupérer les comptes",
+
+"Unable to process your request": "Impossibilité de traiter votre demande",
+
+"Unable to send Email OTP": "Impossible d'envoyer l'OTP par e-mail",
+
+"Email OTP sent successfully": "OTP envoyé avec succès par e-mail",
+
+"Document uploaded successfully": "Document téléchargé avec succès",
+
+"Profile detail updated successfully": "Les coordonnées du profil ont bien été mises à jour",
+
+"Customer ID is required": "Identification du client requise",
+
+"Not allowed to update profile detail": "Pas d'autorisation pour mettre à jour les coordonnées du profil",
+
+"Not allowed to update document detail": "Pas d'autorisation pour mettre à jour les détails d'un document",
+
+"Invalid request, event detail not found": "Requête invalide, détails de l'événement non trouvés",
+
+"Calendar event not found": "Evénement calendrier non trouvé",
+
+"Event does not found": "L'événement est introuvable",
+
+"Calendar event deleted successfully": "Evénement calendrier supprimé avec succès",
+
+"Calendar event updated successfully": "Mise à jour réussie de l'événement calendrier",
+
+"Calendar event added successfully": "Evénement calendrier ajouté avec succès",
+
+"Email address has been changed, please logout and login again": "L'adresse électronique a été modifiée, veuillez puis vous déconnecter et vous reconnecter",
+
+"Email address verified": "Adresse électronique vérifiée",
+
+"Password can not be same as previous one.": "Le mot de passe ne peut pas être le même que le précédent.",
+
+"Password has been changed successfully, please logout and login again": "Le mot de passe a bien été modifié, veuillez vous déconnecter et vous reconnecter",
+
+"No files found to upload": "Aucun fichier à télécharger n'a été trouvé",
+
+"Trading group not found": "Groupe de trading non trouvé",
+
+"Profile and KYC must be added before adding Account": "Le profil et le KYC (connaissez votre client) doivent être ajoutés avant de créer un compte",
+
+"Invalid request, account detail not found": "Demande invalide, coordonnées du compte non trouvées",
+
+"Unable to retrieve trading accounts detail": "Impossible de récupérer les données des comptes de trading",
+
+"Account created successfully": "Compte créé avec succès",
+
+"Password has been changed successfully": "Le mot de passe a bien été modifié",
+
+"Account ID is required": "L'identifiant du compte est requis",
+
+"Leverage change request has been submitted successfully": "La demande de modification de l'effet de levier a été soumise avec succès",
+
+"Leverage has been changed successfully": "L'effet de levier a bien été modifié",
+
+"Invalid Mobile number.": "Numéro de téléphone portable invalide.",
+
+"Invalid SMS event type": "Type d'événement SMS invalide",
+
+"Invalid file format or not found": "Format de fichier invalide ou introuvable",
+
+"Suitability test not found": "Test d'aptitude non trouvé",
+
+"Suitability Test PASS": "Test d'aptitude REUSSI",
+
+"Suitability Test FAILED!, please try the second test": "Vous avez ECHOUE au test d'aptitude ! Veuillez essayer le second test",
+
+"Sorry you exceeded the maximum number of allowed attempts of the suitability test, kindly get in touch with our support team 'support@cptmarkets.com' for further assistance": "Désolé, vous ayez dépassé le nombre maximum de tentatives autorisées pour le test d'aptitude. Veuillez contacter notre équipe d'assistance 'support.za@cptmarkets.com' pour obtenir de l'aide",
+
+"The number of leveraged trades you have placed during the past 1 year is (select one of the below):": "Le nombre de transactions à effet de levier que vous avez effectuées au cours de l'année écoulée est de (sélectionnez l'une des options ci-dessous) :",
+
+"What was the average yearly volume of invested amounts of your past transactions in CFDs or other leveraged products?": "Quel a été le volume annuel moyen des montants investis dans vos transactions passées sur CFD ou autres produits à effet de levier ?",
+
+"What type of financial services have you previously used?": "What type of financial services have you previously used?",
+
+"What is your level of education, qualification, or work experience in relation to our services and products?": "Quel est votre niveau d'éducation, de qualification ou d'expérience professionnelle en ce qui concerne nos services et nos produits ?",
+
+"Trading with a higher leverage in CFDs means you may open a larger position in volume, thus increasing the profit potential with the risk of loss.": "Négocier avec un effet de levier plus élevé sur les CFD signifie que vous pouvez ouvrir une position plus importante en volume, augmentant ainsi le potentiel de profit avec le risque de perte.",
+
+"If the value of your initial position in a CFD contract of EUR/USD is 1 lot and the leverage ratio is 1:50, what would be the initial margin requirement in EUR?": "Si la valeur de votre position initiale dans un contrat CFD EUR/USD est de 1 lot et que le ratio d'effet de levier est de 1:50, quelle serait la marge initiale requise en EUR ?",
+
+"Which of the following statement is correct regarding Contracts for Difference (CFDs) trading?": "Laquelle des affirmations suivantes est correcte en ce qui concerne les contrats de différence (CFD) ?",
+
+"What is Limit Order": "Qu'est-ce qu'un ordre limité ?",
+
+"What does it mean if you have go long?": "Qu'est-ce que cela signifie si vous avez une position longue ?",
+
+"What is the bid price mean? ": "Quelle est la moyenne du prix de l'offre ?",
+
+"If you place a long (buy) position of 1 lot EUR/USD at 1.20 and price is increased to 1.25 what case is valid?": "Si vous placez une position longue (achat) de 1 lot EUR/USD à 1,20 et que le prix est augmenté à 1,25, quel est le cas valable ?",
+
+"If the EUR/USD price drops significantly, then your CFD long position in EUR/USD will:": "Si le cours de l'EUR/USD baisse de manière significative, votre position longue en CFD sur l'EUR/USD sera :",
+
+"When you open a trade you are :": "Lorsque vous ouvrez une négociation, vous êtes :",
+
+"In the Currency Pair EUR/USD the variable currency is the:": "Dans la paire de devises EUR/USD, la devise variable est :",
+
+"When you open a buy position your stop loss should be:": "Lorsque vous ouvrez une position d'achat, votre stop-loss doit être :",
+
+"Never or rarely": "Jamais ou rarement",
+
+"Occasionally (up to 20 trades per year)": "Occasionnellement (jusqu'à 20 opérations par an)",
+
+"Regularly (between 20 and 100 trades per year)": "Régulièrement (entre 20 et 100 opérations par an)",
+
+"Frequently (over 100 trades per year)": "Fréquemment (plus de 100 opérations par an)",
+
+"I never invested": "Je n'ai jamais investi",
+
+"Less than $500": "Moins de 500 $",
+
+"Between $500 to $2 500": "Entre 500 $ et 2 500 $",
+
+"Between $2 500 to $10 000": "Entre 2 500 $ et 10 000 $",
+
+"Over $ 10 000": "Plus de 10 000 $",
+
+"Brokerage services that required independent decisions": "Services de courtage nécessitant des décisions indépendantes",
+
+"Brokerage services that received professional advice": "Services de courtage bénéficiant de conseils professionnels",
+
+"Portfolio Management": "Gestion de portefeuille",
+
+"None of the above": "Aucun des points ci-dessus",
+
+"I hold a professional qualification in finance/economics": "Je suis possède une qualification professionnelle en finance/économie",
+
+"I received higher education in finance and/or financial services and/or economics and/or business related": "J'ai suivi une formation supérieure dans le domaine de la finance et/ou des services financiers et/ou de l'économie et/ou des affaires",
+
+"I am currently working or worked in the past in the financial sector for over 1 year and I obtained the relevant experience": "Je travaille actuellement, ou j'ai travaillé dans le passé, dans le secteur financier pendant plus d'un an et j'ai acquis l'expérience nécessaire",
+
+"True": "Vrai",
+
+"False": "Faux",
+
+"You never own the actual asset": "Vous ne possédez jamais l'actif réel",
+
+"CFDs are speculative, complex and risky": "Les CFD sont spéculatifs, complexes et comportent des risques",
+
+"Both of the above": "Les deux cas de figure ci-dessus",
+
+"An order that needs to be filled today": "Une commande qui doit être exécutée aujourd'hui",
+
+"An order to buy and sell at set price and no higher or lower": "Un ordre d'achat et de vente à un prix déterminé, ni plus haut ni plus bas",
+
+"An order to buy a limited number of lots": "Un ordre d'achat d'un nombre limité de lots",
+
+"You have bought exceeding your margin": "Vous avez acheté au-delà de votre marge",
+
+"You have closed all of the positions": "Vous avez fermé toutes les positions",
+
+"You have bought the base currency and expect it to move higher": "Vous avez acheté la devise de base et vous vous attendez à ce qu'elle augmente",
+
+"The price you can sell the base currency": "Le prix auquel vous pouvez vendre la devise de base",
+
+"The price you can buy the counter currency": "Le prix auquel vous pouvez acheter la contre-monnaie",
+
+"The price you can buy the base currency": "Le prix auquel vous pouvez acheter la devise de base",
+
+"3333.33": "3 333.33",
+
+"Position is in profit": "La position est bénéficiaire",
+
+"Position is in loss": "La position est déficitaire",
+
+"Position is unaffected": "La position n'est pas affectée",
+
+"Move to the same direction": "Allez dans la même direction",
+
+"Move in the opposite direction": "Allez dans le sens contraire",
+
+"Will not be affected": "Ne sera pas affecté",
+
+"Buying or selling the variable currency and profiting or losing on the variable currency": "Achat ou vente de la monnaie variable et profit ou perte sur la monnaie variable",
+
+"Buying the base currency and profiting on the variable currency": "Acheter la devise de base et réaliser un profit sur la devise variable",
+
+"Buying or selling the base currency and profiting or losing on the variable currency": "Acheter ou vendre la devise de base et gagner ou perdre sur la devise variable",
+
+"EUR": "EUR",
+
+"USD": "USD",
+
+"Above the entry price": "Au-dessus du prix d'entrée",
+
+"On the entry price": "Sur le prix d'entrée",
+
+"Below the entry price": "En dessous du prix d'entrée",
+
+"Below and above the entry": "Au-dessous et au-dessus de l'entrée",
+
+"Please provide answer for selected 'Other' question": "Veuillez répondre à la question \"Autre\" sélectionnée",
+
+"Unable to generate kyc code": "Impossible de générer le code KYC",
+
+"The record you attempted to edit was modified by another user.": "La fiche que vous avez tenté d'éditer a été modifiée par un autre utilisateur.",
+
+"You must be 18 years old or above": "Vous devez être âgé de 18 ans ou plus",
+
+"Invalid document type": "Type de document invalide",
+
+"User's country of residence not found": "Le pays de résidence de l'utilisateur n'a pas été trouvé",
+
+"KYC settings not found": "Paramètres KYC introuvables",
+
+"KYC question and answers not found": "Questions et réponses KYC introuvables",
+
+"Questionnaire detail updated successfully": "Les détails du questionnaire ont bien été mis à jour",
+
+"Passport of the customer": "Passeport du client",
+
+"Driving License of the Customer": "Driving License of the Customer",
+
+"Emirates ID/National ID/Adhar Card of the Customer": "Carte d'identité émiratie / carte d'identité nationale / carte Adhar du client",
+
+"Address proof document of the customer": "Justificatif de domicile du client",
+
+"Live photo": "Photo de type \"Live Photo\"",
+
+"Live video": "Vidéo de type \"Live Video\"",
+
+"Address Proof": "Justificatif de domicile",
+
+"Photo": "Photo",
+
+"Video": "Vidéo",
+
+"Verification is not required": "La vérification n'est pas requise",
+
+"Record doesn't exists.": "La fiche n'existe pas.",
+
+"Profile document updated successfully": "Mise à jour réussie du document de profil",
+
+"Gross Annual Income in USD ?": "Revenu annuel brut en USD ?",
+
+"Expected origin of incoming funds to be credited in the account/expected destination of funds?": "Origine prévue des fonds entrants à créditer sur le compte / la destination prévue des fonds ?",
+
+"What is your employment status ?": "Quelle est votre situation professionnelle ?",
+
+"Primary Source of funds": "Principale source des fonds",
+
+"Inheritance": "Héritage",
+
+"Indonesia": "Indonésie",
+
+"Self-employed": "Travailleur indépendant",
+
+"Property Sale": "Vente de biens immobiliers",
+
+"50,001-250,000": "50 001 - 250 000",
+
+"India": "Inde",
+
+"Unemployed": "Sans emploi",
+
+"United Arab Emirates": "Emirats Arabes Unis",
+
+"Retired": "Retraité(e)",
+
+"250,001-1,000,000": "250 001 - 1 000 000",
+
+"Employed": "Salarié(e)",
+
+"Pension or Government Benefits": "Pension ou prestations gouvernementales",
+
+"Other": "Autre",
+
+"Pakistan": "Pakistan",
+
+"Combination of the above": "Combinaison de ce qui précède",
+
+"Investment Income": "Revenus d'investissements",
+
+"0-10,000": "0 - 10 000",
+
+"Turkey": "Turquie",
+
+"Egypt": "Egypte",
+
+"10,001-50,000": "10 001 - 50 000",
+
+"Above 1.000.000": "Plus de 1 000 000",
+
+"Income or Savings from Employment/Business": "Revenus ou économies provenant d'un emploi ou d'affaires réalisées",
+
+"Student": "Etudiant",
+
+"Unable to retrieve ticket category list, please try again later": "Impossible de récupérer la liste des catégories de tickets, veuillez réessayer plus tard",
+
+"Ticket not found": "Ticket introuvable",
+
+"Unable to retrieve Ticket, please try again later": "Impossible de récupérer le ticket, veuillez réessayer plus tard",
+
+"Invalid request or customer not found": "Demande invalide ou client introuvable",
+
+"Invalid request or Ticket not found": "Requête invalide ou ticket introuvable",
+
+"Ticket ID is required": "L'identification du ticket est requise",
+
+"Ticket created successfully": "Ticket créé avec succès",
+
+"Ticket updated successfully": "Le ticket a bien été mis à jour",
+
+"query": "interrogation",
+
+"feedback": "retour d'information",
+
+"request": "requête",
+
+"complain": "réclamation",
+
+"account to wallet": "de compte à portefeuille",
+
+"affiliate others": "affilier d'autres personnes",
+
+"social trading strategy suspend request": "demande de suspension d'une stratégie de trading social",
+
+"managed account unsubscription due to insufficient balance": "désinscription d'un compte géré pour solde insuffisant",
+
+"managed account strategy suspend request": "demande de suspension d'une stratégie de compte géré",
+
+"affiliate user unlock": "déverrouillage d'utilisateur affilié",
+
+"leverage change": "changement d'effet de levier",
+
+"affiliate onboarding": "inscription des affiliés",
+
+"vpn request": "demande de VPN",
+
+"social trading strategy unsubscription request": "demande de désinscription d'une stratégie de trading social",
+
+"mt4 account link": "lien de compte mt4",
+
+"managed account strategy subscription request": "demande de souscription à une stratégie de compte géré",
+
+"social trading strategy subscription request": "demande de souscription à une stratégie de trading social",
+
+"managed account subscription fee update request": "demande de mise à jour des frais d'abonnement à un compte géré",
+
+"affiliate general enquiry": "demande générale de l'affilié",
+
+"affiliate user lock": "verrouillage de l'utilisateur affilié",
+
+"wallet to account": "de portefeuille à compte",
+
+"general enquiry": "question générale",
+
+"withdrawal process": "processus de retrait",
+
+"account to account": "de compte à compte",
+
+"account to cash wallet": "de compte à portefeuille électronique",
+
+"social trading strategy creation request  ": "demande de création de stratégie de trading social",
+
+"become a portfolio manager": "devenir gestionnaire de portefeuille",
+
+"onboarding": "intégration",
+
+"cash wallet to account": "du portefeuille électronique au compte",
+
+"ib to wallet": "de IB à portefeuille",
+
+"address change": "changement d'adresse",
+
+"deposit withdrawal information adding": "ajout d'information concernant un retrait de dépôt",
+
+"socialtrading strategy subscription fee update request": "demande de mise à jour des frais de souscription à une stratégie de social trading",
+
+"account opening related": "concerne une ouverture de compte",
+
+"affiliate withdrawal": "retrait d'un affilié",
+
+"redeem rewards": "utilisation des récompenses",
+
+"deposit": "dépôt",
+
+"account type change request": "demande de modification du type de compte",
+
+"socialtrading strategy unsubscription due to insufficient balance": "désinscription de la stratégie de social trading pour solde insuffisant",
+
+"managed account strategy creation request": "demande de création de stratégie de compte géré",
+
+"managed account strategy unsubscription request": "demande de désinscription d'une stratégie de compte géré",
+
+"affiliate withdrawal information adding": "ajout d'information concernant un retrait d'affilié",
+
+"withdrawal": "retrait",
+
+"account statement": "relevé de compte",
+
+"account number is required": "le numéro de compte est requis",
+
+"invalid account number": "numéro de compte invalide",
+
+"Please attach Bank Statement.": "Veuillez joindre un relevé d'identité bancaire.",
+
+"Unable to store files": "Impossible d'enregistrer les fichiers",
+
+"Bank detail created successfully": "Coordonnées bancaires créées avec succès",
+
+"Bank detail updated successfully": "Mise à jour réussie des coordonnées bancaires",
+
+"Invalid bank details.": "Coordonnées bancaires invalides.",
+
+"Bank detail deleted successfully": "Données bancaires supprimées avec succès",
+
+"Live verification is disabled": "La vérification en temps réel est désactivée",
+
+"Payment method id is required": "L'identifiant de la méthode de paiement est requis",
+
+"transaction not found": "transaction introuvable",
+
+"Exchange Rate does not exist.": "Le taux de change n'existe pas.",
+
+"Wallet does not exist": "Le portefeuille n'existe pas",
+
+"Account does not exist": "Le compte n'existe pas",
+
+"Please attach a payment receipt.": "Veuillez joindre un reçu de paiement.",
+
+"Invalid or unable to process your request": "Invalidité ou impossibilité de traiter votre demande",
+
+"Not enough balance.": "Solde insuffisant.",
+
+"Not enough Minimum amount should be 1.": "Insuffisant, le montant minimum doit être de 1.",
+
+"OTP expired/invalid.": "OTP périmé/invalide.",
+
+"MT MySql DB connection issue": "Problème de connexion à la base de données MySql de MT",
+
+"Unable to retrieve open positions data": "Impossible de récupérer les données sur les positions ouvertes",
+
+"Unable to process the payment, please try again later": "Impossible de traiter le paiement, veuillez réessayer plus tard",
+
+"Invalid exchange rate.": "Taux de change invalide.",
+
+"Unable to generate payment token": "Impossible de générer un jeton de paiement",
+
+"Invalid request and Item_id null or empty": "Demande invalide et Item_id nul ou vide",
+
+"Please update your profile with valid (India) mobile number": "Veuillez mettre à jour votre profil avec un numéro de téléphone mobile valide (Inde)",
+
+"Your profile has invalid mobile number, please update your profile": "Votre profil contient un numéro de téléphone portable invalide, veuillez mettre à jour votre profil",
+
+"UPI accepts only INR currency": "UPI n'accepte que la monnaie INR",
+
+"Invalid Response": "Réponse invalide",
+
+"Payment methods not found": "Méthodes de paiement introuvables",
+
+"Invalid payment response and unable to initiate payment, please try again later": "Réponse de paiement non valide et impossibilité de lancer le paiement, veuillez réessayer plus tard",
+
+"Nganluong accepts only VND currency": "Nganluong n'accepte que la monnaie VND",
+
+"Help2Pay does not support this currency": "Help2Pay ne prend pas en charge cette devise",
+
+"Deposit amount should be greater than equal to  10-MYR and less than equal to 50000-MYR": "Le montant du dépôt doit être supérieur à 10 MYR et inférieur à 50 000 MYR",
+
+"Deposit amount should be greater than equal to 100-THB and less than equal to 500,000-THB": "Le montant du dépôt doit être supérieur à 100 THB et inférieur à 500 000 THB",
+
+"Deposit amount should be greater than equal to 50,000-IDR  and less than equal to 20,000,0000-IDR": "Le montant du dépôt doit être supérieur à 50 000 DID et inférieur à 20 000 000 DID",
+
+"Deposit amount should be greater than equal to 50,000-VND and less than equal to 300,000,000-VND": "Le montant du dépôt doit être supérieur à 50 000 VND et inférieur à 300 000 000 VND",
+
+"Deposit amount should be greater than equal to 100-PHP and less than equal to 1,000,000-PHP": "Le montant du dépôt doit être supérieur à 100 PHP et inférieur à 1 000 000 PHP",
+
+"No active PSPs found": "Aucun PSP actif trouvé",
+
+"Sorry!, the selected payment method is not enabled": "Désolé, la méthode de paiement sélectionnée n'est pas activée !",
+
+"Account not found.": "Compte introuvable.",
+
+"Congratulations! Your account verification is now complete.": "Félicitations ! La vérification de votre compte est maintenant terminée.",
+
+"Rejected/Not Accepted": "Refusé/non accepté",
+
+"We’re sorry, but we were unable to verify your account at this time. Please check your submitted information and try again or contact our support team for assistance.": "Nous sommes désolés, mais nous n'avons pas pu vérifier votre compte pour le moment. Veuillez vérifier les informations que vous avez fournies et réessayer ou contacter notre équipe d'assistance pour obtenir de l'aide.",
+
+"Your verification request is being processed. We will notify you once it is complete.": "Votre demande de vérification est en cours de traitement. Nous vous en informerons dès qu'elle sera terminée.",
+
+"Your deposit has been successful. Your account balance has been updated.": "Votre dépôt a bien été effectué. Le solde de votre compte a été mis à jour.",
+
+"We were unable to process your deposit at this time. Please check your payment details or contact our support team for assistance.": "Nous n'avons pas pu traiter votre dépôt pour le moment. Veuillez vérifier les détails de votre paiement ou contacter notre équipe d'assistance pour obtenir de l'aide.",
+
+"Your deposit request is being processed. We will notify you once it is complete.": "Votre demande de dépôt est en cours de traitement. Nous vous en informerons dès qu'elle sera terminée.",
+
+"Successful ": "Opération réussie",
+
+"We were unable to process your withdrawal request at this time. Please check your withdrawal details or contact our support team for assistance. ": "Nous n'avons pas pu traiter votre demande de retrait pour le moment. Veuillez vérifier les détails de votre retrait ou contacter notre équipe d'assistance pour obtenir de l'aide.",
+
+"Your withdrawal request is being processed. We will notify you once it is complete. ": "Votre demande de retrait est en cours de traitement. Nous vous en informerons dès qu'elle sera terminée.",
+
+"Rejected/Not Accepted ": "Refusé/non accepté",
+
+"Your transfer request is being processed. We will notify you once it is complete.": "Votre demande de transfert est en cours de traitement. Nous vous en informerons dès qu'elle sera terminée.",
+
+"Success! Your email has been updated. You’ll now receive important updates and news from us on your new email address. ": "Opération réussie ! Votre adresse e-mail a été mise à jour. Vous recevrez désormais des mises à jour importantes et des nouvelles de notre part sur votre nouvelle adresse.",
+
+"Congratulations! Your password has been updated successfully. You can now log in to your account with your new password. ": "Félicitations ! Votre mot de passe a bien été actualisé. Vous pouvez maintenant vous connecter à votre compte avec votre nouveau mot de passe.",
+
+"Phone number updated": "Numéro de téléphone mis à jour",
+
+"Great news! Your phone number has been successfully updated. We’ll now be able to reach you on your new number for important account updates and notifications.": "Bonne nouvelle ! Votre numéro de téléphone a bien été mis à jour. Nous pourrons désormais vous joindre à votre nouveau numéro pour les mises à jour importantes de votre compte et pour les notifications.",
+
+"MT5 password updated ": "Mot de passe MT5 mis à jour",
+
+"Your MT5 password has been updated successfully. You can now log in to your trading account with your new password.": "Votre mot de passe MT5 a bien été mis à jour. Vous pouvez maintenant vous connecter à votre compte de trading avec votre nouveau mot de passe.",
+
+"MT4 password updated ": "Mot de passe MT4 mis à jour",
+
+"Congratulations! Your MT4 password has been updated successfully. You can now log in to your account with your new password.": "Félicitations ! Votre mot de passe MT4 a bien été mis à jour. Vous pouvez maintenant vous connecter à votre compte de trading avec votre nouveau mot de passe.",
+
+"Leverage Request received!": "Demande d'effet de levier reçue !",
+
+"We’re processing your leveraged change. Contact support for inquiries support@cptmarkets.com.": "Nous traitons votre changement d'effet de levier. Contactez le service d'assistance pour toute demande de renseignements : support.za@cptmarkets.com.",
+
+"You have reached the maximum number of accounts. Please refer to your Relationship Manager or contact our Support Team.": "Vous avez atteint le nombre maximum de comptes. Veuillez vous adresser à votre gestionnaire de relations ou contacter notre équipe de support.",
+
+"User verification is pending and account can not be created": "La vérification de l'utilisateur est en cours et le compte ne peut pas être créé",
+
+"Invalid request, Notification not found": "Demande invalide, notification introuvable",
+
+"IB Execution Fee": "Frais d'exécution IB",
+
+"Lean paymen source beneficiary": "Bénéficiaire de source de paiement allégée",
+
+"Lean payment source beneficiary has been updated": "Bénéficiaire de source de paiement allégée mis à jour",
+
+"Unable to process the GlobePay payment, please try again later": "Impossible de traiter le paiement GlobePay, veuillez réessayer plus tard",
+
+"Email already occupied.": "L'adresse e-mail est déjà prise.",
+
+"Change email failed": "Echec de changement de l'adresse e-mail",
+
+"Sign Up": "S'Inscrire",
+
+"Company Name": "Nom de l'Entreprise",
+
+"Trading Name": "Nom de trading",
+
+"Country of Incorporation": "Pays d'Incorporation",
+
+"Type of Company": "Type de Société",
+
+"Listed Company?": "Société Cotée?",
+
+"Exchange": "Échange",
+
+"Ref Number": "Numéro de Référence",
+
+"This Field is required": "Ce champ est obligatoire",
+
+"Type here": "Écrivez ici",
+
+"Please Enter Your Skrill Pay Account Email/User Id": "Veuillez Saisir L'Adresse E-Mail/L'Identifiant De Votre Compte Skrill Pay",
+
+"Please Enter Your Neteller Pay Account Email/User Id": "Veuillez Saisir L'Adresse E-Mail/L'Identifiant De Votre Compte Neteller Pay",
+
+"Company Details": "Détails de l'Entreprise",
+
+"Place of Business": "Lieu d'Affaires",
+
+"Principal Business Activity": "Activité Principale",
+
+"Tax Domicile": "Domicile Fiscal",
+
+"Legal Entity Identifier (LEI)": "Identifiant d'entité juridique (LEI)",
+
+"Client Representatives Name": "Nom du Représentant du Client",
+
+"Representative Position": "Position Représentative",
+
+"Shareholding Type": "Type D'Actionnaire",
+
+"Nature of Business": "Nature de l'Entreprise",
+
+"Registered Address": "Adresse Enregistrée",
+
+"Building Name/ Number": "Nom/ Numéro du Bâtiment",
+
+"Unit Number": "Numéro d'Unité",
+
+"Business Address": "Adresse Professionnelle",
+
+"Is your registered address same as the business address?": "Votre adresse enregistrée est-elle la même que l'adresse professionnelle?",
+
+"Street Number": "Numéro de Rue",
+
+"Building Name": "Nom du Bâtiment",
+
+"Are you authorized by any regulatory by any regulatory body?": "Êtes-vous autorisé par un organisme de réglementation?",
+
+"Director": "Directeur",
+
+"Date of Birth": "Date de Naissance",
+
+"Politically Exposed Person?": "Personne Politiquement Exposée?",
+
+"Are you a US National/Resident?": "Êtes-vous un ressortissant/résident américain?",
+
+"Are you representative?": "Êtes-vous un représentatif?",
+
+"Are you ShareHolder?": "Êtes-vous actionnaire?",
+
+"Director's Docuements": "Documents du directeur",
+
+"Proof of Id": "Preuve d'identité",
+
+"required": "requis",
+
+"Click here to upload your documents": "Cliquez ici pour télécharger vos documents",
+
+"Proof of Address (within 3 months)": "Justificatif de domicile (dans les 3 derniers mois)",
+
+"Shareholder's Docuements (Owning 25% or more)": "Documents de l'actionnaire (détenant 25% ou plus)",
+
+"Add More": "Ajouter Plus",
+
+"ShareHolders": "Actionnaires",
+
+"Certificate of Incorporation or equivalent": "Certificat d'Incorporation ou équivalent",
+
+"Memorandum and Articles of Association": "Mémorandum et statuts de l'Association",
+
+"Proof of registered address issued within 6 months:": "Justificatif de domicile délivré dans les derniers 6 mois:",
+
+"(Only applicable if your organization is registered by the Financial Authority within your jurisdiction)": "(Uniquement applicable si votre organisation est enregistrée par l'Autorité financière de votre juridiction)",
+
+"Ownership Chart": "Tableau de Propriété",
+
+"Board Resolution": "Résolution du Conseil",
+
+"Register of Directors": "Registre des directeurs",
+
+"Register of Members/Shareholders": "Registre des Membres / Actionnaires",
+
+"Latest Financial Statement": "Derniere declaration financiere",
+
+"Passport Number": "Numéro de passeport",
+
+"Residential Address": "Adresse résidentielle",
+
+"Phone": "Téléphone",
+
+"Are you a US Citizen, ot act on behalf of controlling persons who are US persons?": "Êtes-vous un citoyen américain ou agissez-vous au nom de personnes contrôlantes qui sont des personnes américaines ?",
+
+"Purpose of this trading account?": "Objectif de ce compte de trading ?",
+
+"Funds available for trading with the company (USD)": "Fonds disponibles pour le trading avec la société (USD)",
+
+"Source of funds?": "Source de fonds?",
+
+"Directors Details": "Détails des administrateurs",
+
+"Representative Details": "Détails du représentant",
+
+"ShareHolders Details": "Détails des actionnaires",
+
+"Financial Details": "Détails financiers",
+
+"All information filled in this page will be lost if you cancel!": "Toutes les informations renseignées sur cette page seront perdues si vous annulez !",
+
+"Shareholders Docuements (Owning 25% or more)": "Documents des actionnaires (détenant 25 % ou plus)",
+
+"Advance View": "Vue avancée",
+
+"Basic View": "Vue de base",
+
+"Do you want to Switch to Basic View?": "Voulez-vous passer à l'affichage de base ?",
+
+"Do you want to Switch to Advance View?": "Voulez-vous passer à la vue avancée ?",
+
+"Acting": "Acteur",
+
+"Actuarial Profession": "Profession Actuarielle",
+
+"Advertising": "Publicité",
+
+"Armed Forces and Uniformed Services": "Forces Armées et Services en Uniforme",
+
+"Banking & Investment": "Banque et Investissement",
+
+"Barristers": "Avocats",
+
+"Business & Management": "Affaires et Gestion",
+
+"Charities": "charité",
+
+"Creative Industries": "Industries Créatives",
+
+"Energy": "Énergie",
+
+"Engineering": "Ingénierie",
+
+"Entrepreneurship and Social Enterprise": "Entrepreneuriat et Entreprise Sociale",
+
+"Gaming ": "Jeux",
+
+"Government ": "Le gouvernement␣",
+
+"Human Resources": "Ressources Humaines",
+
+"Journalism": "Journalisme",
+
+"Lawyers ": "Avocats",
+
+"Medical Equipment ": "Équipement Médical␣",
+
+"Marketing ": "Marketing",
+
+"Music ": "Musique",
+
+"Management Consultancy": "Conseil En Gestion",
+
+"Patents and related industry ": "Brevets et industrie similaire",
+
+"Pharmaceuticals and Biotechnology": "Produits Pharmaceutiques et Biotechnologie",
+
+"Psychology ": "Psychologie",
+
+"Public Health": "Santé Publique",
+
+"Science ": "Science",
+
+"Social Care": "Aide Sociale",
+
+"sustainability-environment": "durabilité-environnement",
+
+"Teacher in School": "Enseignant à l'École",
+
+"Translator": "Traducteur",
+
+"Casinos": "Casinos\n",
+
+"Embassies ": "Ambassades",
+
+"Car, boat , truck  Seller": "Vendeur de voitures, bateaux, camions",
+
+"Retail sector ": "secteur du commerce",
+
+"Real Estate ": "Immobilier␣",
+
+"Insurance": "Assurance",
+
+"Gold, Jewel, Diamonds and precious metal dealers ": "marchand d'or, Bijoux, Diamants et métaux précieux ",
+
+"Cash Intesive business restaurants, retail stores, parking ": "Cash Intensive restaurants d'affaires, magasins de détail, parking",
+
+"Travel agents": "Agents de voyages",
+
+"Dancer": "Danseur",
+
+"Art Dealer": "Marchand d'Art",
+
+"Import- export": "Importation-exportation",
+
+"Driver": "Chauffeur",
+
+"Construction worker": "ouvrier du bâtiment\n",
+
+"Hairdresser ": "Coiffeur",
+
+"Content Writer": "Rédacteur de Contenu",
+
+"Author": "Auteur",
+
+"Doctors ": "Médecins",
+
+"Source of Wealth": "Source de Richesse",
+
+"Occupation/Industry": "Profession / Industrie",
+
+"Entrepreneurship/Business ownership": "Entrepreneuriat / Propriété d'entreprise",
+
+"Real estate": "Immobilier",
+
+"Investments/CFD trading/Stock markets": "Investissements / Trading de CFD/Marchés boursiers",
+
+"Employment/Salary": "Emploi / Salaire",
+
+"Accountancy and other Financial related professions": "Comptabilité et autres professions financières",
+
+"Set Password": "Définir le mot de passe",
+
+"Accept Privacy Policy and Terms and Conditions and Click Next": "Acceptez la Politique de confidentialité et les Conditions générales et cliquez sur Suivant",
+
+"Password Set": "Mot de passe défini",
+
+"Your password has been successfully set": "Votre mot de passe a été défini avec succès",
+
+"Welcome to CPT Markets": "Bienvenue chez CPT Markets",
+
+"Trade Anytime": "Tradez à Tout Moment",
+
+"Anywhere": "N'importe où",
+
+"CPT will call you only from our international support numbers:": "CPT vous appellera uniquement à partir de nos numéros d'assistance internationaux:",
+
+"Your leverage change request has been successfully initiated, it will take effect after approval.": "Votre demande de changement d'effet de levier a été initiée avec succès, elle prendra effet après approbation.",
+
+"You have exceeded the maximum allowed deposit limit, before KYC. Please complete your profile to unlock the unlimited deposit and many other exciting features.": "Vous avez dépassé la limite de dépôt maximale autorisée, avant KYC. Veuillez compléter votre profil pour débloquer le dépôt illimité et de nombreuses autres fonctionnalités intéressantes.",
+
+"Complete Profile": "Profil complet",
+
+"Account verification is required for deposit above 300$": "La vérification du compte est requise pour les dépôts supérieurs à 300 $",
+
+"A minimum deposit of $1,000 will grant you access to Trading Central Premium Insights": "Un dépôt minimum de 1 000 $ vous donnera accès à Trading Central Premium Insights",
+
+"Discover the pinnacle of trading through cTrader. Seamlessly fusing state-of-the-art technology with unmatched simplicity, cTrader empowers traders like never before, emboldening them to navigate the exhilarating markets with unwavering confidence.": "Découvrez le summum du trading via cTrader. Fusionnant de manière transparente une technologie de pointe avec une simplicité inégalée, cTrader permet aux traders comme jamais auparavant, en les encourageant à naviguer sur les marchés exaltants avec une confiance inébranlable.",
+
+"Intuitive: Effortlessly navigate a streamlined interface for seamless trading.": "Intuitif: Naviguez sans effort dans une interface simplifiée pour un trading transparent.",
+
+"Speed: Execute orders instantly to seize market opportunities.": "Rapidité: Exécutez les ordres instantanément pour saisir les opportunités du marché.",
+
+"Advanced Charts: Analyze real-time data with precision using advanced charting tools.": "Graphiques avancés: Analysez les données en temps réel avec précision à l'aide d'outils graphiques avancés.",
+
+"Custom Indicators: Personalize your experience with customizable indicators.": "Indicateurs personnalisés: Personnalisez votre expérience avec des indicateurs personnalisables.\n",
+
+"Diverse Orders: Execute various order types, aligning with your strategy.": "Ordres divers: Exécutez différents types d'ordres, en vous alignant sur votre stratégie.",
+
+"Downloading Ctrader is simple and easy, follow these steps:": "Le téléchargement de Ctrader est simple et facile, suivez ces étapes :",
+
+"Create an account": "Créer un compte",
+
+"Download and install CTrader": "Téléchargez et installez CTrader",
+
+"Your email verification is Pending, please go to your inbox and verify your email": "La vérification de votre e-mail est en attente, veuillez accéder à votre boîte de réception et vérifier votre e-mail",
+
+"Thank you": "Merci",
+
+"Your have Veified your email": "Vous avez vérifié votre email",
+
+"Email verification link expired": "Le lien de vérification par e-mail a expiré",
+
+"look like the verfication link has expired. not worry we can send the link again": "il semble que le lien de vérification ait expiré. ne vous inquiétez pas, nous pouvons renvoyer le lien",
+
+"Resend verification link": "Renvoyer le lien de vérification",
+
+"A verification link has been sent to your email account": "Un lien de vérification a été envoyé à votre compte de messagerie",
+
+"Email Verification Pending": "Vérification de l'e-mail en attente",
+
+"We have sent a email verification link to your email id": "Nous avons envoyé un lien de vérification par e-mail à votre identifiant de messagerie",
+
+"Your email verification is Pending, please go to your registered email inbox, to verify your email": "La vérification de votre e-mail est en attente, veuillez accéder à votre boîte de réception e-mail enregistrée pour vérifier votre e-mail.",
+
+"Congratulations, Your email has been verified successfully.": "Félicitations, votre email a été vérifié avec succès.",
+
+"Email verification is Pending": "",
+
+"Must be at least 8 characters!": "",
+
+"Must contain at least 1 number!": "",
+
+"Must contain at least 1 in Capital Case!": "",
+
+"Must contain at least 1 Letter in Small Case!": "",
+
+"Must contain at least 1 Special Character!": "",
+
+"Your Deposit has been Initiated Successfully, Kindly Transfer to this Vodafone Wallet from your Personal Number": "",
+
+"Your Deposit has been Initiated Successfully, We will Contact you Shortly": "",
+
+"Please select any type": "",
+
+"Your Request is Under Review": "",
+
+"Your CPT Markets application has been successfully submitted for verification. You can expect our response shortly.": "",
+
+"Phone number required": "",
+
+"Invalid phone number": "",
+
+"Your password must contain the following:": "",
+
+"Verify your email": "",
+
+"You have registered successfully": "",
+
+"Please note, that in order for us to proceed and execute a withdrawal request you might be requested to provide us with Proof of Address.": "",
+
+"At least 1 number": "",
+
+"At least 1 in Capital Case": "",
+
+"At least 1 Special Character": "",
+
+"At least 1 Letter in Small Case": "",
+
+"Password (8 to 30 characters)": "",
+
+"Agreement": "",
+
+"I have read and understood the document, and I agree to electronically sign it": "",
+
+"Add Sign": "",
+
+"Clear Sign": "",
+
+"Please add Signature to submit": "",
+
+"Please opt for the same payment method for withdrawal as the one you used for your deposit.": "",
+
+"Agreement document": "",
+
+"Your signature details added successfully": ""
+}

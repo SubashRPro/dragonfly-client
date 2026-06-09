@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="17.877" viewBox="0 0 27 17.877">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_22927" data-name="Rectangle 22927" width="27" height="17.877" rx="3.893" transform="translate(31.245 0)" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="-1.157" y1="1" x2="-1.12" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#cf1400"/>
+      <stop offset="1" stop-color="#cf1400"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_24519" data-name="Rectangle 24519" width="14.157" height="9.438" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_22928" data-name="Rectangle 22928" width="27" height="17.877" transform="translate(31.245 0)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_29653" data-name="Group 29653" transform="translate(-1195 -213)">
+    <g id="Group_29648" data-name="Group 29648" transform="translate(1163.755 213)">
+      <g id="Group_29643" data-name="Group 29643" clip-path="url(#clip-path)">
+        <path id="Path_60338" data-name="Path 60338" d="M0,0H27V17.877H0Z" transform="translate(31.245)" fill="url(#linear-gradient)"/>
+        <g id="Group_31107" data-name="Group 31107" transform="translate(30.364 -0.5)">
+          <path id="Path_60348" data-name="Path 60348" d="M0,0V9.438H14.157V0Z" transform="translate(0 0)" fill="#000095"/>
+          <path id="Path_60349" data-name="Path 60349" d="M216.138,70.866l.472,1.777,1.3-1.3-.479,1.775,1.775-.479-1.3,1.3,1.777.472-1.777.472,1.3,1.3-1.775-.479.479,1.775-1.3-1.3-.472,1.777-.472-1.777-1.3,1.3.479-1.775-1.775.479,1.3-1.3-1.777-.472,1.777-.472-1.3-1.3,1.775.479-.479-1.775,1.3,1.3Z" transform="translate(-209.059 -69.687)" fill="#fff"/>
+          <g id="Group_31109" data-name="Group 31109">
+            <g id="Group_31108" data-name="Group 31108" clip-path="url(#clip-path-2)">
+              <path id="Path_60350" data-name="Path 60350" d="M306.729,162.993A2.006,2.006,0,1,0,308.734,165a2.006,2.006,0,0,0-2.006-2.006m0,3.775A1.77,1.77,0,1,1,308.5,165a1.77,1.77,0,0,1-1.77,1.77" transform="translate(-299.65 -160.28)" fill="#000095"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

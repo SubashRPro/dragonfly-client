@@ -1,0 +1,13 @@
+{
+  "app": {
+    "name": "Client Portal - Trive",
+    "description": ""
+  },
+  "user": {
+    "name": "Admin",
+    "avatar": "",
+    "email": "cpt@qq.com"
+  },
+  "menu": [
+  ]
+}

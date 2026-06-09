@@ -1,0 +1,2579 @@
+{
+
+"500": "500",
+
+"1000": "1000",
+
+"2000": "2000",
+
+"5000": "5000",
+
+"Congratulations": "Congratulations",
+
+"Your account has been created": "Your profile has been created",
+
+"Next": "Next",
+
+"Unlock all features!": "Unlock all features!",
+
+"Please follow the steps to unlock all the feature": "Please follow the steps to unlock all the feature",
+
+"Skip For Now": "Skip For Now",
+
+"Verify My Account": "Verify My Account",
+
+"Hello!": "Hello!",
+
+"Accounts": "Accounts",
+
+"Funds": "Funds",
+
+"Copy Trading": "Copy Trading",
+
+"soon": "soon",
+
+"Notifications": "Notifications",
+
+"Support Center": "Support Center",
+
+"Settings": "Settings",
+
+"Logout": "Logout",
+
+"Total Balance": "Total Balance",
+
+"Total Lots": "Total Lots",
+
+"Open Positions": "Open Positions",
+
+"Profit": "Profit",
+
+"Deposit": "Deposit",
+
+"Daily": "Daily",
+
+"Weekly": "Weekly",
+
+"Monthly": "Monthly",
+
+"Yearly": "Yearly",
+
+"Statistics": "Statistics",
+
+"Profit/Loss": "Profit/Loss",
+
+"Month": "Month",
+
+"Total amount of funds available on your trading accounts": "Total amount of funds available on your trading accounts",
+
+"List of all the transactions been executed": "List of all the transactions been executed",
+
+"A list of your long or short positions": "A list of your long or short positions",
+
+"Amount earned by as a result of successful trades": "Amount earned by as a result of successful trades",
+
+"My Profile": "My Profile",
+
+"Market News": "Market News",
+
+"Contact Us": "Contact Us",
+
+"Today": "Today",
+
+"Withdrawal Pending": "Withdrawal Pending",
+
+"Live Support Chat": "Live Support Chat",
+
+"Type your message...": "Type your message...",
+
+"Messages": "Messages",
+
+"Search": "Search",
+
+"No Chats": "No Chats",
+
+"Start New Chat": "Start New Chat",
+
+"Reach our to support team for any inquiries": "Reach our to support team for any inquiries",
+
+"Chat Now": "Chat Now",
+
+"Your withdrawal request is being processed. We will notify you once it is complete.": "Your withdrawal request is being processed. We will notify you once it is complete.",
+
+"Transfer Rejected": "Transfer Rejected",
+
+"We were unable to process your transfer request at this time. Please check your transfer details or contact our support team for assistance.": "We were unable to process your transfer request at this time. Please check your transfer details or contact our support team for assistance.",
+
+"Yesterday": "Yesterday",
+
+"Withdrawal Successful": "Withdrawal Successful",
+
+"Your withdrawal request has been approved. Your funds will be transferred to your designated account shortly.": "Your withdrawal request has been approved. Your funds will be transferred to your designated account shortly.",
+
+"Transfer Successful": "Transfer Successful",
+
+"Your transfer request has been successful. Your funds have been transferred to your designated account.": "Your transfer request has been successful. Your funds have been transferred to your designated account.",
+
+"My Funds": "My Funds",
+
+"Virefy": "Virefy",
+
+"Actions": "Actions",
+
+"Account1": "Account",
+
+"Currency": "Currency",
+
+"Account Type": "Account Type",
+
+"Balance": "Balance",
+
+"Equity": "Equity",
+
+"Leverage": "Leverage",
+
+"Fee Paid": "Fee Paid",
+
+"Last Activity": "Last Activity",
+
+"Status": "Status",
+
+"Standard": "Standard",
+
+"Inactive": "Inactive",
+
+"My Accounts": "My Accounts",
+
+"Account Details": "Account Details",
+
+"New Trading Account": "New Trading Account",
+
+"Margin/Trade Calculator": "Margin/Trade Calculator",
+
+"View Account": "View Account",
+
+"Change Password": "Change Password",
+
+"Change Leverage": "Change Leverage",
+
+"Monitor the performance of your trading account, track investments, and manage your risk exposure.": "Monitor the performance of your trading account, track investments, and manage your risk exposure.",
+
+"Amount available in your trading account": "Amount available in your trading account",
+
+"Realized P/L is profit & loss on a trade": "Realized P/L is profit & loss on a trade",
+
+"Profit or loss held in your current open positions": "Profit or loss held in your current open positions",
+
+"Percentage of profitable trades compared to the total number of trades executed": "Percentage of profitable trades compared to the total number of trades executed",
+
+"My Balance": "My Balance",
+
+"Realized P/L": "Realized P/L",
+
+"Unrealized P/L": "Unrealized P/L",
+
+"Win %": "Win %",
+
+"A/C Name": "A/C Name",
+
+"Email ID": "Email ID",
+
+"Open": "Open",
+
+"Open Time": "Open Time",
+
+"Trading Platform": "Trading Platform",
+
+"Open Trades": "Open Trades",
+
+"History": "History",
+
+"Order ID": "Order ID",
+
+"A/C  No": "A/C  No",
+
+"Action": "Action",
+
+"Symbol": "Symbol",
+
+"Volume": "Volume",
+
+"Open Price": "Open Price",
+
+"Swap": "Swap",
+
+"Profit(UER)": "Profit(UER)",
+
+"to": "to",
+
+"Apply": "Apply",
+
+"Account Number": "Account Number",
+
+"Old Password": "Old Password",
+
+"Confirm Password": "Confirm Password",
+
+"Reset Password": "Reset Password",
+
+"Your Password Is Reset": "Your Password Is Reset",
+
+"Please log in with your new password to access your trading account": "Please log in with your new password to access your trading account",
+
+"Back To Accounts": "Back To Accounts",
+
+"Old Leverage": "Old Leverage",
+
+"New Leverage": "New Leverage",
+
+"Cancel": "Cancel",
+
+"Create your account": "Create your account",
+
+"Account Types": "Account Types",
+
+"Create": "Create",
+
+"New Trading Account Successfully Created": "New Trading Account Successfully Created",
+
+"Please take a moment to review your account details and deposit funds to start trading.": "Please take a moment to review your account details and deposit funds to start trading.",
+
+"Deposit Account": "Deposit Account",
+
+"Margin Calculator": "Margin Calculator",
+
+"Trade Calculator": "Trade Calculator",
+
+"Currency Pair": "Currency Pair",
+
+"Account Currency": "Account Currency",
+
+"Position Size": "Position Size",
+
+"MT4 Lot": "MT4 Lot",
+
+"Calculate": "Calculate",
+
+"Margin Value": "Margin Value",
+
+"Short Swap": "Short Swap",
+
+"Pip Value": "Pip Value",
+
+"Long Swap": "Long Swap",
+
+"New Password": "New Password",
+
+"Change Email": "Change Email",
+
+"Change Phone Number": "Change Phone Number",
+
+"Current Email": "Current Email",
+
+"New Email": "New Email",
+
+"Done!": "Done!",
+
+"Email": "Email",
+
+"Send Code": "Send Code",
+
+"Code Sent!": "Code Sent!",
+
+"Enter the OTP sent to": "Enter the OTP sent to",
+
+"Didn't receive code?": "Didn't receive code?",
+
+"Your Email Is Changed": "Your Email Is Changed",
+
+"Current phone number": "Current phone number",
+
+"New phone number": "New phone number",
+
+"Your Number Is Changed": "Your Number Is Changed",
+
+"Verified Account": "Verified Account",
+
+"Personal Information": "Personal Information",
+
+"User Nationality": "User Nationality",
+
+"ID Number": "ID Number",
+
+"User Date of Birth": "User Date of Birth",
+
+"Phone Number": "Phone Number",
+
+"Language": "Language",
+
+"User Address": "User Address",
+
+"Balance Information": "Balance Information",
+
+"Verification Requested": "Verification Requested",
+
+"Unverified Account": "Unverified Account",
+
+"FUNDS: My Funds  -  Deposit - Withdraw - Transfer": "FUNDS: My Funds  -  Deposit - Withdraw - Transfer",
+
+"My Main Balance": "My Main Balance",
+
+"Withdraw": "Withdraw",
+
+"Transfer": "Transfer",
+
+"Filter": "Filter",
+
+"My Funds History": "My Funds History",
+
+"Bill No": "Bill No",
+
+"Type": "Type",
+
+"From Account": "From Account",
+
+"To Account": "To Account",
+
+"Amount": "Amount",
+
+"Rejected": "Rejected",
+
+"Pending": "Pending",
+
+"Successful": "Successful",
+
+"Filter By:": "Filter By:",
+
+"Status By:": "Status By:",
+
+"All": "All",
+
+"Add Time": "Add Time",
+
+"Apply Filter": "Apply Filter",
+
+"Reset": "Reset",
+
+"Download Platform": "Download Platform",
+
+"Trading Central": "Trading Central",
+
+"PAYMENT OPTION": "PAYMENT OPTION",
+
+"Wire Transfer": "WIRE TRANSFER",
+
+"Alternative Methods": "Alternative Methods",
+
+"Select deposit account": "Select deposit account",
+
+"Deposit amount": "Deposit amount",
+
+"Account Balance: 100 USD": "Account Balance: 100 USD",
+
+"Deposit Summary": "Deposit Summary",
+
+"Deposit To": "Deposit To",
+
+"Trading Account": "Trading Account",
+
+"Account Balance": "Account Balance",
+
+"Deposit Amount": "Deposit Amount",
+
+"Fees": "Fees",
+
+"Process Time": "Process Time",
+
+"Instant": "Instant",
+
+"Account Details USD": "Account Details USD",
+
+"Account Name": "Account Name",
+
+"Bank Name": "Bank Name",
+
+"Branch Name": "Branch Name",
+
+"Bank Address": "Bank Address",
+
+"Back": "Back",
+
+"Your transaction has been received.": "Your transaction has been received.",
+
+"Generally it takes  2-4 working days to review and approve!": "Generally it takes  2-4 working days to review and approve!",
+
+"View Transactions": "View Transactions",
+
+"Deposited Amount": "Deposited Amount",
+
+"Generally it takes 48 hours to review and approve!": "Generally it takes 48 hours to review and approve!",
+
+"Back To My Funds": "Back To My Funds",
+
+"FUNDS AND TRANSFER:": "FUNDS AND TRANSFER:",
+
+"Transfer From": "Transfer From",
+
+"Transfer To": "Transfer To",
+
+"Conversion Rate": "Conversion Rate",
+
+"Credit Amount": "Credit Amount",
+
+"Submit": "Submit",
+
+"Transfer Request Received": "Transfer Request Received",
+
+"Support Center:": "Support Center:",
+
+"Send  us e-mail": "Send  us e-mail",
+
+"Start a live chat": "Start a live chat",
+
+"Search for a question": "Search for a question",
+
+"Type your question or search keyword": "Type your question or search keyword",
+
+"All Tickets": "All Tickets",
+
+"In Progress": "In Progress",
+
+"Resolved": "Resolved",
+
+"Getting Started": "Getting Started",
+
+"Live account": "Live account",
+
+"Withdrawal": "Withdrawal",
+
+"New Ticket": "New Ticket",
+
+"New Service Request": "New Service Request",
+
+"Select type": "Select type",
+
+"Request Details": "Request Details",
+
+"Write the details here": "Write the details here",
+
+"Upload documents here": "Upload documents here",
+
+"Category": "Category",
+
+"Select Category": "Select Category",
+
+"Your Request Has Been Sent!": "Your Request Has Been Sent!",
+
+"Thank you for your request,our support team will contact you soon.": "Thank you for your request,our support team will contact you soon.",
+
+"Back to support center": "Back to support center",
+
+"BankDetails1": "Payments from third parties are not accepted.The name of the sender must match the name on your registered account.",
+
+"BankDetails2": "Funds sent via bank transfer might be subject to conversion rates.",
+
+"BankDetails4": "With every successful transaction, the funds will be added to your MT4 account upon receipt. The processing time is generally 3-5 business days.",
+
+"BankDetails5": "For faster trace of your transactions please send us a copy of your bank wire confirmation via Attachment so we can check all details necessary.",
+
+"BankDetails6": "The method of your withdrawal must match the method of your deposit.In this respect the withdrawal of your deposit can only be made to the same account from which you originally deposited.",
+
+"No need for Boot Camp or Parallels Desktop": "No need for Boot Camp or Parallels Desktop",
+
+"Over 1000 instruments including Forex, CFDs, and Futures": "Over 1000 instruments including Forex, CFDs, and Futures",
+
+"Spreads as low as 0.6 pips": "Spreads as low as 0.6 pips",
+
+"Full EA (Expert Advisor) Functionality": "Full EA (Expert Advisor) Functionality",
+
+"1 Click Trading": "1 Click Trading",
+
+"Technical Analysis Tools with 50 indicators and charting tools": "Technical Analysis Tools with 50 indicators and charting tools",
+
+"3 Chart Types": "3 Chart Types",
+
+"Micro Lot Accounts": "Micro Lot Accounts",
+
+"Hedging Allowed": "Hedging Allowed",
+
+"A user-friendly": "A user-friendly intuitive platform with easy access to all relevant tools and information. Access Trive MT4 platform anytime directly on the web, PC, iOS, or Android devices. Multiple devices can easily be accessed using a single login for the ultimate convenient trading experience.",
+
+"Downloading MT4 is simple and easy, follow these steps:": "Downloading MT4 is simple and easy, follow these steps:",
+
+"Create an account (Live or Demo)": "Create an account (Live or Demo)",
+
+"Download and install MT4": "Download and install MT4",
+
+"Login with your account details": "Login with your account details",
+
+"or MetaTrader 5": "MT5, or MetaTrader 5, is the successor of MetaTrader 4 (MT4), a popular online trading platform. It was originally released as a beta version in 2010 by MetaQuotes Software Corp. MetaTrader 5 gives you access to trade leveraged products on your favorite instruments. MT5 has improved trading functionalities, enhanced scripting tools, and expert advisors, making it intuitive and advanced.",
+
+"Intuitive interface": "Intuitive interface",
+
+"Fully customible": "Fully customible",
+
+"Advanced analytics": "Advanced analytics",
+
+"Flexible and convenient": "Flexible and convenient",
+
+"Secure and stable platform": "Secure and stable platform",
+
+"Industry-favourite choice": "Industry-favourite choice",
+
+"MetaTrader 5 expert advisors": "MetaTrader 5 expert advisors",
+
+"More assets, more opportunities": "More assets, more opportunities",
+
+"Available for Windows or Mac": "Available for Windows or Mac",
+
+"Downloading MT5 is simple and easy, follow these steps:": "Downloading MT5 is simple and easy, follow these steps:",
+
+"Open Account": "Open Account",
+
+"Individual": "Individual",
+
+"Partner": "Partner",
+
+"Institutional": "Institutional",
+
+"An individual brokerage account has the name of one account owner": "An individual brokerage account has the name of one account owner",
+
+"Explore our comprehensive solution for institutional investors": "Explore our comprehensive solution for institutional investors",
+
+"Platform": "Platform",
+
+"Profile": "Profile",
+
+"Reports": "Reports",
+
+"Please Select Trading Platform": "Please Select Trading Platform",
+
+"Balance History": "Transaction History",
+
+"Bank Details": "Bank Details",
+
+"Bank Country": "Bank Country",
+
+"IBAN": "IBAN",
+
+"Swift Code": "Swift Code",
+
+"Add Bank Details": "Add Bank Details",
+
+"Add Bank Account": "Add Bank Account",
+
+"Account Holder Name": "Account Holder Name",
+
+"Upload Bank Statement": "Upload Bank Statement",
+
+"Close": "Close",
+
+"Confirm": "Confirm",
+
+"Date": "Date",
+
+"Start date": "Start date",
+
+"End date": "End date",
+
+"Transaction Type": "Transaction Type",
+
+"Please Select": "Please Select",
+
+"Please enter the Account Holder Name": "Please enter the Account Holder Name",
+
+"Please enter valid IBAN without special characters": "Please enter valid IBAN without special characters",
+
+"Please enter the Bank Address": "Please enter the Bank Address",
+
+"Please enter the Bank Country": "Please enter the Bank Country",
+
+"Please enter the Account Number": "Please enter the Account Number",
+
+"Please enter the IBAN!": "Please enter the IBAN!",
+
+"IBAN number contains up to 34 alphanumeric characters!": " IBAN number contains up to 34 alphanumeric characters!",
+
+"Mark Default Bank Details": "Mark Default Bank Details",
+
+"Edit Bank Account": "Edit Bank Account",
+
+"Save": "Save",
+
+"User Name": "User Name",
+
+"User Email": "User Email",
+
+"User Date Of Birth": "User Date Of Birth",
+
+"Fill the form below with your exact information as your legal documents in (English)": "Fill the form below with your exact information as your legal documents in (English)",
+
+"Title": "Title",
+
+"Please choose your Title to proceed.": "Please choose your Title to proceed.",
+
+"Please enter first name without special characters!": "Please enter first name without special characters!",
+
+"Please enter middle name without special characters!": "Please enter middle name without special characters!",
+
+"Please enter last name without special characters": "Please enter last name without special characters",
+
+"Please enter the date": "Please enter the date",
+
+"We are sorry, you must be minimum 18 years to register and trade with us.": "We are sorry, you must be minimum 18 years to register and trade with us.",
+
+"Please select valid Nationality": "Please select valid Nationality",
+
+"Select a Nationality": "Select a Nationality",
+
+"Please enter  phone number": "Please enter  phone number",
+
+"Please enter valid phone number": "Please enter valid phone number",
+
+"Tax Identification Number": "Tax Identification Number",
+
+"Are you a U.S. citizen?": "Are you a U.S. citizen?",
+
+"Yes": "Yes",
+
+"No": "No",
+
+"Are you a Politically Exposed Person(PEP), or closely related to a PEP?": "Are you a Politically Exposed Person(PEP), or closely related to a PEP?",
+
+"Please enter Flat Number": "Please enter Flat Number",
+
+"Please enter the Street Name": "Please enter the Street Name",
+
+"Please select valid Country": "Please select valid Country",
+
+"Please enter the State": "Please enter the State",
+
+"Please enter the city": "Please enter the city",
+
+"Please enter the Zip Code": "Please enter the Zip Code",
+
+"Please answer the questions below": "Please answer the questions below",
+
+"Please type valid answer!": "Please type valid answer!",
+
+"Please select valid answer!": "Please select valid answer!",
+
+"Proof Of ID": "Proof Of ID",
+
+"Please ensure your proof of ID shows your full name, date of birth and its expiry date. photo ID must be valid, clear and colored copy.": "Please ensure your proof of ID shows your full name, date of birth and its expiry date. photo ID must be valid, clear and colored copy.",
+
+"Accepted document file type - jpg, pdf, jpeg, tiff. Max file size 12 Mb.": "Accepted document file type - jpg, pdf, jpeg, tiff. Max file size 5 Mb.",
+
+"Please Upload the front of the document": "Please Upload the front of the document",
+
+"Please Upload the back of the document": "Please Upload the back of the document",
+
+"Drop Front side of your National ID card": "Drop Front side of your National ID card",
+
+"Please Upload the Front of the document": "Please Upload the Front of the document",
+
+"Drop Back side of your National ID card": "Drop Back side of your National ID card",
+
+"Please Upload the Back of the document": "Please Upload the Back of the document",
+
+"Drop Front side of your Driving License": "Drop Front side of your Driving License",
+
+"Drop Back side of your Driving License": "Drop Back side of your Driving License",
+
+"Address Proof-Front": "Proof of Address",
+
+"proofData": "Proof of address must be less than 3 months old, clearly stating your name and full residential address (PO Boxes are not accepted). Document requirements starting from FILE TYPES - jpg, pdf, jpeg, png, tiff.",
+
+"Suitability Test": "Suitability Test",
+
+"Are you sure to cancel?": "Are you sure to cancel?",
+
+"Yes, Cancel": "Yes, Cancel",
+
+"Continue Filling": "Continue Filling",
+
+"OK": "OK",
+
+"support": "Sorry you exceeded the maximum number of allowed attempts of the suitability test, kindly get in touch with our support team <a href='mailto:support.@dragonflyfx.com'> support.@dragonflyfx.com </a> for further assistance",
+
+"View All": "View All",
+
+"Opened Time": "Opened Time",
+
+"Closed Time": "Closed Time",
+
+"Closed Price": "Closed Price",
+
+"Hello": "Hello",
+
+"Verify Current Email": "Verify Current Email",
+
+"Minimum 6 letters with the combination of Alphabets + Numbers (Special Character not Allowed)": "Minimum 6 letters with the combination of Alphabets + Numbers (Special Character not Allowed)",
+
+"Two passwords that you enter is inconsistent!": "Two passwords that you enter is inconsistent!",
+
+"Leverage Change": "Leverage Change",
+
+"Current Leverage": "Current Leverage",
+
+"Required Leverage": "Required Leverage",
+
+"Password Reset": "Password Reset",
+
+"Your password has been successfully reset.": "Your password has been successfully reset.",
+
+"Click below to login.": "Click below to login.",
+
+"Market Analysis": "Market Analysis",
+
+"Default": "Default",
+
+"Please enter the Bank Name": "Please enter the Bank Name",
+
+"Please enter the Swift Code": "Please enter the Swift Code",
+
+"Please select any Account": "Please select any Account",
+
+"Please enter valid amount!": "Please enter valid amount!",
+
+"Please Select the Deposit Bank Accounts Details": "Please Select the Deposit Bank Accounts Details",
+
+"Please type the Message!": "Please type the Message!",
+
+"Please enter valid email id": "Please enter valid email id",
+
+"Please Enter Phone Number": "Please Enter Phone Number",
+
+"Please Enter valid phone number": "Please enter valid phone number",
+
+"Please enter first name without special characters": "Please enter first name without special characters",
+
+"The input is not valid Email!": "The input is not valid Email!",
+
+"Your balance is insufficient": "Your balance is insufficient",
+
+"Minimum Amount Should be 1 USD": "Minimum Amount Should be 1 USD",
+
+"Please select nationality!": "Please select nationality!",
+
+"Please Upload File": "Please Upload File",
+
+"selectType": "Please Select Account Type",
+
+"selectCurrency": "Please Select Currency",
+
+"selecrtLeverage": "Please Select Leverage",
+
+"Please enter number": "Please enter number",
+
+"This field is required": "This field is required",
+
+"We sent OTP to your email, OTP will be valid for 5 minutes": "We sent OTP to your email, OTP will be valid for 5 minutes",
+
+"Are you sure to Delete Bank Account?": "Are you sure to Delete Bank Account?",
+
+"Trading Account Balance": "Trading Account Balance",
+
+"Transfer Amount": "Transfer Amount",
+
+"Enter OTP": "Enter OTP",
+
+"Withdraw Amount": "Withdraw Amount",
+
+"Withdraw Summary": "Withdraw Summary",
+
+"Withdraw From": "Withdraw From",
+
+"Withdrawal Amount": "Withdrawal Amount",
+
+"within 24 to 48 hours": "within 24 to 48 hours",
+
+"Margin": "Margin",
+
+"Exchange Rate": "Exchange Rate",
+
+"Upload Transaction Receipt": "Upload Transaction Receipt",
+
+"Edit": "Edit",
+
+"Delete": "Delete",
+
+"Order Id": "Order Id",
+
+"Closed Positions": "Closed Positions",
+
+"Deposit History": "Deposit History",
+
+"Withdraw History": "Withdraw History",
+
+"Transfer History": "Transfer History",
+
+"Closed Position": "Closed Position",
+
+"Close Time": "Close Time",
+
+"Deposited Time": "Deposited Time",
+
+"Created Time": "Created Time",
+
+"Analyst Views": "Analyst Views",
+
+"Economic Calendar": "Economic Calendar",
+
+"Market Buzz": "Market Buzz",
+
+"Education": "Education",
+
+"Analyst Views Data": "Analyst Views Data",
+
+"Access Denied": "Access Denied",
+
+"To get access to premium Trading Central Insights , please deposit a minimum of $1000.": "To get access to premium Trading Central Insights , please deposit a minimum of $1000.",
+
+"Terms of Use": "Terms of Use",
+
+"Select": "Select",
+
+"Agree": "Agree",
+
+"Send us e-mail": "Send us e-mail",
+
+"View Ticket": "View Ticket",
+
+"Support Center - Ticket Code:": "Support Center - Ticket Code:",
+
+"Post your comments here": "Post your comments here",
+
+"User Residence": "User Residence",
+
+"Address Information": "Address Information",
+
+"Building Name/Number": "Building Name/Number",
+
+"Flat Number": "Flat Number",
+
+"Country": "Country",
+
+"State": "State",
+
+"City": "City",
+
+"Zip Code": "Zip Code",
+
+"Document Information": "Document Information",
+
+"Street Name": "Street Name",
+
+"Funded": "Funded",
+
+"Verified": "Verified",
+
+"Active": "Active",
+
+"Failed": "Failed",
+
+"Your Request Is Sent": "Your Request Is Sent",
+
+"Dashboard": "Dashboard",
+
+"License": "License",
+
+"Address": "Address",
+
+"Please enter the Building Name/Number": "Please enter the Building Name/Number",
+
+"Driving License": "Driving License",
+
+"National ID": "National ID",
+
+"Thank you!": "Thank you!",
+
+"Your transaction has been": "Your transaction has been",
+
+"Generally it takes 24 hours to review and approve!": "Generally it takes 24 hours to review and approve!",
+
+"View Transaction Details": "View Transaction Details",
+
+"Are you sure to exit the current payment?": "Are you sure to exit the current payment?",
+
+"The current return cannot be undone": "The current return cannot be undone",
+
+"S.No": "S.No",
+
+"Corporate": "Corporate",
+
+"Explore our comprehensive solution for corporates": "Explore our comprehensive solution for corporates",
+
+"coming soon": "coming soon",
+
+"Country of Residence": "Country of Residence",
+
+"Please select Country of Residence": "Please select Country of Residence!",
+
+"Front file Name": "Front file",
+
+"Back File Name": "Back File",
+
+"Upload Time": "Upload Time",
+
+"Document Type": "Document Type",
+
+"Current Number": "Current Number",
+
+"New Number": "New Number",
+
+"Are you sure?": "Are you sure?",
+
+"Do you want to logout?": "Do you want to logout?",
+
+"Remember me": "Remember me",
+
+"Login": "Login",
+
+"Register": "Register",
+
+"Forgot Password": "Forgot Password",
+
+"Dont have an account?": "Don't have an account?",
+
+"Sign up for free?": "Sign up for free?",
+
+"to your account": "to your account",
+
+"Open an account": "Open an account",
+
+"in less than 2 minutes": "in less than 2 minutes",
+
+"Details": "Details",
+
+"Trade with us": "Trade with us",
+
+"Create an account and start trading": "Create an account and start trading",
+
+"Verification": "Verification",
+
+"Password": "Password",
+
+"Full Name": "Full Name",
+
+"Mobile Number": "Mobile Number",
+
+"Nationality": "Nationality",
+
+"I have read and consent to my data being used in accordance with the": "I have read and consent to my data being used in accordance with the",
+
+"Privacy Policy": "Privacy Policy",
+
+"Terms and Conditions.": "Terms and Conditions.",
+
+"have an account?": "have an account?",
+
+"Please Check Your Email": "Please Check Your Email",
+
+"Weve sent a verification code to": "We've sent a verification code to",
+
+"Didnt get a code?": "Didn't get a code?",
+
+"Click to resend": "Click to resend",
+
+"Verify": "Verify",
+
+"OTP sent!": "OTP sent success!",
+
+"An Exciting Trading Beginning": "An Exciting Trading Beginning",
+
+"login success": "login success",
+
+"Enter OTP sent to:": "Enter the OTP sent to:",
+
+"Didnt receive code?": "Didnt receive code?",
+
+"RESEND": "RESEND",
+
+"Get The Code": "Get The Code",
+
+"Demo Account": "Demo Account",
+
+"Total Count": "Total Count",
+
+"Opening Price": "Opening Price",
+
+"Closing Price": "Closing Price",
+
+"agree_tc": "Please agree to the mentioned policies",
+
+"Home": "Home",
+
+"Trade with": "Trade with",
+
+"Access global financial market and get premium support": "Access global financial market and get premium support",
+
+"Invite a friend and enjoy earnings from their activity.": "Invite a friend and enjoy earnings from their activity.",
+
+"Your personal referral link": "Your personal referral link",
+
+"Copy Link": "Copy Link",
+
+"Share": "Share",
+
+"To Open": "To Open",
+
+"Opened": "Opened",
+
+"Disabled": "Disabled",
+
+"Read Only": "Read Only",
+
+"Cancelled": "Cancelled",
+
+"Open New Account": "Open New Account",
+
+"My Wallet": "My Wallet",
+
+"Wallet Balance": "Trading Account Balance",
+
+"Wallet History": "Transaction History",
+
+"Transaction Amount": "Transaction Amount",
+
+"Amount Number": "Amount",
+
+"Transfer In": "Transfer In",
+
+"Transfer Out": "Transfer Out",
+
+"In Process": "In Process",
+
+"Success": "Success",
+
+"Go To": "Go To",
+
+"Wallet": "Wallet",
+
+"Wallet Number": "Wallet Number",
+
+"Select Deposit Method": "Select Deposit Method",
+
+"Select Withdraw Method": "Select Withdraw Method",
+
+"Crypto Wallet": "CoinPayments",
+
+"Proceed": "Proceed",
+
+"Profit(USD)": "Profit",
+
+"Commission": "Commission",
+
+"Export": "Export",
+
+"gendertitle": "Title",
+
+"Upload Documents": "Upload Documents",
+
+"Questionnaire": "Questionnaire",
+
+"First Name": "First Name",
+
+"English Name": "English Name",
+
+"Middle Name": "Middle Name",
+
+"Last Name": "Last Name",
+
+"Date Of Birth": "Date Of Birth",
+
+"Select Date": "Select Date",
+
+"Gender": "Gender",
+
+"Female": "Female",
+
+"Male": "Male",
+
+"Apartment/House Name": "Building Name/Number",
+
+"Support": "Support",
+
+"Open New Ticket": "Open New Ticket",
+
+"Service Request Id": "Service Request Id",
+
+"Created Date": "Created Date",
+
+"View": "View",
+
+"Authentication": "Authentication",
+
+"Two Factor Authentication": "Two Factor Authentication",
+
+"Profile Information": "Profile Information",
+
+"Change Email Id": "Change Email Id",
+
+"Enter Email Here": "Enter Email Here",
+
+"Get Code": "Get Code",
+
+"Enter Code": "Enter Code",
+
+"Existing Password": "Existing Password",
+
+"Re Enter New Password": "Re Enter New Password",
+
+"Update": "Update",
+
+"Calendar": "Calendar",
+
+"Ok": "Ok",
+
+"Start earning with your personal referral link": "Start earning with your personal referral link.",
+
+"Trasnfer": "Trasnfer",
+
+"Provide a valid email": "Provide a valid email",
+
+"Password does not match": "Confirm Password does not match with the New Password",
+
+"Verification Code": "Verification Code",
+
+"Enter the code": "Enter the code",
+
+"Agree terms & condition to proceed": "Agree terms & condition to proceed",
+
+"I have a referer": "I have a referer",
+
+"Already have an account?": "Already have an account?",
+
+"Please confirm your password!": "Please confirm your password!",
+
+"passwordPattern": "Minimum 8 letters with the combination of At least one capital Alphabets + Numbers + Special Characters (!, @, #, $,%, ^, &, *)",
+
+"Previous": "Previous",
+
+"PLEASE_SELECT": "Please Select",
+
+"Open New Trading Account": "Open New Trading Account",
+
+"ACCOUNT_TYPE": "Account Type",
+
+"CURRENCY": "Currency",
+
+"Credit": "Credit",
+
+"Account Details and Terms of Use": "Account Details and Terms of Use",
+
+"SWIFT Code": "SWIFT Code",
+
+"Transaction Receipt": "Transaction Receipt",
+
+"Upload": "Upload",
+
+"Done": "Done",
+
+"Ticket Code": "Ticket Code",
+
+"Passport": "Passport",
+
+"Drop front side of your": "Drop front side of your Address Proof",
+
+"Upload your": "Upload your Passport (photo page)",
+
+"Please check the image requirements here.": "Please check the image requirements here.",
+
+"Description": "Description",
+
+"Post your comment here": "Post your comment here",
+
+"Information": "Information",
+
+"Google Authentication": "Google Authentication",
+
+"Security": "Security",
+
+"Support History": "Support History",
+
+"Activities": "Activities",
+
+"Attachments": "Attachments",
+
+"User": "User",
+
+"Remarks": "Remarks",
+
+"File Name": "File Name",
+
+"Download file": "Download file",
+
+"Document Upload": "Document Upload",
+
+"Close Price": "Close Price",
+
+"OTP is valid only for 5 minutes": "OTP is valid only for 5 minutes",
+
+"Enter Emailed OTP": "Enter Emailed OTP",
+
+"Please enter Google auth code": "Please enter Google auth code",
+
+"Please enter OTP sent to your Email": "Please enter OTP sent to your Email",
+
+"Please enter your email ID": "Please enter your email ID",
+
+"We will send an email to your inbox, OTP will be valid for 5 minutes only": "We will send an email to your inbox, OTP will be valid for 5 minutes only",
+
+"Send OTP": "Send OTP",
+
+"Do not have an account?": "Do not have an account?",
+
+"Email id logic to be checked like @ or .com or .ae": "Email id logic to be checked like @ or .com or .ae",
+
+"Please enter New Password": "Please enter New Password",
+
+"Re-enter New Password": "Re-enter New Password",
+
+"Export success": "Export success",
+
+"Realized": "Realized P/L",
+
+"Unrealized": "Unrealized P/L",
+
+"redirect": "Redirecting URL...",
+
+"tradingPlatformReq": "Please Select Trading Platform",
+
+"tradingPlatform": "Trading Platform",
+
+"Open Demo Account": "Open Demo Account",
+
+"demo_deposit_amount": "Please Select Deposit",
+
+"deposit_fund": "Deposit Fund",
+
+"Set your password": "Set your password",
+
+"password_logic": "Password logic should be \"Minimum 8 letters with the combination of Alphabets + Numbers + Special Characters (!, @, #, $, %, ^, &, *)\"",
+
+"Thank you for Registering": "Thank You For Registering!",
+
+"You can login to your account now!": "You can login to your account now!",
+
+"Previous step": "Previous step",
+
+"Login Now": "Login Now",
+
+"Open Demo Account with us": "Open Demo Account with us",
+
+"Please enter your email, we'll send you a code to Verify.": "Please enter your email, and we'll send you a reset password link.",
+
+"Forgot My Password": "Forgot My Password",
+
+"MT4": "MT4",
+
+"MT5": "MT5",
+
+"Download and install MT5": "Download and install MT5",
+
+"Not Found": "Not Found",
+
+"No Tickets": "No Tickets",
+
+"Please log in with your new password to access your trading account.": "Please log in with your new password to access your trading account.",
+
+"Update Email": "Update Email",
+
+"Please log in with your new email to access your trading account.": "Please log in with your new email to access your trading account.",
+
+"Update Number": "Update Number",
+
+"Previous Attachments": "Previous Attachments",
+
+"This email already exists": "This email already exists",
+
+"Please confirm your documents and unlock all the features": "Please confirm your documents and unlock all the features",
+
+"Triple A": "Triple A",
+
+"Google Pay": "Google Pay",
+
+"E Pay": "E Pay",
+
+"UPI": "UPI",
+
+"MyFatoorah": "MyFatoorah",
+
+"help2pay": "help2pay",
+
+"HyperBC": "HyperBC",
+
+"Bank List": "Bank List",
+
+"Please select any Bank": "Please select any Bank",
+
+"Coin List": "Coin List",
+
+"Please select any Coin": "Please select any Coin",
+
+"Coin Payment": "Coin Payment",
+
+"Conversion Type": "Conversion Type",
+
+"Please select any coin method": "Please select any coin method",
+
+"Please Select any Payment Method to Proceed Further": "Please Select any Payment Method to Proceed Further",
+
+"Payment Currency": "Payment Currency",
+
+"Total Amount": "Total Amount",
+
+"Please scan the QR code or use the following address to pay the amount.": "Please scan the QR code or use the following address to pay the amount.",
+
+"Wating for your action": "Wating for your action",
+
+"Is this operation confirmed ?": "Is this operation confirmed ?",
+
+"Receiving Address": "Receiving Address",
+
+"Receiving Address is required": "Receiving Address is required",
+
+"To Coin": "To Coin",
+
+"Bank Account Name": "Bank Account Name",
+
+"Bank Account Name is required": "Bank Account Name is required",
+
+"Bank Account Number": "Bank Account Number",
+
+"Bank Account Number is required": "Bank Account Number is required",
+
+"Use Existing Bank Account": "Use Existing Bank Account",
+
+"Add New Bank Account": "Add New Bank Account",
+
+"You do not have any bank added please click on add New Bank Account": "You do not have any bank added please click on add New Bank Account",
+
+"Please select Transfer From": "Please select Transfer From",
+
+"Please select Transfer To": "Please select Transfer To",
+
+"Please enter valid amount": "Please enter valid amount",
+
+"Bill No.": "Bill No.",
+
+"Copied": "Copied",
+
+"Minimum Amount Should be 1 USD.": "Minimum Amount Should be 1 USD.",
+
+"You_have_reached_the_maximum_number_of_accounts": "You have reached the maximum number of accounts. Please refer to your Relationship Manager or contact our Support Team.",
+
+"User_verification_is_pending_and_account_can_not_be_created": "User verification is pending and account can not be created",
+
+"Invalid_request_Notification_not_found": "Invalid request, Notification not found",
+
+"Sharpen your trading skills": "Sharpen your trading skills",
+
+"on a demo account": "on a demo account",
+
+"Open Account Time": "Open Time",
+
+"Fund Amount": "Fund Amount",
+
+"Fund Currency": "Fund Currency",
+
+"Logged in success": "Logged in success",
+
+"Invalid session or expired": "Invalid session or expired",
+
+"Registered successfully": "Registered successfully",
+
+"Updated successfully": "Updated successfully",
+
+"Action succeeded": "Action succeeded",
+
+"Record created successfully": "Record created successfully",
+
+"oops!, No results found": "oops!, No results found",
+
+"Unable to login, please try again later": "Unable to login, please try again later",
+
+"unable to generate access token": "unable to generate access token",
+
+"Login access denied to your account": "Login access denied to your account",
+
+"Sorry, either your username or password is incorrect. Please check your details and try again": "Sorry, either your username or password is incorrect. Please check your details and try again",
+
+"Due to high risk, the selected country not allowed to register": "Due to high risk, the selected country not allowed to register",
+
+"OTP verification failed, invalid or expired. please enter valid OTP code": "OTP verification failed, invalid or expired. please enter valid OTP code",
+
+"SMS otp has expired or already used. Please generate new SMS otp": "SMS otp has expired or already used. Please generate new SMS otp",
+
+"Invalid SMS OTP": "Invalid SMS OTP",
+
+"Invalid referrer code": "Invalid referrer code",
+
+"Invalid customer type": "Invalid customer type",
+
+"Unable to create user record": "Unable to create user record",
+
+"Failed to assign unique number": "Failed to assign unique number",
+
+"User with same Email-ID already exists": "User with same Email-ID already exists",
+
+"Invalid request": "Invalid request",
+
+"Unable to verify user, please try again later": "Unable to verify user, please try again later",
+
+"User doesn't exists": "User doesn't exists",
+
+"Error while processing your request, please contact support team": "Error while processing your request, please contact support team",
+
+"OTP has been verified": "OTP has been verified",
+
+"Unable to register new user, please try again later": "Unable to register new user, please try again later",
+
+"Invalid google authentication code": "Invalid google authentication code",
+
+"Google auth has been successfully verified": "Google auth has been successfully verified",
+
+"Invalid code format": "Invalid code format",
+
+"Password updated": "Password updated",
+
+"Unable to switch account": "Unable to switch account",
+
+"Unable to list currencies": "Unable to list currencies",
+
+"Unable to retrieve terms & condition links": "Unable to retrieve terms & condition links",
+
+"Unable to get background images": "Unable to get background images",
+
+"Unable to get profit detail": "Unable to get profit detail",
+
+"Unable to retrieve symbols": "Unable to retrieve symbols",
+
+"Unable to retrieve margin detail": "Unable to retrieve margin detail",
+
+"Unable to retrieve customer types": "Unable to retrieve customer types",
+
+"Invalid email id, please provide valid mail id": "Invalid email id, please provide valid mail id",
+
+"User not found": "User not found",
+
+"User doesn't have access to the requested menu or page": "User doesn't have access to the requested menu or page",
+
+"Invalid set password token or expired": "Invalid set password token or expired",
+
+"Unable to switch, user detail not found": "Unable to switch, user detail not found",
+
+"not allowed to create a demo user": "not allowed to create a demo user",
+
+"Not allowed to created more than 2 accounts": "Not allowed to created more than 2 accounts",
+
+"Unable to get country list": "Unable to get country list",
+
+"Unable to get language list": "Unable to get language list",
+
+"Unable to retrieve transaction type": "Unable to retrieve transaction type",
+
+"Unable to retrieve payment status": "Unable to retrieve payment status",
+
+"Unable to get currency exchange": "Unable to get currency exchange",
+
+"Unable to retrieve accounts": "Unable to retrieve accounts",
+
+"Unable to process your request": "Unable to process your request",
+
+"Unable to send Email OTP": "Unable to send Email OTP",
+
+"Email OTP sent successfully": "Email OTP sent successfully",
+
+"Document uploaded successfully": "Document uploaded successfully",
+
+"Profile detail updated successfully": "Profile detail updated successfully",
+
+"Customer ID is required": "Customer ID is required",
+
+"Not allowed to update profile detail": "Not allowed to update profile detail",
+
+"Not allowed to update document detail": "Not allowed to update document detail",
+
+"Invalid request, event detail not found": "Invalid request, event detail not found",
+
+"Calendar event not found": "Calendar event not found",
+
+"Event does not found": "Event does not found",
+
+"Calendar event deleted successfully": "Calendar event deleted successfully",
+
+"Calendar event updated successfully": "Calendar event updated successfully",
+
+"Calendar event added successfully": "Calendar event added successfully",
+
+"Email address has been changed, please logout and login again": "Email address has been changed, please logout and login again",
+
+"Email address verified": "Email address verified",
+
+"Password can not be same as previous one.": "Password can not be same as previous one.",
+
+"Password has been changed successfully, please logout and login again": "Password has been changed successfully, please logout and login again",
+
+"No files found to upload": "No files found to upload",
+
+"Trading group not found": "Trading group not found",
+
+"Profile and KYC must be added before adding Account": "Profile and KYC must be added before adding Account",
+
+"Invalid request, account detail not found": "Invalid request, account detail not found",
+
+"Unable to retrieve trading accounts detail": "Unable to retrieve trading accounts detail",
+
+"Account created successfully": "Account created successfully",
+
+"Password has been changed successfully": "Password has been changed successfully",
+
+"Account ID is required": "Account ID is required",
+
+"Leverage change request has been submitted successfully": "Leverage change request has been submitted successfully",
+
+"Leverage has been changed successfully": "Leverage has been changed successfully",
+
+"Invalid Mobile number.": "Invalid Mobile number.",
+
+"Invalid SMS event type": "Invalid SMS event type",
+
+"Invalid file format or not found": "Invalid file format or not found",
+
+"Suitability test not found": "Suitability test not found",
+
+"Suitability Test PASS": "Suitability Test PASS",
+
+"Suitability Test FAILED!, please try the second test": "Suitability Test FAILED!, please try the second test",
+
+"The number of leveraged trades you have placed during the past 1 year is (select one of the below):": "The number of leveraged trades you have placed during the past 1 year is (select one of the below):",
+
+"What was the average yearly volume of invested amounts of your past transactions in CFDs or other leveraged products?": "What was the average yearly volume of invested amounts of your past transactions in CFDs or other leveraged products?",
+
+"What type of financial services have you previously used?": "What type of financial services have you previously used?",
+
+"What is your level of education, qualification, or work experience in relation to our services and products?": "What is your level of education, qualification, or work experience in relation to our services and products?",
+
+"Trading with a higher leverage in CFDs means you may open a larger position in volume, thus increasing the profit potential with the risk of loss.": "Trading with a higher leverage in CFDs means you may open a larger position in volume, thus increasing the profit potential with the risk of loss.",
+
+"If the value of your initial position in a CFD contract of EUR/USD is 1 lot and the leverage ratio is 1:50, what would be the initial margin requirement in EUR?": "If the value of your initial position in a CFD contract of EUR/USD is 1 lot and the leverage ratio is 1:50, what would be the initial margin requirement in EUR?",
+
+"Which of the following statement is correct regarding Contracts for Difference (CFDs) trading?": "Which of the following statement is correct regarding Contracts for Difference (CFDs) trading?",
+
+"What is Limit Order": "What is Limit Order",
+
+"What does it mean if you have go long?": "What does it mean if you have go long?",
+
+"What is the bid price mean? ": "What is the bid price mean? ",
+
+"If you place a long (buy) position of 1 lot EUR/USD at 1.20 and price is increased to 1.25 what case is valid?": "If you place a long (buy) position of 1 lot EUR/USD at 1.20 and price is increased to 1.25 what case is valid?",
+
+"If the EUR/USD price drops significantly, then your CFD long position in EUR/USD will:": "If the EUR/USD price drops significantly, then your CFD long position in EUR/USD will:",
+
+"When you open a trade you are :": "When you open a trade you are :",
+
+"In the Currency Pair EUR/USD the variable currency is the:": "In the Currency Pair EUR/USD the variable currency is the:",
+
+"When you open a buy position your stop loss should be:": "When you open a buy position your stop loss should be:",
+
+"Never or rarely": "Never or rarely",
+
+"Occasionally (up to 20 trades per year)": "Occasionally (up to 20 trades per year)",
+
+"Regularly (between 20 and 100 trades per year)": "Regularly (between 20 and 100 trades per year)",
+
+"Frequently (over 100 trades per year)": "Frequently (over 100 trades per year)",
+
+"I never invested": "I never invested",
+
+"Less than $500": "Less than $500",
+
+"Between $500 to $2 500": "Between $500 to $2 500",
+
+"Between $2 500 to $10 000": "Between $2 500 to $10 000",
+
+"Over $ 10 000": "Over $ 10 000",
+
+"Brokerage services that required independent decisions": "Brokerage services that required independent decisions",
+
+"Brokerage services that received professional advice": "Brokerage services that received professional advice",
+
+"Portfolio Management": "Portfolio Management",
+
+"None of the above": "None of the above",
+
+"I hold a professional qualification in finance/economics": "I hold a professional qualification in finance/economics",
+
+"I received higher education in finance and/or financial services and/or economics and/or business related": "I received higher education in finance and/or financial services and/or economics and/or business related",
+
+"I am currently working or worked in the past in the financial sector for over 1 year and I obtained the relevant experience": "I am currently working or worked in the past in the financial sector for over 1 year and I obtained the relevant experience",
+
+"True": "True",
+
+"False": "False",
+
+"You never own the actual asset": "You never own the actual asset",
+
+"CFDs are speculative, complex and risky": "CFDs are speculative, complex and risky",
+
+"Both of the above": "Both of the above",
+
+"An order that needs to be filled today": "An order that needs to be filled today",
+
+"An order to buy and sell at set price and no higher or lower": "An order to buy and sell at set price and no higher or lower",
+
+"An order to buy a limited number of lots": "An order to buy a limited number of lots",
+
+"You have bought exceeding your margin": "You have bought exceeding your margin",
+
+"You have closed all of the positions": "You have closed all of the positions",
+
+"You have bought the base currency and expect it to move higher": "You have bought the base currency and expect it to move higher",
+
+"The price you can sell the base currency": "The price you can sell the base currency",
+
+"The price you can buy the counter currency": "The price you can buy the counter currency",
+
+"The price you can buy the base currency": "The price you can buy the base currency",
+
+"3333.33": "3333.33",
+
+"Position is in profit": "Position is in profit",
+
+"Position is in loss": "Position is in loss",
+
+"Position is unaffected": "Position is unaffected",
+
+"Move to the same direction": "Move to the same direction",
+
+"Move in the opposite direction": "Move in the opposite direction",
+
+"Will not be affected": "Will not be affected",
+
+"Buying or selling the variable currency and profiting or losing on the variable currency": "Buying or selling the variable currency and profiting or losing on the variable currency",
+
+"Buying the base currency and profiting on the variable currency": "Buying the base currency and profiting on the variable currency",
+
+"Buying or selling the base currency and profiting or losing on the variable currency": "Buying or selling the base currency and profiting or losing on the variable currency",
+
+"EUR": "EUR",
+
+"USD": "USD",
+
+"Above the entry price": "Above the entry price",
+
+"On the entry price": "On the entry price",
+
+"Below the entry price": "Below the entry price",
+
+"Below and above the entry": "Below and above the entry",
+
+"Please provide answer for selected 'Other' question": "Please provide answer for selected 'Other' question",
+
+"Unable to generate kyc code": "Unable to generate kyc code",
+
+"The record you attempted to edit was modified by another user.": "The record you attempted to edit was modified by another user.",
+
+"You must be 18 years old or above": "You must be 18 years old or above",
+
+"Invalid document type": "Invalid document type",
+
+"User's country of residence not found": "User's country of residence not found",
+
+"KYC settings not found": "KYC settings not found",
+
+"KYC question and answers not found": "KYC question and answers not found",
+
+"Questionnaire detail updated successfully": "Questionnaire detail updated successfully",
+
+"Passport of the customer": "Passport of the customer",
+
+"Driving License of the Customer": "Driving License of the Customer",
+
+"Emirates ID/National ID/Adhar Card of the Customer": "Emirates ID/National ID/Adhar Card of the Customer",
+
+"Address proof document of the customer": "Address proof document of the customer",
+
+"Live photo": "Live photo",
+
+"Live video": "Live video",
+
+"Address Proof": "Address Proof",
+
+"Photo": "Photo",
+
+"Video": "Video",
+
+"Verification is not required": "Verification is not required",
+
+"Record doesn't exists.": "Record doesn't exists.",
+
+"Profile document updated successfully": "Profile document updated successfully",
+
+"Gross Annual Income in USD ?": "Gross Annual Income in USD ?",
+
+"Expected origin of incoming funds to be credited in the account/expected destination of funds?": "Expected origin of incoming funds to be credited in the account/expected destination of funds?",
+
+"What is your employment status ?": "What is your employment status ?",
+
+"Primary Source of funds": "Primary Source of funds",
+
+"Inheritance": "Inheritance",
+
+"Indonesia": "Indonesia",
+
+"Self-employed": "Self-employed",
+
+"Property Sale": "Property Sale",
+
+"50,001-250,000": "50,001-250,000",
+
+"India": "India",
+
+"Unemployed": "Unemployed",
+
+"United Arab Emirates": "United Arab Emirates",
+
+"Retired": "Retired",
+
+"250,001-1,000,000": "250,001-1,000,000",
+
+"Employed": "Employed",
+
+"Pension or Government Benefits": "Pension or Government Benefits",
+
+"Other": "Other",
+
+"Pakistan": "Pakistan",
+
+"Combination of the above": "Combination of the above",
+
+"Investment Income": "Investment Income",
+
+"0-10,000": "0-10,000",
+
+"Turkey": "Turkey",
+
+"Egypt": "Egypt",
+
+"10,001-50,000": "10,001-50,000",
+
+"Above 1.000.000": "Above 1.000.000",
+
+"Income or Savings from Employment/Business": "Income or Savings from Employment/Business",
+
+"Student": "Student",
+
+"Unable to retrieve ticket category list, please try again later": "Unable to retrieve ticket category list, please try again later",
+
+"Ticket not found": "Ticket not found",
+
+"Unable to retrieve Ticket, please try again later": "Unable to retrieve Ticket, please try again later",
+
+"Invalid request or customer not found": "Invalid request or customer not found",
+
+"Invalid request or Ticket not found": "Invalid request or Ticket not found",
+
+"Ticket ID is required": "Ticket ID is required",
+
+"Ticket created successfully": "Ticket created successfully",
+
+"Ticket updated successfully": "Ticket updated successfully",
+
+"query": "query",
+
+"feedback": "feedback",
+
+"request": "request",
+
+"complain": "complain",
+
+"account to wallet": "account to wallet",
+
+"affiliate others": "affiliate others",
+
+"social trading strategy suspend request": "social trading strategy suspend request",
+
+"managed account unsubscription due to insufficient balance": "managed account unsubscription due to insufficient balance",
+
+"managed account strategy suspend request": "managed account strategy suspend request",
+
+"affiliate user unlock": "affiliate user unlock",
+
+"leverage change": "leverage change",
+
+"affiliate onboarding": "affiliate onboarding",
+
+"vpn request": "vpn request",
+
+"social trading strategy unsubscription request": "social trading strategy unsubscription request",
+
+"mt4 account link": "mt4 account link",
+
+"managed account strategy subscription request": "managed account strategy subscription request",
+
+"social trading strategy subscription request": "social trading strategy subscription request",
+
+"managed account subscription fee update request": "managed account subscription fee update request",
+
+"affiliate general enquiry": "affiliate general enquiry",
+
+"affiliate user lock": "affiliate user lock",
+
+"wallet to account": "wallet to account",
+
+"general enquiry": "general enquiry",
+
+"withdrawal process": "withdrawal process",
+
+"account to account": "account to account",
+
+"account to cash wallet": "account to cash wallet",
+
+"social trading strategy creation request  ": "social trading strategy creation request  ",
+
+"become a portfolio manager": "become a portfolio manager",
+
+"onboarding": "onboarding",
+
+"cash wallet to account": "cash wallet to account",
+
+"ib to wallet": "ib to wallet",
+
+"address change": "address change",
+
+"deposit withdrawal information adding": "deposit withdrawal information adding",
+
+"socialtrading strategy subscription fee update request": "socialtrading strategy subscription fee update request",
+
+"account opening related": "account opening related",
+
+"affiliate withdrawal": "affiliate withdrawal",
+
+"redeem rewards": "redeem rewards",
+
+"deposit": "deposit",
+
+"account type change request": "account type change request",
+
+"socialtrading strategy unsubscription due to insufficient balance": "socialtrading strategy unsubscription due to insufficient balance",
+
+"managed account strategy creation request": "managed account strategy creation request",
+
+"managed account strategy unsubscription request": "managed account strategy unsubscription request",
+
+"affiliate withdrawal information adding": "affiliate withdrawal information adding",
+
+"withdrawal": "withdrawal",
+
+"account statement": "account statement",
+
+"account number is required": "account number is required",
+
+"invalid account number": "invalid account number",
+
+"Please attach Bank Statement.": "Please attach Bank Statement.",
+
+"Unable to store files": "Unable to store files",
+
+"Bank detail created successfully": "Bank detail created successfully",
+
+"Bank detail updated successfully": "Bank detail updated successfully",
+
+"Invalid bank details.": "Invalid bank details.",
+
+"Bank detail deleted successfully": "Bank detail deleted successfully",
+
+"Live verification is disabled": "Live verification is disabled",
+
+"Payment method id is required": "Payment method id is required",
+
+"transaction not found": "transaction not found",
+
+"Exchange Rate does not exist.": "Exchange Rate does not exist.",
+
+"Wallet does not exist": "Wallet does not exist",
+
+"Account does not exist": "Account does not exist",
+
+"Please attach a payment receipt.": "Please attach a payment receipt.",
+
+"Invalid or unable to process your request": "Invalid or unable to process your request",
+
+"Not enough balance.": "Not enough balance.",
+
+"Not enough Minimum amount should be 1.": "Not enough Minimum amount should be 1.",
+
+"OTP expired/invalid.": "OTP expired/invalid.",
+
+"MT MySql DB connection issue": "MT MySql DB connection issue",
+
+"Unable to retrieve open positions data": "Unable to retrieve open positions data",
+
+"Unable to process the payment, please try again later": "Unable to process the payment, please try again later",
+
+"Invalid exchange rate.": "Invalid exchange rate.",
+
+"Unable to generate payment token": "Unable to generate payment token",
+
+"Invalid request and Item_id null or empty": "Invalid request and Item_id null or empty",
+
+"Please update your profile with valid (India) mobile number": "Please update your profile with valid (India) mobile number",
+
+"Your profile has invalid mobile number, please update your profile": "Your profile has invalid mobile number, please update your profile",
+
+"UPI accepts only INR currency": "UPI accepts only INR currency",
+
+"Invalid Response": "Invalid Response",
+
+"Payment methods not found": "Payment methods not found",
+
+"Invalid payment response and unable to initiate payment, please try again later": "Invalid payment response and unable to initiate payment, please try again later",
+
+"Nganluong accepts only VND currency": "Nganluong accepts only VND currency",
+
+"Help2Pay does not support this currency": "Help2Pay does not support this currency",
+
+"Deposit amount should be greater than equal to  10-MYR and less than equal to 50000-MYR": "Deposit amount should be greater than equal to  10-MYR and less than equal to 50000-MYR",
+
+"Deposit amount should be greater than equal to 100-THB and less than equal to 500,000-THB": "Deposit amount should be greater than equal to 100-THB and less than equal to 500,000-THB",
+
+"Deposit amount should be greater than equal to 50,000-IDR  and less than equal to 20,000,0000-IDR": "Deposit amount should be greater than equal to 50,000-IDR  and less than equal to 20,000,0000-IDR",
+
+"Deposit amount should be greater than equal to 50,000-VND and less than equal to 300,000,000-VND": "Deposit amount should be greater than equal to 50,000-VND and less than equal to 300,000,000-VND",
+
+"Deposit amount should be greater than equal to 100-PHP and less than equal to 1,000,000-PHP": "Deposit amount should be greater than equal to 100-PHP and less than equal to 1,000,000-PHP",
+
+"No active PSPs found": "No active PSPs found",
+
+"Sorry!, the selected payment method is not enabled": "Sorry!, the selected payment method is not enabled",
+
+"Account not found.": "Account not found.",
+
+"Congratulations! Your account verification is now complete.": "Congratulations! Your account verification is now complete.",
+
+"Rejected/Not Accepted": "Rejected/Not Accepted",
+
+"We’re sorry, but we were unable to verify your account at this time. Please check your submitted information and try again or contact our support team for assistance.": "We’re sorry, but we were unable to verify your account at this time. Please check your submitted information and try again or contact our support team for assistance.",
+
+"Your verification request is being processed. We will notify you once it is complete.": "Your verification request is being processed. We will notify you once it is complete.",
+
+"Your deposit has been successful. Your account balance has been updated.": "Your deposit has been successful. Your account balance has been updated.",
+
+"We were unable to process your deposit at this time. Please check your payment details or contact our support team for assistance.": "We were unable to process your deposit at this time. Please check your payment details or contact our support team for assistance.",
+
+"Your deposit request is being processed. We will notify you once it is complete.": "Your deposit request is being processed. We will notify you once it is complete.",
+
+"Successful ": "Successful ",
+
+"We were unable to process your withdrawal request at this time. Please check your withdrawal details or contact our support team for assistance. ": "We were unable to process your withdrawal request at this time. Please check your withdrawal details or contact our support team for assistance. ",
+
+"Your withdrawal request is being processed. We will notify you once it is complete. ": "Your withdrawal request is being processed. We will notify you once it is complete. ",
+
+"Rejected/Not Accepted ": "Rejected/Not Accepted ",
+
+"Your transfer request is being processed. We will notify you once it is complete.": "Your transfer request is being processed. We will notify you once it is complete.",
+
+"Success! Your email has been updated. You’ll now receive important updates and news from us on your new email address. ": "Success! Your email has been updated. You’ll now receive important updates and news from us on your new email address. ",
+
+"Congratulations! Your password has been updated successfully. You can now log in to your account with your new password. ": "Congratulations! Your password has been updated successfully. You can now log in to your account with your new password. ",
+
+"Phone number updated": "Phone number updated",
+
+"Great news! Your phone number has been successfully updated. We’ll now be able to reach you on your new number for important account updates and notifications.": "Great news! Your phone number has been successfully updated. We’ll now be able to reach you on your new number for important account updates and notifications.",
+
+"MT5 password updated ": "MT5 password updated ",
+
+"Your MT5 password has been updated successfully. You can now log in to your trading account with your new password.": "Your MT5 password has been updated successfully. You can now log in to your trading account with your new password.",
+
+"MT4 password updated ": "MT4 password updated ",
+
+"Congratulations! Your MT4 password has been updated successfully. You can now log in to your account with your new password.": "Congratulations! Your MT4 password has been updated successfully. You can now log in to your account with your new password.",
+
+"Leverage Request received!": "Leverage Request received!",
+
+"You have reached the maximum number of accounts. Please refer to your Relationship Manager or contact our Support Team.": "You have reached the maximum number of accounts. Please refer to your Relationship Manager or contact our Support Team.",
+
+"User verification is pending and account can not be created": "User verification is pending and account can not be created",
+
+"Invalid request, Notification not found": "Invalid request, Notification not found",
+
+"IB Execution Fee": "IB Execution Fee",
+
+"Lean paymen source beneficiary": "Lean paymen source beneficiary",
+
+"Lean payment source beneficiary has been updated": "Lean payment source beneficiary has been updated",
+
+"Unable to process the GlobePay payment, please try again later": "Unable to process the GlobePay payment, please try again later",
+
+"Email already occupied.": "Email already occupied.",
+
+"Change email failed": "Change email failed",
+
+"Sign Up": "Sign Up",
+
+"Company Name": "Company Name",
+
+"Trading Name": "Trading Name",
+
+"Country of Incorporation": "Country of Incorporation",
+
+"Type of Company": "Type of Company",
+
+"Listed Company?": "Listed Company?",
+
+"Exchange": "Exchange",
+
+"Ref Number": "Ref Number",
+
+"This Field is required": "This Field is required",
+
+"Type here": "Type here",
+
+"Please Enter Your Skrill Pay Account Email/User Id": "Please Enter Your Skrill Pay Account Email/User Id",
+
+"Please Enter Your Neteller Pay Account Email/User Id": "Please Enter Your Neteller Pay Account Email/User Id",
+
+"Company Details": "Company Details",
+
+"Place of Business": "Place of Business",
+
+"Principal Business Activity": "Principal Business Activity",
+
+"Tax Domicile": "Tax Domicile",
+
+"Legal Entity Identifier (LEI)": "Legal Entity Identifier (LEI)",
+
+"Client Representatives Name": "Client Representatives Name",
+
+"Representative Position": "Representative Position",
+
+"Shareholding Type": "Shareholding Type",
+
+"Nature of Business": "Nature of Business",
+
+"Registered Address": "Registered Address",
+
+"Building Name/ Number": "Building Name/ Number",
+
+"Unit Number": "Unit Number",
+
+"Business Address": "Business Address",
+
+"Is your registered address same as the business address?": "Is your registered address same as the business address?",
+
+"Street Number": "Street Number",
+
+"Building Name": "Building Name",
+
+"Are you authorized by any regulatory by any regulatory body?": "Are you authorized by any regulatory by any regulatory body?",
+
+"Director": "Director",
+
+"Date of Birth": "Date of Birth",
+
+"Politically Exposed Person?": "Politically Exposed Person?",
+
+"Are you a US National/Resident?": "Are you a US National/Resident?",
+
+"Are you representative?": "Are you representative?",
+
+"Are you ShareHolder?": "Are you ShareHolder?",
+
+"Director's Docuements": "Director's Docuements",
+
+"Proof of Id": "Proof of Id",
+
+"required": "required",
+
+"Click here to upload your documents": "Click here to upload your documents",
+
+"Proof of Address (within 3 months)": "Proof of Address (within 3 months)",
+
+"Shareholder's Docuements (Owning 25% or more)": "Shareholder's Docuements (Owning 25% or more)",
+
+"Add More": "Add More",
+
+"ShareHolders": "ShareHolders",
+
+"Certificate of Incorporation or equivalent": "Certificate of Incorporation or equivalent",
+
+"Memorandum and Articles of Association": "Memorandum and Articles of Association",
+
+"Proof of registered address issued within 6 months:": "Proof of registered address issued within 6 months",
+
+"(Only applicable if your organition is registered by the Financial Authority within your jurisdiction)": "(Only applicable if your organition is registered by the Financial Authority within your jurisdiction)",
+
+"Ownership Chart": "Ownership Chart",
+
+"Board Resolution": "Board Resolution",
+
+"Register of Directors": "Register of Directors",
+
+"Register of Members/Shareholders": "Register of Members/Shareholders",
+
+"Latest Financial Statement": "Latest Financial Statement",
+
+"Passport Number": "Passport Number",
+
+"Residential Address": "Residential Address",
+
+"Phone": "Phone",
+
+"Are you a US Citizen, ot act on behalf of controlling persons who are US persons?": "Are you a US Citizen, or act on behalf of controlling persons who are US persons?",
+
+"Purpose of this trading account?": "Purpose of this trading account?",
+
+"Funds available for trading with the company (USD)": "Funds available for trading with the company (USD)",
+
+"Source of funds?": "Source of funds?",
+
+"Directors Details": "Directors Details",
+
+"Representative Details": "Representative Details",
+
+"ShareHolders Details": "ShareHolders Details",
+
+"Financial Details": "Financial Details",
+
+"All information filled in this page will be lost if you cancel!": "All information filled in this page will be lost if you cancel!",
+
+"Shareholders Docuements (Owning 25% or more)": "Shareholders Docuements (Owning 25% or more)",
+
+"Advance View": "Advance View",
+
+"Basic View": "Basic View",
+
+"Do you want to Switch to Basic View?": "Do you want to Switch to Basic View?",
+
+"Do you want to Switch to Advance View?": "Do you want to Switch to Advance View?",
+
+"Acting": "Acting",
+
+"Actuarial Profession": "Actuarial Profession",
+
+"Advertising": "Advertising",
+
+"Armed Forces and Uniformed Services": "Armed Forces and Uniformed Services",
+
+"Banking & Investment": "Banking & Investment",
+
+"Barristers": "Barristers",
+
+"Business & Management": "Business & Management",
+
+"Charities": "Charities",
+
+"Creative Industries": "Creative Industries",
+
+"Energy": "Energy",
+
+"Engineering": "Engineering",
+
+"Entrepreneurship and Social Enterprise": "Entrepreneurship and Social Enterprise",
+
+"Gaming ": "Gaming",
+
+"Government ": "Government",
+
+"Human Resources": "Human Resources",
+
+"Journalism": "Journalism",
+
+"Lawyers ": "Lawyers",
+
+"Medical Equipment ": "Medical Equipment",
+
+"Marketing ": "Marketing",
+
+"Music ": "Music",
+
+"Management Consultancy": "Management Consultancy",
+
+"Patents and related industry ": "Patents and related industry",
+
+"Pharmaceuticals and Biotechnology": "Pharmaceuticals and Biotechnology",
+
+"Psychology ": "Psychology",
+
+"Public Health": "Public Health",
+
+"Science ": "Science",
+
+"Social Care": "Social Care",
+
+"sustainability-environment": "sustainability-environment",
+
+"Teacher in School": "Teacher in School",
+
+"Translator": "Translator",
+
+"Casinos": "Casinos",
+
+"Embassies ": "Embassies",
+
+"Car, boat , truck  Seller": "Car, boat , truck  Seller",
+
+"Retail sector ": "Retail sector",
+
+"Real Estate ": "Real Estate",
+
+"Insurance": "Insurance",
+
+"Gold, Jewel, Diamonds and precious metal dealers ": "Gold, Jewel, Diamonds and precious metal dealers",
+
+"Cash Intesive business restaurants, retail stores, parking ": "Cash Intesive business restaurants, retail stores, parking",
+
+"Travel agents": "Travel agents",
+
+"Dancer": "Dancer",
+
+"Art Dealer": "Art Dealer",
+
+"Import- export": "Import- export",
+
+"Driver": "Driver",
+
+"Construction worker": "Construction worker",
+
+"Hairdresser ": "Hairdresser",
+
+"Content Writer": "Content Writer",
+
+"Author": "Author",
+
+"Doctors ": "Doctors",
+
+"Source of Wealth": "Source of Wealth",
+
+"Occupation/Industry": "Occupation/Industry",
+
+"Entrepreneurship/Business ownership": "Entrepreneurship/Business ownership",
+
+"Real estate": "Real estate",
+
+"Investments/CFD trading/Stock markets": "Investments/CFD trading/Stock markets",
+
+"Employment/Salary": "Employment/Salary",
+
+"Accountancy and other Financial related professions": "Accountancy and other Financial related professions",
+
+"Set Password": "Set Password",
+
+"Accept Privacy Policy and Terms and Conditions and Click Next": "Accept Privacy Policy and Terms and Conditions and Click Next",
+
+"Password Set": "Password Set",
+
+"Your password has been successfully set": "Your password has been successfully set",
+
+"Trade Anytime": "Trade Anytime",
+
+"Anywhere": "Anywhere",
+
+"Your leverage change request has been successfully initiated, it will take effect after approval.": "Your leverage change request has been successfully initiated, it will take effect after approval.",
+
+"You have exceeded the maximum allowed deposit limit, before KYC. Please complete your profile to unlock the unlimited deposit and many other exciting features.": "You have exceeded the maximum allowed deposit limit, before KYC. Please complete your profile to unlock the unlimited deposit and many other exciting features.",
+
+"Complete Profile": "Complete Profile",
+
+"Account verification is required for deposit above 300$": "Account verification is required for deposit above 300$",
+
+"A minimum deposit of $1,000 will grant you access to Trading Central Premium Insights": "A minimum deposit of $1,000 will grant you access to Trading Central Premium Insights",
+
+"Discover the pinnacle of trading through cTrader. Seamlessly fusing state-of-the-art technology with unmatched simplicity, cTrader empowers traders like never before, emboldening them to navigate the exhilarating markets with unwavering confidence.": "Discover the pinnacle of trading through cTrader. Seamlessly fusing state-of-the-art technology with unmatched simplicity, cTrader empowers traders like never before, emboldening them to navigate the exhilarating markets with unwavering confidence.",
+
+"Intuitive: Effortlessly navigate a streamlined interface for seamless trading.": "Intuitive: Effortlessly navigate a streamlined interface for seamless trading.",
+
+"Speed: Execute orders instantly to seize market opportunities.": "Speed: Execute orders instantly to seize market opportunities.",
+
+"Advanced Charts: Analyze real-time data with precision using advanced charting tools.": "Advanced Charts: Analyze real-time data with precision using advanced charting tools.",
+
+"Custom Indicators: Personalize your experience with customible indicators.": "Custom Indicators: Personalize your experience with customible indicators.",
+
+"Diverse Orders: Execute various order types, aligning with your strategy.": "Diverse Orders: Execute various order types, aligning with your strategy.",
+
+"Downloading Ctrader is simple and easy, follow these steps:": "Downloading Ctrader is simple and easy, follow these steps:",
+
+"Create an account": "Create an account",
+
+"Download and install CTrader": "Download and install CTrader",
+
+"Your email verification is Pending, please go to your inbox and verify your email": "Your email verification is Pending, please go to your inbox and verify your email",
+
+"Thank you": "Thank you",
+
+"Your have Veified your email": "You have Verified your email",
+
+"Email verification link expired": "Email verification link expired",
+
+"look like the verfication link has expired. not worry we can send the link again": "look like the verification link has expired. not worry we can send the link again",
+
+"Resend verification link": "Resend verification link",
+
+"A verification link has been sent to your email account": "A verification link has been sent to your email account",
+
+"Email Verification Pending": "Email Verification Pending",
+
+"We have sent a email verification link to your email id": "We have sent an email verification link to your email id",
+
+"Your email verification is Pending, please go to your registered email inbox, to verify your email": "Your email verification is Pending, please go to your registered email inbox, to verify your email",
+
+"Congratulations, Your email has been verified successfully.": "Congratulations, Your email has been verified successfully.",
+
+"Email verification is Pending": "Email verification is Pending",
+
+"Must be at least 8 characters!": "Must be at least 8 characters",
+
+"Must contain at least 1 number!": "Must contain at least 1 number",
+
+"Must contain at least 1 in Capital Case!": "Must contain at least 1 in Capital Case",
+
+"Must contain at least 1 Letter in Small Case!": "Must contain at least 1 Letter in Small Case",
+
+"Must contain at least 1 Special Character!": "Must contain at least 1 Special Character",
+
+"Your Deposit has been Initiated Successfully, Kindly Transfer to this Vodafone Wallet from your Personal Number": "Your Deposit has been Initiated Successfully, Kindly Transfer to this Vodafone Wallet from your Personal Number",
+
+"Your Deposit has been Initiated Successfully, We will Contact you Shortly": "Your Deposit has been Initiated Successfully, We will Contact you Shortly",
+
+"Please select any type": "Please select any type",
+
+"Your Request is Under Review": "Your Request is Under Review",
+
+"Phone number required": "Phone number required",
+
+"Invalid phone number": "Invalid phone number",
+
+"Your password must contain the following:": "Your password must contain the following:",
+
+"Verify your email": "Verify your email",
+
+"You have registered successfully": "You have registered successfully",
+
+"Please note, that in order for us to proceed and execute a withdrawal request you might be requested to provide us with Proof of Address.": "Please note, that in order for us to proceed and execute a withdrawal request you might be requested to provide us with Proof of Address.",
+
+"At least 1 number": "At least 1 number",
+
+"At least 1 in Capital Case": "At least 1 in Capital Case",
+
+"At least 1 Special Character": "At least 1 Special Character",
+
+"At least 1 Letter in Small Case": "At least 1 Letter in Small Case",
+
+"Password (8 to 30 characters)": "Password (8 to 30 characters)",
+
+"Agreement": "Agreement",
+
+"I have read and understood the document, and I agree to electronically sign it": "I have read and understood the document, and I agree to electronically sign it",
+
+"Add Sign": "Add Sign",
+
+"Clear Sign": "Clear Sign",
+
+"Please add Signature to submit": "Please add a signature to submit",
+
+"Please opt for the same payment method for withdrawal as the one you used for your deposit.": "Please opt for the same payment method for withdrawal as the one you used for your deposit.",
+
+"Agreement document": "Agreement document",
+
+"Your signature details added successfully": "Your signature details have been added successfully.",
+
+"Registered_EmailVerificationPending": "Email Verification Pending",
+
+"ProfileCompleted": "Profile Completed",
+
+"FinInfoCompleted": "Finance Info Completed",
+
+"DocumentDetailCompleted": "Document Detail Completed",
+"Your financial wings to let your": "Your financial wings to let your",
+"Wealth go beyond.": "Wealth go beyond.",
+"CFDs with leverage or real stocks without commission": "CFDs with leverage or real stocks without commission",
+"Trade via App, Web or Desktop": "Trade via App, Web or Desktop",
+"Regulated by MFSA": "Regulated by MFSA",
+"Access to Education incl. Webinars": "Access to Education incl. Webinars",
+"New to Trive?": "New to Trive?",
+"Quick Access": "Quick Access",
+"Trading Summary": "Trading Summary",
+"Trading Balance": "Trading Balance",
+"Swaps": "Swaps",
+"Stay Informed": "Stay Informed",
+"Live Accounts": "Live Accounts",
+"Deposit Funds": "Deposit Funds",
+" Server": "Server",
+"Create your New Account": "Create your New Account",
+"Our Leverage dynamic and based on your Trading Account equity.": "Our Leverage dynamic and based on your Trading Account equity.",
+"Should you prefer a lower leverage than the one assigned to you equity bracket, simply reach out to our Trading Desk Team at": "Should you prefer a lower leverage than the one assigned to you equity bracket, simply reach out to our Trading Desk Team at",
+"Finances": "Finances",
+"Platforms":"Platforms",
+"Please select any payment method to proceed further": "Please select any payment method to proceed further",
+"Deposit Method": "Deposit Method",
+"You will receive": "You will receive",
+"The minimum deposit amount": "The minimum deposit amount is",
+"Third-party deposits will be rejected and refunded. Deposits must come from a bank account in the same name as the trading account.":"Third-party deposits will be rejected and refunded. Deposits must come from a bank account in the same name as the trading account.",
+"Third-party deposits will be rejected and refunded.": "Third-party deposits will be rejected and refunded.",
+"Trive may require confirmation of funding account ownership before funds are credited to your trading account by requesting a proof of transaction": "Trive may require confirmation of funding account ownership before funds are credited to your trading account by requesting a proof of transaction",
+"Keep in Mind": "Keep in Mind",
+"Login to": "Login to",
+"Your Trive application has been successfully submitted for verification. You can expect our response shortly.": "Your Trive application has been successfully submitted for verification. You can expect our response shortly.",
+"Welcome to the Client Assistance Center!": "Welcome to the Client Assistance Center!",
+"Client": "Client",
+"Your dedicated hub for support, solutions, and expert guidance. Whether you have a question, need assistance, or want to resolve an issue, we are here to help every step of the way.": "Your dedicated hub for support, solutions, and expert guidance. Whether you have a question, need assistance, or want to resolve an issue, we are here to help every step of the way.",
+"Raise a Ticket": "Raise a Ticket",
+"Send Us Email": "Send Us Email",
+"To update the email address linked to your Trive account, please email our Support Team at": "To update the email address linked to your Trive account, please email our Support Team at",
+"confirming your new email address. If you no longer have access to your registered email address, contact us from your new email and include copies of your verification documents (front and back).": "confirming your new email address. If you no longer have access to your registered email address, contact us from your new email and include copies of your verification documents (front and back).",
+"To update the phone number linked to your Trive account, please email our Support Team at" : "To update the phone number linked to your Trive account, please email our Support Team at",
+"from your registered email address. Be sure to include your new phone number with country code) and your date of birth for verification purposes.": "from your registered email address. Be sure to include your new phone number with country code) and your date of birth for verification purposes.",
+"You will be redirect to IB Portal site. Do you want to continue?": "You will be redirect to IB Portal site. Do you want to continue?",
+"My Deposits": "My Deposits",
+"Deposit ID": "Deposit ID",
+"Method": "Method",
+"My Withdrawals": "My Withdrawals",
+"Withdrawal ID": "Withdrawal ID",
+"Credit/Debit Cards": "Credit/Debit Cards",
+"Cryptocurrency":"Cryptocurrency",
+"Bank Transfer": "Bank Transfer",
+"(Numbers only)": "(Numbers only)",
+"Select Bank": "Select Bank",
+"USD 10 Minimum": "USD 10 Minimum",
+"Bank Branch": "Bank Branch",
+"Branch Code/Swift Code": "Branch Code/Swift Code",
+  "keep_in": "Keep in",
+  "mind": "Mind",
+  "min_amount": "The minimum withdrawal amount is 20 USD (Withdrawal fees apply if you withdraw without trading or the withdrawal amount is below the minimum)",
+  "no_third_party": "Third-party withdrawals are prohibited.",
+  "return_to_source": "We operate a \"return to source\" policy.",
+  "correct_details": "Ensure payment details are correct, as errors can lead to delays and untraceable funds.",
+  "bank_transfer_time": "Once the withdrawal via Wire Transfer is completed on our end, it may take 3 to 5 (or more) business days for the funds to reach your bank account.",
+  "processing_hours": "Our financial department processes withdrawals from Monday to Friday, 8 am - 5 pm server time (Winter: GMT+2, Summer: GMT+3)",
+  "card_refund_policy": "If a Credit or Debit Card was used for any deposit, withdrawals up to the total deposited amount will be refunded to that card first.",
+  "card_time": "Once the withdrawal via Credit/Debit Card is completed, it may take 3 to 5 business days for the funds to reach your account.",
+  "correct_ewallet_details": "Please ensure your E-wallet email address and/or Wallet ID are correct.",
+  "correct_crypto_details": "Please ensure your Crypto address and blockchain are correct as errors may lead to untraceable funds.",
+  "crypto_time": "Crypto withdrawal is instant after processing, but may take a few minutes due to blockchain confirmations.",
+  "withdrawal_status_title": "Withdrawal Status Descriptions",
+  "status_pending": "Pending",
+  "status_success": "Success",
+  "status_rejected": "Rejected",
+  "status_canceled": "Canceled",
+  "pending_description": "Your withdrawal request is under review and may take up to 24 hours to be completed.",
+  "success_description": "Your withdrawal is successful. Please note that the time for the funds to reach you may vary depending on the method used.",
+  "click_here": "HERE",
+  "view_withdrawal_times": "to view the withdrawal times.",
+  "rejected_description": "Your withdrawal request was rejected, and an email has been sent to your registered address explaining the reason.",
+  "canceled_description": "This status indicates that the withdrawal request was canceled by you through the Client Portal.",
+  "deposit_status_title": "Deposit Status Descriptions",
+  "deposit_pending_description": "Your deposit is being processed and will be completed shortly. If additional information is needed, our Deposit Team will contact you via email.",
+  "deposit_success_description": "Your deposit is successful, and the funds have already been credited to your account.",
+  "deposit_rejected_description": "Your deposit request was rejected, and an email has been sent to your registered address explaining the reason.",
+  "Client ID": "Client ID",
+  "IB Portal": "IB Portal",
+  "Register for a Demo Account Today": "Register for a Demo Account Today",
+  "Register an Account to Start Trading": "Register an Account to Start Trading",
+  "All personal information can be modified in Trive live platform": "All personal information can be modified in Trive live platform",
+  "Your demo account has been registered successfully.": "Your demo account has been registered successfully.",
+  "Charge 1.8% of deposit amount":"Charge 1.8% of deposit amount",
+   "Start copying trades in minutes with a smooth and intuitive setup designed for all experience levels.":"Start copying trades in minutes with a smooth and intuitive setup designed for all experience levels.",
+    "Customize your copy-trading strategy by choosing from top-performing providers that match your risk appetite and financial goals.":"Customize your copy-trading strategy by choosing from top-performing providers that match your risk appetite and financial goals.",
+    "Begin your trading journey confidently with straightforward tools and guidance—no prior Forex expertise needed.": "Begin your trading journey confidently with straightforward tools and guidance—no prior Forex expertise needed.",
+    "Increase your profit potential by earning performance fees from followers who copy your successful trading strategies.": "Increase your profit potential by earning performance fees from followers who copy your successful trading strategies.",
+    "Launch your provider profile effortlessly and trade directly from MT4—no extra installations or complicated settings required.": "Launch your provider profile effortlessly and trade directly from MT4—no extra installations or complicated settings required.",
+    "Monitor your trading results, earnings, and follower activity with real-time analytics that help you improve and manage risks effectively.": "Monitor your trading results, earnings, and follower activity with real-time analytics that help you improve and manage risks effectively.",
+    "Enhance Your Investment Results With Our Copy Trading":"Enhance Your Investment Results With Our Copy Trading",
+    "Our copy trading platform enhances portfolio management efficiency, reduces continuous market oversight requirements, and delivers access to seasoned master investors across diverse asset classes.": "Our copy trading platform enhances portfolio management efficiency, reduces continuous market oversight requirements, and delivers access to seasoned master investors across diverse asset classes.",
+    "Become a Follower": "Become a Follower",
+    "Become a Provider": "Become a Provider",
+    "Discover our comprehensive trading solutions designed for both followers and providers": "Discover our comprehensive trading solutions designed for both followers and providers",
+    "For Followers": "For Followers",
+    "For Providers": "For Providers",
+    "Effortless Trading Setup": "Effortless Trading Setup",
+    "Flexible Copying Options": "Flexible Copying Options",
+    "Perfect for New Traders": "Perfect for New Traders",
+    "Boost Your Earnings": "Boost Your Earnings",
+    "Simple Provider Setup": "Simple Provider Setup",
+    "Transparent Performance Insights": "Transparent Performance Insights",
+    "Trive Social": "Trive Social",
+    "InProgress": "In Progress",
+    "Enabled": "Enabled",
+    "StandardVariable": "StandardVariable",
+    "ECNZero": "ECNZero",
+    "ProLeverage": "ProLeverage",
+    "Settled": "Settled",
+    "Unsettled": "Unsettled",
+    "Buy": "Buy",
+    "Sell": "Sell",
+    "Account No": "Account No",
+    "Additional Account open request": "Additional Account open request",
+    "To request an additional account as an exception or change the type of your existing trading account, please email": "To request an additional account as an exception or change the type of your existing trading account, please email",
+    "You have reached your Live Trading Account limit.": "You have reached your Live Trading Account limit.",
+    "with your desired account type, opening leverage, and the reason for your request.":"with your desired account type, opening leverage, and the reason for your request.",
+    "Payment reference ID": "Payment reference ID",
+    "Cancel Withdrawal": "Cancel Withdrawal",
+    "Canceled": "Canceled",
+    "Chinese Name": "Chinese Name",
+    "Character": "Character",
+    "Create your Demo Account": "Create your Demo Account",
+    "Demo Accounts": "Demo Accounts",
+    "New demo Account": "New demo Account",
+    "You do not have any wallet added. Please add a wallet to proceed.": "You do not have any wallet added. Please add a wallet to proceed.",
+    "Add Wallet": "Add Wallet",
+    "Server": "Server",
+    "Uppercase": "Uppercase",
+    "Lowercase": "Lowercase",
+    "Number": "Number",
+    "Select Wallet":  "Select Wallet",
+    "Wallet Address": "Wallet Address",
+    "Network Channel": "Network Channel",
+    "QR Code": "QR Code",
+    "Approved": "Approved",
+    "if you want to modified or add any wallet please email our support team at": "if you want to modified or add any wallet please email our support team at",
+    "Chinese Given Name": "Chinese Given Name",
+    "MIN_DEPOSIT": "USD {{amount}} Minimum",
+    "Once verification is complete, please click the button below to proceed to the next step.": "Once verification is complete, please click the button below to proceed to the next step.",
+    "Please wait terminal loading...": "Please wait terminal loading...",
+    "Identity verification": "Identity verification",
+    "Payments from third parties are not accepted.The name of the sender must match the name on your registered account.": "Payments from third parties are not accepted.The name of the sender must match the name on your registered account.",
+    "Funds sent via bank transfer might be subject to conversion rates.": "Funds sent via bank transfer might be subject to conversion rates.",
+    "The sending bank or correspondent bank may deduct a fee for processing a wire transfer. Trive does not apply any fees and will deposit to your account the net amount received.": "The sending bank or correspondent bank may deduct a fee for processing a wire transfer. Trive does not apply any fees and will deposit to your account the net amount received.",
+    "With every successful transaction, the funds will be added to your MT5 account upon receipt. The processing time is generally 3-5 business days.": " With every successful transaction, the funds will be added to your MT5 account upon receipt. The processing time is generally 3-5 business days.",
+    "For faster trace of your transactions please send us a copy of your bank wire confirmation via Attachment so we can check all details necessary.": "For faster trace of your transactions please send us a copy of your bank wire confirmation via Attachment so we can check all details necessary.",
+    "The method of your withdrawal must match the method of your deposit.In this respect the withdrawal of your deposit can only be made to the same account from which you originally deposited.": "The method of your withdrawal must match the method of your deposit.In this respect the withdrawal of your deposit can only be made to the same account from which you originally deposited.",
+    "Trive may require confirmation of funding account ownership before funds are credited by requesting a screenshot of your crypto wallet/transaction.": "Trive may require confirmation of funding account ownership before funds are credited by requesting a screenshot of your crypto wallet/transaction.",
+     "and Maximum": "and Maximum",
+     "Card": "Card",
+     "Registered": "Registered",
+     "Format": "Format",
+     "Invalid date format.": "Invalid date format.",
+     "Search Country": "Search Country",
+     "(All fields are required)": "(All fields are required)",
+     "Voters card": "Voters card",
+     "Transaction Initiated": "Transaction Initiated",
+     "Result": "Result",
+     "Coin Name": "Coin Name",
+     "Network": "Network",
+     "USD 20 Minimum": "USD 20 Minimum",
+     "Minimum and maximum limits vary by method and are shown in SCA. Please ensure your deposit amount is within these limits.": " Minimum and maximum limits vary by method and are shown in SCA. Please ensure your deposit amount is within these limits.",
+     "Before proceeding, make sure you have selected the correct trading account.": "Before proceeding, make sure you have selected the correct trading account.",
+     "Please avoid making multiple deposits with the same amount, as this may trigger fraud checks.": "Please avoid making multiple deposits with the same amount, as this may trigger fraud checks.",
+     "Repeated attempts within a short period may be flagged by the PSP and lead to transaction rejection.": "Repeated attempts within a short period may be flagged by the PSP and lead to transaction rejection.",
+     "Each deposit address is single-use and valid for 1 hour only. Do not save or reuse this address for future deposits.": "Each deposit address is single-use and valid for 1 hour only. Do not save or reuse this address for future deposits.",
+     "Please send the exact amount displayed in SCA. Provider fees must be considered to avoid mismatches.": "Please send the exact amount displayed in SCA. Provider fees must be considered to avoid mismatches.",
+     "Supported networks: TRC20, ERC20, BEP20, BinancePay.": "Supported networks: TRC20, ERC20, BEP20, BinancePay.",
+     "Important:": "Important:",
+     "Deposits sent via an unsupported or incorrect network may be permanently lost and cannot be recovered.": "Deposits sent via an unsupported or incorrect network may be permanently lost and cannot be recovered.",
+     "Credit and debit cards are accepted.": "Credit and debit cards are accepted.",
+     "Refunds cannot exceed the original deposit amount. Any excess must be withdrawn using another method.": "Refunds cannot exceed the original deposit amount. Any excess must be withdrawn using another method.",
+     "Third-party cards are not allowed. The cardholder name must match the account holder.": "Third-party cards are not allowed. The cardholder name must match the account holder.",
+     "Minimum withdrawal amount:": "Minimum withdrawal amount:",
+     "Requests made outside working hours will be processed on the next business day.": "Requests made outside working hours will be processed on the next business day.",
+     "Method Requirements": "Method Requirements",
+     "Withdrawals should be made using the same method used for deposits.": "Withdrawals should be made using the same method used for deposits.",
+     "Card deposits: the original deposit amount will be refunded to the same card first.": "Card deposits: the original deposit amount will be refunded to the same card first.",
+     "Crypto withdrawals are sent only to your registered wallet address.": "Crypto withdrawals are sent only to your registered wallet address.",
+     "Information Accuracy": "Information Accuracy",
+     "Withdrawals should be made using the same method used for deposits": "Withdrawals should be made using the same method used for deposits",
+     "Please ensure your bank details / wallet address are complete and correct. Incorrect information may lead to delays or cancellation.": "Please ensure your bank details / wallet address are complete and correct. Incorrect information may lead to delays or cancellation.",
+     "Third-party withdrawals are not allowed. The account holder name must match your trading account.": "Third-party withdrawals are not allowed. The account holder name must match your trading account."
+  }
