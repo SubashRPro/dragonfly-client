@@ -30,7 +30,7 @@ export class AccountDemoComponent implements OnInit {
 
   ngOnInit(): void {
     this.formOpenAccount = this.fb.group({
-      Trading_Platform: ['MT4', [Validators.required]],
+      Trading_Platform: ['MT5', [Validators.required]],
       account_Type: ['demo', [Validators.required]],
       currency: ['USD', [Validators.required]],
       account_Leverage: ['100', [Validators.required]],

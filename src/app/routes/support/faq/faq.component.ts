@@ -589,227 +589,217 @@ export class FaqComponent implements OnInit {
         {
           question:
             "How can I withdraw funds from my account if the amount exceeds the deposited amount? ",
-          answer: `If your withdrawal amount exceeds your initial deposit amount, the profits will be credited to you by either bank transfer e-wallet. For more information, please contact us at <a href='mailto:support_int@dragonflyfx.com' target='_blank'> support_int@dragonflyfx.com</a> `,
+          answer: `If your withdrawal amount exceeds your initial deposit amount, the profits will be credited to you by either bank transfer e-wallet. For more information, please contact us at <a href='mailto:support_int@dragonflyfx.com' target='_blank'>support@dragonflyfx.com</a> `,
         },
         {
           question:
             "How can I withdraw if the card I used to deposit has been cancelled or expired?",
           answer: `<p>After the cancellation of a card, banks are obliged to allow limited transaction types, including refunds, usually for at least 6 months. You should therefore withdraw funds to the card you used to deposit, even if this card has been cancelled. You will receive these funds to your new card which is connected to the same bank account as your previous, cancelled card. </p><br/>
-                    <p>If the bank account linked to the card is completely closed, you will need to send proof of account closure to our finance department at <a href='mailto:support_int@dragonflyfx.com' target='_blank'> support_int@dragonflyfx.com/a> </p>`,
+                    <p>If the bank account linked to the card is completely closed, you will need to send proof of account closure to our finance department at <a href='mailto:support_int@dragonflyfx.com' target='_blank'>support@dragonflyfx.com.</a> </p>`,
         },
       ],
     },
 
+    // {
+    //   title: "Demo",
+    //   content: [
+    //     {
+    //       question: "Do I need to deposit money for a Demo Account?",
+    //       answer: `No, a Demo Account does not require a deposit as it uses virtual funds, allowing you to practice without any financial risk.`,
+    //     },
+    //     {
+    //       question: `What is a Demo Trading Account?`,
+    //       answer: `A Demo Trading Account allows you to practice trading using virtual funds instead of real money. It simulates real market conditions without any financial risk.`,
+    //     },
+    //     {
+    //       question: "Are the prices the same on my demo and real account?",
+    //       answer: `Our real and demo accounts will display the same prices and instruments. However, during times of high volatility in the market, there may be differences in the execution of demo accounts. `,
+    //     },
+    //     {
+    //       question:
+    //         "Can I trade the same assets in a Demo Account as in a live account? ",
+    //       answer: `Yes, the Demo Accounts offer access to the same assets and trading tools available in live accounts, allowing you to practice with the same conditions.`,
+    //     },
+    //     {
+    //       question:
+    //         "Can I trade with the same leverage in a Demo Account as in a live account?",
+    //       answer: `Yes, the leverage available in a Demo Account is the same as in a Live account. Our maximum dynamic leverage is 1:500, and it is subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.Trive.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and it's important to understand these rules as they affect the margin required for your trades.`,
+    //     },
+    //     {
+    //       question: "Can I withdraw funds from a Demo Account?",
+    //       answer: `No, since a Demo Account uses virtual funds, there is no real money involved, and withdrawals are not possible.`,
+    //     },
+    //     {
+    //       question:
+    //         "Do I need to fully verify my Trive profile in order to open a Demo Trading Account?",
+    //       answer: `No, you do not need to upload any documents to open a Demo Account. You only need to complete your Trive profile to get started.`,
+    //     },
+    //     {
+    //       question: "Can I switch between a Demo Account and a live account?",
+    //       answer: `Demo Accounts cannot be converted to Live Trading Accounts. However, once you're ready to start trading with real funds, you can fully verify your Trive profile (if not already verified) and then open a Live Trading Account.`,
+    //     },
+    //     {
+    //       question:
+    //         "Can I use a Demo Account to test different trading strategies?",
+    //       answer: `Yes, a Demo Account is an excellent tool for testing various trading strategies and techniques without the risk of losing real money. However, please remember that certain trading practices are prohibited, and these are outlined in our Terms & Conditions. Make sure to review them to avoid any violations.`,
+    //     },
+    //     {
+    //       question: "Do Demo Accounts expire?",
+    //       answer: `No, Demo Trading Accounts do not have an expiration date. However, if there is prolonged inactivity, the company may close the account at its discretion.`,
+    //     },
+    //   ],
+    // },
+  {
+  title: "MetaTrader 5",
+  content: [
     {
-      title: "Demo",
-      content: [
-        {
-          question: "Do I need to deposit money for a Demo Account?",
-          answer: `No, a Demo Account does not require a deposit as it uses virtual funds, allowing you to practice without any financial risk.`,
-        },
-        {
-          question: `What is a Demo Trading Account?`,
-          answer: `A Demo Trading Account allows you to practice trading using virtual funds instead of real money. It simulates real market conditions without any financial risk.`,
-        },
-        {
-          question: "Are the prices the same on my demo and real account?",
-          answer: `Our real and demo accounts will display the same prices and instruments. However, during times of high volatility in the market, there may be differences in the execution of demo accounts. `,
-        },
-        {
-          question:
-            "Can I trade the same assets in a Demo Account as in a live account? ",
-          answer: `Yes, the Demo Accounts offer access to the same assets and trading tools available in live accounts, allowing you to practice with the same conditions.`,
-        },
-        {
-          question:
-            "Can I trade with the same leverage in a Demo Account as in a live account?",
-          answer: `Yes, the leverage available in a Demo Account is the same as in a Live account. Our maximum dynamic leverage is 1:500, and it is subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.Trive.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and it's important to understand these rules as they affect the margin required for your trades.`,
-        },
-        {
-          question: "Can I withdraw funds from a Demo Account?",
-          answer: `No, since a Demo Account uses virtual funds, there is no real money involved, and withdrawals are not possible.`,
-        },
-        {
-          question:
-            "Do I need to fully verify my Trive profile in order to open a Demo Trading Account?",
-          answer: `No, you do not need to upload any documents to open a Demo Account. You only need to complete your Trive profile to get started.`,
-        },
-        {
-          question: "Can I switch between a Demo Account and a live account?",
-          answer: `Demo Accounts cannot be converted to Live Trading Accounts. However, once you're ready to start trading with real funds, you can fully verify your Trive profile (if not already verified) and then open a Live Trading Account.`,
-        },
-        {
-          question:
-            "Can I use a Demo Account to test different trading strategies?",
-          answer: `Yes, a Demo Account is an excellent tool for testing various trading strategies and techniques without the risk of losing real money. However, please remember that certain trading practices are prohibited, and these are outlined in our Terms & Conditions. Make sure to review them to avoid any violations.`,
-        },
-        {
-          question: "Do Demo Accounts expire?",
-          answer: `No, Demo Trading Accounts do not have an expiration date. However, if there is prolonged inactivity, the company may close the account at its discretion.`,
-        },
-      ],
+      question: "What is MetaTrader 5 (MT5)?",
+      answer: `MetaTrader 5 (MT5) is an advanced trading platform used to trade financial markets such as Forex, commodities, indices, stocks, and cryptocurrencies. It offers enhanced charting tools, more timeframes, advanced order types, technical indicators, and automated trading through Expert Advisors.`,
     },
     {
-      title: "MetaTrader 4",
-      content: [
-        {
-          question: "What is MetaTrader 4 (MT4)?",
-          answer: `MetaTrader 4 (MT4) is a popular trading platform used by traders to access various financial markets, including Forex, stocks, commodities, and cryptocurrencies. It offers advanced charting tools, technical indicators, and automated trading capabilities.`,
-        },
-        {
-          question: "How do I install MetaTrader 4?",
-          answer: `To install MetaTrader 4, head to the download section at the top of this page where you can find the appropriate version for your operating system (Windows, Mac, or mobile). After downloading, follow the installation instructions, and once installed, log in with your broker account credentials to start trading.`,
-        },
-        {
-          question: " Can I use MetaTrader 4 on mobile devices?",
-          answer: `Yes, MetaTrader 4 is available as a mobile app for both iOS and Android devices. It allows you to trade, view charts, and manage your positions on the go.`,
-        },
-        {
-          question:
-            "How can I reset or change my MT4 Trading Account password?",
-          answer: `In order to reset or change your Trading Account password:<br/><br>
-                      <ul>
-                        <li> 1. Log in to your Client Area.</li>
-                        <li> 2. Go to "My Accounts" and select the Live or Demo section.</li>
-                        <li> 3. Click the "key – change password" icon.</li>
-                        <li> 4. Click on the "Get Code" button and a check your registered email address.</li>
-                        <li> 5. Submit the code, double-enter your new password and hit the "Submit"</li>
-                      </ul>`,
-        },
-        {
-          question: "How to log in to my MT4 Trading Account using Mobile?",
-          answer: `In order to reset or change your Trading Account password:<br/><br>
-                      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>Android:</strong></p> <br/>
-                          <ul>
-                            <li> 1. Log in to your Client Area.</li>
-                            <li> 2. Go to "My Accounts" and select the Live or Demo section.</li>
-                            <li> 3. Click the "key – change password" icon.</li>
-                            <li> 4. Click on the "Get Code" button and a check your registered email address.</li>
-                            <li> 5. Submit the code, double-enter your new password and hit the "Submit"</li>
-                          </ul>
-                        </div>
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>IOS:</strong></p> <br/>
-                           <ul>
-                            <li> 1. Log in to your Client Area.</li>
-                            <li> 2. Go to "My Accounts" and select the Live or Demo section.</li>
-                            <li> 3. Click the "key – change password" icon.</li>
-                            <li> 4. Click on the "Get Code" button and a check your registered email address.</li>
-                            <li> 5. Submit the code, double-enter your new password and hit the "Submit"</li>
-                          </ul>
-                        </div>
-                      </div>
-                     `,
-        },
-        {
-          question: " What are EAs, and can I use them with Trive?",
-          answer: `Expert Advisors (EAs) are automated trading scripts that execute trades based on preset conditions and strategies. We allow clients to use EAs/Robots as long as their trading strategy complies with our Terms & Conditions and does not involve abusive practices.`,
-        },
-        {
-          question: "How to modify/delete trade on the MT4 Platform?",
-          answer: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>On PC/Laptop:</strong></p> <br/>
-                          <ul>
-                            <li> 1. Click on the "Trade" tab located in the Terminal Window of your trading platform.</li>
-                            <li> 2. Right-click on the trade you wish to modify.</li>
-                            <li> 3. Select the "Modify or Delete Order" option from the menu that appears.</li>
-                          </ul>
-                        </div>
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>On Mobile:</strong></p> <br/>
-                           <ul>
-                            <li> 1. Navigate to the 'Trade' tab.</li>
-                            <li> 2. Tap and hold the open position. A new pop-up window will appear.</li>
-                            <li> 3. Select “Modify Order”. </li>
-                            <li> 4. Once you are done, tap “Modify”. </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p class='note'>NOTE: Only pending orders that have not been triggered can be deleted. Once an order is triggered, it can no longer be deleted.</p>
-                     `,
-        },
-        {
-          question: "How to add Indicators on my MT4 chart?",
-          answer: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>On PC/Laptop:</strong></p> <br/>
-                          <ul>
-                            <li> 1. Locate the 'Navigator' panel on your MT4 platform.</li>
-                            <li> 2. Find the indicator you want to add.</li>
-                            <li> 3. Drag the indicator onto the desired chart.</li>
-                            <li> 4. A new panel will appear with customization options for inputs, colors, and visualization.</li>
-                            <li> 5. Customize the settings as desired and click “OK” to apply the indicator on the chart.</li>
-                          </ul>
-                        </div>
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>On Mobile:</strong></p> <br/>
-                           <ul>
-                            <li> 1. Open the desired chart.</li>
-                            <li> 2. Tap on the "f" symbol above the chart.</li>
-                            <li> 3. Select the Indicator you want to apply. </li>
-                            <li> 4. Customize the settings in the new window. </li>
-                            <li>5. Once done, tap the "Done" button in the upper right corner of the chart. </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p class='note'>NOTE: Only pending orders that have not been triggered can be deleted. Once an order is triggered, it can no longer be deleted.</p>
-                     `,
-        },
-
-        {
-          question: "How can I view the pair specification in MT4?",
-          answer: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>On Desktop (Windows/Mac):</strong></p> <br/>
-                          <ul>
-                            <li> 1. Open MT4 and go to the Market Watch window (Ctrl + M if not visible).</li>
-                            <li> 2. Right-click on the trading pair you want to check.</li>
-                            <li> 3. Select "Specification" from the dropdown menu.</li>
-                            <li> 4. A window will open displaying details like <strong> spread, contract size, margin requirements, swap rates, and trading hours.</strong></li>
-                          </ul>
-                        </div>
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>On Mobile (iOS/Android):</strong></p> <br/>
-                           <ul>
-                            <li> 1. Open the MT4 app and go to the Quotes tab.</li>
-                            <li> 2. Tap and hold the trading pair you want to check.</li>
-                            <li> 3. Select "Properties" (on iOS) or "Symbol Properties" (on Android).</li>
-                            <li> 4. Customize the settings in the new window. </li>
-                            <li> 4. A screen will display the pair's specifications, including spread, contract size, margin, and trading hours.</li>
-                          </ul>
-                        </div>
-                      </div>
-                     `,
-        },
-
-        {
-          question: "How do I install an  Expert Advisor (EA) on MT4?",
-          answer: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>On Desktop (Windows/Mac):</strong></p> <br/>
-                          <ul>
-                            <li> 1. Open MT4 and go to File > Open Data Folder.</li>
-                            <li> 2. Navigate to MQL5 > Experts.</li>
-                            <li> 3. Copy your EA (.ex5 file) into the Experts folder.</li>
-                            <li> 4. Restart MT4, then open the Navigator panel (Ctrl + N).</li>
-                            <li> 5. Under Expert Advisors, find your EA and drag it onto a chart.</li>
-                            <li> 6. Enable Algo Trading from the toolbar to activate the EA. </li>
-                          </ul>
-                        </div>
-                        <div class="bg-gray-300 p-4">
-                          <p><strong>On Mobile (iOS/Android):</strong></p> <br/>
-                           <ul>
-                            <li>Expert Advisors (EA) cannot be installed or used on the MT4 mobile app.</li>
-                           </ul>
-                        </div>
-                      </div>
-                     `,
-        },
-      ],
+      question: "How do I install MetaTrader 5?",
+      answer: `To install MetaTrader 5, go to the download section at the top of this page and select the correct version for your device, such as Windows, Mac, iOS, or Android. After downloading, follow the installation steps and log in using your trading account credentials.`,
     },
+    {
+      question: "Can I use MetaTrader 5 on mobile devices?",
+      answer: `Yes, MetaTrader 5 is available for both iOS and Android devices. You can trade, manage positions, monitor charts, and access your account from anywhere using the MT5 mobile app.`,
+    },
+    {
+      question: "How can I reset or change my MT5 Trading Account password?",
+      answer: `In order to reset or change your Trading Account password:<br/><br>
+        <ul>
+          <li>1. Log in to your Client Area.</li>
+          <li>2. Go to "My Accounts" and select the Live or Demo section.</li>
+          <li>3. Click the "key – change password" icon.</li>
+          <li>4. Click on the "Get Code" button and check your registered email address.</li>
+          <li>5. Submit the code, enter your new password twice, and click "Submit".</li>
+        </ul>`,
+    },
+    {
+      question: "How to log in to my MT5 Trading Account using Mobile?",
+      answer: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-gray-300 p-4">
+          <p><strong>Android:</strong></p><br/>
+          <ul>
+            <li>1. Open the MetaTrader 5 app.</li>
+            <li>2. Tap "Manage Accounts" or the "+" icon.</li>
+            <li>3. Search for your broker server.</li>
+            <li>4. Enter your MT5 login ID and password.</li>
+            <li>5. Tap "Sign In" to access your trading account.</li>
+          </ul>
+        </div>
+        <div class="bg-gray-300 p-4">
+          <p><strong>iOS:</strong></p><br/>
+          <ul>
+            <li>1. Open the MetaTrader 5 app.</li>
+            <li>2. Go to Settings and tap "New Account".</li>
+            <li>3. Search for your broker server.</li>
+            <li>4. Enter your MT5 account number and password.</li>
+            <li>5. Tap "Sign In" to start trading.</li>
+          </ul>
+        </div>
+      </div>`,
+    },
+    {
+      question: "What are EAs, and can I use them with MT5?",
+      answer: `Expert Advisors (EAs) are automated trading programs that execute trades based on predefined strategies. You can use EAs on MT5 as long as your trading strategy complies with our Terms & Conditions and does not involve abusive trading practices.`,
+    },
+    {
+      question: "How to modify/delete trade on the MT5 Platform?",
+      answer: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-gray-300 p-4">
+          <p><strong>On PC/Laptop:</strong></p><br/>
+          <ul>
+            <li>1. Open the "Toolbox" window and go to the "Trade" tab.</li>
+            <li>2. Right-click on the trade you wish to modify.</li>
+            <li>3. Select "Modify or Delete Order".</li>
+            <li>4. Update the Stop Loss, Take Profit, or pending order details and confirm.</li>
+          </ul>
+        </div>
+        <div class="bg-gray-300 p-4">
+          <p><strong>On Mobile:</strong></p><br/>
+          <ul>
+            <li>1. Go to the "Trade" tab.</li>
+            <li>2. Tap and hold the open position or pending order.</li>
+            <li>3. Select "Modify Position" or "Delete Order".</li>
+            <li>4. Apply the changes and confirm.</li>
+          </ul>
+        </div>
+      </div>
+      <p class='note'>NOTE: Only pending orders that have not been triggered can be deleted. Open positions can be modified or closed, but not deleted.</p>`,
+    },
+    {
+      question: "How to add Indicators on my MT5 chart?",
+      answer: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-gray-300 p-4">
+          <p><strong>On PC/Laptop:</strong></p><br/>
+          <ul>
+            <li>1. Open MT5 and select the chart you want to use.</li>
+            <li>2. Go to Insert > Indicators from the top menu.</li>
+            <li>3. Choose the indicator you want to add.</li>
+            <li>4. Customize the settings such as inputs, colors, and levels.</li>
+            <li>5. Click "OK" to apply the indicator to the chart.</li>
+          </ul>
+        </div>
+        <div class="bg-gray-300 p-4">
+          <p><strong>On Mobile:</strong></p><br/>
+          <ul>
+            <li>1. Open the desired chart.</li>
+            <li>2. Tap the "f" icon on the chart screen.</li>
+            <li>3. Select the indicator you want to apply.</li>
+            <li>4. Adjust the settings as needed.</li>
+            <li>5. Tap "Done" to apply the indicator.</li>
+          </ul>
+        </div>
+      </div>`,
+    },
+    {
+      question: "How can I view the pair specification in MT5?",
+      answer: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-gray-300 p-4">
+          <p><strong>On Desktop (Windows/Mac):</strong></p><br/>
+          <ul>
+            <li>1. Open MT5 and go to the Market Watch window.</li>
+            <li>2. Right-click on the trading pair you want to check.</li>
+            <li>3. Select "Specification".</li>
+            <li>4. A window will display details such as spread, contract size, margin requirements, swap rates, and trading hours.</li>
+          </ul>
+        </div>
+        <div class="bg-gray-300 p-4">
+          <p><strong>On Mobile (iOS/Android):</strong></p><br/>
+          <ul>
+            <li>1. Open the MT5 app and go to the Quotes tab.</li>
+            <li>2. Tap the trading pair you want to check.</li>
+            <li>3. Select "Properties" or "Symbol Properties".</li>
+            <li>4. The screen will show the pair specifications, including spread, contract size, margin, and trading hours.</li>
+          </ul>
+        </div>
+      </div>`,
+    },
+    {
+      question: "How do I install an Expert Advisor (EA) on MT5?",
+      answer: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-gray-300 p-4">
+          <p><strong>On Desktop (Windows/Mac):</strong></p><br/>
+          <ul>
+            <li>1. Open MT5 and go to File > Open Data Folder.</li>
+            <li>2. Navigate to MQL5 > Experts.</li>
+            <li>3. Copy your EA file into the Experts folder.</li>
+            <li>4. Restart MT5 and open the Navigator panel.</li>
+            <li>5. Find your EA under Expert Advisors and drag it onto a chart.</li>
+            <li>6. Enable Algo Trading from the toolbar to activate the EA.</li>
+          </ul>
+        </div>
+        <div class="bg-gray-300 p-4">
+          <p><strong>On Mobile (iOS/Android):</strong></p><br/>
+          <ul>
+            <li>Expert Advisors cannot be installed or used on the MT5 mobile app.</li>
+          </ul>
+        </div>
+      </div>`,
+    },
+  ],
+}
     // {
     //   title: "Regulatory Environment",
     //   content: [

@@ -53,7 +53,7 @@ export class ClosedPositionsComponent implements OnInit {
     sortBy:'',
     sortOrder:'',
     customer_id: this.customer_id,
-    trading_Platform:'MT4',
+    trading_Platform:'MT5',
   };
   ngOnInit(): void {
     this.formFilter = this.fb.group({
@@ -61,7 +61,7 @@ export class ClosedPositionsComponent implements OnInit {
       accountNumber: [''],
       timeline: [''],
       orderId:[''],
-      trading_Platform:'MT4',
+      trading_Platform:'MT5',
     });
     this.common.getAllCurrencies().subscribe((res: any) => {
       this.currencies = res.data;

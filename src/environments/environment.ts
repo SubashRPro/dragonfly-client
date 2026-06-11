@@ -4,9 +4,9 @@ export const environment = {
   production: true,
   useHash: true,
   api: {
-    baseUrl: 'https://clientapi.dragonflyfx.com',
-    codeUrl: 'https://clientapi.dragonflyfx.com',
-    userUrl: 'https://clientapi.dragonflyfx.com',
+    baseUrl: 'https://globalportal-api.trive.com',
+    codeUrl: 'https://globalportal-api.trive.com',
+    userUrl: 'https://globalportal-api.trive.com',
     clientUrl: 'https://my.dragonflyfx.com',
     calculatorUrl: 'test.com',
     fileUrl: 'https://dragonfly-prod-bkt.s3.eu-west-2.amazonaws.com',

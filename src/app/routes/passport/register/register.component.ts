@@ -358,7 +358,7 @@ this.CountryISO.WallisAndFutuna,
       }
       this.linkSource = queryParams?.src;
     });
-    this.getLinks();
+   // this.getLinks();
   }
 
   phoneNumberValidator = (control: FormControl): { [s: string]: boolean } => {

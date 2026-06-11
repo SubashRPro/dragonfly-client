@@ -56,7 +56,7 @@ export class OpenPositionsComponent implements OnInit {
     sortBy:'',
     sortOrder:'',
     customer_id: this.customer_id,
-    trading_Platform:'MT4',
+    trading_Platform:'MT5',
   };
 
   // eslint-disable-next-line @angular-eslint/contextual-lifecycle
@@ -66,7 +66,7 @@ export class OpenPositionsComponent implements OnInit {
       timeline: [''],
       currency: [''],
       orderId:[''],
-      trading_Platform:'MT4'
+      trading_Platform:'MT5'
     });
     this.common.getAllCurrencies().subscribe((res: any) => {
       this.currencies = res.data;
