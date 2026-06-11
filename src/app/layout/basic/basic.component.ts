@@ -715,7 +715,7 @@ export class LayoutBasicComponent implements OnInit {
 
 
   copyTrading() {
-    window.open("https://socialtrading-global.trive.com/portal/login?redirectUrl=%2F", "_blank");
+    window.open("https://socialtrading-global.dragonfly.com/portal/login?redirectUrl=%2F", "_blank");
   }
 
 }

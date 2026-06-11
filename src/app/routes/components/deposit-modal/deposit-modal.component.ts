@@ -746,7 +746,7 @@ export class DepositModalComponent implements OnInit {
             paymenT_DESTINATION: accounts.split("|")[0],
             deposiT_AMOUNT: amount,
             deposiT_TYPE: "2",
-            wL_NO: "Trive",
+            wL_NO: "dragonfly",
             currency: currencie.split("|")[1],
             postType: "D",
             country: country,
@@ -769,7 +769,7 @@ export class DepositModalComponent implements OnInit {
            paymenT_DESTINATION: accounts.split("|")[0],
            deposiT_AMOUNT: amount,
            deposiT_TYPE: "1",
-           wL_NO: "Trive",
+           wL_NO: "dragonfly",
            WT_PaymentReference_ID: paymentreferID,
            currency: currencie.split("|")[1],
          } as InitiateDepositParams;
@@ -898,7 +898,7 @@ export class DepositModalComponent implements OnInit {
           paymenT_DESTINATION: accounts.split("|")[0],
           deposiT_AMOUNT: amount,
           deposiT_TYPE: "26",
-          wL_NO: "Trive",
+          wL_NO: "dragonfly",
           WT_PaymentReference_ID: paymentreferID,
           currency: currencie.split("|")[1],
         } as InitiateDepositParams;
@@ -1678,7 +1678,7 @@ export class DepositModalComponent implements OnInit {
             paymenT_DESTINATION: accounts.split("|")[0],
             deposiT_AMOUNT: amount,
             deposiT_TYPE: "2",
-            wL_NO: "Trive",
+            wL_NO: "dragonfly",
             currency: currencie.split("|")[1],
             OmType: omType,
           };

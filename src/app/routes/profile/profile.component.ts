@@ -2143,7 +2143,7 @@ export class ProfileComponent implements OnInit {
   }
 
   loadPdf() {
-    const url = 'https://globalportal-api.trive.com/app_contents/agreement_doc/additionaltermsandconditionsriskdisclosure.pdf';
+    const url = 'https://globalportal-api.dragonfly.com/app_contents/agreement_doc/additionaltermsandconditionsriskdisclosure.pdf';
     this.http.get(url, { responseType: 'blob' }).subscribe((res) => {
       const fileURL = URL.createObjectURL(res);
       this.pdfSrc = fileURL;

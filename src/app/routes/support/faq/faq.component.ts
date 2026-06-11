@@ -175,11 +175,11 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "How many Live Trading Accounts can I have? Is there a limit?",
-    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@trivecom' target='_blank'>tradingdesk@trivecom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
+    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@dragonflycom' target='_blank'>tradingdesk@dragonflycom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
     //     },
     //     {
     //       question: "What is the maximum leverage that you offer?",
-    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.Trive.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
+    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.dragonfly.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
     //     },
     //     {
     //       question:
@@ -242,11 +242,11 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "How many Live Trading Accounts can I have? Is there a limit?",
-    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@trivecom' target='_blank'>tradingdesk@trivecom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
+    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@dragonflycom' target='_blank'>tradingdesk@dragonflycom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
     //     },
     //     {
     //       question: "What is the maximum leverage that you offer?",
-    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.Trive.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
+    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.dragonfly.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
     //     },
     //     {
     //       question:
@@ -306,11 +306,11 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "How many Live Trading Accounts can I have? Is there a limit?",
-    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@trivecom' target='_blank'>tradingdesk@trivecom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
+    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@dragonflycom' target='_blank'>tradingdesk@dragonflycom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
     //     },
     //     {
     //       question: "What is the maximum leverage that you offer?",
-    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.Trive.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
+    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.dragonfly.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
     //     },
     //     {
     //       question:
@@ -373,11 +373,11 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "How many Live Trading Accounts can I have? Is there a limit?",
-    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@trivecom' target='_blank'>tradingdesk@trivecom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
+    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@dragonflycom' target='_blank'>tradingdesk@dragonflycom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
     //     },
     //     {
     //       question: "What is the maximum leverage that you offer?",
-    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.Trive.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
+    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.dragonfly.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
     //     },
     //     {
     //       question:
@@ -435,11 +435,11 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "How many Live Trading Accounts can I have? Is there a limit?",
-    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@trivecom' target='_blank'>tradingdesk@trivecom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
+    //       answer: `You can have up to three active Live Trading Accounts. If you need an additional Trading Account or wish to change the account type of an existing one, you can submit a request to our Trading Desk Team at <a href='mailto:tradingdesk@dragonflycom' target='_blank'>tradingdesk@dragonflycom</a>. All requests are subject to review and approval at the sole discretion of our Trading Desk Team.`,
     //     },
     //     {
     //       question: "What is the maximum leverage that you offer?",
-    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.Trive.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
+    //       answer: `The maximum dynamic leverage we offer is 1:500. Our leverage is dynamic and therefore subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.dragonfly.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and understanding these rules is important as they affect the margin required for your trades.`,
     //     },
     //     {
     //       question:
@@ -529,11 +529,11 @@ export class FaqComponent implements OnInit {
         },
         // {
         //   question: " Is it possible to lose more money than I deposited? ",
-        //   answer: `Trive offers Negative Balance Protection (NBP) for all clients, regardless of their categorisation and jurisdiction, thereby ensuring that you cannot lose more than your total deposits. For more details, please refer to our 'Order Execution Policy.' Trive also provides a stop out level, which will cause trades to be closed when a certain margin level % is reached. Click <a href='https://www.Trive.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a> to see the Stop Out Levels.`,
+        //   answer: `dragonfly offers Negative Balance Protection (NBP) for all clients, regardless of their categorisation and jurisdiction, thereby ensuring that you cannot lose more than your total deposits. For more details, please refer to our 'Order Execution Policy.' dragonfly also provides a stop out level, which will cause trades to be closed when a certain margin level % is reached. Click <a href='https://www.dragonfly.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a> to see the Stop Out Levels.`,
         // },
         // {
         //   question: " How do you keep Clients funds safe?",
-        //   answer: `Trive takes the safety of client funds very seriously. For this reason, all client funds are fully segregated from the company’s own 	funds and kept in separate bank accounts in major European banks. This ensures that client funds cannot be used for any other purpose.`,
+        //   answer: `dragonfly takes the safety of client funds very seriously. For this reason, all client funds are fully segregated from the company’s own 	funds and kept in separate bank accounts in major European banks. This ensures that client funds cannot be used for any other purpose.`,
         // },
       ],
     },
@@ -623,7 +623,7 @@ export class FaqComponent implements OnInit {
     //     {
     //       question:
     //         "Can I trade with the same leverage in a Demo Account as in a live account?",
-    //       answer: `Yes, the leverage available in a Demo Account is the same as in a Live account. Our maximum dynamic leverage is 1:500, and it is subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.Trive.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and it's important to understand these rules as they affect the margin required for your trades.`,
+    //       answer: `Yes, the leverage available in a Demo Account is the same as in a Live account. Our maximum dynamic leverage is 1:500, and it is subject to adjustment based on your account equity. You can check the specific leverage tiers for your equity <a href='https://www.dragonfly.com/about/legal-documents/leverage-adjusment-policy' target='_blank'>HERE</a>. Please note that different margin calculation rules apply to certain instruments on our platform, and it's important to understand these rules as they affect the margin required for your trades.`,
     //     },
     //     {
     //       question: "Can I withdraw funds from a Demo Account?",
@@ -631,12 +631,12 @@ export class FaqComponent implements OnInit {
     //     },
     //     {
     //       question:
-    //         "Do I need to fully verify my Trive profile in order to open a Demo Trading Account?",
-    //       answer: `No, you do not need to upload any documents to open a Demo Account. You only need to complete your Trive profile to get started.`,
+    //         "Do I need to fully verify my dragonfly profile in order to open a Demo Trading Account?",
+    //       answer: `No, you do not need to upload any documents to open a Demo Account. You only need to complete your dragonfly profile to get started.`,
     //     },
     //     {
     //       question: "Can I switch between a Demo Account and a live account?",
-    //       answer: `Demo Accounts cannot be converted to Live Trading Accounts. However, once you're ready to start trading with real funds, you can fully verify your Trive profile (if not already verified) and then open a Live Trading Account.`,
+    //       answer: `Demo Accounts cannot be converted to Live Trading Accounts. However, once you're ready to start trading with real funds, you can fully verify your dragonfly profile (if not already verified) and then open a Live Trading Account.`,
     //     },
     //     {
     //       question:
@@ -804,14 +804,14 @@ export class FaqComponent implements OnInit {
     //   title: "Regulatory Environment",
     //   content: [
     //     {
-    //       question: "Is Trive regulated?",
+    //       question: "Is dragonfly regulated?",
     //       answer:
     //         "Arena Trading Technology Pty Ltd is an AFS Authorised Representative in Australia (ASIC) with registered CAR No.: 001306061",
     //     },
     //     {
-    //       question: "In which countries is Trive regulated? ",
+    //       question: "In which countries is dragonfly regulated? ",
     //       answer:
-    //         "Trive does not provide services to residents of certain restricted jurisdictions where such offerings would contravene local laws or regulatory requirements. Restricted regions include but are not limited to: The United States of America (USA), The Democratic People’s Republic of Korea (DPRK), Singapore, any other jurisdiction where Trive's services would be deemed unlawful under local regulations.",
+    //         "dragonfly does not provide services to residents of certain restricted jurisdictions where such offerings would contravene local laws or regulatory requirements. Restricted regions include but are not limited to: The United States of America (USA), The Democratic People’s Republic of Korea (DPRK), Singapore, any other jurisdiction where dragonfly's services would be deemed unlawful under local regulations.",
     //     },
     //     {
     //       question:
