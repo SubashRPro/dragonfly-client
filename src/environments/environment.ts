@@ -9,7 +9,7 @@ export const environment = {
     userUrl: 'https://globalportal-api.dragonfly.com',
     clientUrl: 'https://my.dragonflyfx.com',
     calculatorUrl: 'test.com',
-    fileUrl: 'https://dragonfly-prod-bkt.s3.eu-west-2.amazonaws.com',
+    fileUrl: 'https://files.dragonflyfx.com',
     ecUrl: 'test.com',
     crmUrl: 'https://crm.dragonflyfx.com/',
     webUrl: 'https://dragonflyfx.com',
