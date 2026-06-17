@@ -4,9 +4,9 @@ export const environment = {
   production: true,
   useHash: true,
   api: {
-    baseUrl: 'https://clientapi.dragonflyfx.com',
-    codeUrl: 'https://clientapi.dragonflyfx.com',
-    userUrl: 'https://clientapi.dragonflyfx.com',
+    baseUrl: 'http://18.171.98.145:5843',
+    codeUrl: 'http://18.171.98.145:5843',
+    userUrl: 'http://18.171.98.145:5843',
     clientUrl: 'https://my.dragonflyfx.com',
     calculatorUrl: 'test.com',
     fileUrl: 'https://files.dragonflyfx.com/',

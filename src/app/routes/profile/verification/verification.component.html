@@ -1,33 +1,105 @@
-<div nz-row nzJustify="center" nzAlign="middle" style="height: 100%">
-  <div nz-col nzMd="12" nzLg="12" nzXl="12" nzXs="24" class="text-center">
-    <!-- <nz-card style="width: 400px" [nzTitle]="'Verification ' + data?.customer_Status | i18n">
-    <div class="text-center">
-      <img src="assets/images/SuccessThumbsup.svg" alt="" />
-      <div style="margin: 12px 0">
-        <strong style="color: #0d2c50">{{ 'Thank you' | i18n }}!</strong>
+<div nz-row nzJustify="center" nzAlign="middle" class="dfx-review-wrapper">
+  <div nz-col nzMd="22" nzLg="20" nzXl="18" nzXs="24">
+
+    <div class="dfx-review-card">
+
+      <div class="dfx-review-header">
+        <div class="dfx-review-icon">
+          <img src="assets/images/sent.svg" alt="verification" />
+        </div>
+
+        <div class="dfx-review-content">
+          <h1>{{ 'Verification In Progress' | i18n }}</h1>
+
+          <p>
+            {{
+              'Thank you for completing your application. Our compliance team is currently reviewing your information. You will receive an email notification once verification is complete.'
+                | i18n
+            }}
+          </p>
+        </div>
       </div>
-      <p>{{ 'We have received your information.' | i18n }} </p>
-      <p>{{ 'Your Profile verification is ' + data?.customer_Status | i18n }}</p>
-      <p>{{ data?.review_Comments }}</p>
+
+      <div class="dfx-review-steps">
+
+        <div class="dfx-step completed">
+          <div class="step-icon">
+            <span nz-icon nzType="check" nzTheme="outline"></span>
+          </div>
+
+          <div class="step-content">
+            <h3>{{ 'Profile Information' | i18n }}</h3>
+            <p>{{ 'Submitted' | i18n }}</p>
+            <span>{{ 'Completed' | i18n }}</span>
+          </div>
+        </div>
+
+        <div class="dfx-step completed">
+          <div class="step-icon">
+            <span nz-icon nzType="check" nzTheme="outline"></span>
+          </div>
+
+          <div class="step-content">
+            <h3>{{ 'Documents' | i18n }}</h3>
+            <p>{{ 'Uploaded' | i18n }}</p>
+            <span>{{ 'Completed' | i18n }}</span>
+          </div>
+        </div>
+
+        <div class="dfx-step pending">
+          <div class="step-icon">
+            <span nz-icon nzType="hourglass" nzTheme="outline"></span>
+          </div>
+
+          <div class="step-content">
+            <h3>{{ 'Compliance Review' | i18n }}</h3>
+            <p>{{ 'In Progress' | i18n }}</p>
+            <span>{{ 'Pending' | i18n }}</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="dfx-review-status">
+
+        <div class="status-item">
+          <span nz-icon nzType="file-protect" nzTheme="outline"></span>
+          <div>
+            <label>{{ 'Status' | i18n }}</label>
+            <strong>{{ 'Pending Review' | i18n }}</strong>
+          </div>
+        </div>
+
+        <div class="status-item">
+          <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+          <div>
+            <label>{{ 'Estimated Time' | i18n }}</label>
+            <strong>{{ 'Within 24 Hours' | i18n }}</strong>
+          </div>
+        </div>
+
+        <div class="status-item">
+          <span nz-icon nzType="mail" nzTheme="outline"></span>
+          <div>
+            <label>{{ 'Notification' | i18n }}</label>
+            <strong>{{ 'Email & Client Portal' | i18n }}</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="dfx-review-footer">
+        <span nz-icon nzType="safety-certificate" nzTheme="fill"></span>
+
+        <p>
+          {{
+            'Your security is our priority. All documents and data are encrypted and stored securely.'
+              | i18n
+          }}
+        </p>
+      </div>
+
     </div>
-  </nz-card> -->
-    <img src="assets/images/sent.svg" alt="" style="width: 100px;" />
-    <div class="sent">
-      <h1>{{ 'Your Request is Under Review' | i18n }}</h1>
-      <p>
-        {{
-          'Your dragonfly application has been successfully submitted for verification. You can expect our response shortly.'
-            | i18n
-        }}
-      </p>
-    </div>
-    <!-- <button
-      nz-button
-      class="cpt-primary-btn cmn-btn large-bth mb-2"
-      [nzType]="'primary'"
-      (click)="goDashboard()"
-    >
-      {{ 'Dashboard' | i18n }}
-    </button> -->
+
   </div>
 </div>
